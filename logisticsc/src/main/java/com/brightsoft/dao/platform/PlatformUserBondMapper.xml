@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserBondMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserBond" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="payment_type" property="paymentType" jdbcType="INTEGER" />
+    <result column="payment_money" property="paymentMoney" jdbcType="DOUBLE" />
+    <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, payment_type, payment_money, payment_time, user_id
+  </sql>
+  <!-- 增加保证金 -->
+  <insert id="inserUserBond" parameterType="com.brightsoft.model.PlatformUserBond" >
+    insert into lc_platform_user_bond (payment_type, payment_money, 
+      payment_time, user_id)
+    values (#{paymentType,jdbcType=INTEGER}, #{paymentMoney,jdbcType=DOUBLE}, 
+      #{paymentTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <!-- 查询用户是否有保证金记录 -->
+  <select id="selectUserBond" resultType="int" parameterType="java.lang.Long" >
+   select count(id) from lc_platform_user_bond where user_id =#{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_bond
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_bond
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserBond" >
+    insert into lc_platform_user_bond (id, payment_type, payment_money, 
+      payment_time, user_id)
+    values (#{id,jdbcType=BIGINT}, #{paymentType,jdbcType=INTEGER}, #{paymentMoney,jdbcType=DOUBLE}, 
+      #{paymentTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserBond" >
+    insert into lc_platform_user_bond
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="paymentMoney != null" >
+        payment_money,
+      </if>
+      <if test="paymentTime != null" >
+        payment_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="paymentMoney != null" >
+        #{paymentMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserBond" >
+    update lc_platform_user_bond
+    <set >
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="paymentMoney != null" >
+        payment_money = #{paymentMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="paymentTime != null" >
+        payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserBond" >
+    update lc_platform_user_bond
+    set payment_type = #{paymentType,jdbcType=INTEGER},
+      payment_money = #{paymentMoney,jdbcType=DOUBLE},
+      payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

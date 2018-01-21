@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcRuleInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcRuleInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,rtype,rvalue
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcRuleInfo" > 
+		select  <include refid="Base_Column_List" />  from yc_rule_info where rtype=#{rtype} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcRuleInfo" > 
+		select  count(1)  from yc_rule_info 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_rule_info order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcRuleInfo"> 
+		delete from yc_rule_info where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcRuleInfo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_rule_info  
+		(rtype,rvalue) 
+		values ( #{rtype},#{rvalue} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcRuleInfo">   
+	update yc_rule_info 
+	<set> 
+		
+		<if test="rvalue !=null"> 
+			rvalue=#{rvalue}+1
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

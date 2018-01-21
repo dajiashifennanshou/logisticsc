@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformCompanyCollectDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformCompanyCollect"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,userId,comId,status,createTime
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformCompanyCollect" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_company_collect where 1=1
+		<if test="id!=null">
+			and id=#{id} 
+		</if>
+		<if test="userId!=null">
+			and userId=#{userId}
+		</if>
+		<if test="comId!=null">
+			and comId=#{comId}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_company_collect where
+		userId=#{userId} and status=1
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformCompanyCollect"> 
+		delete from lc_platform_company_collect where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="userId!=null">
+			and userId=#{userId}
+		</if>
+		<if test="comId!=null">
+			and comId=#{comId}
+		</if>
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformCompanyCollect" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_company_collect  
+		(userId,comId,status,createTime) 
+		values ( #{userId},#{comId},#{status},#{createTime} )
+	</insert>
+	<delete id="multiDelCompanyCollect" parameterType="com.yc.Entity.PlatformCompanyCollect">
+		delete from lc_platform_company_collect where id in 
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+</mapper> 
+

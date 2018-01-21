@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.PosOrderCancelRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PosOrderCancelRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="employee_id" property="employeeId" jdbcType="VARCHAR" />
+    <result column="pos_sn" property="posSn" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="pos_request_id" property="posRequestId" jdbcType="VARCHAR" />
+    <result column="refer_no" property="referNo" jdbcType="VARCHAR" />
+    <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR" />
+    <result column="pay_method" property="payMethod" jdbcType="VARCHAR" />
+    <result column="cheque_no" property="chequeNo" jdbcType="VARCHAR" />
+    <result column="bank_card_no" property="bankCardNo" jdbcType="VARCHAR" />
+    <result column="bank_card_name" property="bankCardName" jdbcType="VARCHAR" />
+    <result column="bank_card_type" property="bankCardType" jdbcType="VARCHAR" />
+    <result column="bank_order_no" property="bankOrderNo" jdbcType="VARCHAR" />
+    <result column="yeepay_order_no" property="yeepayOrderNo" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+    <result column="pos_menue" property="posMenue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, employee_id, pos_sn, order_number, amount, pos_request_id, refer_no, pay_type_code, 
+    pay_method, cheque_no, bank_card_no, bank_card_name, bank_card_type, bank_order_no, 
+    yeepay_order_no, customer_no, pos_menue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_order_cancel_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_pos_order_cancel_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PosOrderRecord" >
+    insert into tms_pos_order_cancel_record (id, employee_id, pos_sn, 
+      order_number, amount, pos_request_id, 
+      refer_no, pay_type_code, pay_method, 
+      cheque_no, bank_card_no, bank_card_name, 
+      bank_card_type, bank_order_no, yeepay_order_no, 
+      customer_no, pos_menue)
+    values (#{id,jdbcType=BIGINT}, #{employeeId,jdbcType=VARCHAR}, #{posSn,jdbcType=VARCHAR}, 
+      #{orderNumber,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, #{posRequestId,jdbcType=VARCHAR}, 
+      #{referNo,jdbcType=VARCHAR}, #{payTypeCode,jdbcType=VARCHAR}, #{payMethod,jdbcType=VARCHAR}, 
+      #{chequeNo,jdbcType=VARCHAR}, #{bankCardNo,jdbcType=VARCHAR}, #{bankCardName,jdbcType=VARCHAR}, 
+      #{bankCardType,jdbcType=VARCHAR}, #{bankOrderNo,jdbcType=VARCHAR}, #{yeepayOrderNo,jdbcType=VARCHAR}, 
+      #{customerNo,jdbcType=VARCHAR}, #{posMenue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PosOrderRecord" >
+    insert into tms_pos_order_cancel_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="posSn != null" >
+        pos_sn,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="posRequestId != null" >
+        pos_request_id,
+      </if>
+      <if test="referNo != null" >
+        refer_no,
+      </if>
+      <if test="payTypeCode != null" >
+        pay_type_code,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="chequeNo != null" >
+        cheque_no,
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no,
+      </if>
+      <if test="bankCardName != null" >
+        bank_card_name,
+      </if>
+      <if test="bankCardType != null" >
+        bank_card_type,
+      </if>
+      <if test="bankOrderNo != null" >
+        bank_order_no,
+      </if>
+      <if test="yeepayOrderNo != null" >
+        yeepay_order_no,
+      </if>
+      <if test="customerNo != null" >
+        customer_no,
+      </if>
+      <if test="posMenue != null" >
+        pos_menue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSn != null" >
+        #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="posRequestId != null" >
+        #{posRequestId,jdbcType=VARCHAR},
+      </if>
+      <if test="referNo != null" >
+        #{referNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeCode != null" >
+        #{payTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="chequeNo != null" >
+        #{chequeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null" >
+        #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null" >
+        #{bankCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankOrderNo != null" >
+        #{bankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="yeepayOrderNo != null" >
+        #{yeepayOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="posMenue != null" >
+        #{posMenue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PosOrderRecord" >
+    update tms_pos_order_cancel_record
+    <set >
+      <if test="employeeId != null" >
+        employee_id = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSn != null" >
+        pos_sn = #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="posRequestId != null" >
+        pos_request_id = #{posRequestId,jdbcType=VARCHAR},
+      </if>
+      <if test="referNo != null" >
+        refer_no = #{referNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeCode != null" >
+        pay_type_code = #{payTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="chequeNo != null" >
+        cheque_no = #{chequeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null" >
+        bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardName != null" >
+        bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardType != null" >
+        bank_card_type = #{bankCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankOrderNo != null" >
+        bank_order_no = #{bankOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="yeepayOrderNo != null" >
+        yeepay_order_no = #{yeepayOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNo != null" >
+        customer_no = #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="posMenue != null" >
+        pos_menue = #{posMenue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PosOrderRecord" >
+    update tms_pos_order_cancel_record
+    set employee_id = #{employeeId,jdbcType=VARCHAR},
+      pos_sn = #{posSn,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      pos_request_id = #{posRequestId,jdbcType=VARCHAR},
+      refer_no = #{referNo,jdbcType=VARCHAR},
+      pay_type_code = #{payTypeCode,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=VARCHAR},
+      cheque_no = #{chequeNo,jdbcType=VARCHAR},
+      bank_card_no = #{bankCardNo,jdbcType=VARCHAR},
+      bank_card_name = #{bankCardName,jdbcType=VARCHAR},
+      bank_card_type = #{bankCardType,jdbcType=VARCHAR},
+      bank_order_no = #{bankOrderNo,jdbcType=VARCHAR},
+      yeepay_order_no = #{yeepayOrderNo,jdbcType=VARCHAR},
+      customer_no = #{customerNo,jdbcType=VARCHAR},
+      pos_menue = #{posMenue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

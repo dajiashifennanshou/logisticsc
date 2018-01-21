@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformBankAccountDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformBankAccount"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,customernumber,ledgerno,requestid,hmac,time,user_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankAccount" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_bank_account where 1=1
+		<if test="id!=null">
+		   and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformBankAccount"> 
+		delete from lc_platform_bank_account where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformBankAccount" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_bank_account  
+		(customernumber,ledgerno,requestid,hmac,time,user_id) 
+		values ( #{customernumber},#{ledgerno},#{requestid},#{hmac},#{time},#{user_id} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformBankAccount">   
+	update lc_platform_bank_account 
+	<set> 
+		<if test="customernumber !=null"> 
+			customernumber=#{customernumber},
+		</if>
+		<if test="ledgerno !=null"> 
+			ledgerno=#{ledgerno},
+		</if>
+		<if test="requestid !=null"> 
+			requestid=#{requestid},
+		</if>
+		<if test="hmac !=null"> 
+			hmac=#{hmac},
+		</if>
+		<if test="time !=null"> 
+			time=#{time},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformStoreRecordDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformStoreRecord"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,line_id,user_id,state,collection_time
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformStoreRecord" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_store_record where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+		<if test="line_id!=null">
+			and line_id=#{line_id}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map">
+		SELECT a.*,(SELECT COUNT(1) FROM lc_platform_order WHERE tms_line_id=a.`line_id`) AS countOrder FROM lc_platform_store_record AS a where
+		a.user_id=#{user_id} and a.state=1
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformStoreRecord"> 
+		delete from lc_platform_store_record where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+		<if test="line_id!=null">
+			and line_id=#{line_id}
+		</if>
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformStoreRecord" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_store_record  
+		(line_id,user_id,state,collection_time) 
+		values ( #{line_id},#{user_id},#{state},#{collection_time} )
+	</insert>
+	<delete id="multiDelCollect" parameterType="com.yc.Entity.PlatformStoreRecord">
+		delete from lc_platform_store_record where id in 
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete> 
+</mapper> 
+

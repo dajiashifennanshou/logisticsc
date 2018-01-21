@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="14dp">
+
+    <include layout="@layout/basic_logistic_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f9f9f9"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/myStyle"
+                android:layout_width="wrap_content"
+                android:text="订单号:"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/order_num"
+                style="@style/myStyle"
+                android:paddingLeft="10dp"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
+
+            <TextView
+                style="@style/myStyle"
+                android:paddingTop="5dp"
+                android:text="重量: "
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/order_weight"
+                style="@style/myStyle"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                style="@style/myStyle"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="体积: "
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/order_volume"
+                style="@style/myStyle"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                style="@style/myStyle"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="总价: "
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <TextView
+                android:id="@+id/order_price"
+                style="@style/myStyle"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/order_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@mipmap/home_qidian"
+                    android:drawablePadding="8dp"
+                    android:ellipsize="end"
+                    android:gravity="center|left"
+                    android:singleLine="true"
+                    android:textColor="#3e3e3e"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/order_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@mipmap/home_zhongdian"
+                    android:drawablePadding="8dp"
+                    android:ellipsize="end"
+                    android:gravity="center|left"
+                    android:singleLine="true"
+                    android:textColor="#3e3e3e"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+            <carbon.widget.TextView
+                android:id="@+id/orderDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="查看详情"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/small_text_size"
+                app:carbon_cornerRadius="14dp"
+                app:carbon_rippleColor="@color/ripple" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_line" />
+</LinearLayout>

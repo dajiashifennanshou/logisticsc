@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.wrt.xinsilu.ui.activity.SearchLineActivity">
+
+    <include layout="@layout/title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white">
+
+        <CheckedTextView
+            android:id="@+id/sort_all"
+            style="@style/basic_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:checked="false"
+            android:drawableRight="@drawable/sort_selector"
+            android:gravity="center"
+            android:text="综合排序"
+            android:textSize="@dimen/mid_text_size" />
+
+        <carbon.widget.TextView
+            android:id="@+id/tranport_more"
+            style="@style/basic_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="承运最多"
+            android:textSize="@dimen/mid_text_size" />
+
+        <carbon.widget.TextView
+            android:id="@+id/time_new"
+            style="@style/basic_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="时效最新"
+            android:textSize="@dimen/mid_text_size" />
+    </RelativeLayout>
+
+    <include layout="@layout/layout_line" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

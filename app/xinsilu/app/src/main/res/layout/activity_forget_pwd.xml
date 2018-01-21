@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    tools:context="com.wrt.xinsilu.ui.activity.ForgetPwdActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <carbon.widget.ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:padding="10dp"
+            android:src="@mipmap/login_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="标题"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <carbon.widget.TextView
+            android:id="@+id/title_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/common_text_size"
+            app:carbon_rippleColor="@color/ripple" />
+
+    </FrameLayout>
+    <include layout="@layout/layout_line"/>
+    <View
+        style="@style/BasicParamNoMargin_v"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_weight="1"
+        style="@style/BasicParamNoMargin_v">
+        <TextView
+            style="@style/myStyle"
+            android:textColor="@android:color/background_dark"
+            android:text="手  机  号"
+            android:textSize="@dimen/mid_text_size"
+            android:gravity="bottom|left"
+            />
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/background_dark"
+            android:gravity="bottom|left"
+            android:background="@null"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:inputType="number"
+            android:hint="@string/input_num"
+            android:textSize="@dimen/mid_text_size"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/background"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/yanzhengma"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/yanzhenma_text"
+                style="@style/myStyle"
+                android:text="验  证  码"
+                android:layout_above="@+id/view"
+                android:layout_marginLeft="20dp"
+
+                android:textColor="@android:color/background_dark"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="1234567890"
+                android:inputType="number"
+                android:layout_marginLeft="20dp"
+                android:layout_above="@+id/view"
+                android:gravity="bottom"
+                android:singleLine="true"
+                android:layout_toRightOf="@+id/yanzhenma_text"
+                android:textColor="@android:color/background_dark"
+                android:textSize="@dimen/mid_text_size" />
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/commit_background" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/yanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.7"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_shap_textview"
+            android:text="获取验证码"
+            android:textSize="@dimen/small_text_size" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        style="@style/BasicParamNoMargin_v">
+        <TextView
+            style="@style/myStyle"
+            android:textColor="@android:color/background_dark"
+            android:text="密        码"
+            android:textSize="@dimen/mid_text_size"
+            android:gravity="bottom|left"
+            />
+        <EditText
+            android:id="@+id/password"
+            style="@style/BasicParamNoMargin_h"
+            android:textColor="@android:color/background_dark"
+            android:layout_marginLeft="20dp"
+            android:inputType="textPassword"
+            android:hint="@string/input_pwd"
+            android:background="@null"
+            android:singleLine="true"
+            android:textSize="@dimen/mid_text_size"
+            android:gravity="bottom|left"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/background"
+        />
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        style="@style/BasicParamNoMargin_v">
+        <TextView
+            style="@style/myStyle"
+            android:text="再次输入"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/mid_text_size"
+            android:gravity="bottom|left"
+            />
+        <EditText
+            android:id="@+id/password_again"
+            style="@style/BasicParamNoMargin_h"
+            android:textColor="@android:color/background_dark"
+            android:inputType="textPassword"
+            android:hint="@string/input_pwd_again"
+            android:gravity="bottom|left"
+            android:background="@null"
+            android:singleLine="true"
+            android:layout_marginLeft="20dp"
+            android:textSize="@dimen/mid_text_size"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/background"
+        />
+    <LinearLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="4">
+        <carbon.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/commit"
+            android:textSize="@dimen/common_text_size"
+            android:gravity="center"
+            android:id="@+id/commit_button"
+            android:background="@color/commit_background"
+            app:carbon_cornerRadius="@dimen/btn_radius"
+            app:carbon_rippleColor="@color/basic_color"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

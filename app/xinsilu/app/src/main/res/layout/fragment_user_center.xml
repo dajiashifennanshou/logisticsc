@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/carbon_white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/circle_image_view"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    app:placeholderImage="@mipmap/prolife_head_portrait"
+                    app:placeholderImageScaleType="centerCrop" />
+
+                <carbon.widget.TextView
+                    android:id="@+id/login"
+                    style="@style/myStyle"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimary"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/login"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/mid_text_size"
+                    app:carbon_cornerRadius="@dimen/btn_radius"
+                    app:carbon_rippleColor="@color/white" />
+
+                <LinearLayout
+                    style="@style/myStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <carbon.widget.FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        app:carbon_rippleColor="@color/background">
+
+                        <carbon.widget.TextView
+                            android:id="@+id/my_order"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawablePadding="4dp"
+                            android:drawableTop="@mipmap/prolife_my_order"
+                            android:gravity="center"
+                            android:paddingBottom="16dp"
+                            android:paddingTop="16dp"
+
+                            android:text="@string/my_order"
+                            android:textSize="@dimen/small_text_size" />
+
+                        <carbon.widget.ImageView
+                            android:id="@+id/my_order_hint"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="14dp"
+                            android:background="@color/red"
+                            android:visibility="invisible"
+                            app:carbon_cornerRadius="3dp" />
+                    </carbon.widget.FrameLayout>
+
+                    <carbon.widget.TextView
+                        android:id="@+id/my_line"
+                        style="@style/info_style"
+                        android:layout_weight="1"
+                        android:drawablePadding="4dp"
+                        android:drawableTop="@mipmap/prolife_wuliushang"
+                        android:gravity="center"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/logistics"
+                        android:textSize="@dimen/small_text_size"
+                        app:carbon_rippleColor="@color/background" />
+
+                    <carbon.widget.TextView
+                        android:id="@+id/my_content"
+                        style="@style/info_style"
+                        android:layout_weight="1"
+                        android:drawablePadding="4dp"
+                        android:drawableTop="@mipmap/prolife_contact"
+                        android:gravity="center"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/content"
+                        android:textSize="@dimen/small_text_size"
+                        app:carbon_rippleColor="@color/background" />
+
+                    <carbon.widget.TextView
+                        android:id="@+id/my_collection"
+                        style="@style/info_style"
+                        android:layout_weight="1"
+                        android:drawablePadding="4dp"
+                        android:drawableTop="@mipmap/prolife_collection"
+                        android:gravity="center"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:text="@string/collection"
+                        android:textSize="@dimen/small_text_size"
+                        app:carbon_rippleColor="@color/background" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <com.wrt.xinsilu.ui.view.MyListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:divider="@color/color_primary_line"
+                android:dividerHeight="1px" />
+
+            <include layout="@layout/layout_line" />
+
+            <carbon.widget.FrameLayout
+                android:id="@+id/f_user_center_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@color/carbon_white"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:visibility="gone"
+                app:carbon_rippleColor="@color/red">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="14dp"
+                    android:text="退出登录"
+                    android:textSize="@dimen/mid_text_size" />
+            </carbon.widget.FrameLayout>
+
+            <include layout="@layout/layout_line" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

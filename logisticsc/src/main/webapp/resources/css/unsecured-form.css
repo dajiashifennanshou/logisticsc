@@ -1,0 +1,121 @@
+.un-word{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+/*表单*/
+.daik{
+	border: 1px solid #ddd;
+	margin-top: 20px;
+	padding: 20px 20px;
+	margin-bottom: 20px;
+}
+.dkuan{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF4E00;
+	border-bottom: 1px dashed #ddd;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 40px;
+}
+.dkuan-list{
+	margin-top: 20px;
+}
+.dkuan-word{
+	width: 180px;
+	text-align: right;
+	height: 46px;
+	line-height: 46px;
+	color: #666;
+}
+.dkuan-input{
+	margin-left: 20px;
+	height: 46px;
+	line-height: 46px;
+}
+#preview{width:140px;height:100px;border:1px solid #000;overflow:hidden;}
+#imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+.dkuan-input1{
+	margin-left: 20px;
+}
+
+.dkuan-text{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	text-indent: 12px;
+}
+.error{
+	   color: #ff0000;
+    font-size: 12px;
+   /*  margin-left: 20px; */
+    margin-top: 14px;
+    /* width: 200px; */
+}
+.success-info{
+	width: 14px;
+	height: 46px;
+	line-height: 46px;
+	margin-left: 20px;
+	background: url(../img/rechenggong.jpg) no-repeat center center;
+}
+.se-select,.se-select1{
+	width: 140px;
+	height: 46px;
+	line-height: 46px;
+	padding-bottom: 8px\9;
+}
+.se-select1{
+	margin-left: 5px;
+}
+.se-btn{
+	width: 140px;
+	height: 46px;
+	line-height: 28px;
+	font-size: 18px;
+	text-align: center;
+	color: #fff;
+	background: #FA8C4F;
+	letter-spacing: 2px;
+}
+.se-btn:hover{
+	color: #fff;
+	background: #FF4E00;
+}
+.se-select2{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	text-indent: 4px;
+}
+
+
+
+/**/
+.un-forml{
+	width: 760px;
+}
+.un-lvtext{
+	color: #888888;
+	width: 300px;
+	margin-left: 10px;
+	margin-top: 8px;
+}
+.un-lilv{
+	color: #333;
+	font-size: 16px;
+}
+.un-rig{
+	width: 400px;
+	border-left: 1px solid #EDEDED;
+	padding-left: 24px;
+	height: 520px;
+}
+.un-rig li{
+	margin-bottom: 50px;
+}
+
+
+

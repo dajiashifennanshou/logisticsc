@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/commit_background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:overScrollMode="never"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/goods_second_ll_goods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                style="@style/BasicParamNoMargin_v"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/myStyle"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:text="预估费用0.0元"
+                    android:textSize="@dimen/small_text_size" />
+
+                <LinearLayout
+                    android:id="@+id/add_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/background_shap_rectangle"
+                    android:gravity="center">
+
+                    <ImageView
+                        style="@style/myStyle"
+                        android:src="@mipmap/xiadan_tianjiahuowu_add" />
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:layout_marginLeft="10dp"
+                        android:text="添加货物"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

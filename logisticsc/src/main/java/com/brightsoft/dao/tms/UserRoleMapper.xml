@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.UserRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.UserRole" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, role_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_user_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_user_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.UserRole" >
+    insert into tms_user_role (id, user_id, role_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.UserRole" >
+    insert into tms_user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.UserRole" >
+    update tms_user_role
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.UserRole" >
+    update tms_user_role
+    set user_id = #{userId,jdbcType=BIGINT},
+      role_id = #{roleId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch">
+  	insert into tms_user_role
+  		(id, user_id, role_id)
+  	values
+  		<foreach collection="list" item="userRole" separator=",">
+  			(#{userRole.id},#{userRole.userId},#{userRole.roleId})
+  		</foreach>
+  </insert>
+  <!-- 通过角色id删除关系 -->
+  <delete id="deleteByRoleId">
+  	delete from tms_user_role
+  	where role_id = #{roleId}
+  </delete>
+  
+  <!-- 通过用户id删除关系 -->
+  <delete id="deleteByUserId">
+  	delete from tms_user_role
+  	where user_id = #{userId}
+  </delete>
+  
+  <delete id="deleteByRoleIdAndUserId">
+  	delete from tms_user_role
+  	where user_id = #{userId} and role_id = #{roleId}
+  </delete>
+  
+  <select id="countUserByRoleId" parameterType="list" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_user_role
+  	where
+  		role_id in 
+  		<foreach collection="list" item="roleId" open="(" separator="," close=")">
+  			#{roleId}
+  		</foreach>
+  </select>
+  
+</mapper>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.DriverInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.DriverInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_age" property="driverAge" jdbcType="INTEGER" />
+    <result column="driver_license_type" property="driverLicenseType" jdbcType="VARCHAR" />
+    <result column="driver_license_no" property="driverLicenseNo" jdbcType="VARCHAR" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_number" property="bankNumber" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="driver_license_type_val" property="driverLicenseTypeVal" jdbcType="VARCHAR" />
+    <association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    	<result column="company_name" property="companyName"/>
+    	<result column="company_code" property="companyCode"/>
+    </association>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="name" property="name"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, driver_name, driver_age, driver_license_type, driver_license_no, id_card, phone_number, 
+    bank_name, bank_number, create_time, address, create_person_id, outlets_id,status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_driver_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_driver_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.DriverInfo" 
+  		useGeneratedKeys="true" keyProperty="id">
+    insert into tms_driver_info (id, driver_name, driver_age, 
+      driver_license_type, driver_license_no, id_card, 
+      phone_number, bank_name, bank_number, 
+      create_time, address, create_person_id, 
+      outlets_id,status)
+    values (#{id,jdbcType=BIGINT}, #{driverName,jdbcType=VARCHAR}, #{driverAge,jdbcType=INTEGER}, 
+      #{driverLicenseType,jdbcType=VARCHAR}, #{driverLicenseNo,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankNumber,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, #{createPersonId,jdbcType=BIGINT}, 
+      #{outletsId,jdbcType=BIGINT},#{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.DriverInfo" 
+		useGeneratedKeys="true" keyProperty="id">
+    insert into tms_driver_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverAge != null" >
+        driver_age,
+      </if>
+      <if test="driverLicenseType != null" >
+        driver_license_type,
+      </if>
+      <if test="driverLicenseNo != null" >
+        driver_license_no,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankNumber != null" >
+        bank_number,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAge != null" >
+        #{driverAge,jdbcType=INTEGER},
+      </if>
+      <if test="driverLicenseType != null" >
+        #{driverLicenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicenseNo != null" >
+        #{driverLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null" >
+        #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.DriverInfo" >
+    update tms_driver_info
+    <set >
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverAge != null" >
+        driver_age = #{driverAge,jdbcType=INTEGER},
+      </if>
+      <if test="driverLicenseType != null" >
+        driver_license_type = #{driverLicenseType,jdbcType=VARCHAR},
+      </if>
+      <if test="driverLicenseNo != null" >
+        driver_license_no = #{driverLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNumber != null" >
+        bank_number = #{bankNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.DriverInfo" >
+    update tms_driver_info
+    set driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_age = #{driverAge,jdbcType=INTEGER},
+      driver_license_type = #{driverLicenseType,jdbcType=VARCHAR},
+      driver_license_no = #{driverLicenseNo,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_number = #{bankNumber,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 网点获取车辆信息 -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		di.*,pd.name as driver_license_type_val,oi.name
+  	from	
+  		tms_driver_info di
+  		left join tms_outlets_info oi on di.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = di.driver_license_type
+  	where
+  		di.outlets_id = #{outletsId} and di.status != 0
+  		<if test="driverInfo.condition!=null and driverInfo.condition!=''">
+	  		and di.driver_name like concat("%",#{driverInfo.condition},"%")
+	  	</if>
+  		order by di.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 网点获取车辆信息记录总数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_driver_info
+  	where
+  		outlets_id = #{outletsId} and status != 0
+  		<if test="driverInfo.condition!=null and driverInfo.condition!=''">
+	  		and driver_name like concat("%",#{driverInfo.condition},"%")
+	  	</if>
+  </select>
+  <!-- 专线获取车辆信息 -->
+  <select id="selectByCompanyIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		di.*,oi.name,pd.name as driver_license_type_val
+  	from	
+  		tms_driver_info di
+  		left join tms_outlets_info oi on di.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = di.driver_license_type
+  	where
+  		oi.company_id = #{companyId} and di.status != 0
+  		<if test="driverInfo.condition!=null and driverInfo.condition!=''">
+	  		and di.driver_name like concat("%",#{driverInfo.condition},"%")
+	  	</if>
+  		order by di.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 专线获取车辆信息记录总数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_driver_info di
+  		left join tms_outlets_info oi on di.outlets_id = oi.id
+  	where
+  		oi.company_id = #{companyId} and di.status != 0
+  		<if test="driverInfo.condition!=null and driverInfo.condition!=''">
+	  		and di.driver_name like concat("%",#{driverInfo.condition},"%")
+	  	</if>
+  </select>
+  <!-- 查询条件 -->
+  <sql id="select_condition">
+  	<if test="driverInfo.condition!=null and driverInfo.condition!=''">
+  		and driver_name like concat("%",#{driverInfo.condition},"%")
+  	</if>
+  </sql>
+  
+  <!-- 查询线路信息 -->
+  <select id="selectBySelectedCondition"  resultMap="BaseResultMap" >
+  	select 
+  		di.id, di.driver_name, di.driver_age, di.driver_license_type, di.driver_license_no, di.id_card, di.phone_number, 
+    	di.bank_name, di.bank_number, di.create_time, di.address, di.create_person_id, di.outlets_id,di.status,
+    	pd.name as driver_license_type_val 
+  	from 
+  		<choose>
+  			<when test="user.outletsId != null">
+  				tms_driver_info di
+  				left join lc_platform_dictionary pd on di.driver_license_type = pd.id 
+  			</when>
+  			<otherwise>
+  				(select * from tms_driver_info  where outlets_id in 
+  					(select id from tms_outlets_info where company_id = #{user.companyId}))di
+  				left join lc_platform_dictionary pd on di.driver_license_type = pd.id
+  			</otherwise>
+  		</choose>
+  	<where>
+  		status != 0
+  		<if test="user.outletsId != null">
+  			and outlets_id = #{user.outletsId}
+  		</if>
+  		<include refid="select_condition"/>
+  	</where>
+  		order by create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!--获取记录总数 -->
+  <select id="countRows" parameterType="com.brightsoft.model.DriverInfo" resultType="int">
+  	select 
+  		count(1) 
+  	from 
+  		<choose>
+  			<when test="user.outletsId != null">
+  				tms_driver_info di
+  				left join lc_platform_dictionary pd on di.driver_license_type = pd.id
+  			</when>
+  			<otherwise>
+  				(select * from tms_driver_info  where outlets_id in 
+  					(select id from tms_outlets_info where company_id = #{user.companyId}))di
+  				left join lc_platform_dictionary pd on di.driver_license_type = pd.id
+  			</otherwise>
+  		</choose>
+  	<where>
+  		status != 0
+  		<if test="user.outletsId != null">
+  			and outlets_id = #{user.outletsId}
+  		</if>
+  		<include refid="select_condition"/>
+  	</where>
+  </select>
+  
+  <select id="selectByCreatePersonId" parameterType="long" resultType="com.brightsoft.model.DriverInfo">
+  	select 
+  		id,name
+  	from 
+  		tms_driver_info
+  	where 
+  		company_id = (select company_id from tms_outlets_info where create_person_id = #{userId} limit 1)
+  </select>
+  
+  <!-- 通过主键id删除司机 -->
+  <update id="deleteDriverById" parameterType="list">
+  	update
+  		tms_driver_info
+  	set 
+  		status = 0
+  	where
+  		id in
+  		<foreach collection="list" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </update>
+  
+  <select id="selectByOutletsId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_driver_info
+    where outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_driver_info
+    where outlets_id in 
+    (SELECT outlets_id FROM tms_outlets_info WHERE company_id = #{companyId,jdbcType=BIGINT})
+  </select>
+  <!-- 通过outletsId分页获取司机信息 -->
+  <select id="selectByOutletsId4Page" resultMap="BaseResultMap">
+    select 
+    	<include refid="Base_Column_List" />
+    from 
+    	tms_driver_info
+    where 
+    	outlets_id = #{outletsId,jdbcType=BIGINT}
+    	and status != 0
+    	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 通过outletsId获取司机总记录数-->
+  <!-- <select id="countRowsByOutletsId" resultType="int">
+    select 
+		count(1)
+    from 
+    	tms_driver_info
+    where 
+    	outlets_id = #{outletsId,jdbcType=BIGINT}
+    	and status != 0
+  </select> -->
+  <!-- 货运交易系统：获取司机信息 -->
+  <select id="selectDriverItems" resultMap="BaseResultMap">
+  	select 
+  		di.*,oi.name,puc.company_name,puc.company_code,pd.name as driver_license_type_val
+  	from
+  		tms_driver_info di 
+  		left join lc_platform_dictionary pd on di.driver_license_type = pd.id
+  		left join tms_outlets_info oi on di.outlets_id = oi.id
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  	where
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and di.driver_name = #{searchParams.condition} or di.phone_number = #{searchParams.condition} 
+  			or di.id_card = #{searchParams.condition}
+  		</if>
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 货运交易系统：获取司机记录数 -->
+  <select id="countRows4DriverItems" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_driver_info di 
+  		left join lc_platform_dictionary pd on di.driver_license_type = pd.id
+  		left join tms_outlets_info oi on di.outlets_id = oi.id
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  	where
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and di.driver_name = #{searchParams.condition} or di.phone_number = #{searchParams.condition} 
+  			or di.id_card = #{searchParams.condition}
+  		</if>
+  </select>
+</mapper>

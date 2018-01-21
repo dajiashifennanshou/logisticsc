@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.CargoInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.CargoInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="volume" property="volume" jdbcType="DOUBLE" />
+    <result column="packing_info" property="packingInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, number, weight, volume, packing_info
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_cargo_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_cargo_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.CargoInfo" >
+    insert into tms_cargo_info (id, name, number, 
+      weight, volume, packing_info
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{weight,jdbcType=DOUBLE}, #{volume,jdbcType=DOUBLE}, #{packingInfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.CargoInfo" >
+    insert into tms_cargo_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="packingInfo != null" >
+        packing_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=DOUBLE},
+      </if>
+      <if test="packingInfo != null" >
+        #{packingInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.CargoInfo" >
+    update tms_cargo_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=DOUBLE},
+      </if>
+      <if test="packingInfo != null" >
+        packing_info = #{packingInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.CargoInfo" >
+    update tms_cargo_info
+    set name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=DOUBLE},
+      volume = #{volume,jdbcType=DOUBLE},
+      packing_info = #{packingInfo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

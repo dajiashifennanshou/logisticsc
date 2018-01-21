@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.TmsLineInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.TmsLineInfo"></resultMap>
+	<resultMap id="BaseResultMap1" type="com.yc.Entity.PlatformDeliverGoods"></resultMap>
+	<sql id="Base_Column_List"> 
+		id,server_type,start_outlets,start_outlets_name,end_outlets,end_outlets_name,transport_mode,time_long,heavy_cargo_price_low,bulky_cargo_price_low,heavy_cargo_price_mid,bulky_cargo_price_mid,heavy_cargo_price_high,bulky_cargo_price_high,lowest_price,status,release_state,create_time,create_person_id,is_take_cargo,is_give_cargo,outlets_id,evaluate_level,remain_money,recommended
+	</sql> 
+	<select id="getLineInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.TmsLineInfo">
+		SELECT <include refid="Base_Column_List"/> FROM tms_line_info WHERE 1=1
+		<if test="id!=null">
+		  and id=#{id} 
+		</if> 
+		<if test="outlets_id!=null">
+		  and outlets_id=#{outlets_id} 
+		</if> 
+	</select>
+	<select id="getListLineInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.TmsLineInfo">
+		SELECT id,server_type,start_outlets,start_outlets_name,end_outlets,end_outlets_name FROM tms_line_info WHERE 1=1
+		<if test="outlets_id!=null">
+		  and outlets_id=#{outlets_id} 
+		</if> 
+	</select>
+	<select id="getListLineInfoByComId1" resultMap="BaseResultMap" >
+		SELECT line.*,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=o.`province`) AS province,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=o.`city`) AS city,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=o.`county`) AS county,
+		o.address
+		FROM  tms_line_info AS line,tms_outlets_info AS o WHERE line.`outlets_id`=o.`id` AND o.`company_id`=#{param1} 
+		AND o.`province`=(SELECT id FROM lc_xzqh_info WHERE NAME=#{param2}) AND o.`city`=(SELECT id FROM lc_xzqh_info WHERE NAME=#{param3})
+		LIMIT 3 OFFSET 0
+	</select>
+	<select id="getListLineInfoByComId2" resultMap="BaseResultMap" >
+		SELECT line.*
+		FROM tms_line_info AS line,tms_outlets_info AS o WHERE line.`outlets_id`=o.`id` AND o.`company_id`=#{param1}
+		LIMIT 3 OFFSET 0
+	</select>
+	<select id="getListLineInfoByComId3" resultMap="BaseResultMap1">
+		SELECT line.*,
+		(SELECT COUNT(1) FROM lc_platform_order WHERE tms_line_id=line.id) AS countOrder,
+		(SELECT COUNT(1) FROM lc_platform_order AS a JOIN lc_platform_order_evaluation AS b ON a.order_number = b.order_number WHERE a.tms_line_id = line.id) AS countOrderEvaluation
+		FROM  tms_line_info AS line,tms_outlets_info AS o WHERE line.`outlets_id`=o.`id` AND o.`company_id`=#{param1}
+	</select>
+</mapper> 
+

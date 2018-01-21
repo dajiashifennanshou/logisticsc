@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+	<display-name>ttecsysc</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring.xml,classpath:spring-mybatis.xml,classpath:spring-tms-shiro.xml</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+ 	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+ 	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 防止spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<servlet>
+
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+					classpath:spring-mvc.xml
+				</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+		<url-pattern>*.pay</url-pattern>
+		<url-pattern>*.yc</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置session超时时间，单位分钟 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<!-- 登录过滤器 -->
+	<filter>
+		<filter-name>sessionFilter</filter-name>
+		<filter-class>com.brightsoft.filter.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>*.shtml</url-pattern>
+	</filter-mapping>
+	<!-- 支付过滤器 -->
+	<filter>
+		<filter-name>YeePayFilter</filter-name>
+		<filter-class>com.brightsoft.filter.YeePayFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>YeePayFilter</filter-name>
+		<url-pattern>*.pay</url-pattern>
+	</filter-mapping>
+	
+	<filter>     
+	    <filter-name>springSessionRepositoryFilter</filter-name>     
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>     
+	    <filter-name>springSessionRepositoryFilter</filter-name>     
+	    <url-pattern>/*</url-pattern> 
+	</filter-mapping>
+	
+	<!--易宝 上传资质  sevlet -->
+	<servlet>
+	  	<servlet-name>UpLoadServlet</servlet-name>
+	    <servlet-class>com.brightsoft.servlet.UpLoadServlet</servlet-class>
+  	</servlet>
+  	
+  	 <servlet-mapping>
+	    <servlet-name>UpLoadServlet</servlet-name>
+	    <url-pattern>/UpLoadApi.pay</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- 易宝下载 sevlet -->
+	<servlet>
+	  	<servlet-name>DownloadOrderDocumentServlet</servlet-name>
+	    <servlet-class>com.brightsoft.servlet.DownloadOrderDocumentApiServlet</servlet-class>
+  	</servlet>
+  		
+  	<servlet-mapping>
+	    <servlet-name>DownloadOrderDocumentServlet</servlet-name>
+	    <url-pattern>/DownloadOrderDocumentApi.pay</url-pattern>
+  	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>/main.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/404.html</location>
+	</error-page>
+	
+<!-- 	<filter>
+	   <filter-name>SSOAuth</filter-name>
+	   <filter-class>com.brightsoft.ulti.SSOAuth</filter-class>
+	   <init-param>
+		       
+			<param-name>SSOService</param-name>
+			<param-value>http://localhost:8080/SSOAuth/SSOAuth</param-value>
+		</init-param>
+		<init-param>
+		    
+			<param-name>cookieName</param-name>
+			<param-value>SSOID</param-value>
+		</init-param>
+	 </filter>
+	 <filter-mapping>
+	   <filter-name>SSOAuth</filter-name>
+	   <url-pattern>*.jsp</url-pattern>
+	 </filter-mapping>
+	 <filter-mapping>
+	   <filter-name>SSOAuth</filter-name>
+	   <url-pattern>/logout</url-pattern>
+	 </filter-mapping>
+	 <filter-mapping>
+	   <filter-name>SSOAuth</filter-name>
+	   <url-pattern>/setCookie</url-pattern>
+	 </filter-mapping>  -->
+</web-app>

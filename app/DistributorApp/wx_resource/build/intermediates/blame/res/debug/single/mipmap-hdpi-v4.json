@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_bottom.png",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_bottom.png"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_left.9.png",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_left.9.png"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_bottom.png",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_bottom.png"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_left.9.png",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_left.9.png"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_right.9.png",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_right.9.png"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\shadow_right.9.png",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\mipmap-hdpi-v4\\shadow_right.9.png"
+    }
+]

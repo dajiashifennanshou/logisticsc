@@ -1,0 +1,62 @@
+.un-word{
+	margin-top: 10px;
+}
+.unsec-pic{
+	margin-top: 20px;
+	width:100%;
+	background:#24ace2;
+}
+.un-bz{
+	font-size: 24px;
+	width: 180px;
+	margin: 20px auto;
+}
+.un-bg{
+	background: url(../img/wu-arrow.png) no-repeat right center;
+}
+.wu-bz{
+	text-align: center;
+}
+.un-bz1{
+	width: 92px;
+	height: 92px;
+	margin: 0 auto;
+}
+.un-bz12{
+	font-size: 20px;
+}
+.se-btn1{
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.se-btn{
+	width: 150px;
+	height: 48px;
+	line-height: 35px;
+	color: #fff;
+	letter-spacing: 2px;
+	font-size: 18px;
+	text-align: center;
+	background: #FA8C4F;
+}
+.se-btn:hover{
+	color: #fff;
+	background: #FF4E00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

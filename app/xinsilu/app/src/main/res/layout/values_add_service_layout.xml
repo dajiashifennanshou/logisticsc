@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:gravity="center|left"
+        android:padding="10dp"
+        android:text="增值服务信息"
+        android:textSize="@dimen/small_text_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="回单:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="等待放货:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="代收货款:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="装货:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="卸货:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="综合信息服务:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="专线投保:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/tv_Is_insurance"
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="投保金额:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/tv_insurance_money"
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-.--元"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="发票信息:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="1.2"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="支付方式:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/tv_pay_type"
+            style="@style/BasicParamNoMargin_h"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:hint="-"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

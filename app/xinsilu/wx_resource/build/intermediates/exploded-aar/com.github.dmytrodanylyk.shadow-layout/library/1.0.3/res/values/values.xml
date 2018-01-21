@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Work/android-projects/shadow-layout/library/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="default_fill_color">#ffffff</color>
+    <color name="default_shadow_color">#88757575</color>
+    <declare-styleable name="ShadowLayout"><attr format="dimension" name="sl_cornerRadius"/><attr format="dimension" name="sl_shadowRadius"/><attr format="color" name="sl_shadowColor"/><attr format="dimension" name="sl_dx"/><attr format="dimension" name="sl_dy"/></declare-styleable>
+    <!-- From: file:/C:/Work/android-projects/shadow-layout/library/src/main/res/values/dimen.xml -->
+    <eat-comment/>
+    <dimen name="default_corner_radius">4dp</dimen>
+    <dimen name="default_shadow_radius">4dp</dimen>
+</resources>

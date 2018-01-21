@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ILcPlatformUserCommonContactDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformUserCommonContact"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,contacts_name,phone_number,telephone,address,province,city,county,state,create_time,contacts_type,company_name,user_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformUserCommonContact" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user_common_contact where 1=1 
+		 <if test="phone_number !=null"> 
+			and phone_number=#{phone_number}
+		</if>
+		 <if test="id !=null"> 
+			and id=#{id}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.LcPlatformUserCommonContact" > 
+		select  count(1)  from lc_platform_user_common_contact where 1=1
+		<if test="phone_number !=null"> 
+			and phone_number=#{phone_number}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_user_common_contact order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.LcPlatformUserCommonContact"> 
+		delete from lc_platform_user_common_contact where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.LcPlatformUserCommonContact" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_user_common_contact  
+		(contacts_name,phone_number,telephone,address,province,city,county,state,create_time,contacts_type,company_name,user_id) 
+		values ( #{contacts_name},#{phone_number},#{telephone},#{address},#{province},#{city},#{county},#{state},#{create_time},#{contacts_type},#{company_name},#{user_id} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.LcPlatformUserCommonContact">   
+	update lc_platform_user_common_contact 
+	<set> 
+		<if test="contacts_name !=null"> 
+			contacts_name=#{contacts_name},
+		</if>
+		<if test="phone_number !=null"> 
+			phone_number=#{phone_number},
+		</if>
+		<if test="telephone !=null"> 
+			telephone=#{telephone},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="province !=null"> 
+			province=#{province},
+		</if>
+		<if test="city !=null"> 
+			city=#{city},
+		</if>
+		<if test="county !=null"> 
+			county=#{county},
+		</if>
+		<if test="state !=null"> 
+			state=#{state},
+		</if>
+		<if test="create_time !=null"> 
+			create_time=#{create_time},
+		</if>
+		<if test="contacts_type !=null"> 
+			contacts_type=#{contacts_type},
+		</if>
+		<if test="company_name !=null"> 
+			company_name=#{company_name},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="btn_back" type="id" />
+    <item name="tv_title" type="id" />
+    <item name="adapter_item_tag_key" type="id"/>
+
+</resources>

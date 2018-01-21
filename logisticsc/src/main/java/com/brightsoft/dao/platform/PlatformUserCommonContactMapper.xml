@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserCommonContactMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserCommonContact" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="contacts_name" property="contactsName" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="contacts_type" property="contactsType" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, contacts_name, phone_number, telephone, address, province, city, county, state, 
+    create_time, contacts_type, company_name, user_id
+  </sql>
+  <select id="selectPlatCommonContactId" parameterType="com.brightsoft.model.PlatformUserCommonContact" resultType="int" >
+    select 
+  	count(*)
+    from lc_platform_user_common_contact
+	where user_id = #{userId,jdbcType=BIGINT}
+	and phone_number = #{phoneNumber,jdbcType=VARCHAR}
+	and contacts_type = #{contactsType,jdbcType=INTEGER}
+  </select>
+  <!-- 逻辑删除常用联系人 -->
+  <update id="updateCommonContact">
+    update lc_platform_user_common_contact
+    set 
+      state = #{state,jdbcType=INTEGER}
+    where id in
+    <foreach collection="commonContact" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </update>
+  <!-- 增加常用联系人 -->
+  <insert id="insertPlatformUserCommonContact" parameterType="com.brightsoft.model.PlatformUserCommonContact" >
+   <!--  insert into lc_platform_user_common_contact (contacts_name, phone_number, 
+      telephone, address, province, 
+      city, county, state, 
+      create_time, contacts_type, company_name, 
+      user_id)
+    values (#{contactsName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{contactsType,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+       -->
+      
+       insert into lc_platform_user_common_contact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="contactsName != null" >
+        contacts_name,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="contactsType != null" >
+        contacts_type,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contactsName != null" >
+        #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactsType != null" >
+        #{contactsType,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <!-- 我的常用联系人 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_contact
+    	where contacts_type =#{commonContact.contactsType,jdbcType=INTEGER}
+		and user_id = #{commonContact.userId,jdbcType=BIGINT}
+		and state = 1
+		<if test="commonContact.contactsName!=null and commonContact.contactsName!=''">
+  		and contacts_name LIKE concat("%",#{commonContact.contactsName,jdbcType=VARCHAR},"%")
+  		</if>
+    order by id desc 
+	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取总数 -->
+  <select id="countRows" resultType="int">
+    select 
+    	count(1)
+    from lc_platform_user_common_contact
+    	where contacts_type =#{commonContact.contactsType,jdbcType=INTEGER}
+		and user_id = #{commonContact.userId,jdbcType=BIGINT}
+		and state = 1
+		<if test="commonContact.contactsName!=null and commonContact.contactsName!=''">
+  		and contacts_name LIKE concat("%",#{commonContact.contactsName,jdbcType=VARCHAR},"%")
+  	</if>
+  </select>
+  <select id="selectByPhoneAndUserId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_contact
+    where phone_number =#{phone,jdbcType=VARCHAR}
+    and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+ <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_contact
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_common_contact
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertPlatformUserCommonContact" parameterType="com.brightsoft.model.PlatformUserCommonContact" >
+    insert into lc_platform_user_common_contact (id, contacts_name, phone_number, 
+      telephone, address, province, 
+      city, county, state, 
+      create_time, contacts_type, company_name, 
+      user_id)
+    values (#{id,jdbcType=BIGINT}, #{contactsName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{contactsType,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserCommonContact" >
+    insert into lc_platform_user_common_contact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="contactsName != null" >
+        contacts_name,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="contactsType != null" >
+        contacts_type,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="contactsName != null" >
+        #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="contactsType != null" >
+        #{contactsType,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserCommonContact" >
+    update lc_platform_user_common_contact
+    <set >
+      <if test="contactsName != null" >
+        contacts_name = #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactsType != null" >
+        contacts_type = #{contactsType,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserCommonContact" >
+    update lc_platform_user_common_contact
+    set contacts_name = #{contactsName,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      contacts_type = #{contactsType,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

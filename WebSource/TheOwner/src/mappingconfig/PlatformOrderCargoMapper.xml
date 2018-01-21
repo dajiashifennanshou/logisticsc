@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformOrderCargoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformOrderCargo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,name,brand,model,package_type,number,set_number,single_weight,single_volume,count_cost_mode,price,order_id,goodsType,package_name
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformOrderCargo" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_cargo where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformOrderCargo" > 
+		select  count(1)  from lc_platform_order_cargo 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_cargo order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getListInfoBy" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformOrderCargo"> 
+		select poc.id,poc.name,poc.brand,poc.model,poc.package_type,poc.number,poc.set_number,poc.single_weight,poc.single_volume,poc.count_cost_mode,poc.price,poc.order_id,poc.goodsType  from lc_platform_order_cargo poc  where 1=1
+		<if test="order_id !=null"> 
+			and order_id=#{order_id}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformOrderCargo"> 
+		delete from lc_platform_order_cargo where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformOrderCargo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_cargo  
+		(name,brand,model,package_type,number,set_number,single_weight,single_volume,count_cost_mode,price,order_id,goodsType) 
+		values ( #{name},#{brand},#{model},#{package_type},#{number},#{set_number},#{single_weight},#{single_volume},#{count_cost_mode},#{price},#{order_id},#{goodsType} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformOrderCargo">   
+	update lc_platform_order_cargo 
+	<set> 
+		<if test="name !=null"> 
+			name=#{name},
+		</if>
+		<if test="brand !=null"> 
+			brand=#{brand},
+		</if>
+		<if test="model !=null"> 
+			model=#{model},
+		</if>
+		<if test="package_type !=null"> 
+			package_type=#{package_type},
+		</if>
+		<if test="number !=null"> 
+			number=#{number},
+		</if>
+		<if test="set_number !=null"> 
+			set_number=#{set_number},
+		</if>
+		<if test="single_weight !=null"> 
+			single_weight=#{single_weight},
+		</if>
+		<if test="single_volume !=null"> 
+			single_volume=#{single_volume},
+		</if>
+		<if test="count_cost_mode !=null"> 
+			count_cost_mode=#{count_cost_mode},
+		</if>
+		<if test="price !=null"> 
+			price=#{price},
+		</if>
+		<if test="order_id !=null"> 
+			order_id=#{order_id},
+		</if>
+		<if test="goodsType !=null"> 
+			goodsType=#{goodsType}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

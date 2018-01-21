@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceiveMoneyOrderRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.ReceiveMoneyOrderRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="receive_money_order_id" property="receiveMoneyOrderId" jdbcType="BIGINT" />
+    <result column="receive_money" property="receiveMoney" jdbcType="DOUBLE" />
+    <result column="receive_money_type" property="receiveMoneyType" jdbcType="INTEGER" />
+    <result column="operate_person" property="operatePerson" jdbcType="VARCHAR" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="is_cancel" property="isCancel" jdbcType="INTEGER" />
+    <result column="pay_person" property="payPerson" jdbcType="VARCHAR" />
+    <result column="pay_person_mobile" property="payPersonMobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, receive_money_order_id, receive_money, receive_money_type, operate_person, operate_time, is_cancel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_order_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receive_money_order_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.ReceiveMoneyOrderRecord" >
+    insert into tms_receive_money_order_record (id, receive_money_order_id, receive_money, receive_money_type, 
+      operate_person, operate_time, is_cancel)
+    values (#{id,jdbcType=BIGINT}, #{receiveMoneyOrderId,jdbcType=BIGINT}, #{receiveMoney,jdbcType=DOUBLE}, #{receiveMoneyType,jdbcType=INTEGER}, 
+      #{operatePerson,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{isCancel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.ReceiveMoneyOrderRecord" >
+    insert into tms_receive_money_order_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="receiveMoneyOrderId != null" >
+        receive_money_order_id,
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money,
+      </if>
+      <if test="receiveMoneyType != null" >
+        receive_money_type,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+      <if test="isCancel != null" >
+        is_cancel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="receiveMoneyOrderId != null" >
+        #{receiveMoneyOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveMoney != null" >
+        #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="receiveMoneyType != null" >
+        #{receiveMoneyType,jdbcType=INTEGER},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCancel != null" >
+        #{isCancel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.ReceiveMoneyOrderRecord" >
+    update tms_receive_money_order_record
+    <set >
+      <if test="receiveMoneyOrderId != null" >
+        receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="receiveMoneyType != null" >
+        receive_money_type = #{receiveMoneyType,jdbcType=INTEGER},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCancel != null" >
+        is_cancel = #{isCancel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.ReceiveMoneyOrderRecord" >
+    update tms_receive_money_order_record
+    set receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT},
+      receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      receive_money_type = #{receiveMoneyType,jdbcType=INTEGER},
+      operate_person = #{operatePerson,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      is_cancel = #{isCancel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByReceiveMoneyOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  	SELECT t1.*, t2.pay_person, t2.pay_person_mobile FROM tms_receive_money_order_record t1
+	LEFT JOIN tms_receive_money_order t2 ON t1.receive_money_order_id = t2.id
+  	where t1.receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT} and t1.is_cancel = 0
+  </select>
+</mapper>

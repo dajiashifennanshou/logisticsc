@@ -1,0 +1,112 @@
+html, body, h1,h2,h3,h4,h5,h6,ul,li{
+	margin: 0px;
+	padding: 0px;
+}
+
+ul,li{
+	list-style: none;
+}
+a{
+	text-decoration: no
+}
+
+body{
+	font-family: '微软雅黑';
+	font-size: 16px;
+}
+.container{
+	min-width: 1000px;
+}
+h2{
+	margin: 5px 10px;
+}
+.search-box{
+	margin: 5px auto;
+}
+.search-box ul{
+	margin-left: 20px;
+	height: 40px;
+}
+.search-box li{
+	float: left;
+	margin-right: 20px;
+	height: 40px;
+	line-height: 40px;
+	
+}
+.search-select, .search-date, .search-condition{
+	border-radius: 3px;
+	border: 1px solid #A4A4A4;
+}
+.search-box .search-select{
+	padding: 6px 6px 4px 6px;
+	width: 120px;
+}
+.search-box .search-date{
+	padding: 4px 5px 2px 5px;
+	width: 120px;
+}
+.search-box .search-condition{
+	padding: 6px 8px 5px 8px;
+	width: 180px;
+}
+.search-box .search-button{
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #eee;
+	padding: 2px 15px;
+	margin: 0px 6px;
+}
+.search-box span{
+	margin-right: 3px;
+}
+
+.table-content{
+	margin: auto 20px;
+}
+.table-toolbar{
+	height: 40px;
+}
+.table-toolbar ul{
+	height: 40px;
+}
+.table-toolbar li{
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	margin-right: 10px;
+}
+.table-content .table-toolbar button{
+	cursor: pointer;
+	border: 1px solid transparent;
+	font-size: 16px;
+	border-radius: 5px;
+	padding: 4px 12px;
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+.table-content .table-toolbar button:HOVER {
+	background-color: #eee;
+}
+.table-content .table-toolbar button:ACTIVE {
+	border-color: black;
+}
+
+.content-list{
+	width: 100%;
+	border-right: 1px solid #ddd;
+	font-size: 14px;
+	vertical-align: middle;
+}
+.content-list td, .content-list th{
+	border-left: 1px solid #ddd;
+	border-bottom: 2px solid #ddd;
+	padding: 10px;
+  	text-align: left;
+  	vertical-align: top;
+  	border-top: 1px solid #ddd;
+}
+.content-list tbody tr:HOVER {
+	background-color: #eee;
+}

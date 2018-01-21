@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/start"
+            style="@style/myStyle"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@mipmap/common_line"
+            android:textColor="@color/font_color_focused"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:textSize="@dimen/mid_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_color_focused"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/end"
+            style="@style/myStyle"
+            android:textColor="@color/font_color_focused"
+            android:gravity="center"
+            android:textSize="@dimen/mid_text_size" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/i_line_collection_iv_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:src="@mipmap/common_collection_shixiao" />
+    </LinearLayout>
+
+    <include layout="@layout/line_infomation" />
+
+    <include layout="@layout/line_end_infomation"></include>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

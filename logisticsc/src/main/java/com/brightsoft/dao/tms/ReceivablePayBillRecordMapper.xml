@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceivablePayBillRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.ReceivablePayBillRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="bill_id" property="billId" jdbcType="BIGINT" />
+    <result column="receive_company" property="receiveCompany" jdbcType="VARCHAR" />
+    <result column="receive_person" property="receivePerson" jdbcType="VARCHAR" />
+    <result column="receive_person_phone" property="receivePersonPhone" jdbcType="VARCHAR" />
+    <result column="receive_money" property="receiveMoney" jdbcType="DOUBLE" />
+    <result column="is_completed" property="isCompleted" jdbcType="INTEGER" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bill_id, receive_company, receive_person, receive_person_phone, receive_money, 
+    is_completed, operate_person, operate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receivable_pay_bill_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receivable_pay_bill_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.ReceivablePayBillRecord" >
+    insert into tms_receivable_pay_bill_record (id, bill_id, receive_company, 
+      receive_person, receive_person_phone, receive_money, 
+      is_completed, operate_person, operate_time)
+    values (#{id,jdbcType=BIGINT}, #{billId,jdbcType=BIGINT}, #{receiveCompany,jdbcType=VARCHAR}, 
+      #{receivePerson,jdbcType=VARCHAR}, #{receivePersonPhone,jdbcType=VARCHAR}, #{receiveMoney,jdbcType=DOUBLE}, 
+      #{isCompleted,jdbcType=INTEGER}, #{operatePerson,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.ReceivablePayBillRecord" >
+    insert into tms_receivable_pay_bill_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="receiveCompany != null" >
+        receive_company,
+      </if>
+      <if test="receivePerson != null" >
+        receive_person,
+      </if>
+      <if test="receivePersonPhone != null" >
+        receive_person_phone,
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money,
+      </if>
+      <if test="isCompleted != null" >
+        is_completed,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="billId != null" >
+        #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveCompany != null" >
+        #{receiveCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePerson != null" >
+        #{receivePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePersonPhone != null" >
+        #{receivePersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMoney != null" >
+        #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.ReceivablePayBillRecord" >
+    update tms_receivable_pay_bill_record
+    <set >
+      <if test="billId != null" >
+        bill_id = #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveCompany != null" >
+        receive_company = #{receiveCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePerson != null" >
+        receive_person = #{receivePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePersonPhone != null" >
+        receive_person_phone = #{receivePersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        is_completed = #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.ReceivablePayBillRecord" >
+    update tms_receivable_pay_bill_record
+    set bill_id = #{billId,jdbcType=BIGINT},
+      receive_company = #{receiveCompany,jdbcType=VARCHAR},
+      receive_person = #{receivePerson,jdbcType=VARCHAR},
+      receive_person_phone = #{receivePersonPhone,jdbcType=VARCHAR},
+      receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      is_completed = #{isCompleted,jdbcType=INTEGER},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByBillId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receivable_pay_bill_record
+    where bill_id = #{BillId,jdbcType=BIGINT}
+  </select>
+</mapper>

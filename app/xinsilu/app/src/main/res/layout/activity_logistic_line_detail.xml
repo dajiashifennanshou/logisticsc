@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context="com.wrt.xinsilu.ui.activity.LogisticLineDetailActivity">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/business_icon"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:placeholderImage="@mipmap/wuliushang_shangjialogo_nor"
+        app:placeholderImageScaleType="centerCrop" />
+
+    <LinearLayout
+        style="@style/hor_style"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                style="@style/myStyle"
+                android:layout_gravity="center"
+                android:text="货物完好"
+                android:textColor="@color/font_color_focused" />
+
+            <RatingBar
+                android:id="@+id/RatingBar1"
+                style="@style/foodRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                style="@style/myStyle"
+                android:layout_gravity="center"
+                android:text="准时提货"
+                android:textColor="@color/font_color_focused" />
+
+            <RatingBar
+                android:id="@+id/RatingBar2"
+                style="@style/foodRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                style="@style/myStyle"
+                android:layout_gravity="center"
+                android:text="准时送货"
+                android:textColor="@color/font_color_focused" />
+
+            <RatingBar
+                android:id="@+id/RatingBar3"
+                style="@style/foodRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                style="@style/myStyle"
+                android:layout_gravity="center"
+                android:text="服务态度"
+                android:textColor="@color/font_color_focused" />
+
+            <RatingBar
+                android:id="@+id/RatingBar4"
+                style="@style/foodRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="5" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

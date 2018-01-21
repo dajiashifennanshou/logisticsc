@@ -1,0 +1,199 @@
+.un-word{
+	margin-top: 10px;
+}
+.unsec-pic{
+	margin-top: 20px;
+	position: relative;
+	width:100%;
+	background:#71afda;
+}
+.un-tbtn{
+	position: absolute;
+	width: 135px;
+	height: 39px;
+	bottom: 29px;
+	left: 536px;
+}
+.un-tbtn1{
+	width: 135px;
+	height: 39px;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 1px;
+	background: #fa8c4f;
+}
+.un-tbtn1:hover{
+	background: #ff5a00;
+	color: #fff;
+}
+.un-bz{
+	font-size: 24px;
+	width: 180px;
+	margin: 20px auto;
+}
+.un-bg{
+	background: url(../img/wu-arrow.png) no-repeat right center;
+}
+.wu-bz{
+	text-align: center;
+}
+.un-bz1{
+	width: 92px;
+	height: 92px;
+	margin: 0 auto;
+}
+.un-bz12{
+	font-size: 20px;
+}
+
+/*申请条件*/
+.un-tjbg{
+	width: 100%;
+	padding-bottom: 40px;
+	padding-top: 20px;
+	background: #f5f5f5;
+}
+.un-tj{
+	width: 140px;
+	margin: 0px auto 20px;
+	font-size: 24px;
+}
+.un-tj-title{
+	background: url(../img/sq-tjian.png) no-repeat center center;
+	color: #fff;
+	width: 105px;
+	height: 31px;
+	line-height: 31px;
+	text-align: center;
+}
+.un-zge{
+	margin-top: 15px;
+}
+.un-zge ul{
+	padding-left: 20px;
+}
+.un-zge li{
+	list-style: disc;
+	margin-bottom: 10px;
+	line-height: 20px;
+}
+.tj-jz{
+	padding-left: 126px;
+}
+/*申请表单*/
+.un-sqing{
+	width: 100%;
+	height: 609px;
+	background: #c3ddeb;
+}
+.bk-bg{
+	width: 1200px;
+	height: 609px;
+	background: url(../img/wudiya-bg.png) no-repeat center center;
+}
+.sqing-info{
+	width: 660px;
+	height: 628px;
+	background: #fff;
+	margin: -20px auto 0;
+	overflow: hidden;
+}
+.un-sqlist1{
+	font-size: 22px;
+	text-align: center;
+	margin-top: 26px;
+}
+.un-sqlist2{
+	text-align: center;
+	color: #888;
+	margin-top: 4px;
+	margin-bottom: 20px;
+}
+.un-list{
+	margin-top: 1px;
+}
+.un-listl,.un-list1l{
+	width: 216px;
+	height: 44px;
+	line-height: 44px;
+	color: #666;
+	text-align: right;
+}
+.un-listr,.un-list2r{
+	margin-left: 6px;
+}
+.un-text{
+	width: 252px;
+	height: 44px;
+	text-indent: 14px;
+}
+.un-error{
+	margin-left: 222px;
+	height: 18px;
+	color: #C10000;
+}
+.un-city{
+	width: 124px;
+	height: 44px;
+}
+.un-list1{
+	margin-top: 20px;
+}
+.un-btn{
+	width: 120px;
+	height: 44px;
+	margin-left: 56px;
+	color: #fff;
+	background: #fa8c4f;
+}
+.un-btn:hover{
+	background: #ff5a00;
+	color: #fff;
+}
+
+
+.se-btn1{
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.se-btn{
+	width: 150px;
+	height: 48px;
+	line-height: 35px;
+	color: #fff;
+	letter-spacing: 2px;
+	font-size: 18px;
+	text-align: center;
+	background: #FA8C4F;
+}
+.se-btn:hover{
+	color: #fff;
+	background: #FF4E00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

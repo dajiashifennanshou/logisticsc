@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.OutDepartListMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.OutDepartList" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="out_depart_number" property="outDepartNumber" jdbcType="VARCHAR" />
+    <result column="out_source_time" property="outSourceTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="start_outlets" property="startOutlets" jdbcType="BIGINT" />
+    <result column="start_site_person" property="startSitePerson" jdbcType="VARCHAR" />
+    <result column="start_site_phone" property="startSitePhone" jdbcType="VARCHAR" />
+    <result column="carriage_company" property="carriageCompany" jdbcType="VARCHAR" />
+    <result column="end_site_person" property="endSitePerson" jdbcType="VARCHAR" />
+    <result column="end_site_phone" property="endSitePhone" jdbcType="VARCHAR" />
+    <result column="out_source_cost" property="outSourceCost" jdbcType="DOUBLE" />
+    <result column="current_pay" property="currentPay" jdbcType="DOUBLE" />
+    <result column="back_pay" property="backPay" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="way_bill_numbers" property="wayBillNumbers" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_person_name" property="operatePersonName" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="VARCHAR" />
+    <result column="start_outlets_name" property="startOutletsName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, out_depart_number, out_source_time, status, start_outlets, start_site_person, 
+    start_site_phone, carriage_company, end_site_person, end_site_phone, out_source_cost, 
+    current_pay, back_pay, remark, way_bill_numbers, operate_person, operate_person_name, destination
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_out_depart_list
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_out_depart_list
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.OutDepartList" >
+    insert into tms_out_depart_list (id, out_depart_number, out_source_time, 
+      status, start_outlets, start_site_person, 
+      start_site_phone, carriage_company, end_site_person, 
+      end_site_phone, out_source_cost, current_pay, 
+      back_pay, remark, way_bill_numbers, operate_person, operate_person_name, destination)
+    values (#{id,jdbcType=BIGINT}, #{outDepartNumber,jdbcType=VARCHAR}, #{outSourceTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{startOutlets,jdbcType=BIGINT}, #{startSitePerson,jdbcType=VARCHAR}, 
+      #{startSitePhone,jdbcType=VARCHAR}, #{carriageCompany,jdbcType=VARCHAR}, #{endSitePerson,jdbcType=VARCHAR}, 
+      #{endSitePhone,jdbcType=VARCHAR}, #{outSourceCost,jdbcType=DOUBLE}, #{currentPay,jdbcType=DOUBLE}, 
+      #{backPay,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{wayBillNumbers,jdbcType=VARCHAR},
+      #{operatePerson,jdbcType=BIGINT}, #{operatePersonName,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectExportByParams" resultMap="BaseResultMap">
+ SELECT t1.*, t2.name start_outlets_name FROM tms_out_depart_list t1 LEFT JOIN tms_outlets_info t2 ON t1.start_outlets = t2.id where 1 = 1 
+<if test="status != null and status != '' "> and t1.status = #{status,jdbcType=INTEGER} </if>
+
+<if test="startTime != null and startTime != '' "> and t1.out_source_time >= #{startTime,jdbcType=TIMESTAMP} </if>
+<if test="endTime != null and endTime != '' ">
+and t1.out_source_time <![CDATA[<=]]>#{endTime,jdbcType=TIMESTAMP} 
+</if>
+
+<if test="condition != null and condition != ''"> and (t1.out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%") or t1.destination like concat("%",#{condition,jdbcType=VARCHAR},"%")) </if>
+
+<if test="outletsId != null and outletsId != '' "> and t1.start_outlets = #{outletsId,jdbcType=BIGINT} </if>
+ order by t1.out_source_time desc 
+</select>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.OutDepartList" >
+    insert into tms_out_depart_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outDepartNumber != null" >
+        out_depart_number,
+      </if>
+      <if test="outSourceTime != null" >
+        out_source_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets,
+      </if>
+      <if test="startSitePerson != null" >
+        start_site_person,
+      </if>
+      <if test="startSitePhone != null" >
+        start_site_phone,
+      </if>
+      <if test="carriageCompany != null" >
+        carriage_company,
+      </if>
+      <if test="endSitePerson != null" >
+        end_site_person,
+      </if>
+      <if test="endSitePhone != null" >
+        end_site_phone,
+      </if>
+      <if test="outSourceCost != null" >
+        out_source_cost,
+      </if>
+      <if test="currentPay != null" >
+        current_pay,
+      </if>
+      <if test="backPay != null" >
+        back_pay,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="wayBillNumbers != null" >
+        way_bill_numbers,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operatePersonName != null" >
+        operate_person_name,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outDepartNumber != null" >
+        #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceTime != null" >
+        #{outSourceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="startSitePerson != null" >
+        #{startSitePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="startSitePhone != null" >
+        #{startSitePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageCompany != null" >
+        #{carriageCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="endSitePerson != null" >
+        #{endSitePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="endSitePhone != null" >
+        #{endSitePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceCost != null" >
+        #{outSourceCost,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="backPay != null" >
+        #{backPay,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumbers != null" >
+        #{wayBillNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonName != null" >
+        #{operatePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.OutDepartList" >
+    update tms_out_depart_list
+    <set >
+      <if test="outDepartNumber != null" >
+        out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceTime != null" >
+        out_source_time = #{outSourceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="startSitePerson != null" >
+        start_site_person = #{startSitePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="startSitePhone != null" >
+        start_site_phone = #{startSitePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageCompany != null" >
+        carriage_company = #{carriageCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="endSitePerson != null" >
+        end_site_person = #{endSitePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="endSitePhone != null" >
+        end_site_phone = #{endSitePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceCost != null" >
+        out_source_cost = #{outSourceCost,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        current_pay = #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="backPay != null" >
+        back_pay = #{backPay,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumbers != null" >
+        way_bill_numbers = #{wayBillNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonName != null" >
+        operate_person_name = #{operatePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.OutDepartList" >
+    update tms_out_depart_list
+    set out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      out_source_time = #{outSourceTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      start_outlets = #{startOutlets,jdbcType=BIGINT},
+      start_site_person = #{startSitePerson,jdbcType=VARCHAR},
+      start_site_phone = #{startSitePhone,jdbcType=VARCHAR},
+      carriage_company = #{carriageCompany,jdbcType=VARCHAR},
+      end_site_person = #{endSitePerson,jdbcType=VARCHAR},
+      end_site_phone = #{endSitePhone,jdbcType=VARCHAR},
+      out_source_cost = #{outSourceCost,jdbcType=DOUBLE},
+      current_pay = #{currentPay,jdbcType=DOUBLE},
+      back_pay = #{backPay,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      way_bill_numbers = #{wayBillNumbers,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_person_name = #{operatePersonName,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+  	SELECT t1.*, t2.name start_outlets_name FROM tms_out_depart_list t1 LEFT JOIN tms_outlets_info t2
+	ON t1.start_outlets = t2.id where 1 = 1
+    <if test="status != null and status != '' ">
+   		and t1.status = #{status,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and t1.out_source_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and t1.out_source_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and ((t1.out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%")) or(t1.destination like concat("%",#{condition,jdbcType=VARCHAR},"%")))
+   	</if>
+   	and t1.start_outlets = #{outletsId,jdbcType=BIGINT} 
+   	order by t1.out_source_time desc limit #{start}, #{limit}
+  </select>
+  
+  <select id="selectByParamsCount" resultType="int" >
+    select count(1)
+    from tms_out_depart_list where 1 = 1 
+    <if test="status != null and status != '' ">
+   		and status = #{status,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and out_source_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and out_source_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	and start_outlets = #{outletsId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByOutDepartNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_out_depart_list
+    where out_depart_number = #{outDepartNumber,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByOutletsAndStatus" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_out_depart_list
+    where start_outlets = #{startOutlets,jdbcType=INTEGER}
+    and status = #{status,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updateStatusByOutDepartNumber" >
+    update tms_out_depart_list
+    set status = #{status,jdbcType=INTEGER}
+    where out_depart_number = #{outDepartNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

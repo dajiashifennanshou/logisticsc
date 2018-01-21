@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcGoodsDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcGoods"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,wayBillNo,goodsNum,goodsName,model,inStorageStatus,outStorageStatus,goodsBrand,park,goodsType,vender,weight,volume,elseExplan,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcGoods" > 
+		select  <include refid="Base_Column_List" />  from yc_goods where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcGoods" > 
+		select  count(1)  from yc_goods where 1=1
+		<if test="wayBillNo !=null"> 
+			and wayBillNo=#{wayBillNo}
+		</if>
+	</select> 
+	<select id="getSumCountByDealer" resultType="int" parameterType="com.brightsoft.entity.YcGoods" > 
+		select  count(1)  from yc_goods yg where 1=1
+		<if test="id !=null"> 
+			and yg.wayBillNo in (select yzg.wayBillNo from yc_zone_goods yzg where yzg.dealerId=#{id})
+		</if>
+	</select> 
+		<select id="getYcGoodsListByDealerId" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_goods yg  where 1=1
+		<if test="id !=null"> 
+			and yg.wayBillNo in (select yzg.wayBillNo from yc_zone_goods  yzg  where yzg.dealerId=#{id})
+		</if>
+		order by yg.outStorageStatus asc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		SELECT g.id,g.wayBillNo,g.goodsNum,g.goodsName,g.model,g.inStorageStatus,g.outStorageStatus,g.goodsBrand,g.park,g.goodsType,g.vender,g.weight,g.volume,g.elseExplan,zg.branchNo,zg.zoneNo FROM yc_goods g JOIN yc_zone_goods zg ON zg.`wayBillNo`=g.`wayBillNo`  where 1=1
+		<if test="wayBillNo !=null"> 
+			and zg.wayBillNo=#{wayBillNo}
+		</if>
+		<if test="branchNo !=null"> 
+			and zg.branchNo=#{branchNo}
+		</if>
+		
+		order by g.createTime desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+
+	<select id="getGoodsByDeliveryNo" resultMap="BaseResultMap" parameterType="string"> 
+		SELECT <include refid="Base_Column_List" /> FROM yc_goods WHERE id IN (SELECT yog.`zoneGoodsId` FROM yc_order_goods yog WHERE yog.`deliveryNo`=#{dNo})
+	</select> 
+	<select id="getGoodsByDealerId" resultMap="BaseResultMap" parameterType="string"> 
+		SELECT <include refid="Base_Column_List" /> FROM yc_goods yg WHERE yg.`wayBillNo` IN (SELECT ysd.`wayBillNo` FROM yc_zone_goods ysd WHERE 1=1
+		
+		<if test="param3 !=null"> 
+			and yg.`outStorageStatus`=#{param3} 
+		</if>
+		and yg.`inStorageStatus`=0 
+		and  ysd.`branchNo`=#{param2}
+	 	and ysd.`dealerId`=#{param1})
+		<if test="param4 !=null"> 
+			or FIND_IN_SET(yg.id,#{param4})
+		</if>
+	</select> 
+	<select id="getAllGoodsByDealerId" resultMap="BaseResultMap" parameterType="string"> 
+		SELECT <include refid="Base_Column_List" /> FROM yc_goods yg WHERE yg.`wayBillNo` IN (SELECT ysd.`wayBillNo` FROM yc_zone_goods ysd WHERE yg.`inStorageStatus`=0 and  ysd.`branchNo`=#{param2} AND ysd.`dealerId`=#{param1} )
+	</select> 
+	<select id="getGoodsByElse" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcGoods"> 
+		SELECT <include refid="Base_Column_List" /> FROM yc_goods yg WHERE yg.`wayBillNo` =#{wayBillNo}
+	</select> 
+	<select id="getGoodsInfoByStowageNo" resultMap="BaseResultMap" parameterType="string"> 
+	SELECT yg.id,yg.wayBillNo,yg.goodsNum,yg.goodsName,yg.model,yg.goodsBrand,yg.park,yg.goodsType,yg.vender,yg.weight,yg.volume,ysd.`dealerId` FROM yc_stowage_delivery ysd JOIN yc_goods yg   JOIN yc_order_goods yog ON yog.`zoneGoodsId`=yg.`id` AND yog.`deliveryNo`=ysd.`deliverNo` WHERE ysd.`stowageNo`=#{param1} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcGoods"> 
+		delete from yc_goods where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcGoods" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_goods  
+		(goodsName,wayBillNo,goodsNum,inStorageStatus,outStorageStatus,model,goodsBrand,park,goodsType,vender,weight,volume,elseExplan,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{goodsName},#{wayBillNo},#{goodsNum},#{inStorageStatus},#{outStorageStatus},#{model},#{goodsBrand},#{park},#{goodsType},#{vender},#{weight},#{volume},#{elseExplan},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcGoods">   
+	update yc_goods 
+	<set> 
+		<if test="goodsName !=null"> 
+			goodsName=#{goodsName},
+		</if>
+		<if test="goodsBrand !=null"> 
+			goodsBrand=#{goodsBrand},
+		</if>
+		<if test="wayBillNo !=null"> 
+			wayBillNo=#{wayBillNo},
+		</if>
+		<if test="inStorageStatus !=null"> 
+			inStorageStatus=#{inStorageStatus},
+		</if>
+		<if test="outStorageStatus !=null"> 
+			outStorageStatus=#{outStorageStatus},
+		</if>
+		<if test="goodsNum !=null"> 
+			goodsNum=#{goodsNum},
+		</if>
+		<if test="model !=null"> 
+			model=#{model},
+		</if>
+		<if test="park !=null"> 
+			park=#{park},
+		</if>
+		<if test="goodsType !=null"> 
+			goodsType=#{goodsType},
+		</if>
+		<if test="vender !=null"> 
+			vender=#{vender},
+		</if>
+		<if test="weight !=null"> 
+			weight=#{weight},
+		</if>
+		<if test="volume !=null"> 
+			volume=#{volume},
+		</if>
+		<if test="elseExplan !=null"> 
+			elseExplan=#{elseExplan},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

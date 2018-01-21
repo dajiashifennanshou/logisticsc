@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_shap_textview"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/info_v_style"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/logistic_icon"
+                style="@style/myStyle"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="4dp"
+                android:src="@mipmap/home_merchants" />
+
+            <TextView
+                android:id="@+id/logistic_name"
+                style="@style/myStyle"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/logistic_icon"
+                android:text="----"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <ImageView
+                style="@style/myStyle"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/gps_guide"
+                android:src="@mipmap/home_positioning" />
+
+            <TextView
+                android:id="@+id/gps_guide"
+                style="@style/myStyle"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:text="-km"
+                android:textSize="@dimen/small_text_size" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/myStyle"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="4dp"
+                android:src="@mipmap/home_merchants"
+                android:visibility="invisible" />
+
+            <com.wrt.xinsilu.ui.view.MyListView
+                android:id="@+id/grid_view_way"
+                android:layout_width="match_parent"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

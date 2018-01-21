@@ -1,0 +1,1080 @@
+[
+    {
+        "outputFile": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 41,
+                    "endOffset": 92
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 41,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 97,
+                    "endColumn": 68,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 68,
+                    "endOffset": 230
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 68,
+                        "endOffset": 188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 235,
+                    "endColumn": 69,
+                    "endOffset": 300
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 193,
+                        "endColumn": 69,
+                        "endOffset": 258
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 305,
+                    "endColumn": 73,
+                    "endOffset": 374
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 263,
+                        "endColumn": 73,
+                        "endOffset": 332
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 379,
+                    "endColumn": 75,
+                    "endOffset": 450
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 337,
+                        "endColumn": 75,
+                        "endOffset": 408
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 455,
+                    "endColumn": 58,
+                    "endOffset": 509
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 413,
+                        "endColumn": 58,
+                        "endOffset": 467
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 514,
+                    "endColumn": 70,
+                    "endOffset": 580
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 472,
+                        "endColumn": 70,
+                        "endOffset": 538
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 585,
+                    "endColumn": 67,
+                    "endOffset": 648
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 543,
+                        "endColumn": 67,
+                        "endOffset": 606
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 653,
+                    "endColumn": 50,
+                    "endOffset": 699
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 50,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 704,
+                    "endColumn": 51,
+                    "endOffset": 751
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 51,
+                        "endOffset": 153
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 756,
+                    "endColumn": 56,
+                    "endOffset": 808
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 158,
+                        "endColumn": 56,
+                        "endOffset": 210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 813,
+                    "endColumn": 58,
+                    "endOffset": 867
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 215,
+                        "endColumn": 58,
+                        "endOffset": 269
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 872,
+                    "endColumn": 51,
+                    "endOffset": 919
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 274,
+                        "endColumn": 51,
+                        "endOffset": 321
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 924,
+                    "endColumn": 51,
+                    "endOffset": 971
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 326,
+                        "endColumn": 51,
+                        "endOffset": 373
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 976,
+                    "endColumn": 53,
+                    "endOffset": 1025
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 378,
+                        "endColumn": 53,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1030,
+                    "endColumn": 51,
+                    "endOffset": 1077
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 432,
+                        "endColumn": 51,
+                        "endOffset": 479
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1082,
+                    "endColumn": 59,
+                    "endOffset": 1137
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 59,
+                        "endOffset": 110
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1142,
+                    "endColumn": 69,
+                    "endOffset": 1207
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 115,
+                        "endColumn": 69,
+                        "endOffset": 180
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1212,
+                    "endColumn": 70,
+                    "endOffset": 1278
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 185,
+                        "endColumn": 70,
+                        "endOffset": 251
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1283,
+                    "endColumn": 71,
+                    "endOffset": 1350
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 256,
+                        "endColumn": 71,
+                        "endOffset": 323
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1355,
+                    "endColumn": 57,
+                    "endOffset": 1408
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 328,
+                        "endColumn": 57,
+                        "endOffset": 381
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1413,
+                    "endColumn": 57,
+                    "endOffset": 1466
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 386,
+                        "endColumn": 57,
+                        "endOffset": 439
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1471,
+                    "endColumn": 105,
+                    "endOffset": 1572
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 444,
+                        "endColumn": 105,
+                        "endOffset": 545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1577,
+                    "endColumn": 63,
+                    "endOffset": 1636
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 550,
+                        "endColumn": 63,
+                        "endOffset": 609
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1641,
+                    "endColumn": 50,
+                    "endOffset": 1687
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 193,
+                        "endColumn": 50,
+                        "endOffset": 239
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1692,
+                    "endColumn": 62,
+                    "endOffset": 1750
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 614,
+                        "endColumn": 62,
+                        "endOffset": 672
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1755,
+                    "endLine": 32,
+                    "endColumn": 12,
+                    "endOffset": 1932
+                },
+                "from": {
+                    "file": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 677,
+                        "endLine": 14,
+                        "endColumn": 12,
+                        "endOffset": 854
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 41,
+                    "endOffset": 92
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 41,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 97,
+                    "endColumn": 68,
+                    "endOffset": 161
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 166,
+                    "endColumn": 68,
+                    "endOffset": 230
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 68,
+                        "endOffset": 188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 235,
+                    "endColumn": 69,
+                    "endOffset": 300
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 193,
+                        "endColumn": 69,
+                        "endOffset": 258
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 305,
+                    "endColumn": 73,
+                    "endOffset": 374
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 263,
+                        "endColumn": 73,
+                        "endOffset": 332
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 379,
+                    "endColumn": 75,
+                    "endOffset": 450
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 337,
+                        "endColumn": 75,
+                        "endOffset": 408
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 455,
+                    "endColumn": 58,
+                    "endOffset": 509
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 413,
+                        "endColumn": 58,
+                        "endOffset": 467
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 514,
+                    "endColumn": 70,
+                    "endOffset": 580
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 472,
+                        "endColumn": 70,
+                        "endOffset": 538
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 585,
+                    "endColumn": 67,
+                    "endOffset": 648
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 543,
+                        "endColumn": 67,
+                        "endOffset": 606
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 653,
+                    "endColumn": 50,
+                    "endOffset": 699
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 50,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 704,
+                    "endColumn": 51,
+                    "endOffset": 751
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 51,
+                        "endOffset": 153
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 756,
+                    "endColumn": 56,
+                    "endOffset": 808
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 158,
+                        "endColumn": 56,
+                        "endOffset": 210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 813,
+                    "endColumn": 58,
+                    "endOffset": 867
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 215,
+                        "endColumn": 58,
+                        "endOffset": 269
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 872,
+                    "endColumn": 51,
+                    "endOffset": 919
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 274,
+                        "endColumn": 51,
+                        "endOffset": 321
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 924,
+                    "endColumn": 51,
+                    "endOffset": 971
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 326,
+                        "endColumn": 51,
+                        "endOffset": 373
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 976,
+                    "endColumn": 53,
+                    "endOffset": 1025
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 378,
+                        "endColumn": 53,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1030,
+                    "endColumn": 51,
+                    "endOffset": 1077
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 432,
+                        "endColumn": 51,
+                        "endOffset": 479
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1082,
+                    "endColumn": 59,
+                    "endOffset": 1137
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 59,
+                        "endOffset": 110
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1142,
+                    "endColumn": 69,
+                    "endOffset": 1207
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 115,
+                        "endColumn": 69,
+                        "endOffset": 180
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1212,
+                    "endColumn": 70,
+                    "endOffset": 1278
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 185,
+                        "endColumn": 70,
+                        "endOffset": 251
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1283,
+                    "endColumn": 71,
+                    "endOffset": 1350
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 256,
+                        "endColumn": 71,
+                        "endOffset": 323
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1355,
+                    "endColumn": 57,
+                    "endOffset": 1408
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 328,
+                        "endColumn": 57,
+                        "endOffset": 381
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1413,
+                    "endColumn": 57,
+                    "endOffset": 1466
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 386,
+                        "endColumn": 57,
+                        "endOffset": 439
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1471,
+                    "endColumn": 105,
+                    "endOffset": 1572
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 444,
+                        "endColumn": 105,
+                        "endOffset": 545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1577,
+                    "endColumn": 63,
+                    "endOffset": 1636
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 550,
+                        "endColumn": 63,
+                        "endOffset": 609
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1641,
+                    "endColumn": 50,
+                    "endOffset": 1687
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 193,
+                        "endColumn": 50,
+                        "endOffset": 239
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1692,
+                    "endColumn": 62,
+                    "endOffset": 1750
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 614,
+                        "endColumn": 62,
+                        "endOffset": 672
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1755,
+                    "endLine": 32,
+                    "endColumn": 12,
+                    "endOffset": 1932
+                },
+                "from": {
+                    "file": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 677,
+                        "endLine": 14,
+                        "endColumn": 12,
+                        "endOffset": 854
+                    }
+                }
+            }
+        ]
+    }
+]

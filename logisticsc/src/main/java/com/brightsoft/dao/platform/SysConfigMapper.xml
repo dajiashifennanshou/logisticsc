@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.SysConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SysConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_abbr" property="itemAbbr" jdbcType="VARCHAR" />
+    <result column="update_user_id" property="updateUserId" jdbcType="BIGINT" />
+    <result column="udpate_date" property="udpateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.brightsoft.model.SysConfig" extends="BaseResultMap" >
+    <result column="item_content" property="itemContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, item_name, item_abbr, update_user_id, udpate_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    item_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lc_sys_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_sys_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SysConfig" >
+    insert into lc_sys_config (id, item_name, item_abbr, 
+      update_user_id, udpate_date, item_content
+      )
+    values (#{id,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, #{itemAbbr,jdbcType=VARCHAR}, 
+      #{updateUserId,jdbcType=BIGINT}, #{udpateDate,jdbcType=TIMESTAMP}, #{itemContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SysConfig" >
+    insert into lc_sys_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemAbbr != null" >
+        item_abbr,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="udpateDate != null" >
+        udpate_date,
+      </if>
+      <if test="itemContent != null" >
+        item_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemAbbr != null" >
+        #{itemAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="udpateDate != null" >
+        #{udpateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemContent != null" >
+        #{itemContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SysConfig" >
+    update lc_sys_config
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemAbbr != null" >
+        item_abbr = #{itemAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="udpateDate != null" >
+        udpate_date = #{udpateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemContent != null" >
+        item_content = #{itemContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.brightsoft.model.SysConfig" >
+    update lc_sys_config
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_abbr = #{itemAbbr,jdbcType=VARCHAR},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      udpate_date = #{udpateDate,jdbcType=TIMESTAMP},
+      item_content = #{itemContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SysConfig" >
+    update lc_sys_config
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      item_abbr = #{itemAbbr,jdbcType=VARCHAR},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      udpate_date = #{udpateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getSysConfigByAbbr" resultMap="ResultMapWithBLOBs">
+  	select 
+  		*
+  	from lc_sys_config
+  	where item_abbr = #{itemAbbr}
+  </select>
+  <select id="getSysConfig" resultMap="ResultMapWithBLOBs">
+  	select
+  		*
+  	from lc_sys_config
+  </select>
+  <select id="getSysConfigCount" resultType="int">
+  	select
+  		count(1)
+  	from lc_sys_config
+  </select>
+</mapper>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.Customer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    	<result column="lg_company_name" property="companyName"/>
+    </association>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="outlets_name" property="name"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_name, customer_name, phone, mobile, address, create_time, company_id,outlets_id, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_customer
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_customer
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.Customer" >
+    insert into tms_customer (id, company_name, customer_name, 
+      phone, mobile, address, 
+      create_time, company_id, status,outlets_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{companyId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{outletsId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.Customer" >
+    insert into tms_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.Customer" >
+    update tms_customer
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.Customer" >
+    update tms_customer
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      company_id = #{companyId,jdbcType=BIGINT},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!--网点获取线路信息  -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select 
+  		c.*,oi.name as outlets_name
+  	from
+  		tms_customer c
+  		left join tms_outlets_info oi on oi.id = c.outlets_id
+  	where
+  		c.outlets_id = #{outletsId} and c.status != 0
+  		<if test="customer.condition!=null and customer.condition!=''">
+	  		and c.customer_name like concat("%",#{customer.condition},"%")
+	  	</if>
+	  	order by c.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!--网点获取线路信息记录数  -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_customer c
+  	where 
+  		c.outlets_id = #{outletsId} and c.status != 0
+  		<if test="customer.condition!=null and customer.condition!=''">
+	  		and c.customer_name like concat("%",#{customer.condition},"%")
+	  	</if>
+  </select>
+  <!--专线获取线路信息  -->
+  <select id="selectByCompanyIdCondition" resultMap="BaseResultMap">
+  	select 
+  		c.*,oi.name as outlets_name
+  	from
+  		tms_customer c
+  		left join tms_outlets_info oi on oi.id = c.outlets_id
+  	where
+  		oi.company_id = #{companyId} and c.status != 0
+  		<if test="customer.condition!=null and customer.condition!=''">
+	  		and c.customer_name like concat("%",#{customer.condition},"%")
+	  	</if>
+	  	order by c.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!--专线获取线路信息记录数  -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_customer c
+  		left join tms_outlets_info oi on oi.id = c.outlets_id
+  	where 
+  		c.company_id = #{companyId} and c.status != 0
+  		<if test="customer.condition!=null and customer.condition!=''">
+	  		and c.customer_name like concat("%",#{customer.condition},"%")
+	  	</if>
+  </select>
+  <!-- 查询条件 -->
+  <sql id="base_query">
+  	<if test="customer.condition!=null and customer.condition!=''">
+  		and company_name like concat("%",#{customer.condition},"%")
+  		or customer_name like concat("%",#{customer.condition},"%")
+  	</if>
+  </sql>
+  
+  <!-- 分页查询客户信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List"></include>
+  	from 
+  		tms_customer
+  	<where>
+  		status != 0
+  		<choose>
+  			<when test="user.outletsId != null">
+  				and outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				and outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"></include>
+  		order by create_time desc limit #{page.start},#{page.limit}
+  	</where> 
+  </select>
+  
+  <!-- 获取总记录数 -->
+  <select id="countRows" parameterType="com.brightsoft.model.Customer" resultType="int">
+  	select 
+  		count(1)
+  	from 
+  		tms_customer
+  	<where>
+  		status != 0
+  		<choose>
+  			<when test="user.outletsId != null">
+  				and outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				and outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"></include>
+  	</where> 
+  </select>
+  
+  <!-- 批量删除客户信息 -->
+  <update id="deleteCustomerById" parameterType="list">
+  	update 
+  		tms_customer
+  	set 
+  		status = 0
+  	where 
+  		id in
+  		<foreach collection="list" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </update>
+  
+  <!-- 通过outletsId查询客户信息 -->
+  <select id="selectByOutletsId" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"></include>
+  	from 
+  		tms_customer
+  	where 
+  		outlets_id = #{outletsId}
+  		and status != 0
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 通过outletsId获取记录总数 -->
+  <!-- <select id="countRowsByOutletsId" resultType="int" parameterType="long">
+  	select
+  		count(1)
+  	from 
+  		tms_customer
+  	where 
+  		outlets_id = #{outletsId}
+  		and status != 0
+  </select> -->
+  <!-- 货运交易系统：查询客户信息 -->
+  <select id="selectCustomerItems" resultMap="BaseResultMap">
+  	select
+  		c.*,puc.company_name as lg_company_name,oi.name outlets_name
+  	from
+  		tms_customer c
+  		left join lc_platform_user_company puc on puc.id = c.company_id
+  		left join tms_outlets_info oi on oi.id = c.outlets_id
+  	where
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and c.customer_name = #{searchParams.condition} 
+  			or puc.company_name = #{searchParams.condition}
+  			or oi.name = #{searchParams.condition}
+  		</if>
+  		order by c.id desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 货运交易系统：查询客户总记录数 -->
+  <select id="countRows4CustomerItems" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_customer c
+  		left join lc_platform_user_company puc on puc.id = c.company_id
+  		left join tms_outlets_info oi on oi.id = c.outlets_id
+  	where
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and c.customer_name = #{searchParams.condition} 
+  			or puc.company_name = #{searchParams.condition}
+  			or oi.name = #{searchParams.condition}
+  		</if>
+  </select>
+  
+  <select id="selectByPhoneAndOutletsId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_customer
+    where phone = #{phone,jdbcType=VARCHAR}
+    and outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+</mapper> 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/f_send_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/f_send_rb_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_send_background"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="发货"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/f_send_rb_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_select_background"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="@dimen/small_text_size"
+            android:text="物流商查询"
+            android:textColor="@color/colorPrimaryDark" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

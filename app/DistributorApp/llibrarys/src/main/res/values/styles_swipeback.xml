@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SwipeBackLayout">
+        <item name="edge_size">24dp</item>
+        <item name="shadow_left">@android:color/transparent</item>
+        <item name="shadow_right">@android:color/transparent</item>
+        <item name="shadow_bottom">@android:color/transparent</item>
+    </style>
+
+</resources>

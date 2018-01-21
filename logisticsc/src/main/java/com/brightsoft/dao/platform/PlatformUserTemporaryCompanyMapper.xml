@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserTemporaryCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="legal_mobile" property="legalMobile" jdbcType="VARCHAR" />
+     <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="contacts_mobile" property="contactsMobile" jdbcType="VARCHAR" />
+    <result column="qq" property="QQ" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="company_fax" property="companyFax" jdbcType="VARCHAR" />
+    <result column="company_tax_no" property="companyTaxNo" jdbcType="VARCHAR" />
+    <result column="finance_email" property="financeEmail" jdbcType="VARCHAR" />
+    <result column="company_info" property="companyInfo" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="company_photo" property="companyPhoto" jdbcType="VARCHAR" />
+    <result column="legal_photo" property="legalPhoto" jdbcType="VARCHAR" />
+    <result column="card_photo" property="cardPhoto" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_name, company_address, legal_person, legal_mobile, qq, post_code, company_phone, company_fax, company_tax_no, finance_email, company_info, 
+    logo, business_license, company_photo, legal_photo, card_photo,company_code,contacts,contacts_mobile
+  </sql>
+   <!-- 修改临时公司信息 -->
+   <update id="updateTemporaryCompany" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    update lc_platform_user_temporary_company
+    set 
+       company_code = #{companyCode,jdbcType=VARCHAR},
+  		company_name = #{companyName,jdbcType=VARCHAR}, 
+  		company_address = #{companyAddress,jdbcType=VARCHAR}, 
+    		legal_person = #{legalPerson,jdbcType=VARCHAR},
+    		legal_mobile = #{legalMobile,jdbcType=VARCHAR}, 
+    		contacts = #{contacts,jdbcType=VARCHAR}, 
+    contacts_mobile = #{contactsMobile,jdbcType=VARCHAR}, 
+    post_code = #{postCode,jdbcType=VARCHAR},
+     company_phone = #{companyPhone,jdbcType=VARCHAR}, 
+      company_fax = #{companyFax,jdbcType=VARCHAR}, 
+     company_tax_no =  #{companyTaxNo,jdbcType=VARCHAR}, 
+     finance_email =  #{financeEmail,jdbcType=VARCHAR}, 
+     company_info =  #{companyInfo,jdbcType=VARCHAR}, 
+      qq = #{QQ,jdbcType=VARCHAR},
+	  logo = #{logo,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      company_photo = #{companyPhoto,jdbcType=VARCHAR},
+      legal_photo = #{legalPhoto,jdbcType=VARCHAR},
+      card_photo = #{cardPhoto,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 增加公司信息 -->
+  <insert id="insertPlatformUserTemporaryCompany" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany">       
+    insert into lc_platform_user_temporary_company (company_name, company_address, 
+      legal_person, legal_mobile, contacts, 
+      contacts_mobile, post_code, company_phone, 
+      company_fax,
+      company_tax_no, finance_email, company_info, 
+      qq,logo,business_license, company_photo, legal_photo, 
+    card_photo,company_code
+      )
+    values (
+    		#{companyName,jdbcType=VARCHAR}, 
+    		#{companyAddress,jdbcType=VARCHAR}, 
+      		#{legalPerson,jdbcType=VARCHAR},
+      		 #{legalMobile,jdbcType=VARCHAR}, 
+      		 #{contacts,jdbcType=VARCHAR}, 
+		      #{contactsMobile,jdbcType=VARCHAR}, 
+		      #{postCode,jdbcType=VARCHAR},
+		      #{companyPhone,jdbcType=VARCHAR}, 
+		      #{companyFax,jdbcType=VARCHAR}, 
+		      #{companyTaxNo,jdbcType=VARCHAR}, 
+		      #{financeEmail,jdbcType=VARCHAR}, 
+		      #{companyInfo,jdbcType=VARCHAR}, 
+		      #{QQ,jdbcType=VARCHAR},
+			  #{logo,jdbcType=VARCHAR},
+		      #{businessLicense,jdbcType=VARCHAR},
+		      #{companyPhoto,jdbcType=VARCHAR},
+		      #{legalPhoto,jdbcType=VARCHAR},
+		      #{cardPhoto,jdbcType=VARCHAR},
+		      #{companyCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!-- 获取公司最大值 -->
+  <select id="selectCompanyMax" resultType="java.lang.Long">
+   	select MAX(id) from lc_platform_user_temporary_company
+  </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_temporary_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!--
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_temporary_company
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+ <insert id="insert" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    insert into lc_platform_user_temporary_company (id, company_name, company_address, 
+      legal_person, legal_mobile,qq, post_code, 
+      company_phone, company_fax, company_tax_no, 
+      finance_email, company_info, logo, 
+      business_license, company_photo, legal_photo, 
+      card_photo, status, auditor_time, 
+      auditor, company_code)
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, 
+      #{legalPerson,jdbcType=VARCHAR}, #{legalMobile,jdbcType=VARCHAR},#{qq,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{companyFax,jdbcType=VARCHAR}, #{companyTaxNo,jdbcType=VARCHAR}, 
+      #{financeEmail,jdbcType=VARCHAR}, #{companyInfo,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{businessLicense,jdbcType=VARCHAR}, #{companyPhoto,jdbcType=VARCHAR}, #{legalPhoto,jdbcType=VARCHAR}, 
+      #{cardPhoto,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{auditorTime,jdbcType=DATE}, 
+      #{auditor,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    insert into lc_platform_user_temporary_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="legalPerson != null" >
+        legal_person,
+      </if>
+      <if test="legalMobile != null" >
+        legal_mobile,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="companyPhone != null" >
+        company_phone,
+      </if>
+      <if test="companyFax != null" >
+        company_fax,
+      </if>
+      <if test="companyTaxNo != null" >
+        company_tax_no,
+      </if>
+      <if test="financeEmail != null" >
+        finance_email,
+      </if>
+      <if test="companyInfo != null" >
+        company_info,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="companyPhoto != null" >
+        company_photo,
+      </if>
+      <if test="legalPhoto != null" >
+        legal_photo,
+      </if>
+      <if test="cardPhoto != null" >
+        card_photo,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time,
+      </if>
+      <if test="auditor != null" >
+        auditor,
+      </if>
+      <if test="companyCode != null" >
+        company_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMobile != null" >
+        #{legalMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null" >
+        #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTaxNo != null" >
+        #{companyTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeEmail != null" >
+        #{financeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null" >
+        #{companyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhoto != null" >
+        #{companyPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhoto != null" >
+        #{legalPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPhoto != null" >
+        #{cardPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="auditorTime != null" >
+        #{auditorTime,jdbcType=DATE},
+      </if>
+      <if test="auditor != null" >
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    update lc_platform_user_temporary_company
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMobile != null" >
+        legal_mobile = #{legalMobile,jdbcType=VARCHAR},
+      </if>
+       <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null" >
+        company_fax = #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTaxNo != null" >
+        company_tax_no = #{companyTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeEmail != null" >
+        finance_email = #{financeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null" >
+        company_info = #{companyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhoto != null" >
+        company_photo = #{companyPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhoto != null" >
+        legal_photo = #{legalPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPhoto != null" >
+        card_photo = #{cardPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time = #{auditorTime,jdbcType=DATE},
+      </if>
+      <if test="auditor != null" >
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null" >
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserTemporaryCompany" >
+    update lc_platform_user_temporary_company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      legal_person = #{legalPerson,jdbcType=VARCHAR},
+      legal_mobile = #{legalMobile,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_fax = #{companyFax,jdbcType=VARCHAR},
+      company_tax_no = #{companyTaxNo,jdbcType=VARCHAR},
+      finance_email = #{financeEmail,jdbcType=VARCHAR},
+      company_info = #{companyInfo,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      company_photo = #{companyPhoto,jdbcType=VARCHAR},
+      legal_photo = #{legalPhoto,jdbcType=VARCHAR},
+      card_photo = #{cardPhoto,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      auditor_time = #{auditorTime,jdbcType=DATE},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      company_code = #{companyCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

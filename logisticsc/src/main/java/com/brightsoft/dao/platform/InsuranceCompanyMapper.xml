@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.InsuranceCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.InsuranceCompany" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ins_com_name" property="insComName" jdbcType="VARCHAR" />
+    <result column="ins_com_tag" property="insComTag" jdbcType="VARCHAR" />
+    <result column="ins_com_logo_url" property="insComLogoUrl" jdbcType="VARCHAR" />
+    <result column="ins_status" property="insStatus" jdbcType="INTEGER" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <collection property="insuranceTypeList" ofType="com.brightsoft.model.InsuranceType">
+    	<result column="type_id" property="id"/>
+    	<result column="ins_type_name" property="insTypeName"/>
+    	<result column="ins_type_tag" property="insTypeTag"/>
+    </collection>
+    <collection property="insuranceTsTypeList" ofType="com.brightsoft.model.InsuranceTsType">
+    	<result column="ts_type_id" property="id"/>
+    	<result column="ins_Ts_type_name" property="insTsTypeName"/>
+    	<result column="ins_Ts_type_tag" property="insTsTypeTag"/>
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ins_com_name, ins_com_tag, ins_com_logo_url, ins_status ,create_person_id,create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_insurance_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_insurance_company
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.InsuranceCompany" useGeneratedKeys="true" keyProperty="id">
+    insert into lc_insurance_company (id, ins_com_name, ins_com_tag, 
+      ins_com_logo_url, ins_status,create_time,create_person_id)
+    values (#{id,jdbcType=BIGINT}, #{insComName,jdbcType=VARCHAR}, #{insComTag,jdbcType=VARCHAR}, 
+      #{insComLogoUrl,jdbcType=VARCHAR}, #{insStatus,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},
+      #{createPersonId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.InsuranceCompany" >
+    insert into lc_insurance_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insComName != null" >
+        ins_com_name,
+      </if>
+      <if test="insComTag != null" >
+        ins_com_tag,
+      </if>
+      <if test="insComLogoUrl != null" >
+        ins_com_logo_url,
+      </if>
+      <if test="insStatus != null" >
+        ins_status,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="insComName != null" >
+        #{insComName,jdbcType=VARCHAR},
+      </if>
+      <if test="insComTag != null" >
+        #{insComTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insComLogoUrl != null" >
+        #{insComLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.InsuranceCompany" >
+    update lc_insurance_company
+    <set >
+      <if test="insComName != null" >
+        ins_com_name = #{insComName,jdbcType=VARCHAR},
+      </if>
+      <if test="insComTag != null" >
+        ins_com_tag = #{insComTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insComLogoUrl != null" >
+        ins_com_logo_url = #{insComLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        ins_status = #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_Time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.InsuranceCompany" >
+    update lc_insurance_company
+    set ins_com_name = #{insComName,jdbcType=VARCHAR},
+      ins_com_tag = #{insComTag,jdbcType=VARCHAR},
+      ins_com_logo_url = #{insComLogoUrl,jdbcType=VARCHAR},
+      ins_status = #{insStatus,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 查询保险公司 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select
+  		ic.*,it.id type_id,it.ins_type_name,it.ins_type_tag,itt.id ts_type_id,itt.ins_ts_type_name,
+  		itt.ins_ts_type_tag
+  	from
+  		(select * from lc_insurance_company limit #{page.start},#{page.limit})ic
+  		left join lc_ins_com_type ict on ic.id = ict.ins_com_id
+  		left join lc_insurance_type it on ict.ins_type_id = it.id
+  		left join lc_ins_com_ts_type ictt on ic.id = ictt.ins_com_id
+  		left join lc_insurance_ts_type itt on ictt.ins_ts_type_id = itt.id
+  	where
+  		1=1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+  			and ic.ins_com_name = #{searchParams.condition} or ins_com_tag = #{searchParams.condition}
+  		</if>
+  		order by ic.id 
+  </select>
+  <!-- 查询记录数 -->
+  <select id="countRows" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_insurance_company
+  	where
+  		1=1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+  			and ins_com_name = #{searchParams.condition} or ins_com_tag = #{searchParams.condition}
+  		</if>
+  </select>
+  <!-- 获取保险公司 -->
+  <select id="selectInsCompany" resultMap = "BaseResultMap">
+  	select
+  		*
+  	from
+  		lc_insurance_company
+  </select>
+  <!-- 查询保险公司是否存在 -->
+  <select id="countByComTag" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		lc_insurance_company
+  	where
+  		ins_com_tag = #{comTag}
+  	</select>
+  	<!-- 批量删除保险公司-->
+  <delete id="deleteBatch">
+  	delete from lc_insurance_company
+  	where
+  		id in 
+  		<foreach collection="array" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </delete>
+  
+</mapper>

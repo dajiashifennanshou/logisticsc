@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.Dao.LineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.Entity.LineInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="server_type" property="serverType" jdbcType="VARCHAR" />
+    <result column="start_outlets" property="startOutlets" jdbcType="BIGINT" />
+    <result column="start_outlets_name" property="startOutletsName" jdbcType="VARCHAR" />
+    <result column="end_outlets" property="endOutlets" jdbcType="BIGINT" />
+    <result column="end_outlets_name" property="endOutletsName" jdbcType="VARCHAR" />
+    <result column="transport_mode" property="transportMode" jdbcType="BIGINT" />
+    <result column="time_long" property="timeLong" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_low" property="heavyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_low" property="bulkyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_mid" property="heavyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_mid" property="bulkyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_high" property="heavyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_high" property="bulkyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="release_state" property="releaseState" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER" />
+    <result column="remain_money" property="remainMoney" jdbcType="DOUBLE" />
+    <result column="recommended" property="recommended" jdbcType="INTEGER" />
+    <result column="trans_mode_value" property="transModeValue"/>
+    <result column="server_type_value" property="serverTypeValue"/>
+    <association property="startOutletsObj" javaType="com.yc.Entity.OutletsInfo">
+    	<result column="start_province_value" property="provinceValue"/>
+    	<result column="start_city_value" property="cityValue"/>
+    	<result column="start_county_value" property="countyValue"/>
+    </association>
+    <association property="endOutletsObj" javaType="com.yc.Entity.OutletsInfo">
+    	<result column="end_province_value" property="provinceValue"/>
+    	<result column="end_city_value" property="cityValue"/>
+    	<result column="end_county_value" property="countyValue"/>
+    </association>
+    <association property="platformUserCompany" javaType="com.yc.Entity.PlatformUserCompany">
+		<result column="company_name" property="companyName"/>
+		<result column="company_code" property="companyCode"/>
+	</association>
+	<association property="outletsInfo" javaType="com.yc.Entity.OutletsInfo">
+		<result column="name" property="name"/>
+	</association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, server_type, start_outlets, start_outlets_name, end_outlets, end_outlets_name, 
+    transport_mode, time_long, heavy_cargo_price_low, bulky_cargo_price_low, heavy_cargo_price_mid, 
+    bulky_cargo_price_mid, heavy_cargo_price_high, bulky_cargo_price_high, lowest_price, 
+    status, release_state, create_time, create_person_id, 
+    outlets_id, evaluate_level, remain_money, recommended
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_line_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_line_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yc.Entity.LineInfo" >
+    insert into tms_line_info (id, server_type, start_outlets, 
+      start_outlets_name, end_outlets, end_outlets_name, 
+      transport_mode, time_long, heavy_cargo_price_low, 
+      bulky_cargo_price_low, heavy_cargo_price_mid, bulky_cargo_price_mid, 
+      heavy_cargo_price_high, bulky_cargo_price_high, 
+      lowest_price, status, release_state, 
+      create_time, create_person_id, outlets_id, evaluate_level, 
+      remain_money, recommended)
+    values (#{id,jdbcType=BIGINT}, #{serverType,jdbcType=VARCHAR}, #{startOutlets,jdbcType=BIGINT}, 
+      #{startOutletsName,jdbcType=VARCHAR}, #{endOutlets,jdbcType=BIGINT}, #{endOutletsName,jdbcType=VARCHAR}, 
+      #{transportMode,jdbcType=BIGINT}, #{timeLong,jdbcType=DOUBLE}, #{heavyCargoPriceLow,jdbcType=DOUBLE}, 
+      #{bulkyCargoPriceLow,jdbcType=DOUBLE}, #{heavyCargoPriceMid,jdbcType=DOUBLE}, #{bulkyCargoPriceMid,jdbcType=DOUBLE}, 
+      #{heavyCargoPriceHigh,jdbcType=DOUBLE}, #{bulkyCargoPriceHigh,jdbcType=DOUBLE}, 
+      #{lowestPrice,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{releaseState,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createPersonId,jdbcType=BIGINT}, #{outletsId,jdbcType=BIGINT}, #{evaluateLevel,jdbcType=INTEGER}, 
+      #{remainMoney,jdbcType=DOUBLE}, #{recommended,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.Entity.LineInfo" >
+    insert into tms_line_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serverType != null" >
+        server_type,
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets,
+      </if>
+      <if test="startOutletsName != null" >
+        start_outlets_name,
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets,
+      </if>
+      <if test="endOutletsName != null" >
+        end_outlets_name,
+      </if>
+      <if test="transportMode != null" >
+        transport_mode,
+      </if>
+      <if test="timeLong != null" >
+        time_long,
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        heavy_cargo_price_low,
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        bulky_cargo_price_low,
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        heavy_cargo_price_mid,
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        bulky_cargo_price_mid,
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        heavy_cargo_price_high,
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        bulky_cargo_price_high,
+      </if>
+      <if test="lowestPrice != null" >
+        lowest_price,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="releaseState != null" >
+        release_state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level,
+      </if>
+      <if test="remainMoney != null" >
+        remain_money,
+      </if>
+      <if test="recommended != null" >
+        recommended,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="serverType != null" >
+        #{serverType,jdbcType=VARCHAR},
+      </if>
+      <if test="startOutlets != null" >
+        #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="startOutletsName != null" >
+        #{startOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutlets != null" >
+        #{endOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="endOutletsName != null" >
+        #{endOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="transportMode != null" >
+        #{transportMode,jdbcType=BIGINT},
+      </if>
+      <if test="timeLong != null" >
+        #{timeLong,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null" >
+        #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null" >
+        #{releaseState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateLevel != null" >
+        #{evaluateLevel,jdbcType=INTEGER},
+      </if>
+      <if test="remainMoney != null" >
+        #{remainMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="recommended != null" >
+        #{recommended,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.Entity.LineInfo" >
+    update tms_line_info
+    <set >
+      <if test="serverType != null" >
+        server_type = #{serverType,jdbcType=VARCHAR},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="startOutletsName != null" >
+        start_outlets_name = #{startOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets = #{endOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="endOutletsName != null" >
+        end_outlets_name = #{endOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="transportMode != null" >
+        transport_mode = #{transportMode,jdbcType=BIGINT},
+      </if>
+      <if test="timeLong != null" >
+        time_long = #{timeLong,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        heavy_cargo_price_low = #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        bulky_cargo_price_low = #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        heavy_cargo_price_mid = #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        bulky_cargo_price_mid = #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        heavy_cargo_price_high = #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        bulky_cargo_price_high = #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null" >
+        lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="releaseState != null" >
+        release_state = #{releaseState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level = #{evaluateLevel,jdbcType=INTEGER},
+      </if>
+      <if test="remainMoney != null" >
+        remain_money = #{remainMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="recommended != null" >
+        recommended = #{recommended,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.Entity.LineInfo" >
+    update tms_line_info
+    set server_type = #{serverType,jdbcType=VARCHAR},
+      start_outlets = #{startOutlets,jdbcType=BIGINT},
+      start_outlets_name = #{startOutletsName,jdbcType=VARCHAR},
+      end_outlets = #{endOutlets,jdbcType=BIGINT},
+      end_outlets_name = #{endOutletsName,jdbcType=VARCHAR},
+      transport_mode = #{transportMode,jdbcType=BIGINT},
+      time_long = #{timeLong,jdbcType=DOUBLE},
+      heavy_cargo_price_low = #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      bulky_cargo_price_low = #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      heavy_cargo_price_mid = #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      bulky_cargo_price_mid = #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      heavy_cargo_price_high = #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      bulky_cargo_price_high = #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
+      release_state = #{releaseState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      evaluate_level = #{evaluateLevel,jdbcType=INTEGER},
+      remain_money = #{remainMoney,jdbcType=DOUBLE},
+      recommended = #{recommended,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 网点获取线路信息 -->
+  <select id="selectByOutletsIdCondition" resultMap="BaseResultMap">
+  	select 
+  		li.*,pd.name as trans_mode_value,oi.name,xi.name start_province_value,
+  		xi1.name start_city_value,xi2.name start_county_value,xi3.name end_province_value,
+  		xi4.name end_city_value,xi5.name end_county_value,xi6.name server_type_value
+  	from
+  		tms_line_info li
+  		left join tms_outlets_info oi on li.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = li.transport_mode 
+  		left join 
+  			(select isoi.* from tms_outlets_info isoi  where isoi.status = 1)soi on soi.id = li.start_outlets
+  		left join 
+  			(select ieoi.* from tms_outlets_info ieoi where ieoi.status =1)eoi on eoi.id = li.end_outlets
+  		left join lc_xzqh_info xi on xi.id = soi.province
+  		left join lc_xzqh_info xi1 on xi1.id = soi.city
+  		left join lc_xzqh_info xi2 on xi2.id = soi.county
+  		left join lc_xzqh_info xi3 on xi3.id = eoi.province
+  		left join lc_xzqh_info xi4 on xi4.id = eoi.city
+  		left join lc_xzqh_info xi5 on xi5.id = eoi.county
+  		left join lc_platform_dictionary xi6 on xi6.id = li.server_type
+  	where 
+  		li.outlets_id = #{outletsId} 
+  		and li.status != 0
+  		<if test="lineInfo.searchStart!=null">
+  			and li.start_outlets = #{lineInfo.searchStart}
+  		</if>
+  		<if test="lineInfo.searchEnd!=null">
+  			and li.end_outlets = #{lineInfo.searchEnd}
+  		</if>
+  		<if test="lineInfo.condition!=null and lineInfo.condition!=''">
+  			and li.server_type = #{lineInfo.condition}
+  		</if>
+  		order by li.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!--网点获取记录总数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		tms_line_info li
+  	where
+  		li.outlets_id = #{outletsId} and li.status != 0
+  		<if test="lineInfo.searchStart!=null">
+  			and li.start_outlets = #{lineInfo.searchStart}
+  		</if>
+  		<if test="lineInfo.searchEnd!=null">
+  			and li.end_outlets = #{lineInfo.searchEnd}
+  		</if>
+  		<if test="lineInfo.condition!=null and lineInfo.condition!=''">
+  			and li.server_type = #{lineInfo.condition}
+  		</if>
+  </select>
+  
+  <!-- 专线获取线路信息 -->
+  <select id="selectByCompanyIdCondition" resultMap="BaseResultMap">
+  	select 
+  		li.*,pd.name as trans_mode_value,oi.name,xi.name start_province_value,
+  		xi1.name start_city_value,xi2.name start_county_value,xi3.name end_province_value,
+  		xi4.name end_city_value,xi5.name end_county_value,xi6.name server_type_value
+  	from
+  		tms_line_info li
+  		left join tms_outlets_info oi on li.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = li.transport_mode 
+  		left join tms_outlets_info soi on soi.id = li.start_outlets
+  		left join tms_outlets_info eoi on eoi.id = li.end_outlets
+  		left join lc_xzqh_info xi on xi.id = soi.province
+  		left join lc_xzqh_info xi1 on xi1.id = soi.city
+  		left join lc_xzqh_info xi2 on xi2.id = soi.county
+  		left join lc_xzqh_info xi3 on xi3.id = eoi.province
+  		left join lc_xzqh_info xi4 on xi4.id = eoi.city
+  		left join lc_xzqh_info xi5 on xi5.id = eoi.county
+  		left join lc_platform_dictionary xi6 on xi6.id = li.server_type
+  	where 
+  		oi.company_id = #{companyId} and li.status != 0
+  		<if test="lineInfo.searchStart!=null">
+  			and li.start_outlets = #{lineInfo.searchStart}
+  		</if>
+  		<if test="lineInfo.searchEnd!=null">
+  			and li.end_outlets = #{lineInfo.searchEnd}
+  		</if>
+  		<if test="lineInfo.condition!=null and lineInfo.condition!=''">
+  			and li.server_type = #{lineInfo.condition}
+  		</if>
+  		order by li.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!--专线获取记录总数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		tms_line_info li
+  		left join tms_outlets_info oi on li.outlets_id = oi.id
+  	where 
+  		oi.company_id = #{companyId} and li.status != 0
+  		<if test="lineInfo.searchStart!=null">
+  			and li.start_outlets = #{lineInfo.searchStart}
+  		</if>
+  		<if test="lineInfo.searchEnd!=null">
+  			and li.end_outlets = #{lineInfo.searchEnd}
+  		</if>
+  		<if test="lineInfo.condition!=null and lineInfo.condition!=''">
+  			and li.server_type = #{lineInfo.condition}
+  		</if>
+  </select>
+  
+  <!-- 查询条件 -->
+  <sql id="select_condition">
+  		<if test="lineInfo.searchStart!=null">
+  			and start_outlets = #{lineInfo.searchStart}
+  		</if>
+  		<if test="lineInfo.searchEnd!=null">
+  			and end_outlets = #{lineInfo.searchEnd}
+  		</if>
+  		<if test="lineInfo.condition!=null and lineInfo.condition!=''">
+  			and server_type = #{lineInfo.condition}
+  		</if>
+  </sql>
+  
+  <!-- 通过始发地，目的地，服务类型查询线路信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 	
+  		li.*,pd.name as trans_mode_value
+  	from 
+  		<choose>
+  			<when test="user.outletsId !=null ">
+  				tms_line_info li
+  				left join lc_platform_dictionary pd on li.transport_mode = pd.id
+  			</when>
+  			<otherwise>
+  				(select * from tms_line_info where outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId}))li
+  				left join lc_platform_dictionary pd on li.transport_mode = pd.id
+  			</otherwise>
+  		</choose>
+  	<where>
+  		li.status  != 0 
+  		<if test="user.outletsId != null">
+  			and li.outlets_id = #{user.outletsId}
+  		</if>
+  		<include refid="select_condition"/>
+  	</where>
+  	order by li.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!--获取记录总数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1) 
+  	from 
+  		tms_line_info li
+  		left join lc_platform_dictionary pd on li.transport_mode = pd.id
+  		<if test="user.OutletsId == null">
+  			right join (select id from tms_outlets_info where company_id = #{user.companyId})t on li.outlets_id = t.id
+  		</if>
+  	<where>
+  		li.status != 0
+  		<if test="user.outletsId != null">
+  			and li.outlets_id = #{user.outletsId} 
+  		</if>
+  		<include refid="select_condition"/>
+  	</where>
+  </select>
+  
+  <!-- 批量删除 -->
+  <delete id="deleteBatch" parameterType="java.util.List" >
+    delete from tms_line_info
+    where id in 
+    	<foreach collection="list" item="id" open="(" close=")" separator=",">
+    		#{id,jdbcType=BIGINT}
+    	</foreach>
+  </delete>
+  
+  <!-- 通过创建人id -->
+  <select id="selectByCreatePersonId" parameterType="long" resultType="com.yc.Entity.LineInfo">
+  	select
+		li.id,t.name as startOutletsName,n.name as endOutletsName
+	FROM
+		tms_line_info li 
+  		left join (SELECT oi.id,oi.name from tms_outlets_info oi where oi.company_id = 
+					(select li.id from tms_line_info li LEFT JOIN tms_outlets_info toi on li.start_outlets = toi.id where li.create_person_id = 1 limit 1))t on li.start_outlets = t.id  		
+		left join (SELECT oi.id,oi.name from tms_outlets_info oi where oi.company_id = 
+					(select li.id from tms_line_info li LEFT JOIN tms_outlets_info toi on li.end_outlets = toi.id where li.create_person_id = 1 limit 1))n on li.end_outlets = n.id
+
+  </select>
+  
+  <!-- 通过网店id获取网点信息 -->
+  <select id="selectByOutletsId" parameterType="long" resultMap="BaseResultMap">
+  	select 
+  		id,start_outlets_name,end_outlets_name,concat(start_outlets_name,'(到)',end_outlets_name) AS line_name,
+  		<include refid="Base_Column_List" />
+  	from
+  		tms_line_info
+  	where 
+  		outlets_id = #{outletsId}
+  </select>
+   <!-- 通过网店id分页获取网点信息 -->
+  <select id="selectByOutletsId4Page" resultMap="BaseResultMap">
+  	select 
+  		id,start_outlets_name,end_outlets_name,concat(start_outlets_name,'(到)',end_outlets_name) AS line_name,
+  		<include refid="Base_Column_List" />
+  	from
+  		tms_line_info
+  	where 
+  		outlets_id = #{outletsId}
+  </select>
+  <!-- 运营平台：获取线路信息 -->
+  <select id="selectLineItems" resultMap="BaseResultMap">
+  	select 
+  		li.*,pd.name as trans_mode_value,oi.name,xi.name start_province_value,
+  		xi1.name start_city_value,xi2.name start_county_value,xi3.name end_province_value,
+  		xi4.name end_city_value,xi5.name end_county_value,puc.company_name,puc.company_code,
+  		pd1.name server_type_value
+  	from
+  		tms_line_info li
+  		left join tms_outlets_info oi on li.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = li.transport_mode 
+  		left join lc_platform_dictionary pd1 on pd1.id = li.server_type
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  		left join tms_outlets_info soi on soi.id = li.start_outlets
+  		left join tms_outlets_info eoi on eoi.id = li.end_outlets
+  		left join lc_xzqh_info xi on xi.id = soi.province
+  		left join lc_xzqh_info xi1 on xi1.id = soi.city
+  		left join lc_xzqh_info xi2 on xi2.id = soi.county
+  		left join lc_xzqh_info xi3 on xi3.id = eoi.province
+  		left join lc_xzqh_info xi4 on xi4.id = eoi.city
+  		left join lc_xzqh_info xi5 on xi5.id = eoi.county
+  	where
+  		1=1
+  		<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+  			and soi.province = #{searchParams.startProvince}
+  		</if>
+  		<if test="searchParams.startCity != null and searchParams.startCity != ''">
+  			and soi.city = #{searchParams.startCity}
+  		</if>
+  		<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+  			and soi.county = #{searchParams.startCounty}
+  		</if>
+  		<if test="searchParams.endProvince != null and searchParams.endProvince != ''">
+  			and eoi.province = #{searchParams.endProvince}
+  		</if>
+  		<if test="searchParams.endCity != null and searchParams.endCity != ''">
+  			and eoi.city = #{searchParams.endCity}
+  		</if>
+  		<if test="searchParams.endCounty != null and searchParams.endCounty != ''">
+  			and eoi.county = #{searchParams.endCounty}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and puc.company_name = #{searchParams.condition}
+  		</if>
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 运营平台：获取线路信息记录数 -->
+  <select id="countRows4LineItems" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_line_info li
+  		left join tms_outlets_info oi on li.outlets_id = oi.id
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  		left join tms_outlets_info soi on soi.id = li.start_outlets
+  		left join tms_outlets_info eoi on eoi.id = li.end_outlets
+  	where
+  		1=1
+  		<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+  			and soi.province = #{searchParams.startProvince}
+  		</if>
+  		<if test="searchParams.startCity != null and searchParams.startCity != ''">
+  			and soi.city = #{searchParams.startCity}
+  		</if>
+  		<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+  			and soi.county = #{searchParams.startCounty}
+  		</if>
+  		<if test="searchParams.endProvince != null and searchParams.endProvince != ''">
+  			and eoi.province = #{searchParams.endProvince}
+  		</if>
+  		<if test="searchParams.endCity != null and searchParams.endCity != ''">
+  			and eoi.city = #{searchParams.endCity}
+  		</if>
+  		<if test="searchParams.endCounty != null and searchParams.endCounty != ''">
+  			and eoi.county = #{searchParams.endCounty}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and puc.company_name = #{searchParams.condition}
+  		</if>
+  </select>
+  
+   <select id="selectByParams" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_line_info
+    where outlets_id = #{outletsId,jdbcType=BIGINT}
+    order by create_time desc limit #{start}, #{limit}
+  </select>
+  
+  <select id="selectByParamsCount" resultType="int">
+    select count(1)
+    from tms_line_info
+    where outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+</mapper>
+

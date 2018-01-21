@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_cost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryContent"
+    tools:context="com.xsl.distributor.lerist.ui.activity.MyCostActivity">
+
+    <include layout="@layout/layout_title_with_back" />
+
+    <include layout="@layout/layout_line" />
+
+    <com.xsl.lerist.llibrarys.widget.LPageIndicator
+        android:id="@+id/a_my_cost_lpi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal" />
+
+    <com.xsl.lerist.llibrarys.widget.LViewPager
+        android:id="@+id/a_my_cost_lvp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

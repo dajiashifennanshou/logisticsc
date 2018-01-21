@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.AdvertisementInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.AdvertisementInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+    <result column="ad_file_path" property="adFilePath" jdbcType="VARCHAR" />
+    <result column="ad_url" property="adUrl" jdbcType="VARCHAR" />
+    <result column="ad_position_id" property="adPositionId" jdbcType="BIGINT" />
+    <result column="ad_owner" property="adOwner" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="publish_type" property="publishType" jdbcType="INTEGER" />
+    
+    <result column="name" property="adPositionVal" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ad_name, ad_file_path, ad_position_id, ad_owner, start_time, end_time, create_person_id, 
+    state, publish_type, ad_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_advertisement_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_advertisement_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.AdvertisementInfo" >
+    insert into tms_advertisement_info (id, ad_name, ad_file_path, 
+      ad_position_id, ad_owner, start_time, 
+      end_time, create_person_id, state, publish_type, ad_url
+      )
+    values (#{id,jdbcType=BIGINT}, #{adName,jdbcType=VARCHAR}, #{adFilePath,jdbcType=VARCHAR}, 
+      #{adPositionId,jdbcType=BIGINT}, #{adOwner,jdbcType=VARCHAR},#{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{createPersonId,jdbcType=BIGINT}, #{state,jdbcType=INTEGER},
+      #{publishType,jdbcType=INTEGER}, #{adUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.AdvertisementInfo" >
+    insert into tms_advertisement_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="adName != null" >
+        ad_name,
+      </if>
+      <if test="adFilePath != null" >
+        ad_file_path,
+      </if>
+      <if test="adPositionId != null" >
+        ad_position_id,
+      </if>
+      <if test="adOwner != null" >
+        ad_owner,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="publishType != null" >
+        publish_type,
+      </if>
+      <if test="adUrl != null" >
+        ad_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adFilePath != null" >
+        #{adFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="adPositionId != null" >
+        #{adPositionId,jdbcType=BIGINT},
+      </if>
+      <if test="adOwner != null" >
+        #{adOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="publishType != null" >
+        #{publishType,jdbcType=INTEGER},
+      </if>
+      <if test="adUrl != null" >
+        #{adUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.AdvertisementInfo" >
+    update tms_advertisement_info
+    <set >
+      <if test="adName != null" >
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adFilePath != null" >
+        ad_file_path = #{adFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="adPositionId != null" >
+        ad_position_id = #{adPositionId,jdbcType=BIGINT},
+      </if>
+      <if test="adOwner != null" >
+        ad_owner = #{adOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="publishType != null" >
+        publish_type = #{publishType,jdbcType=INTEGER},
+      </if>
+      <if test="adUrl != null" >
+        ad_url = #{adUrl,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.AdvertisementInfo" >
+    update tms_advertisement_info
+    set ad_name = #{adName,jdbcType=VARCHAR},
+      ad_file_path = #{adFilePath,jdbcType=VARCHAR},
+      ad_position_id = #{adPositionId,jdbcType=BIGINT},
+      ad_owner = #{adOwner,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER},
+      publish_type = #{publishType,jdbcType=INTEGER},
+      ad_url = #{adUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 查询广告信息  -->
+  <select id="selectByTypeAndCondition" parameterType="com.brightsoft.utils.Page" resultMap="BaseResultMap">
+  	select
+  		ai.*, pd.name 
+  	from
+  		tms_advertisement_info ai
+  		left join lc_platform_dictionary pd on ai.ad_position_id = pd.id
+  	where 
+  		ai.publish_type = #{type} and ai.state != 0
+  		<if test="searchParams.startTime != null" >
+	     	and  ai.start_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+	    </if>
+	    <if test="searchParams.endTime != null" >
+	     	and  ai.end_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+	    </if>
+	    <if test="searchParams.condition != null and searchParams.condition != ''" >
+	     	and  ai.ad_name like concat("%",#{searchParams.endTime},"%") 
+	    </if>
+	    <if test="searchParams.publishType != null">
+	     and ai.publish_type = #{searchParams.publishType}
+	    </if>
+  		order by ai.start_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取查询记录的总条数 -->
+  <select id="countRowsByType" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_advertisement_info
+  	where 
+  		publish_type = #{type} and state != 0
+  		<if test="searchParams.startTime != null" >
+	     	and  start_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+	    </if>
+	    <if test="searchParams.endTime != null" >
+	     	and  end_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+	    </if>
+	    <if test="searchParams.condition != null and searchParams.condition != ''" >
+	     	and  ad_name like concat("%",#{searchParams.endTime},"%") 
+	    </if>
+	     <if test="searchParams.publishType != null">
+	     and publish_type = #{searchParams.publishType}
+	    </if>
+  </select>
+  <!-- 验证广告日期是否可用 -->
+  <select id="verifyDate" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_advertisement_info
+  		join lc_platform_dictionary pd on ai.ad_position_id = pd.id
+  	where 
+  		start_time <![CDATA[   >=  ]]> #{endTime}
+  		or end_time <![CDATA[   <=  ]]> #{startTime}
+  		and pd.id = #{adPosition}
+  </select>
+  
+  <!-- 查询广告的总数量 -->
+  <select id="countadvertRows" resultType="int">
+  SELECT  COUNT(1)  FROM tms_advertisement_info
+  </select>
+  
+  <!-- 查询全部广告信息 -->
+  <select id="FinallAdvertInfo"  resultMap="BaseResultMap">
+	SELECT
+	<include refid="Base_Column_List"></include>
+	FROM
+	tms_advertisement_info
+	WHERE state != 0  and  publish_type = 0
+	<if test="advertisementInfo.adName != null">
+	 AND ad_name like #{"%"+advertisementInfo.adName+"%",jdbcType=VARCHAR}
+	</if>
+  </select>
+  
+  <!-- 通过id删除 -->
+  <update id="advertManagementDelId"  parameterType="list">
+ 	UPDATE tms_advertisement_info
+	SET tms_advertisement_info.state = 0
+	<if test="ids != null">
+	WHERE id in
+	<foreach collection="ids" item="ids" open="(" separator="," close=")">
+	 #{ids,jdbcType=BIGINT}   
+	</foreach>
+	</if>
+ </update>
+  
+  <insert id="advertManagementsave" parameterType="com.brightsoft.model.AdvertisementInfo">
+	  INSERT INTO tms_advertisement_info 
+	  (ad_name,ad_file_path,ad_url,ad_position_id,ad_owner,start_time,end_time,create_person_id,state,publish_type)
+	VALUES
+		(
+        #{advertisementInfo.adName,jdbcType=VARCHAR},
+        #{advertisementInfo.adFilePath,jdbcType=VARCHAR},
+        #{advertisementInfo.adUrl,jdbcType=VARCHAR},
+        #{advertisementInfo.adPositionId,jdbcType=BIGINT},
+        #{advertisementInfo.adOwner,jdbcType=VARCHAR},
+        #{advertisementInfo.startTime,jdbcType=TIMESTAMP},
+        #{advertisementInfo.endTime,jdbcType=TIMESTAMP},
+        #{advertisementInfo.createPersonId,jdbcType=BIGINT},
+	    #{advertisementInfo.state,jdbcType=INTEGER},
+		#{advertisementInfo.publishType,jdbcType=INTEGER}
+		);
+  </insert>
+  <!--  -->
+  <select id="selectByPublishType">
+  	select
+  		*
+  	from
+  		tms_advertisement_info
+  	where
+  		publish_type = #{type}
+  </select>
+</mapper>

@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.xsl.distributor.lerist.ui.fragment.HomeFragment">
+
+    <include layout="@layout/layout_title_with_search" />
+
+    <include layout="@layout/layout_line" />
+
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.xsl.lerist.llibrarys.widget.LViewPager
+                        android:id="@+id/f_home_lvp_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:overScrollMode="never" />
+
+                    <com.xsl.lerist.llibrarys.widget.LPageIndicator
+                        android:id="@+id/f_home_lpi_banner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_marginBottom="8dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:padding="16dp"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/home_butt_backg">
+
+                    <carbon.widget.LinearLayout
+                        android:id="@+id/f_home_ll_btn_my_depository"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        app:carbon_cornerRadius="16dp"
+                        app:carbon_rippleColor="@color/ripple"
+                        app:carbon_rippleStyle="over">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/home_butt_blue" />
+                    </carbon.widget.LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableLeft="@mipmap/home_zixun"
+                    android:drawablePadding="8dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="12dp"
+                    android:text="资讯"
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="14sp" />
+
+                <include layout="@layout/layout_line" />
+
+                <com.xsl.lerist.llibrarys.widget.LRecyclerView
+                    android:id="@+id/f_home_lrv_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.liaoinstan.springview.widget.SpringView>
+</LinearLayout>

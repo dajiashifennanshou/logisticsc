@@ -1,0 +1,262 @@
+body, p{
+	font-family: '微软雅黑';
+}
+
+.index2_top {
+	width: 100%;
+	height: 32px;
+	background-color: #0055bf;
+}
+.index2_con {
+	width: 800px;
+	height: 32px;
+	position: relative;
+	margin: 0px auto;
+}
+.index2_phone {
+	width:243px ;
+	height: 32px;
+	background: url(../img/index2_top2.png) no-repeat;
+	position: absolute;
+	top: 32px;
+	
+}
+.index2_phone img {
+	position: absolute;
+	left: 66px;
+	top: -8px;
+}
+.index2_phone p {
+	position: absolute;
+	left:88px;
+	top: -8px;
+	color: white;
+	font-size: 18px;
+	
+}
+.index2_con a {
+	float: right;
+	margin-right:12px;
+	color: white;
+	line-height: 32px;
+	text-decoration:none;
+	color:white;
+}
+.index2_con a:hover{
+	color:white;
+}
+.index2-nr {
+	width: 800px;
+	margin:0px auto;
+	margin-top: 60px;
+}
+.index2-nr  .index2_logo {
+	margin-left: 115px;
+}
+.index2_hezi {
+	width: 798px;
+	height:360px;
+	margin-top: 20px;
+	border: 1px solid #d4d4d4;
+
+}
+.banner-top {
+	width: 100%;
+	width: 100%;
+	height: 50px;
+	border-bottom: 4px solid #0055bf;
+}
+
+.banner-top li {
+	float: left;
+	width: 125px;
+	text-align: center;
+	line-height: 50px;
+	height:50px;
+	color: #5d86b9;
+	cursor: pointer;
+	font-size: 14px;
+}
+.banner-top .cur {
+	color: white;
+	background: #0055bf;
+}
+.banner-top p {
+	line-height: 50px;
+	float: right;
+	color: #999;
+}
+
+.banner-bot .bot1,.bot2{
+	width: 630px;
+	height: 140px;
+	margin: 40px auto 0px auto;
+	/*background: blanchedalmond;*/
+	border-bottom: 1px dashed #bebebe;
+}
+.shoye{
+	display: block;
+	width: 310px;
+	height: 22px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	
+}
+input[type="text"]:focus {
+	border: 1px solid #72a4e0;
+    box-shadow: 0 0 5px #c0ccdb;
+    outline: medium none;
+    transition: box-shadow 0.25s linear 0s;
+
+}
+.shifadi {
+	margin-bottom: 32px;
+}
+.shifadi p{
+	line-height: 30px;
+	font-size: 14px;
+}
+.dingdanhao {
+	margin-top:36px;
+}
+.cx {
+	width: 120px;
+	height: 50px;
+	background: #0055BF;
+	color: white;
+	line-height: 50px;
+	border-radius: 10px;
+}
+.index2-left {
+	float: left;
+}
+.index2-right {
+	float: left;
+	margin-left: 62px;
+	margin-top: 27px;
+}
+.index2-pic {
+	width: 630px;
+	margin: 0px auto;
+	margin-top: 20px;
+}
+.index2-pic ul li {
+	float: left;
+	margin-left: 66px;
+}
+.index2-pic ul .li-left0 {
+	margin-left: 0px;
+}
+.index2_bot {
+	width: 100%;
+	height: 132px;
+	background: #dedede;
+	margin-top: 20px;
+	clear:both;
+}
+.bot-con {
+	width: 800px;
+	padding-top: 50px;
+	margin: 0px auto;
+}
+.bot-con ul li{
+	margin-top: 10px;
+}
+.bot-con ul li a{
+	text-decoration: none;
+	color:#0055bf;
+	
+}
+.rl {
+	height: 100%;
+	text-align: center;
+	display: block;
+	margin-top: 30px;
+	margin-right: 10px;
+}
+
+/* ----------- */
+
+.search_box{
+	height: 100px;
+	position: relative;
+}
+.search_box input, .search_box label{
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+}
+.search_box input{
+	border: 1px solid #AAA;
+	border-radius: 0.5em;
+	padding: 2px 5px;
+	width: 260px;
+}
+.search_box_info{
+	width: 340px;
+	position: absolute;
+	top: 10px;
+	left: 40px;
+}
+.search_box_button{
+	position: absolute;
+	left: 420px;
+	top: 25px;
+}
+.search_box_button button{
+	width: 120px;
+	height: 50px;
+	background-color: #0055BF;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 10px;
+}
+.county_box{
+	position: absolute;
+	width: 300px;
+	top: 45px;
+	left: 100px;
+	border: 1px solid #ccc;
+	/* filter: alpha(opacity=70); opacity: 0.7;} */
+}
+.county_box_nav{
+	background-color: #fff;
+}
+.county_box_nav table{
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+.county_box_nav table td{
+	text-align: center;
+	font-size: 14px;
+	background-color: #fff;
+	cursor: pointer;
+	height: 24px;
+}
+.county_box_nav .active{
+	background-color: #39a64b;
+	color: #fff;
+}
+.box-content{
+	padding: 5px 9px;
+}
+.box-content li{
+	display: inline-block;
+}
+.box-content li a{
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	margin: 5px;
+	padding: 2px 3px;
+}
+.box-content li a:HOVER {
+	background-color: #666;
+	color: #fff;
+}

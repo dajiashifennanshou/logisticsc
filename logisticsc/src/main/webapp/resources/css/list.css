@@ -1,0 +1,155 @@
+.xe-bg{
+	width: 100%;
+	padding-bottom: 30px;
+	background: #f8f8f8;
+}
+.xe-word{
+	margin-top: 10px;
+}
+.list-tab{
+	margin-top: 20px;
+}
+.list-tab ul{
+	padding-left: 0px;
+}
+.list-tab li{
+	float: left;
+	font-size: 22px;
+	font-weight: bold;
+	width: 120px;
+	text-align: center;
+	color: #999999;
+	border-right: 1px solid #ddd;
+	cursor: pointer;
+}
+.list-tab .li-blue{
+	color: #007CC2;
+}
+.xli{
+	background: #fff;
+	border: 1px solid #ddd;
+	border-top: 2px solid #007CC2;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.xe-class{
+	margin-top: 10px;
+}
+.xe-lt{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	color: #666;
+	text-align: right;
+}
+.xe-list{
+	height: 30px;
+}
+.xe-list li{
+	float: left;
+	/*width: 56px;*/
+	padding-left: 12px;
+	padding-right: 12px;
+	/*text-align: center;*/
+	height: 30px;
+	line-height: 30px;
+	margin-right: 8px;
+	cursor: pointer;
+}
+.xe-dj{
+	background: #1285f0;
+	color: #fff;
+	border-radius: 5px;
+}
+.list th{
+	color: #999;
+	height: 50px;
+	line-height: 50px;
+	background: #FAFAFA;
+}
+.list th a{
+	color: #999;
+}
+.c-r{
+	border-right: 1px solid #ddd;
+}
+.c-l{
+	width: 150px;
+	padding-left: 10px;
+}
+.c-bg{
+	padding-right: 18px;
+	background: url(../img/arrow-down2.png) no-repeat 88px center!important;
+}
+.list-pic{
+	width: 26px;
+	height: 26px;
+}
+.list-word{
+	height: 26px;
+	line-height: 26px;
+	margin-left: 3px;
+	display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.li-btn{
+	border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-color: #007CC2;
+    color: #007CC2;
+}
+.list-num{
+	color: #FF5A00;
+	text-indent: 30px;
+}
+.good-name a{
+	color: #007CC2;
+}
+.list{
+	background: #fff;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+}
+.list table{
+	border: 1px solid #ddd;
+}
+.list table td{
+	height: 50px;
+	line-height: 50px;
+}
+.li-fenye{
+	text-align: center;
+	margin-top: 10px;
+}
+.li-fenye a{
+	border: 1px solid #ddd;
+	padding: 4px 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/regest_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:gravity="top|center"
+        android:textSize="@dimen/mid_text_size"
+        android:text="营业执照"
+        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        >
+        <ImageView
+            android:id="@+id/add_image"
+            style="@style/myStyle"
+            android:layout_margin="20dp"
+            android:src="@mipmap/add_card_1"
+             />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/add_image"
+            android:layout_marginLeft="-40dp"
+            android:src="@mipmap/add_card_del"/>
+    </RelativeLayout>
+
+</LinearLayout>

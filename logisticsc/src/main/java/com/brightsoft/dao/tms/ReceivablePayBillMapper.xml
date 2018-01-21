@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceivablePayBillMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.ReceivablePayBill" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cost_subject" property="costSubject" jdbcType="VARCHAR" />
+    <result column="is_completed" property="isCompleted" jdbcType="INTEGER" />
+    <result column="depart_number" property="departNumber" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="out_depart_number" property="outDepartNumber" jdbcType="VARCHAR" />
+    <result column="transfer_depart_number" property="transferDepartNumber" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+    <result column="current_pay" property="currentPay" jdbcType="DOUBLE" />
+    <result column="arrive_pay" property="arrivePay" jdbcType="DOUBLE" />
+    <result column="back_pay" property="backPay" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cost_subject, is_completed, depart_number, money, out_depart_number, transfer_depart_number, 
+    create_time, outlets_id, total, current_pay, arrive_pay, back_pay
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receivable_pay_bill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receivable_pay_bill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.ReceivablePayBill" >
+    insert into tms_receivable_pay_bill (id, cost_subject, is_completed, 
+      depart_number, money, out_depart_number, 
+      transfer_depart_number, create_time, outlets_id,
+      total, current_pay, arrive_pay, back_pay)
+    values (#{id,jdbcType=BIGINT}, #{costSubject,jdbcType=VARCHAR}, #{isCompleted,jdbcType=INTEGER}, 
+      #{departNumber,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{outDepartNumber,jdbcType=VARCHAR}, 
+      #{transferDepartNumber,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{outletsId,jdbcType=BIGINT},
+      #{total,jdbcType=DOUBLE}, #{currentPay,jdbcType=DOUBLE}, #{arrivePay,jdbcType=DOUBLE}, #{backPay,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.ReceivablePayBill" >
+    insert into tms_receivable_pay_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="costSubject != null" >
+        cost_subject,
+      </if>
+      <if test="isCompleted != null" >
+        is_completed,
+      </if>
+      <if test="departNumber != null" >
+        depart_number,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="outDepartNumber != null" >
+        out_depart_number,
+      </if>
+      <if test="transferDepartNumber != null" >
+        transfer_depart_number,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="currentPay != null" >
+        current_pay,
+      </if>
+      <if test="arrivePay != null" >
+        arrive_pay,
+      </if>
+      <if test="backPay != null" >
+        back_pay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="costSubject != null" >
+        #{costSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="isCompleted != null" >
+        #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="departNumber != null" >
+        #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="outDepartNumber != null" >
+        #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transferDepartNumber != null" >
+        #{transferDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="arrivePay != null" >
+        #{arrivePay,jdbcType=DOUBLE},
+      </if>
+      <if test="backPay != null" >
+        #{backPay,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.ReceivablePayBill" >
+    update tms_receivable_pay_bill
+    <set >
+      <if test="costSubject != null" >
+        cost_subject = #{costSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="isCompleted != null" >
+        is_completed = #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="departNumber != null" >
+        depart_number = #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="outDepartNumber != null" >
+        out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transferDepartNumber != null" >
+        transfer_depart_number = #{transferDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        current_pay = #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="arrivePay != null" >
+        arrive_pay = #{arrivePay,jdbcType=DOUBLE},
+      </if>
+      <if test="backPay != null" >
+        back_pay = #{backPay,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.ReceivablePayBill" >
+    update tms_receivable_pay_bill
+    set cost_subject = #{costSubject,jdbcType=VARCHAR},
+      is_completed = #{isCompleted,jdbcType=INTEGER},
+      depart_number = #{departNumber,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      transfer_depart_number = #{transferDepartNumber,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      total = #{total,jdbcType=DOUBLE},
+      current_pay = #{currentPay,jdbcType=DOUBLE},
+      arrive_pay = #{arrivePay,jdbcType=DOUBLE},
+      back_pay = #{backPay,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receivable_pay_bill where 1 = 1 
+   	<if test="startTime != null and startTime != '' ">
+   		and create_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   		or transfer_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	<if test="isCompleted != null and isCompleted != '' ">
+   		and is_completed = #{isCompleted,jdbcType=INTEGER}
+   	</if>
+   	<if test="costSubject != null and costSubject != '' ">
+   		and cost_subject = #{costSubject,jdbcType=VARCHAR}
+   	</if>
+   	<if test="outletsIds != null and outletsIds != '' ">
+   		and outlets_id in (#{outletsIds})
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and outlets_id = (#{outletsId})
+   	</if>
+   	order by create_time desc limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int" >
+    select count(1)
+    from tms_receivable_pay_bill where 1 = 1 
+   	<if test="startTime != null and startTime != '' ">
+   		and create_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   		or transfer_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	<if test="isCompleted != null and isCompleted != '' ">
+   		and is_completed = #{isCompleted,jdbcType=INTEGER}
+   	</if>
+   	<if test="costSubject != null and costSubject != '' ">
+   		and cost_subject = #{costSubject,jdbcType=VARCHAR}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and outlets_id = (#{outletsId})
+   	</if>
+   	<if test="outletsIds != null and outletsIds != '' ">
+   		and outlets_id in (#{outletsIds})
+   	</if>
+   	
+  </select>
+  <select id="selectByParamsTotal" resultType="double" >
+    SELECT CASE WHEN SUM(total) IS NULL THEN 0 ELSE SUM(total) END money FROM tms_receivable_pay_bill WHERE 1 = 1
+   	<if test="startTime != null and startTime != '' ">
+   		and create_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and create_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or out_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   		or transfer_depart_number like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	<if test="isCompleted != null and isCompleted != '' ">
+   		and is_completed = #{isCompleted,jdbcType=INTEGER}
+   	</if>
+   	<if test="costSubject != null and costSubject != '' ">
+   		and cost_subject = #{costSubject,jdbcType=VARCHAR}
+   	</if>
+   		<if test="outletsId != null and outletsId != '' ">
+   		and outlets_id = (#{outletsId})
+   	</if>
+ 	<if test="outletsIds != null and outletsIds != '' ">
+   		and outlets_id in (#{outletsIds})
+   	</if>
+  </select>
+  
+</mapper>

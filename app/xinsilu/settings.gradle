@@ -1,0 +1,1 @@
+include ':app',':llibrarys',':leristres',':wx_resource'

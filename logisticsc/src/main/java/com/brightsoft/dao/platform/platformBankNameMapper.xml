@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankNameMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBankName" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="branch_name" property="branchName" jdbcType="VARCHAR" />
+    <result column="contact_number" property="contactNumber" jdbcType="VARCHAR" />
+    <result column="head_name" property="headName" jdbcType="VARCHAR" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, branch_name, contact_number, head_name, province_name, city_name
+  </sql>
+  <select id="selectProvinceName" resultMap="BaseResultMap">
+    select province_name from lc_platform_bank_name GROUP BY province_name;
+  </select>
+  <select id="selectCityName" resultMap="BaseResultMap">
+    select city_name from lc_platform_bank_name where province_name=#{provinceName,jdbcType=VARCHAR} GROUP BY city_name;
+  </select>
+  <select id="selectHeadName" resultMap="BaseResultMap">
+    select head_name from lc_platform_bank_name where province_name=#{provinceName,jdbcType=VARCHAR} and city_name=#{cityName,jdbcType=VARCHAR} GROUP BY head_name;
+  </select>
+  <select id="selectBranchName" resultMap="BaseResultMap">
+   select branch_name from lc_platform_bank_name  
+   where head_name=#{headName,jdbcType=VARCHAR} 
+   and province_name=#{provinceName,jdbcType=VARCHAR} 
+   and city_name=#{cityName,jdbcType=VARCHAR}
+   GROUP BY branch_name;
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_name
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank_name
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBankName" >
+    insert into lc_platform_bank_name (id, branch_name, contact_number, 
+      head_name, province_name, city_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{branchName,jdbcType=VARCHAR}, #{contactNumber,jdbcType=VARCHAR}, 
+      #{headName,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBankName" >
+    insert into lc_platform_bank_name
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="branchName != null" >
+        branch_name,
+      </if>
+      <if test="contactNumber != null" >
+        contact_number,
+      </if>
+      <if test="headName != null" >
+        head_name,
+      </if>
+      <if test="provinceName != null" >
+        province_name,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="branchName != null" >
+        #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null" >
+        #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="headName != null" >
+        #{headName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBankName" >
+    update lc_platform_bank_name
+    <set >
+      <if test="branchName != null" >
+        branch_name = #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null" >
+        contact_number = #{contactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="headName != null" >
+        head_name = #{headName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBankName" >
+    update lc_platform_bank_name
+    set branch_name = #{branchName,jdbcType=VARCHAR},
+      contact_number = #{contactNumber,jdbcType=VARCHAR},
+      head_name = #{headName,jdbcType=VARCHAR},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

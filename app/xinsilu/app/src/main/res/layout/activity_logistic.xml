@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.OrderDetailActivity">
+
+    <include layout="@layout/title" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <include layout="@layout/basic_logistic_layout" />
+
+            <ImageView
+                android:id="@+id/logistic_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:padding="10dp"
+                android:src="@mipmap/wuliushang_shangjialogo_nor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    style="@style/BasicParamNoMargin_h"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="left|center">
+
+                    <ImageView
+                        style="@style/myStyle"
+                        android:layout_marginRight="8dp"
+                        android:gravity="left"
+                        android:paddingLeft="15dp"
+                        android:src="@mipmap/my_order_positioning"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:gravity="center|left"
+                        android:hint="　　　　　　 "
+                        android:text="@string/sender"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/sender_name"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center|left"
+                        android:textSize="@dimen/small_text_size" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/send_order_status"
+                    style="@style/BasicParamNoMargin_h"
+                    android:layout_weight="1"
+                    android:drawableRight="@mipmap/nav_icon_back"
+                    android:gravity="right|center"
+                    android:text="自送网点"
+                    android:textColor="@color/basic_color"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <ImageView
+                    style="@style/myStyle"
+                    android:layout_marginRight="8dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:src="@mipmap/my_order_positioning"
+                    android:visibility="visible" />
+
+                <TextView
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:hint="　　　　　　 "
+                    android:text="@string/sender_address"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/sender_address"
+                    style="@style/myStyle"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left"
+                    android:textSize="@dimen/small_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <ImageView
+                    style="@style/myStyle"
+                    android:layout_marginRight="8dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:src="@mipmap/my_order_positioning"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:text="@string/sender_net"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/sender_net"
+                    style="@style/myStyle"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <!--收货地址-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    style="@style/BasicParamNoMargin_h"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:gravity="left|center">
+
+                    <ImageView
+                        style="@style/myStyle"
+                        android:layout_marginRight="8dp"
+                        android:gravity="left"
+                        android:paddingLeft="15dp"
+                        android:src="@mipmap/my_order_positioning"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:gravity="center|left"
+                        android:hint="　　　　　　 "
+                        android:text="@string/receiver"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/receiver_name"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center|left"
+                        android:textSize="@dimen/small_text_size" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/receive_order_status"
+                    style="@style/BasicParamNoMargin_h"
+                    android:layout_weight="1"
+                    android:drawableRight="@mipmap/nav_icon_back"
+                    android:gravity="right|center"
+                    android:text="客户自提"
+                    android:textColor="@color/basic_color"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <ImageView
+                    style="@style/myStyle"
+                    android:layout_marginRight="8dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:src="@mipmap/my_order_positioning"
+                    android:visibility="visible" />
+
+                <TextView
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:hint="　　　　　　 "
+                    android:text="@string/receiver_address"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/receiver_address"
+                    style="@style/myStyle"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left"
+                    android:textSize="@dimen/small_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <ImageView
+                    style="@style/myStyle"
+                    android:layout_marginRight="8dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:src="@mipmap/my_order_positioning"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:hint="　　　　　　 "
+                    android:text="@string/receiver_net"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/receiver_net"
+                    style="@style/myStyle"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:padding="10dp"
+                    android:text="@string/sender_driver"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/drever_name"
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:padding="10dp"
+                    android:hint="无"
+                    android:textSize="@dimen/small_text_size" />
+
+                <TextView
+                    android:id="@+id/licences"
+                    style="@style/myStyle"
+                    android:gravity="center|left"
+                    android:padding="10dp"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <include layout="@layout/values_add_service_layout" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:gravity="center|left"
+                android:padding="10dp"
+                android:text="货物信息"
+                android:textSize="@dimen/small_text_size" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/goods_info_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--<include layout="@layout/goods_info_layout"/>-->
+            <include layout="@layout/money_detail_layout" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <include layout="@layout/layout_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingRight="10dp"
+        android:paddingTop="6dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/pay_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_shap_stroke_textview"
+            android:gravity="center"
+            android:hint="　　　　　"
+            android:padding="6dp"
+            android:text="支付"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/background_shap_stroke_textview"
+            android:gravity="center"
+            android:hint="　　　　　"
+            android:padding="6dp"
+            android:text="确定"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

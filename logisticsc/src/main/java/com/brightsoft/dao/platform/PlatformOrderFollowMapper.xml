@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderFollowMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderFollow" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+    <result column="handle_time" property="handleTime" jdbcType="TIMESTAMP" />
+    <result column="handle_info" property="handleInfo" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseMineOrderMap" type="com.brightsoft.model.PlatformOrderTracking" >
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+ 	<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, way_bill_number,status, handle_time, handle_info, operate_person
+  </sql>
+   <!-- 我的订单 -->
+  <select id="selectOrder" resultMap="BaseMineOrderMap">
+	SELECT o_t.*, 
+	o1.province start_province, o1.city start_city, o1.county start_county, o1.company_name, 
+	o2.province end_province, o2.city end_city, o2.county end_county 
+	FROM
+	(
+		SELECT o.order_number, o.way_bill_number, o.total_weight, o.total_volume, o.advance_price, o.final_price, o.order_time, o.state, l.start_outlets, l.end_outlets 
+		FROM lc_platform_order o 
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		WHERE 1=1  
+	   	and (o.order_number like concat("%",#{orderTracking.condition},"%") or o.way_bill_number like concat("%",#{orderTracking.condition},"%"))
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name FROM tms_outlets_info i_o LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+  </select>
+  <!-- 订单节点 -->
+  <select id="selectOrderFollow" resultMap="BaseResultMap">
+  	 select 
+  	f_w.*
+    from lc_platform_order_follow  as f_w
+	LEFT JOIN lc_platform_order as o_r on f_w.order_number = o_r.order_number
+    where 1=1
+    and (o_r.order_number like concat("%",#{orderTracking.condition},"%") or o_r.way_bill_number like concat("%",#{orderTracking.condition},"%"))
+  	ORDER BY handle_time
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_follow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" > 
+    delete from lc_platform_order_follow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderFollow" >
+    insert into lc_platform_order_follow (id, order_number, status, handle_time, 
+      handle_info, operate_person)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{status,jdbcType=BIGINT}, #{handleTime,jdbcType=TIMESTAMP}, 
+      #{handleInfo,jdbcType=VARCHAR}, #{operatePerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderFollow" >
+    insert into lc_platform_order_follow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="handleTime != null" >
+        handle_time,
+      </if>
+      <if test="handleInfo != null" >
+        handle_info,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="handleTime != null" >
+        #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleInfo != null" >
+        #{handleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderFollow" >
+    update lc_platform_order_follow
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="handleTime != null" >
+        handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleInfo != null" >
+        handle_info = #{handleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderFollow" >
+    update lc_platform_order_follow
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIGINT},
+      handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      handle_info = #{handleInfo,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

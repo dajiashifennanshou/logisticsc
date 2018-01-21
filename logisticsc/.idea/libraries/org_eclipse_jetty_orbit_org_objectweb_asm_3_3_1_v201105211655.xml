@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.eclipse.jetty.orbit:org.objectweb.asm:3.3.1.v201105211655" type="repository">
+    <properties maven-id="org.eclipse.jetty.orbit:org.objectweb.asm:3.3.1.v201105211655" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/org.objectweb.asm-3.3.1.v201105211655.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/org.objectweb.asm-3.3.1.v201105211655-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

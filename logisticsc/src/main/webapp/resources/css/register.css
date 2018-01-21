@@ -1,0 +1,217 @@
+button{
+	border: none;
+}
+.re-logo{
+	margin-top: 20px;
+	
+}
+.re-line{
+	margin-left: 10px;
+	margin-top: 8px;
+}
+.re-word{
+	margin-left: 10px;
+	margin-top: -23px;
+}
+.re-content{
+	width: 100%;
+	/*height: 200px;*/
+	margin-top: 20px;
+	background: #b4d6e9 url(../img/re-bg.png) top center;
+	padding-bottom: 30px;
+}
+.re-conbg{
+	width: 100%;
+	height: 645px;
+	margin-top: 40px;
+	background: #fff url(../img/registerbg1.png) no-repeat -29px top;
+	padding-top: 30px;
+}
+/*.re-l1{
+	margin-top: 30px;
+}*/
+.re-list{
+	height: 46px;
+	line-height: 46px;
+	margin-top: 24px;
+}
+.re-list1{
+	height: 46px;
+	line-height: 46px;
+	margin-top: 10px;
+}
+.re-title{
+	width: 200px;
+	text-align: right;
+	color: #666;
+}
+.re-text{
+	width: 290px;
+	margin-left: 10px;
+}
+.re-text-info{
+	width: 288px;
+	height: 46px;
+	text-indent: 14px;
+	border: 1px solid #aaa;
+}
+.re-error{
+	height: 46px;
+	border: 1px solid #c40001;
+	background: #f7b9b9 url(../img/rejinggao.png) no-repeat 8px center;
+	padding-left: 28px;
+	padding-right: 6px;
+	color: #c40001;
+	margin-left: 8px;
+}
+.re-suc{
+	margin-left: 8px;
+}
+.re-yz{
+	width: 138px;
+	margin-left: 10px;
+}
+.re-hq{
+	width: 138px;
+	margin-left: 10px;
+}
+.re-text-yzm{
+	width: 138px;
+	text-indent: 14px;
+	height: 46px;
+	border: 1px solid #aaa;
+}
+/* .btn-yzm{
+	width: 138px;
+	height: 46px;
+	background: #dadada;
+} */
+
+/* 获取验证码 */
+#sendcode{
+	width: 138px;
+	height: 46px;
+	background: #dadada;
+	text-align: center;
+	cursor: pointer;
+} 
+#sendcode a{
+	color: white;
+	text-decoration: none; 
+} 
+#sendcode a:hover{
+	text-decoration: none; 
+}
+
+
+.dkuan-select{
+    width: 290px;
+    height: 46px;
+    line-height: 46px;
+    text-indent: 4px;
+  }
+
+.re-xyi{
+	color: #4ea4d5;
+}
+.re-btnre{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	color: #fff;
+	font-size: 18px;
+	letter-spacing: 1px;
+	background: #01a281;
+	border-bottom: 4px solid #037961;
+}
+.re-btnre:hover{
+	background: #019073;
+}
+/* ---根据id标识---- */
+#registerbtn{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	color: #fff;
+	font-size: 18px;
+	letter-spacing: 1px;
+	background: #01a281;
+	border-bottom: 4px solid #037961;
+	text-align: center;
+	cursor: pointer;
+	
+}
+#registerbtn a{
+	margin-left:20px;
+	color: white;
+	text-decoration: none; 
+}
+#registerbtn a:hover{
+	text-decoration: none; 
+}
+/* ---------- */
+
+.re-rlist1{
+	margin-top: 118px;
+}
+.re-rlist2{
+	margin-top: 30px;
+}
+.re-rlist3{
+	margin-top: 20px;
+}
+.brig{
+	border-right: 1px solid #ddd;
+}
+.re-l1{
+	margin-left: 132px;
+}
+/*搴曢儴*/
+.re-foot{
+	text-align: center;
+	margin-top: 10px;
+}
+.line{
+	color: #ccc;
+    padding: 0 10px;
+}
+.footer{
+	margin-top: 40px;
+	padding-bottom: 30px;
+    text-align: center;
+}
+.links a{
+	color: #666;
+    text-decoration: none;
+}
+.links a:hover{
+	color: #FF4E00;
+}
+.copyright{
+	font-size: 12px;
+	margin-top: 8px;
+	color: #666;
+}
+.copyright p{
+	line-height: 22px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

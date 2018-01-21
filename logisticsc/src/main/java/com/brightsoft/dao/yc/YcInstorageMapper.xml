@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcInstorageDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcInstorage"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,waybillNo,dealerId,waybillSource,inType,branchNo,zoneNo,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcInstorage" > 
+		select  <include refid="Base_Column_List" />  from yc_in_storage where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcInstorage" > 
+		select  count(1)  from yc_in_storage where 1=1
+		<if test="waybillSource !=null"> 
+			and waybillSource=#{waybillSource}
+		</if>
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map">
+		SELECT b.branchName,a.id,a.waybillNo,a.waybillSource,a.inType,a.branchNo,a.zoneNo,a.createTime,a.createUser,a.updateTime,a.updateUser,a.remark FROM yc_in_storage AS a INNER JOIN yc_storage_branch AS b ON a.branchNo=b.branchNo
+		where 1=1
+		<if test="waybillSource !=null"> 
+			and waybillSource=#{waybillSource}
+		</if>
+		<if test="branchNo !=null"> 
+			and a.branchNo=#{branchNo}
+		</if>
+		 order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcInstorage">
+		delete from yc_in_storage where id=#{id} 
+	</delete>
+	<delete id="delInstorage"> 
+		call yc_pro_del_in_storage(#{param1})
+	</delete>  
+	<insert id="addInstorage" useGeneratedKeys="true" keyProperty="id"> 
+		call yc_pro_add_in_storage(#{param1.waybillNo},#{param1.waybillSource},#{param1.inType},#{param1.branchNo},#{param1.zoneNo},#{param1.createTime},#{param1.createUser},#{param1.updateTime},#{param1.updateUser},#{param1.remark},#{param2})
+	</insert> 
+	<insert id="addSingleInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.brightsoft.entity.YcInstorage" > 
+		insert into yc_in_storage (waybillNo,dealerId,waybillSource,inType,branchNo,zoneNo,createTime,createUser,remark) values
+		(#{waybillNo},#{dealerId},#{waybillSource},#{inType},#{branchNo},#{zoneNo},#{createTime},#{createUser},#{remark})
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcInstorage">   
+	update yc_in_storage 
+	<set> 
+		<if test="waybillNo !=null"> 
+			waybillNo=#{waybillNo},
+		</if>
+		<if test="waybillSource !=null"> 
+			waybillSource=#{waybillSource},
+		</if>
+		<if test="inType !=null"> 
+			inType=#{inType},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,356 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.xsl.distributor.lerist.ui.fragment.HomeFragment">
+
+    <include layout="@layout/layout_title" />
+
+    <include layout="@layout/layout_line" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="24dp"
+                android:paddingTop="24dp">
+
+                <carbon.widget.TextView
+                    android:id="@+id/f_user_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="登录/注册"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/font_color_focused"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    app:carbon_cornerRadius="@dimen/radius_corner"
+                    app:carbon_rippleColor="@color/ripple" />
+
+                <carbon.widget.TextView
+                    android:id="@+id/f_user_tv_btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent2"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="24dp"
+                    android:layout_margin="16dp"
+                    android:paddingRight="24dp"
+                    android:paddingTop="8dp"
+                    android:text="未登录"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    app:carbon_cornerRadius="@dimen/radius_corner"
+                    app:carbon_rippleColor="@color/ripple" />
+
+                <TextView
+                    android:id="@+id/f_user_tv_cloudrepository_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:hint="(云仓网点)"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/font_color_normal"
+                    android:textColorHint="@color/font_color_normal"
+                    android:textSize="12sp" />
+
+                <carbon.widget.TextView
+                    android:id="@+id/f_user_tv_btn_enable_onlinepay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorAccent2"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="4dp"
+                    android:text="添加银行卡"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:carbon_cornerRadius="@dimen/radius_corner"
+                    app:carbon_rippleColor="@color/ripple" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_my_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_my_account" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的账户"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+
+                <include
+                    layout="@layout/layout_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="16dp" />
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_my_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_my_customer" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="我的客户"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_money_liushui"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_money_liushui" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="费用流水"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+
+                <include
+                    layout="@layout/layout_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="16dp" />
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_good_liushui"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_good_liushui" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="货物流水"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_hlep" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="帮助中心"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+
+                <include
+                    layout="@layout/layout_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="16dp" />
+
+                <carbon.widget.LinearLayout
+                    android:id="@+id/f_user_func_item_about_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:carbon_rippleColor="@color/ripple">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/mine_about_me" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="关于云仓"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@mipmap/my_goods_address_arrow" />
+                </carbon.widget.LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <carbon.widget.TextView
+                android:id="@+id/f_user_func_item_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="退出登录"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:carbon_rippleColor="@color/ripple" />
+
+            <include layout="@layout/layout_line" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

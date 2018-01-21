@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="@dimen/margin_top_or_button"
+        android:layout_marginRight="@dimen/margin_top_or_button"
+        android:background="@drawable/shap_line"
+        android:layerType="software" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/basic_padding_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_color_focused"
+            android:textSize="@dimen/mid_text_size" />
+
+        <TextView
+            android:id="@+id/number"
+            style="@style/basic_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_color_focused"
+            android:textSize="@dimen/mid_text_size" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/address"
+        style="@style/basic_padding_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/font_color_focused"
+        android:textSize="@dimen/mid_text_size" />
+
+    <com.xsl.lerist.llibrarys.widget.LRecyclerView
+        android:id="@+id/goods_gridVivew"
+        style="@style/basic_padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/daishou_money"
+            style="@style/basic_padding_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代收：-.--元"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/logistic_money"
+            style="@style/basic_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="配送费：-.--元"
+            android:textSize="@dimen/small_text_size" />
+    </RelativeLayout>
+
+</LinearLayout>

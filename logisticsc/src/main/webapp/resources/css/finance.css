@@ -1,0 +1,208 @@
+.fin-bg{
+	background: #f5f5f5;
+	padding-bottom: 30px;
+}
+.un-word{
+	margin-top: 10px;
+}
+.fin-banner{
+	width: 100%;
+	height: 300px;
+	background: url(../img/fin-banner.jpeg) no-repeat center;
+	/* background-size: cover; */
+	text-align: center;
+}
+.fin-word{
+	font-size: 24px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.fin-list{
+	width: 94%;
+	border: 1px solid #e7e7e7;
+	background: #fff;
+	border-radius: 5px;
+	padding: 16px;
+}
+.fin-title{
+	font-size: 18px;
+	display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.fin-num{
+	font-size: 28px;
+	font-weight: bold;
+	color: #ff5a00;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+.fin-mk{
+	height: 32px;
+	line-height: 32px;
+	border-bottom: 1px dashed #ddd;
+	color: #666;
+}
+.fin-black{
+	color: #333;
+}
+.fin-mshu{
+	height: 54px;
+	margin-top: 10px;
+	border-bottom: 1px dashed #ddd;
+	color: #666;
+}
+.fin-btn{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+.fin-btn1{
+	width:148px;
+	height: 45px;
+	background: url(../img/btn1.png) no-repeat center;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+.fin-btn1:hover{
+	background: url(../img/btn2.png) no-repeat center;
+	color: #fff;
+}
+
+.fin-bz{
+	border: 1px solid #ddd;
+	background: #fff;
+	border-radius: 5px;
+	margin-top: 20px;
+	overflow:hidden;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.lc-word{
+	font-size: 24px;
+	margin-left: 6px;
+	margin-top: 34px;
+}
+
+/*资管信托资金*/
+.fin-tab{
+	margin-top: 20px;
+	height: 44px;
+	line-height: 44px;
+	border-bottom: 2px solid #ff5a00;
+}
+.fin-tab ul{
+	padding-left: 0px;
+}
+.fin-tab li{
+	float: left;
+	width: 70px;
+	text-align: center;
+	font-size: 20px;
+}
+.fin-more{
+	margin-top: 6px;
+	height: 16px;
+}
+.tab-bg{
+	background: url(../img/arrow-up.png) no-repeat bottom center;
+}
+.fin-content{
+	width: 570px;
+	height: 168px;
+	border: 1px solid #ddd;
+	background: #fff;
+	padding-bottom: 20px;
+	padding-top: 30px;
+	margin-bottom: 20px;
+}
+.con-info{
+	margin-left: 20px;
+	width: 272px;
+	border-right: 1px dashed #ddd;
+}
+.con-img{
+	margin-left: 20px;
+}
+.con-info1 a{
+	font-size: 18px;
+	color: #007cc3;
+	display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.con-info2l{
+	width: 80px;
+}
+.con-info2{
+	height: 24px;
+	line-height: 24px;
+}
+.con-word{
+	font-size: 24px;
+	color: #FF5A00;
+}
+.fin-ckan{
+	margin-left: 35px;
+}
+.c-hui{
+	color: #666;
+}
+.con-btn1{
+	margin-top: 8px;
+}
+.con-btn{
+	width: 100px;
+	height: 32px;
+	background: #00a281;
+	color: #fff;
+}
+.con-btn:hover{
+	background: #1E8BC3;
+	color: #fff;
+}
+
+/*youshi*/
+.fin-ys{
+	background: #fff;
+	padding-top: 20px;
+	height: 200px;
+}
+.ys-word{
+	font-size: 22px;
+}
+.ys-lword{
+	font-size: 18px;
+	margin-left: 4px;
+	margin-top: 10px;
+}
+.ys-list{
+	margin-right: 66px;
+}
+.ys-info{
+	margin-top: 20px;
+}
+.qustion-list{
+	margin-top: 10px;
+}
+.qustion-list ul{
+	padding-left: 20px;
+}
+.qustion-list li{
+	list-style: disc;
+	height: 30px;
+	line-height: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

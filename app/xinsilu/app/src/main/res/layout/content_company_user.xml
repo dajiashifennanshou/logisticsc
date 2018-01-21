@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.wrt.xinsilu.ui.activity.CompanyUserActivity">
+
+    <include layout="@layout/title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="下列各项均为必填项"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="公司名称:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/company_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入公司名称"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="公司地址:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/company_address"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入公司地址"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="法人姓名:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/user_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入法人姓名"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="法人电话:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/user_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入法人电话"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:layout_marginTop="16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="联系人姓名:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/content_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入联系人姓名"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="联系人电话:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/content_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:gravity="left|center"
+                    android:hint="请输入联系人电话"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:padding="16dp"
+                    android:text="组织代码:"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/company_org"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@null"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                    android:gravity="left|center"
+                    android:hint="请输入组织代码"
+                    android:maxLength="18"
+                    android:singleLine="true"
+                    android:textColor="@color/font_color_normal2"
+                    android:textColorHint="@color/font_color_hint_light2"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="营业执照"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_licences"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/login_choose_pho"
+                        app:carbon_cornerRadius="5dp" />
+
+                    <ImageView
+                        android:id="@+id/delete1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/update_licences"
+                        android:src="@mipmap/login_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="公司照片"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_company_pic"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/login_choose_pho"
+                        app:carbon_cornerRadius="5dp" />
+
+                    <ImageView
+                        android:id="@+id/delete2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/update_company_pic"
+                        android:src="@mipmap/login_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="法人身份证"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_card"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/login_choose_pho"
+                        app:carbon_cornerRadius="5dp" />
+
+                    <ImageView
+                        android:id="@+id/delete3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/update_id_card"
+                        android:src="@mipmap/login_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="名片照片"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_pic"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/login_choose_pho"
+                        app:carbon_cornerRadius="5dp" />
+
+                    <ImageView
+                        android:id="@+id/delete4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/update_id_pic"
+                        android:src="@mipmap/login_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="公司LOGO"
+                    android:textColor="@color/font_color_normal2"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_company_logo"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/login_choose_pho"
+                        app:carbon_cornerRadius="5dp" />
+
+                    <ImageView
+                        android:id="@+id/delete5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_toRightOf="@+id/update_company_logo"
+                        android:src="@mipmap/login_delete"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

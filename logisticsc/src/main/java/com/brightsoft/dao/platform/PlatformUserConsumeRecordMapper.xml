@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserConsumeRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserConsumeRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="consume_time" property="consumeTime" jdbcType="TIMESTAMP" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="consume_card" property="consumeCard" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="consume_type" property="consumeType" jdbcType="VARCHAR" />
+    <result column="charge_card" property="chargeCard" jdbcType="VARCHAR" />
+    <result column="consume_user" property="consumeUser" jdbcType="VARCHAR" />
+    <result column="charge_user" property="chargeUser" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, consume_time, money, consume_card, remark, consume_type, charge_card, consume_user, order_number,
+    charge_user, user_id
+  </sql>
+   <!-- 增加我的消费记录 -->
+  <insert id="insertConsumeRecord" parameterType="com.brightsoft.model.PlatformUserConsumeRecord" >
+    insert into lc_platform_user_consume_record (consume_time, money, 
+      consume_card, remark, consume_type, 
+      charge_card, consume_user, order_number,charge_user, 
+      user_id)
+    values (#{consumeTime,jdbcType=TIMESTAMP}, #{money,jdbcType=DOUBLE}, 
+      #{consumeCard,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{consumeType,jdbcType=VARCHAR}, 
+      #{chargeCard,jdbcType=VARCHAR}, #{consumeUser,jdbcType=VARCHAR},#{orderNumber,jdbcType=VARCHAR}, #{chargeUser,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <!-- 我的消费记录 -->
+   <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+     from lc_platform_user_consume_record
+	 WHERE user_id = #{userId,jdbcType=BIGINT}
+	 and consume_type =#{consumeType,jdbcType=VARCHAR}
+	 order by consume_time desc 
+	 limit #{page.start},#{page.limit}
+  </select>
+  <!-- 我的消费记录总数 -->
+   <select id="countRows" resultType="int">
+    select 
+    	count(1)
+     from lc_platform_user_consume_record
+	 WHERE user_id = #{userId,jdbcType=BIGINT}
+	 and consume_type =#{consumeType,jdbcType=VARCHAR}
+	 order by consume_time desc 
+  </select>
+  <!-- 获取保险消费记录 -->
+  <select id="selectInsRecByParams" resultMap="BaseResultMap">
+  	select
+  		* 
+  	from 
+  		lc_platform_user_consume_record
+  	<where>
+  		consume_type = #{consumeType}
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and order_number = #{searchParams.condition}
+  		</if>
+  	</where>
+  	
+  		order by consume_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取保险消费记录数 -->
+  <select id="countRows4InsByParams" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		lc_platform_user_consume_record
+  	<where>
+  		consume_type = #{consumeType}
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and order_number = #{searchParams.condition}
+  		</if>
+  	</where>
+  </select>
+  
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_consume_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_consume_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserConsumeRecord" >
+    insert into lc_platform_user_consume_record (id, consume_time, money, 
+      consume_card, remark, consume_type, 
+      charge_card, consume_user, charge_user, 
+      user_id)
+    values (#{id,jdbcType=BIGINT}, #{consumeTime,jdbcType=TIMESTAMP}, #{money,jdbcType=DOUBLE}, 
+      #{consumeCard,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{consumeType,jdbcType=VARCHAR}, 
+      #{chargeCard,jdbcType=VARCHAR}, #{consumeUser,jdbcType=VARCHAR}, #{chargeUser,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserConsumeRecord" >
+    insert into lc_platform_user_consume_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="consumeTime != null" >
+        consume_time,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="consumeCard != null" >
+        consume_card,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="consumeType != null" >
+        consume_type,
+      </if>
+      <if test="chargeCard != null" >
+        charge_card,
+      </if>
+      <if test="consumeUser != null" >
+        consume_user,
+      </if>
+      <if test="chargeUser != null" >
+        charge_user,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="consumeTime != null" >
+        #{consumeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="consumeCard != null" >
+        #{consumeCard,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeType != null" >
+        #{consumeType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCard != null" >
+        #{chargeCard,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeUser != null" >
+        #{consumeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeUser != null" >
+        #{chargeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserConsumeRecord" >
+    update lc_platform_user_consume_record
+    <set >
+      <if test="consumeTime != null" >
+        consume_time = #{consumeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="consumeCard != null" >
+        consume_card = #{consumeCard,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeType != null" >
+        consume_type = #{consumeType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCard != null" >
+        charge_card = #{chargeCard,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeUser != null" >
+        consume_user = #{consumeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeUser != null" >
+        charge_user = #{chargeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserConsumeRecord" >
+    update lc_platform_user_consume_record
+    set consume_time = #{consumeTime,jdbcType=TIMESTAMP},
+      money = #{money,jdbcType=DOUBLE},
+      consume_card = #{consumeCard,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      consume_type = #{consumeType,jdbcType=VARCHAR},
+      charge_card = #{chargeCard,jdbcType=VARCHAR},
+      consume_user = #{consumeUser,jdbcType=VARCHAR},
+      charge_user = #{chargeUser,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+  	SELECT t1.*, t2.true_name user_name, t2.mobile FROM lc_platform_user_consume_record t1 
+  	LEFT JOIN lc_platform_user t2 ON t1.user_id = t2.id where 1 = 1
+  	<if test="consumeType != null and consumeType != '' ">
+   		and t1.consume_type = #{consumeType,jdbcType=VARCHAR}
+   	</if>
+  	<if test="startTime != null and startTime != '' ">
+   		and t1.consume_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and t1.consume_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and ((t2.true_name like concat("%",#{condition,jdbcType=VARCHAR},"%")) or (t2.mobile like concat("%",#{condition,jdbcType=VARCHAR},"%")))
+   	</if>
+   	limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int" >
+    SELECT count(1) FROM lc_platform_user_consume_record t1 
+  	LEFT JOIN lc_platform_user t2 ON t1.user_id = t2.id where 1 = 1
+  	<if test="consumeType != null and consumeType != '' ">
+   		and t1.consume_type = #{consumeType,jdbcType=VARCHAR}
+   	</if>
+  	<if test="startTime != null and startTime != '' ">
+   		and t1.consume_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and t1.consume_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and ((t2.true_name like concat("%",#{condition,jdbcType=VARCHAR},"%")) or (t2.mobile like concat("%",#{condition,jdbcType=VARCHAR},"%")))
+   	</if>
+  </select>
+</mapper>

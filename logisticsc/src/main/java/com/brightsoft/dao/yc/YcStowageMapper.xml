@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcStowageDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcStowage"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,branchNo,stowageNo,stowageStatus,carNo,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcStowage" > 
+		select  <include refid="Base_Column_List" />  from yc_stowage where id=#{id} 
+	</select> 
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcStowage"> 
+		delete from yc_stowage where id in (
+			<foreach collection="list" item="item" separator=",">
+				#{item}
+			</foreach>
+		) 
+	</delete>
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcStowage" > 
+		select  count(1)  from yc_stowage where branchNo=#{branchNo}
+		<if test="stowageStatus !=null"> 
+			and stowageStatus=#{stowageStatus}
+		</if>
+	</select> 
+	<select id="getAllStowageList" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcStowage" > 
+		select  <include refid="Base_Column_List" />  from yc_stowage where branchNo=#{branchNo}
+		<if test="stowageStatus !=null"> 
+			and stowageStatus=#{stowageStatus}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_stowage where branchNo=#{branchNo}
+		<if test="stowageStatus !=null"> 
+			and stowageStatus=#{stowageStatus}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcStowage"> 
+		delete from yc_stowage where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcStowage" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_stowage  
+		(stowageNo,branchNo,stowageStatus,carNo,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{stowageNo},#{branchNo},#{stowageStatus},#{carNo},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modStatusByNo" parameterType="com.brightsoft.entity.YcStowage">   
+	update yc_stowage set stowageStatus=#{stowageStatus} where stowageNo=#{stowageNo}
+	</update>
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcStowage">   
+	update yc_stowage 
+	<set> 
+		<if test="stowageNo !=null"> 
+			stowageNo=#{stowageNo},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="stowageStatus !=null"> 
+			stowageStatus=#{stowageStatus},
+		</if>
+		<if test="carNo !=null"> 
+			carNo=#{carNo},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where 1=1
+	<if test="stowageNo !=null"> 
+			and stowageNo=#{stowageNo}
+	</if>
+	<if test="id !=null"> 
+			and id=#{id}
+	</if>
+	</update> 
+</mapper> 
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#3e3f40</color>
+    <color name="colorAccent">#64bcff</color>
+    <color name="colorAccent2">#199bff</color>
+    <color name="colorAccent3">#ff9900</color>
+
+    <color name="colorPrimaryContent">#f5f5f5</color>
+
+    <color name="font_color_focused">#212121</color>
+    <color name="font_color_normal">#797979</color>
+    <color name="font_color_normal_light">#f5f5f5</color>
+    <color name="font_color_hint">#a1a1a1</color>
+    <color name="font_color_hint_light">#f5f5f5</color>
+    <!--省市列表颜色-->
+    <color name="province_line_border">#C7C7C7</color>
+</resources>

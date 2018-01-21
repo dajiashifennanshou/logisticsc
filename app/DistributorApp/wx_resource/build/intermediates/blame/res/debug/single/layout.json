@@ -1,0 +1,938 @@
+[
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_singlechoice.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_edit.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_edit.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\swipeback_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\swipeback_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_folder_list_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_folder_list_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_line.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_line.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\meituan_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\meituan_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate_horizontal.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress_indeterminate_horizontal.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout_row.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout_row.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_folder_list_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_folder_list_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\acfun_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\acfun_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_line.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_line.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_snackbar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_snackbar.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_editormenu.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_editormenu.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_preview.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_preview.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_edit_list.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_edit_list.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottombar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottombar.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_floatingactionmenu_right.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_floatingactionmenu_right.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_preview_viewpgaer_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_preview_viewpgaer_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_dialog.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_dialog.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_preference_custom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_preference_custom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_actionbuttons.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_actionbuttons.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\rotation_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\rotation_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ali_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\ali_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_materialdialog.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\me.drakeet.materialdialog\\library\\1.2.8\\res\\layout\\layout_materialdialog.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_actionbuttons.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_actionbuttons.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\title.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\src\\main\\res\\layout\\title.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_materialdialog.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\me.drakeet.materialdialog\\library\\1.2.8\\res\\layout\\layout_materialdialog.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_recyclerview.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\fragment_recyclerview.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_colorchooser_grid.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_colorchooser_grid.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_floatingactionmenu_left.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_floatingactionmenu_left.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ldialog_datepicker.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\ldialog_datepicker.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_recyclerview.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\fragment_recyclerview.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_basic.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_basic.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_colorchooser_custom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_colorchooser_custom.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_expandablerecyclerview_group.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_expandablerecyclerview_group.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\swipeback_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\swipeback_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ldialog_datepicker.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\ldialog_datepicker.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_recent_card.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_recent_card.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate_horizontal.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress_indeterminate_horizontal.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe_lesspadding.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_titleframe_lesspadding.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_preference_custom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_preference_custom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_titleframe.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_edit.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_edit.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\default_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\default_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_colorchooser.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_dialog_colorchooser.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\view_pull_refresh_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\view_pull_refresh_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\default_footer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\default_footer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_input.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_input.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_expandablerecyclerview_group.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_expandablerecyclerview_group.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ali_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\ali_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\meituan_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\meituan_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\acfun_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\acfun_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tab.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tab.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_input.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_input.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_dialog.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_dialog.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_floatingactionmenu_left.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_floatingactionmenu_left.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_popupmenu_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_popupmenu_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottombar_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottombar_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_basic.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_basic.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_custom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_custom.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ali_footer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\ali_footer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_navigation_row.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_navigation_row.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_select.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_select.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_progress_dialog.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_progress_dialog.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_preview_viewpgaer_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_preview_viewpgaer_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_progress_dialog.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_progress_dialog.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_popupmenu_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_popupmenu_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\acfun_footer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\acfun_footer.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_line_vertical.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_line_vertical.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_inputpref.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_inputpref.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\rotation_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\rotation_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_toolbar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_toolbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress_indeterminate.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_seekbar_bubble.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_seekbar_bubble.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_list.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_list.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\acfun_footer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\acfun_footer.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\goods_info_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\src\\main\\res\\layout\\goods_info_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\meituan_footer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\meituan_footer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_list.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_list.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottom_sheet.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottom_sheet.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottombar_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottombar_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_editormenu.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_editormenu.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\title.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\src\\main\\res\\layout\\title.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottombar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottombar.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\meituan_footer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\meituan_footer.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_simplelist_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_simplelist_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\ali_footer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\ali_footer.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tab.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tab.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_recent_card.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_recent_card.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_custom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_custom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_chip.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_chip.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_titleframe.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_dialog_progress_indeterminate.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_bottom_sheet.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_bottom_sheet.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tableview_row.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tableview_row.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_edit_list.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_edit_list.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_snackbar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_snackbar.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_chip.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_chip.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\goods_info_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\src\\main\\res\\layout\\goods_info_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\default_footer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\default_footer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_popupmenu.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_popupmenu.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe_lesspadding.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_stub_titleframe_lesspadding.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\layout_line_vertical.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\layout_line_vertical.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_floatingactionmenu_right.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_floatingactionmenu_right.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_toolbar.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_toolbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\view_pull_refresh_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\view_pull_refresh_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_select.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_select.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_simplelist_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_simplelist_item.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tablelayout_row.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tablelayout_row.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_colorchooser.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_dialog_colorchooser.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\default_header.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\layout\\default_header.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_multichoice.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_tableview_row.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_tableview_row.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_navigation_row.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_navigation_row.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_multichoice.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_seekbar_bubble.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_seekbar_bubble.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\carbon_popupmenu.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\layout\\carbon_popupmenu.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_photo_list_item.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_photo_list_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_colorchooser_grid.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_colorchooser_grid.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_activity_photo_preview.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_activity_photo_preview.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_singlechoice.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout\\md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\gf_adapter_photo_list_item.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\layout\\gf_adapter_photo_list_item.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\rotation_footer.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\rotation_footer.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_colorchooser_custom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_colorchooser_custom.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_inputpref.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\commons\\0.8.5.9\\res\\layout\\md_stub_inputpref.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\layout\\rotation_footer.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.liaoinstan.springview\\library\\1.2.5\\res\\layout\\rotation_footer.xml"
+    }
+]

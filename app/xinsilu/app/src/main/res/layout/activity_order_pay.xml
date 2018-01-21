@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order_pay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.wrt.xinsilu.lerist.ui.activity.OrderPayActivity">
+
+    <include layout="@layout/title" />
+
+    <include layout="@layout/layout_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单号: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/a_orderpay_tv_ordernum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预约费: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/a_orderpay_tv_take_cost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <carbon.widget.TextView
+                android:id="@+id/a_orderpay_btn_do_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="确认支付"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:carbon_cornerRadius="@dimen/btn_radius"
+                app:carbon_rippleColor="@color/ripple" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

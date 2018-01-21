@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-ldrtl-v17\\md_listitem_multichoice.xml",
+        "source": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout-ldrtl-v17\\md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-ldrtl-v17\\md_listitem_multichoice.xml",
+        "source": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout-ldrtl-v17\\md_listitem_multichoice.xml"
+    },
+    {
+        "merged": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-ldrtl-v17\\md_listitem_singlechoice.xml",
+        "source": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout-ldrtl-v17\\md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-ldrtl-v17\\md_listitem_singlechoice.xml",
+        "source": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\layout-ldrtl-v17\\md_listitem_singlechoice.xml"
+    }
+]

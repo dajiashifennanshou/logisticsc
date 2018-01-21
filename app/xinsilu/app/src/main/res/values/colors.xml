@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#26B463</color>
+    <color name="colorPrimaryDark">#26B463</color>
+    <color name="colorAccent">#26B463</color>
+    <color name="background">#f7f7f7</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="basic_color">#aaaaaaaa</color>
+    <color name="commit_color">#656565</color>
+    <color name="commit_background">#f1f1f1</color>
+
+
+    <!--viewpagerIndicator-->
+        <color name="vpi__background_holo_dark">#ff000000</color>
+        <color name="vpi__background_holo_light">#fff3f3f3</color>
+        <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+        <color name="vpi__bright_foreground_holo_light">@color/vpi__background_holo_dark</color>
+        <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+        <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+        <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+        <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+</resources>

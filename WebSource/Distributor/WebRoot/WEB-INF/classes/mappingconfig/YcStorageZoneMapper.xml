@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcStorageZoneDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcStorageZone"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,storageNo,zoneNo,zoneStatus,zoneArea,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcStorageZone" > 
+		select  <include refid="Base_Column_List" />  from yc_storage_zone where id=#{id}
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcStorageZone" > 
+		SELECT count(1) FROM yc_storage_branch a INNER JOIN yc_storage_zone b ON a.branchNo=b.storageNo
+		<if test="branchName!=null">
+			<bind name="bName" value="'%'+branchName+'%'"/>
+			and a.branchName like #{bName}
+		</if>
+		<if test="zoneNo!=null">
+			<bind name="zno" value="'%'+zoneNo+'%'"/>
+			and b.zoneNo like #{zno}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		SELECT a.branchName,b.id,b.storageNo,b.zoneNo,b.zoneStatus,b.zoneArea,b.createTime,b.remark FROM yc_storage_branch a INNER JOIN yc_storage_zone b ON a.branchNo=b.storageNo
+		<if test="branchName!=null">
+			<bind name="bName" value="'%'+branchName+'%'"/>
+			and a.branchName like #{bName}
+		</if>
+		<if test="zoneNo!=null">
+			<bind name="zno" value="'%'+zoneNo+'%'"/>
+			and b.zoneNo like #{zno}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcStorageZone"> 
+		delete from yc_storage_zone where id=#{id} 
+	</delete>
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcStorageZone" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_storage_zone  
+		(storageNo,zoneNo,zoneStatus,zoneArea,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{storageNo},#{zoneNo},#{zoneStatus},#{zoneArea},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcStorageZone">   
+	update yc_storage_zone 
+	<set> 
+		<if test="storageNo !=null"> 
+			storageNo=#{storageNo},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="zoneStatus !=null"> 
+			zoneStatus=#{zoneStatus},
+		</if>
+		<if test="zoneArea !=null"> 
+			zoneArea=#{zoneArea},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update>
+	<select id="getStorageZone" resultMap="BaseResultMap" parameterType="map">
+		select <include refid="Base_Column_List"/> from yc_storage_zone where 1=1
+		<choose>
+			<when test="storageNo!=null">
+				and storageNo=#{storageNo}
+			</when>
+			<otherwise>
+				and id = -1
+			</otherwise>
+		</choose>
+	</select> 
+</mapper> 
+

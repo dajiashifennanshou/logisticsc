@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcZoneGoodsDao"> 
+	<resultMap id="YcZoneGoods" type="com.brightsoft.entity.YcZoneGoods"></resultMap>   
+	<resultMap id="GoodsStatistics" type="com.brightsoft.entity.YcGoodsStatistics"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,zoneNo,branchNo,dealerId,wayBillNo,wayBillStatus,goodsNum,inZoneStatus,goodsId,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="YcZoneGoods" parameterType="com.brightsoft.entity.YcZoneGoods" > 
+		select  <include refid="Base_Column_List" />  from yc_zone_goods where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcZoneGoods" > 
+		select  count(1)  from yc_zone_goods 
+	</select>
+	<select id="getListPagerInfo" resultMap="YcZoneGoods" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_zone_goods zg where  zg.branchNo = #{branchNo}
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select>
+	<select id="getGoodsStatistics" resultMap="GoodsStatistics" parameterType="map">
+		SELECT  zg.id,zg.zoneNo,zg.branchNo,zg.dealerId,zg.goodsNum,zg.inZoneStatus,zg.goodsId,zg.createTime
+				,g.goodsName,g.goodsBrand,g.park,g.goodsType,g.vender,g.weight,g.volume,g.elseExplan
+		FROM yc_zone_goods zg INNER JOIN yc_goods g ON zg.goodsId=g.id
+		<if test="branchNo!=null">
+			and zg.branchNo = #{branchNo}
+		</if>
+		<if test="zoneNo!=null">
+			and zg.zoneNo = #{zoneNo}
+		</if>
+		<if test="dealerId!=null">
+			and zg.dealerId=#{dealerId}
+		</if>
+		order by zg.id desc limit #{limitMax} offset #{limitMin} 
+	</select>
+	
+	<select id="getGoodsStatisticsCount" resultType="int" parameterType="com.brightsoft.entity.YcGoodsStatistics">
+		SELECT  count(1) FROM yc_zone_goods zg INNER JOIN yc_goods g ON g.id=zg.goodsId  
+		<if test="branchNo!=null">
+			and zg.branchNo = #{branchNo}
+		</if>
+		<if test="zoneNo!=null">
+			and zg.zoneNo = #{zoneNo}
+		</if>
+		<if test="dealerId!=null">
+			and zg.dealerId=#{dealerId}
+		</if>
+	</select>
+	<select id="getGoodsStatisticsSumCount" resultType="int" parameterType="com.brightsoft.entity.YcGoodsStatistics">
+		SELECT  SUM(zg.goodsNum) FROM yc_zone_goods zg INNER JOIN yc_goods g ON g.id=zg.goodsId 
+		<if test="branchNo!=null">
+			and zg.branchNo = #{branchNo}
+		</if>
+		<if test="zoneNo!=null">
+			and zg.zoneNo = #{zoneNo}
+		</if>
+		<if test="dealerId!=null">
+			and zg.dealerId=#{dealerId}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcZoneGoods"> 
+		delete from yc_zone_goods where id=#{id}
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcZoneGoods" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_zone_goods  
+		(zoneNo,branchNo,wayBillNo,wayBillStatus,dealerId,goodsNum,inZoneStatus,goodsId,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{zoneNo},#{branchNo},#{wayBillNo},#{wayBillStatus},#{dealerId},#{goodsNum},#{inZoneStatus},#{goodsId},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="reSetGoodsSum" parameterType="com.brightsoft.entity.YcZoneGoods">   
+		UPDATE yc_zone_goods zg SET goodsNum=goodsNum+(SELECT og.`SUM` FROM yc_order_goods og WHERE og.`deliveryNo`=#{param3} AND og.`zoneGoodsId`=1) WHERE zg.`branchNo`=#{param1} AND zg.`dealerId`=1 AND zg.`goodsId`=#{param2}
+	</update> 
+	<update id="modWayBillStatusByNo" parameterType="string">   
+		UPDATE yc_zone_goods yzg SET yzg.`wayBillStatus`=1 WHERE yzg.`wayBillNo`=#{wayBillNo}
+	</update> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcZoneGoods">   
+	update yc_zone_goods 
+	<set> 
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="goodsNum !=null"> 
+			goodsNum=#{goodsNum},
+		</if>
+		<if test="inZoneStatus !=null"> 
+			inZoneStatus=#{inZoneStatus},
+		</if>
+		<if test="wayBillNo !=null"> 
+			wayBillNo=#{wayBillNo},
+		</if>
+		<if test="wayBillStatus !=null"> 
+			wayBillStatus=#{wayBillStatus},
+		</if>
+		<if test="goodsId !=null"> 
+			goodsId=#{goodsId},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

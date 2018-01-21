@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+	<AppSettings>
+		<DBUrl><![CDATA[jdbc:mysql://localhost:3306/wuliuold?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true]]></DBUrl>	<!-- 数据库url -->
+		<DBUser><![CDATA[root]]></DBUser>	<!-- 数据库帐号 -->
+		<DBPassword><![CDATA[SILUkamila1688]]></DBPassword>	<!-- 数据库密码 -->
+		<testconfig><![CDATA[1111]]></testconfig>	<!-- 测试配置 -->
+<!-- 		<DBUser><![CDATA[XSLCloud]]></DBUser>	数据库帐号
+		<DBPassword><![CDATA[123456]]></DBPassword>	数据库密码
+		<testconfig><![CDATA[1111]]></testconfig>	测试配置 -->
+		<!-- jdbc.url=jdbc:mysql://rm-wz9tw7ts1rn3h6fpe.mysql.rds.aliyuncs.com:3306/cloud?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+		jdbc.username=xsl56
+		jdbc.password=ASDqwe123-2wsx -->
+		<imgPath><![CDATA[/root/img]]></imgPath>	<!-- 图片存放路径 -->
+	</AppSettings>
+</Config>

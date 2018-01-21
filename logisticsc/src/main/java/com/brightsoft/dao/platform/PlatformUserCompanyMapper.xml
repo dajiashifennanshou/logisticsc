@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserCompany" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="legal_mobile" property="legalMobile" jdbcType="VARCHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="contacts_mobile" property="contactsMobile" jdbcType="VARCHAR" />
+    <result column="qq" property="QQ" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="company_fax" property="companyFax" jdbcType="VARCHAR" />
+    <result column="company_tax_no" property="companyTaxNo" jdbcType="VARCHAR" />
+    <result column="finance_email" property="financeEmail" jdbcType="VARCHAR" />
+    <result column="company_info" property="companyInfo" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="company_photo" property="companyPhoto" jdbcType="VARCHAR" />
+    <result column="legal_photo" property="legalPhoto" jdbcType="VARCHAR" />
+    <result column="card_photo" property="cardPhoto" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="recommended" property="recommended" jdbcType="INTEGER" />
+    <result column="contacts1" property="contacts1" jdbcType="VARCHAR" />
+    <result column="contacts1_mobile" property="contacts1Mobile" jdbcType="VARCHAR" />
+    <result column="contacts2" property="contacts2" jdbcType="VARCHAR" />
+    <result column="contacts2_mobile" property="contacts2Mobile" jdbcType="VARCHAR" />
+    <result column="tms_login_name" property="tmsLoginName" jdbcType="VARCHAR" />
+    <result column="tms_user_status" property="tmsUserStatus" jdbcType="INTEGER" />
+     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="companyInfoResultMap" type="com.brightsoft.model.PlatformCompanyinfo" >
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="legal_mobile" property="legalMobile" jdbcType="VARCHAR" />
+    <result column="contacts" property="contacts" jdbcType="VARCHAR" />
+    <result column="contacts_mobile" property="contactsMobile" jdbcType="VARCHAR" />
+    <result column="qq" property="QQ" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="company_fax" property="companyFax" jdbcType="VARCHAR" />
+    <result column="company_tax_no" property="companyTaxNo" jdbcType="VARCHAR" />
+    <result column="finance_email" property="financeEmail" jdbcType="VARCHAR" />
+    <result column="company_info" property="companyInfo" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="company_photo" property="companyPhoto" jdbcType="VARCHAR" />
+    <result column="legal_photo" property="legalPhoto" jdbcType="VARCHAR" />
+    <result column="card_photo" property="cardPhoto" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="recommended" property="recommended" jdbcType="INTEGER" />
+    <result column="contacts1" property="contacts1" jdbcType="VARCHAR" />
+    <result column="contacts1_mobile" property="contacts1Mobile" jdbcType="VARCHAR" />
+    <result column="contacts2" property="contacts2" jdbcType="VARCHAR" />
+    <result column="contacts2_mobile" property="contacts2Mobile" jdbcType="VARCHAR" />
+    <result column="staff_number" property="staffNumber" jdbcType="INTEGER" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="warehouse_info" property="warehouseInfo" jdbcType="VARCHAR" />
+    <result column="carriage_goods" property="carriageGoods" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="vehicle_info" property="vehicleInfo" jdbcType="VARCHAR" />
+    <result column="annual_money" property="annualMoney" jdbcType="DOUBLE" />
+    <result column="service_info" property="serviceInfo" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_code, company_name, company_address, legal_person, legal_mobile,qq, contacts, contacts_mobile, 
+    contacts1,contacts1_mobile,contacts2,contacts2_mobile,
+    post_code, company_phone, company_fax,company_tax_no, 
+    finance_email, company_info, logo, business_license, company_photo, legal_photo, 
+    card_photo,recommended, contacts1, contacts1_mobile, contacts2, contacts2_mobile
+  </sql>
+  <select id="selectLsitCompany" resultMap="BaseResultMap">
+    select * from lc_platform_user_company where recommended = 0
+  </select>
+  <select id="selectAllCompany" resultMap="BaseResultMap">
+    select * from lc_platform_user_company
+  </select>
+   <!-- 获取物流商公司信息 -->
+  <select id="selectLogisticsCompanyinfo" resultMap="companyInfoResultMap" parameterType="java.lang.Long" >
+    select * from lc_platform_user_company com 
+	LEFT JOIN lc_platform_user_companyinfo cominfo on com.id = cominfo.company_id
+	WHERE com.id = #{companyId,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司信息 -->
+  <select id="selectCompanyInfo" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司图片Logo信息 -->
+  <select id="selectCompanyInfoLogo" resultType="String"  parameterType="java.lang.Long" >
+    select 
+	    logo
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司营业执照图片 -->
+  <select id="selectCompanyInfoBusinessLicense" resultType="String" parameterType="java.lang.Long" >
+    select 
+	    business_license
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司公司照片 -->
+  <select id="selectCompanyInfoCompanyPhoto" resultType="String" parameterType="java.lang.Long" >
+    select 
+	    company_photo
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司法定人身份证照片 -->
+  <select id="selectCompanyInfoLegalPhoto" resultType="String" parameterType="java.lang.Long" >
+    select 
+	     legal_photo
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 获取公司图片名片照片 -->
+  <select id="selectCompanyInfoCardPhoto" resultType="String" parameterType="java.lang.Long" >
+    select 
+	    card_photo
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <!-- 获取公司最大值 -->
+  <select id="selectCompanyMax" resultType="java.lang.Long">
+   	select MAX(id) from lc_platform_user_company
+  </select>
+  <!-- 修改公司信息 -->
+   <update id="updateCompanyInfo" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    update lc_platform_user_company
+    set
+
+  		 company_code = #{companyCode,jdbcType=VARCHAR},
+  		company_name = #{companyName,jdbcType=VARCHAR}, 
+  		company_address = #{companyAddress,jdbcType=VARCHAR}, 
+    		legal_person = #{legalPerson,jdbcType=VARCHAR},
+    		legal_mobile = #{legalMobile,jdbcType=VARCHAR}, 
+    		contacts = #{contacts,jdbcType=VARCHAR}, 
+    contacts_mobile = #{contactsMobile,jdbcType=VARCHAR}, 
+    post_code = #{postCode,jdbcType=VARCHAR},
+     company_phone = #{companyPhone,jdbcType=VARCHAR}, 
+      company_fax = #{companyFax,jdbcType=VARCHAR}, 
+     company_tax_no =  #{companyTaxNo,jdbcType=VARCHAR}, 
+     finance_email =  #{financeEmail,jdbcType=VARCHAR}, 
+     company_info =  #{companyInfo,jdbcType=VARCHAR}, 
+      qq = #{QQ,jdbcType=VARCHAR},
+	  logo = #{logo,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      company_photo = #{companyPhoto,jdbcType=VARCHAR},
+      legal_photo = #{legalPhoto,jdbcType=VARCHAR},
+      card_photo = #{cardPhoto,jdbcType=VARCHAR},
+     contacts1 = #{contacts1,jdbcType=VARCHAR}, 
+    contacts1_mobile =  #{contacts1Mobile,jdbcType=VARCHAR},
+     contacts2 = #{contacts2,jdbcType=VARCHAR}, 
+      contacts2_mobile =  #{contacts2Mobile,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 修改公司图片信息 -->
+   <update id="updateCompanyInfoImg" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    update lc_platform_user_company
+    set
+     <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR}
+      </if>
+       <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR}
+      </if>
+      <if test="companyPhoto != null" >
+        company_photo = #{companyPhoto,jdbcType=VARCHAR}
+      </if>
+      <if test="legalPhoto != null" >
+        legal_photo = #{legalPhoto,jdbcType=VARCHAR}
+      </if>
+      <if test="cardPhoto != null" >
+        card_photo = #{cardPhoto,jdbcType=VARCHAR}
+      </if>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 增加公司信息 -->
+  <insert id="insertCompanyInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.brightsoft.model.PlatformUserCompany" >
+   		insert into lc_platform_user_company (company_code, company_name, company_address, 
+      legal_person, legal_mobile, contacts, 
+      contacts_mobile, post_code, company_phone, 
+      company_fax,
+      company_tax_no, finance_email, company_info, 
+      qq,logo,business_license, company_photo, legal_photo, 
+    card_photo, contacts1, contacts1_mobile, contacts2, contacts2_mobile
+      )
+    values (#{companyCode,jdbcType=VARCHAR},
+    		#{companyName,jdbcType=VARCHAR}, 
+    		#{companyAddress,jdbcType=VARCHAR}, 
+      		#{legalPerson,jdbcType=VARCHAR},
+      		 #{legalMobile,jdbcType=VARCHAR}, 
+      		 #{contacts,jdbcType=VARCHAR}, 
+		      #{contactsMobile,jdbcType=VARCHAR}, 
+		      #{postCode,jdbcType=VARCHAR},
+		      #{companyPhone,jdbcType=VARCHAR}, 
+		      #{companyFax,jdbcType=VARCHAR}, 
+		      #{companyTaxNo,jdbcType=VARCHAR}, 
+		      #{financeEmail,jdbcType=VARCHAR}, 
+		      #{companyInfo,jdbcType=VARCHAR}, 
+		      #{QQ,jdbcType=VARCHAR},
+			  #{logo,jdbcType=VARCHAR},
+		      #{businessLicense,jdbcType=VARCHAR},
+		      #{companyPhoto,jdbcType=VARCHAR},
+		      #{legalPhoto,jdbcType=VARCHAR},
+		      #{cardPhoto,jdbcType=VARCHAR},
+		      #{contacts1,jdbcType=VARCHAR}, 
+		      #{contacts1Mobile,jdbcType=VARCHAR},
+		      #{contacts2,jdbcType=VARCHAR}, 
+		      #{contacts2Mobile,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="selectByOutletsId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_company
+    WHERE id = (SELECT company_id FROM tms_outlets_info WHERE id = #{outletsId,jdbcType=BIGINT})
+  </select>
+  <!-- 查询企业信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select
+  		puc.id, puc.company_code, puc.company_name, puc.company_address, puc.legal_person, puc.legal_mobile,qq, puc.contacts, 
+  		puc.contacts_mobile,puc.contacts1,puc.contacts1_mobile,puc.contacts2,puc.contacts2_mobile, puc.post_code, puc.company_phone, puc.company_fax,puc.company_tax_no, 
+	    puc.finance_email, puc.company_info, puc.logo, puc.business_license, puc.company_photo, puc.legal_photo, 
+	    puc.card_photo,pu.login_name,pu.user_type,pu.true_name,pu.status as user_status,pu.id as user_id
+  	from 
+  		lc_platform_user_company puc
+  		join lc_platform_user pu on puc.id = pu.company_id
+  	where 
+  		pu.status != 0
+  		<if test="platformUserCompany.condition != null and platformUserCompany.condition != ''">
+  			and puc.company_name like concat("%",#{platformUserCompany.condition},"%")
+  		</if>
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 查询企业信息总记录数 -->
+  <select id="countRows" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		lc_platform_user_company puc
+  		join lc_platform_user pu on puc.id = pu.company_id
+  	where 
+  		pu.status != 0
+  		<if test="platformUserCompany.condition != null and platformUserCompany.condition != ''">
+  			and puc.company_name like concat("%",#{platformUserCompany.condition},"%")
+  		</if>
+  </select>
+  
+ <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_company
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertCompanyInfo" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    insert into lc_platform_user_company (id, company_name, company_address, 
+      legal_person, legal_mobile, contacts, 
+      contacts_mobile, post_code, company_phone, 
+      company_fax, company_bank, company_bank_no, 
+      company_tax_no, finance_email, company_info, 
+      logo, business_license, company_photo, 
+      legal_photo, card_photo,
+      status, auditor_time, auditor
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, 
+      #{legalPerson,jdbcType=VARCHAR}, #{legalMobile,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, 
+      #{contactsMobile,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{companyFax,jdbcType=VARCHAR}, #{companyBank,jdbcType=VARCHAR}, #{companyBankNo,jdbcType=VARCHAR}, 
+      #{companyTaxNo,jdbcType=VARCHAR}, #{financeEmail,jdbcType=VARCHAR}, #{companyInfo,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR}, #{companyPhoto,jdbcType=VARCHAR}, 
+      #{legalPhoto,jdbcType=VARCHAR}, #{cardPhoto,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{auditorTime,jdbcType=DATE}, #{auditor,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    insert into lc_platform_user_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyCode != null" >
+        company_code,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="legalPerson != null" >
+        legal_person,
+      </if>
+      <if test="legalMobile != null" >
+        legal_mobile,
+      </if>
+      <if test="contacts != null" >
+        contacts,
+      </if>
+      <if test="contactsMobile != null" >
+        contacts_mobile,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="companyPhone != null" >
+        company_phone,
+      </if>
+      <if test="companyFax != null" >
+        company_fax,
+      </if>
+      <if test="companyBank != null" >
+        company_bank,
+      </if>
+      <if test="companyBankNo != null" >
+        company_bank_no,
+      </if>
+      <if test="companyTaxNo != null" >
+        company_tax_no,
+      </if>
+      <if test="financeEmail != null" >
+        finance_email,
+      </if>
+      <if test="companyInfo != null" >
+        company_info,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="companyPhoto != null" >
+        company_photo,
+      </if>
+      <if test="legalPhoto != null" >
+        legal_photo,
+      </if>
+      <if test="cardPhoto != null" >
+        card_photo,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="auditorTime != null" >
+        auditor_time,
+      </if>
+      <if test="auditor != null" >
+        auditor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMobile != null" >
+        #{legalMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsMobile != null" >
+        #{contactsMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null" >
+        #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBank != null" >
+        #{companyBank,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBankNo != null" >
+        #{companyBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTaxNo != null" >
+        #{companyTaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeEmail != null" >
+        #{financeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null" >
+        #{companyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhoto != null" >
+        #{companyPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPhoto != null" >
+        #{legalPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cardPhoto != null" >
+        #{cardPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="auditorTime != null" >
+        #{auditorTime,jdbcType=DATE},
+      </if>
+      <if test="auditor != null" >
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    update lc_platform_user_company
+    set company_code = #{companyCode,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      legal_person = #{legalPerson,jdbcType=VARCHAR},
+      legal_mobile = #{legalMobile,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      contacts_mobile = #{contactsMobile,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_fax = #{companyFax,jdbcType=VARCHAR},
+      company_bank = #{companyBank,jdbcType=VARCHAR},
+      company_bank_no = #{companyBankNo,jdbcType=VARCHAR},
+      company_tax_no = #{companyTaxNo,jdbcType=VARCHAR},
+      finance_email = #{financeEmail,jdbcType=VARCHAR},
+      company_info = #{companyInfo,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      company_photo = #{companyPhoto,jdbcType=VARCHAR},
+      legal_photo = #{legalPhoto,jdbcType=VARCHAR},
+      card_photo = #{cardPhoto,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      auditor_time = #{auditorTime,jdbcType=DATE},
+      auditor = #{auditor,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserCompany" >
+    update lc_platform_user_company
+    <set >
+      <if test="contacts1 != null" >
+        contacts1 = #{contacts1,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts1Mobile != null" >
+        contacts1_mobile = #{contacts1Mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts2 != null" >
+        contacts2 = #{contacts2,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts1Mobile != null" >
+        contacts2_mobile = #{contacts2Mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null" >
+        company_fax = #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null" >
+        company_info = #{companyInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_company
+    WHERE id = (SELECT company_id FROM tms_outlets_info WHERE id = #{outletsId,jdbcType=BIGINT})
+  </select>
+
+  
+  
+  <!-- 分页查询商铺信息 -->
+  <select id="getAllPlatformCompanyinfo" resultMap="BaseResultMap">
+  	SELECT c_y.*,u_r.login_name,u_r.create_time
+	FROM lc_platform_user_company c_y
+	LEFT JOIN lc_platform_user u_r on u_r.company_id = c_y.id
+	WHERE 1=1
+	<if test="platformUserCompany.companyName!= null and platformUserCompany.companyName!=''">
+		 and c_y.company_name like concat("%",#{platformUserCompany.companyName},"%")
+	</if>
+	<if test="platformUserCompany.companyCode!= null and platformUserCompany.companyCode!=''">
+		and c_y.company_code = #{platformUserCompany.companyCode}
+	</if>
+	<if test="platformUserCompany.loginName!= null and platformUserCompany.loginName!=''">
+		and u_r.login_name = #{platformUserCompany.loginName}
+	</if>
+	<if test="platformUserCompany.startTime != null and platformUserCompany.startTime != '' ">
+   		and u_r.create_time >= #{platformUserCompany.startTime}
+   	</if>
+   	<if test="platformUserCompany.endTime != null and platformUserCompany.endTime != '' ">
+   		and u_r.create_time <![CDATA[<=]]> #{platformUserCompany.endTime}
+   	</if>
+   	<if test="platformUserCompany.userType!= null and platformUserCompany.userType!=''">
+   		and u_r.user_type = #{platformUserCompany.userType}
+   	</if>
+  	limit #{page.start},#{page.limit}
+  </select>
+  
+  <!-- 修改停用与启用的状态 -->
+  <update id="updateCompanyinfochangeStatus" parameterType="com.brightsoft.model.PlatformUserCompany">
+	    UPDATE lc_platform_user_company
+		SET recommended = #{platformUserCompany.recommended ,jdbcType=INTEGER }
+		WHERE  id = #{platformUserCompany.id,jdbcType=BIGINT}
+  </update>
+  <!-- 通过id查询商铺基本数据 -->
+  <select id="platformCompanyById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	SELECT
+	<include refid="Base_Column_List" />
+	FROM
+	lc_platform_user_company
+	  <if test="id != null">
+	  WHERE id = #{id,jdbcType=BIGINT}
+	  </if>
+  </select>
+  <!-- 查询专线商铺总数 -->
+  <select id="countCompanyinfoRows" resultType="int">
+	  SELECT COUNT(1)
+	  FROM lc_platform_user_company c_y
+		LEFT JOIN lc_platform_user u_r on u_r.company_id = c_y.id
+		WHERE 1=1
+		<if test="platformUserCompany.companyName!= null and platformUserCompany.companyName!=''">
+		 	and c_y.company_name like concat("%",#{platformUserCompany.companyName},"%")
+		</if>
+		<if test="platformUserCompany.companyCode!= null and platformUserCompany.companyCode!=''">
+			and c_y.company_code = #{platformUserCompany.companyCode}
+		</if>
+		<if test="platformUserCompany.loginName!= null and platformUserCompany.loginName!=''">
+			and u_r.login_name = #{platformUserCompany.loginName}
+		</if>
+		<if test="platformUserCompany.startTime != null and platformUserCompany.startTime != '' ">
+	   		and u_r.create_time >= #{platformUserCompany.startTime}
+	   	</if>
+	   	<if test="platformUserCompany.endTime != null and platformUserCompany.endTime != '' ">
+	   		and u_r.create_time <![CDATA[<=]]> #{platformUserCompany.endTime}
+	   	</if>
+	   	 <if test="platformUserCompany.userType!= null and platformUserCompany.userType!=''">
+   			and u_r.user_type = #{platformUserCompany.userType}
+   		</if>
+  </select>
+  
+
+  <!-- 货运交易系统：根据用户类型获取公司信息-->
+  <select id="selectCompanyByUserType" resultMap="BaseResultMap">
+  	select
+  		puc.*,u.login_name as tms_login_name,u.user_status as tms_user_status
+  	from
+  		tms_user u
+  		left join lc_platform_user_company puc on u.company_id = puc.id
+  	where 
+  		u.user_type = #{userType}
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and puc.company_name = #{searchParams.condition} or u.login_name = #{searchParams.condition}
+  		</if>
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 货运交易系统：根据用户类型获取公司信息记录数-->
+  <select id="countRowsByUserType" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_user u
+  		left join lc_platform_user_company puc on u.company_id = puc.id
+  	where 
+  		u.user_type = #{userType}
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and puc.company_name = #{searchParams.condition} or u.login_name = #{searchParams.condition}
+  		</if>
+  </select>
+
+</mapper>

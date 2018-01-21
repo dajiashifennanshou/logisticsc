@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fgm_head_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/fgm_backgroud_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" />
+
+            <com.liaoinstan.springview.widget.SpringView
+                android:id="@+id/fgm_recyclerview_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--<com.chanven.lib.cptr.PtrClassicFrameLayout-->
+                <!--android:id="@+id/fgm_recyclerview_refresh"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:ptr_duration_to_close="200"-->
+                <!--app:ptr_duration_to_close_header="500"-->
+                <!--app:ptr_keep_header_when_refresh="true"-->
+                <!--app:ptr_pull_to_fresh="false"-->
+                <!--app:ptr_ratio_of_header_height_to_refresh="1"-->
+                <!--app:ptr_resistance="1.5">-->
+
+                <!--<com.chanven.lib.cptr.PtrClassicDefaultHeader-->
+                <!--android:id="@+id/fgm_pullrefreshheaderview"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+
+                <com.xsl.lerist.llibrarys.widget.LRecyclerView
+                    android:id="@+id/fgm_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical" />
+            </com.liaoinstan.springview.widget.SpringView>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/fgm_floor_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+    <!--<xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller-->
+    <!--android:id="@+id/fgm_recyclerview_fast_scroller"-->
+    <!--android:layout_width="4dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="4dp"-->
+    <!--android:visibility="gone"-->
+    <!--app:rfs_barColor="#00000000"-->
+    <!--app:rfs_handleBackground="@drawable/fast_scroller_handle_rounded" />-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fgm_recyclerview_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/color_primary"
+        app:elevation="1dp"
+        app:fabSize="mini"
+        app:pressedTranslationZ="6dp" />
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcCustomerManageDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcCustomerManage"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,orderNo,customerName,phone,telephone,address,COUNT,deliveryCost,dealerId,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcCustomerManage" > 
+		select  <include refid="Base_Column_List" />  from yc_customer_manage where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcCustomerManage" > 
+		select  count(1)  from yc_customer_manage 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_customer_manage order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcCustomerManage"> 
+		delete from yc_customer_manage where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcCustomerManage" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_customer_manage  
+		(orderNo,customerName,phone,telephone,address,COUNT,deliveryCost,dealerId,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{id},#{orderNo},#{customerName},#{phone},#{telephone},#{address},#{COUNT},#{deliveryCost},#{dealerId},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcCustomerManage">   
+	update YcCustomerManage 
+	<set> 
+		<if test="orderNo !=null"> 
+			orderNo=#{orderNo},
+		</if>
+		<if test="customerName !=null"> 
+			customerName=#{customerName},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="telephone !=null"> 
+			telephone=#{telephone},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="COUNT !=null"> 
+			COUNT=#{COUNT},
+		</if>
+		<if test="deliveryCost !=null"> 
+			deliveryCost=#{deliveryCost},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

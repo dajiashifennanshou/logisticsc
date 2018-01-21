@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankRefundMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBankRefund" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customernumber" property="customernumber" jdbcType="VARCHAR" />
+    <result column="requestid" property="requestid" jdbcType="VARCHAR" />
+    <result column="orderrequestid" property="orderrequestid" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="divideinfo" property="divideinfo" jdbcType="VARCHAR" />
+    <result column="confirm" property="confirm" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="refund_type" property="refundType" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="bankaccountnumber" property="bankaccountnumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customernumber, requestid, orderrequestid, amount, divideinfo, confirm, memo, 
+    order_number, order_type,time, state, username,refund_type
+  </sql>
+  <select id="selectBySelectedConditionBankRefund" resultMap="BaseResultMap">
+ 		select * from lc_platform_bank_refund r_d
+		LEFT JOIN lc_platform_order o_r on r_d.order_number = o_r.order_number
+		LEFT JOIN lc_platform_user u_r on o_r.user_id = u_r.id
+		where 1=1 
+		and u_r.id = #{bankRefund.userId,jdbcType=BIGINT}
+		<if test="bankRefund.orderTypes != null and bankRefund.orderTypes !='' ">
+			and r_d.order_type = #{bankRefund.orderTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.condition != null and bankRefund.condition !='' ">
+		   	and r_d.order_number like concat("%",#{bankRefund.condition,jdbcType=VARCHAR},"%")
+		 </if>
+		<if test="bankRefund.startTime!=null and bankRefund.startTime!=''">
+			and r_d.time >=#{bankRefund.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="bankRefund.endTime!=null and bankRefund.endTime!=''">
+			and #{bankRefund.endTime,jdbcType=VARCHAR} >= r_d.time
+		</if>
+		<if test="bankRefund.refundTypes!=null and bankRefund.refundTypes!=''">
+			and r_d.refund_type =#{bankRefund.refundTypes,jdbcType=VARCHAR}	
+		</if>
+		ORDER BY r_d.time DESC
+		limit #{page.start},#{page.limit} 
+  </select>
+  <select id="countBankRefund" resultType="int">
+ 		select count(1) from lc_platform_bank_refund r_d
+		LEFT JOIN lc_platform_order o_r on r_d.order_number = o_r.order_number
+		LEFT JOIN lc_platform_user u_r on o_r.user_id = u_r.id
+		where 1=1 
+		and u_r.id = #{bankRefund.userId,jdbcType=BIGINT}
+		<if test="bankRefund.orderTypes != null and bankRefund.orderTypes !='' ">
+			and r_d.order_type = #{bankRefund.orderTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.condition != null and bankRefund.condition !='' ">
+		   	and r_d.order_number like concat("%",#{bankRefund.condition,jdbcType=VARCHAR},"%")
+		 </if>
+		<if test="bankRefund.startTime!=null and bankRefund.startTime!=''">
+			and r_d.time >=#{bankRefund.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="bankRefund.endTime!=null and bankRefund.endTime!=''">
+			and #{bankRefund.endTime,jdbcType=VARCHAR} >= r_d.time
+		</if>
+		<if test="bankRefund.refundTypes!=null and bankRefund.refundTypes!=''">
+			and r_d.refund_type =#{bankRefund.refundTypes,jdbcType=VARCHAR}	
+		</if>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_refund
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank_refund
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBankRefund" >
+    insert into lc_platform_bank_refund (id, customernumber, requestid, 
+      orderrequestid, amount, divideinfo, 
+      confirm, memo, order_number, order_type,
+      time, state, username,refund_type
+      )
+    values (#{id,jdbcType=BIGINT}, #{customernumber,jdbcType=VARCHAR}, #{requestid,jdbcType=VARCHAR}, 
+      #{orderrequestid,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{divideinfo,jdbcType=VARCHAR}, 
+      #{confirm,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{orderNumber,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER},
+      #{time,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},#{refundType,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBankRefund" >
+    insert into lc_platform_bank_refund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="customernumber != null" >
+        customernumber,
+      </if>
+      <if test="requestid != null" >
+        requestid,
+      </if>
+      <if test="orderrequestid != null" >
+        orderrequestid,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo,
+      </if>
+      <if test="confirm != null" >
+        confirm,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+       <if test="orderType != null" >
+       	order_type,
+       </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="refundType !=null">
+      	refund_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="customernumber != null" >
+        #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestid != null" >
+        #{orderrequestid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm != null" >
+        #{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+      	#{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType !=null">
+      	#{refundType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBankRefund" >
+    update lc_platform_bank_refund
+    <set >
+      <if test="customernumber != null" >
+        customernumber = #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        requestid = #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestid != null" >
+        orderrequestid = #{orderrequestid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="confirm != null" >
+        confirm = #{confirm,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+      	order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType != null">
+      	refund_type = #{refundType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBankRefund" >
+    update lc_platform_bank_refund
+    set customernumber = #{customernumber,jdbcType=VARCHAR},
+      requestid = #{requestid,jdbcType=VARCHAR},
+      orderrequestid = #{orderrequestid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      confirm = #{confirm,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      refund_type = #{refundType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectBankRefundList" resultMap="BaseResultMap">
+ 		select r_d.*,u_r.login_name,b_k.bankaccountnumber from lc_platform_bank_refund r_d
+		LEFT JOIN lc_platform_order o_r on r_d.order_number = o_r.order_number
+		LEFT JOIN lc_platform_user u_r on u_r.id = o_r.user_id
+		LEFT JOIN lc_platform_bank b_k on b_k.user_id = u_r.id
+		where 1=1 
+		and r_d.state = 0
+		<if test="bankRefund.orderTypes != null and bankRefund.orderTypes !='' ">
+			and r_d.order_type = #{bankRefund.orderTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.condition != null and bankRefund.condition !='' ">
+		   	and r_d.order_number like concat("%",#{bankRefund.condition,jdbcType=VARCHAR},"%")
+		 </if>
+		<if test="bankRefund.startTime!=null and bankRefund.startTime!=''">
+			and r_d.time >=#{bankRefund.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="bankRefund.endTime!=null and bankRefund.endTime!=''">
+			and #{bankRefund.endTime,jdbcType=VARCHAR} >= r_d.time
+		</if>
+		<if test="bankRefund.refundTypes!=null and bankRefund.refundTypes!=''">
+			and r_d.refund_type =#{bankRefund.refundTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.loginName!=null and bankRefund.loginName!=''">
+			and u_r.login_name =#{bankRefund.loginName,jdbcType=VARCHAR}	
+		</if>
+		ORDER BY r_d.time DESC
+		limit #{page.start},#{page.limit} 
+  </select>
+  <select id="countBankRefundList" resultType="int">
+ 		select count(1) from lc_platform_bank_refund r_d
+		LEFT JOIN lc_platform_order o_r on r_d.order_number = o_r.order_number
+		where 1=1 
+		and r_d.state = 0
+		<if test="bankRefund.orderTypes != null and bankRefund.orderTypes !='' ">
+			and r_d.order_type = #{bankRefund.orderTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.condition != null and bankRefund.condition !='' ">
+		   	and r_d.order_number like concat("%",#{bankRefund.condition,jdbcType=VARCHAR},"%")
+		 </if>
+		<if test="bankRefund.startTime!=null and bankRefund.startTime!=''">
+			and r_d.time >=#{bankRefund.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="bankRefund.endTime!=null and bankRefund.endTime!=''">
+			and #{bankRefund.endTime,jdbcType=VARCHAR} >= r_d.time
+		</if>
+		<if test="bankRefund.refundTypes!=null and bankRefund.refundTypes!=''">
+			and r_d.refund_type =#{bankRefund.refundTypes,jdbcType=VARCHAR}	
+		</if>
+		<if test="bankRefund.loginName!=null and bankRefund.loginName!=''">
+			and u_r.login_name =#{bankRefund.loginName,jdbcType=VARCHAR}	
+		</if>
+  </select>
+</mapper>

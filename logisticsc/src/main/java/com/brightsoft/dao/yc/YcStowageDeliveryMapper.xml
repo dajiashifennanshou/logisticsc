@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcStowageDeliveryDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcStowageDelivery"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,stowageNo,deliverNo,dealerId,employeeId,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcStowageDelivery" > 
+		select  <include refid="Base_Column_List" />  from yc_stowage_delivery where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcStowageDelivery" > 
+		select  count(1)  from yc_stowage_delivery 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_stowage_delivery order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getYcDeliveryOrderAllList" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcStowageDelivery"> 
+		select <include refid="Base_Column_List" /> from yc_stowage_delivery where 1=1
+		<if test="stowageNo !=null"> 
+			and  stowageNo=#{stowageNo}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcStowageDelivery"> 
+		delete from yc_stowage_delivery  
+		<if test="stowageNo !=null"> 
+			where stowageNo=#{stowageNo}
+		</if>
+		<if test="id !=null"> 
+			where id=#{id}
+		</if>
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcStowageDelivery" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_stowage_delivery  
+		(stowageNo,deliverNo,employeeId,dealerId,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{stowageNo},#{deliverNo},#{employeeId},#{dealerId},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcStowageDelivery">   
+	update YcStowageDelivery 
+	<set> 
+		<if test="stowageNo !=null"> 
+			stowageNo=#{stowageNo},
+		</if>
+		<if test="deliverNo !=null"> 
+			deliverNo=#{deliverNo},
+		</if>
+		<if test="employeeId !=null"> 
+			employeeId=#{employeeId},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

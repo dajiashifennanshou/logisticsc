@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderCargoTempMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderCargoTemp" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="package_type" property="packageType" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="set_number" property="setNumber" jdbcType="INTEGER" />
+    <result column="single_weight" property="singleWeight" jdbcType="DOUBLE" />
+    <result column="single_volume" property="singleVolume" jdbcType="DOUBLE" />
+    <result column="count_cost_mode" property="countCostMode" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="package_type_name" property="packageTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, brand, model, package_type, number, set_number, single_weight, 
+    single_volume, count_cost_mode, order_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_cargo_temp
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_cargo_temp
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderCargoTemp" >
+    insert into lc_platform_order_cargo_temp (id, name, brand, model, 
+      package_type, number, set_number, 
+      single_weight, single_volume, count_cost_mode, order_id)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{packageType,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{setNumber,jdbcType=INTEGER}, #{singleWeight,jdbcType=DOUBLE}, #{singleVolume,jdbcType=DOUBLE}, 
+      #{countCostMode,jdbcType=INTEGER}, #{orderId,jdbcType=BIGINT})
+  </insert>
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into lc_platform_order_cargo_temp (id, name, brand, 
+      model, package_type, number, set_number, 
+      single_weight, single_volume, count_cost_mode, order_id)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+        (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, 
+      #{item.model,jdbcType=VARCHAR},  #{item.packageType,jdbcType=INTEGER}, #{item.number,jdbcType=INTEGER}, 
+      #{item.setNumber,jdbcType=INTEGER}, #{item.singleWeight,jdbcType=DOUBLE}, #{item.singleVolume,jdbcType=DOUBLE}, 
+      #{item.countCostMode,jdbcType=INTEGER}, #{item.orderId,jdbcType=BIGINT})
+    </foreach>
+</insert>
+  
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderCargoTemp" >
+    insert into lc_platform_order_cargo_temp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="packageType != null" >
+        package_type,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="setNumber != null" >
+        set_number,
+      </if>
+      <if test="singleWeight != null" >
+        single_weight,
+      </if>
+      <if test="singleVolume != null" >
+        single_volume,
+      </if>
+      <if test="countCostMode != null" >
+        count_cost_mode,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="packageType != null" >
+        #{packageType,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="setNumber != null" >
+        #{setNumber,jdbcType=INTEGER},
+      </if>
+      <if test="singleWeight != null" >
+        #{singleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="singleVolume != null" >
+        #{singleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="countCostMode != null" >
+        #{countCostMode,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderCargoTemp" >
+    update lc_platform_order_cargo_temp
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="packageType != null" >
+        package_type = #{packageType,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="setNumber != null" >
+        set_number = #{setNumber,jdbcType=INTEGER},
+      </if>
+      <if test="singleWeight != null" >
+        single_weight = #{singleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="singleVolume != null" >
+        single_volume = #{singleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="countCostMode != null" >
+        count_cost_mode = #{countCostMode,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderCargoTemp" >
+    update lc_platform_order_cargo_temp
+    set name = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      package_type = #{packageType,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      set_number = #{setNumber,jdbcType=INTEGER},
+      single_weight = #{singleWeight,jdbcType=DOUBLE},
+      single_volume = #{singleVolume,jdbcType=DOUBLE},
+      count_cost_mode = #{countCostMode,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_cargo_temp
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByOrderNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    c.*, d.name package_type_name
+    from lc_platform_order_cargo_temp c LEFT JOIN lc_platform_dictionary d 
+    ON c.package_type = d.id
+    where order_id = 
+    (select id from lc_platform_order where order_number = #{orderNumber,jdbcType=VARCHAR})
+  </select>
+</mapper>

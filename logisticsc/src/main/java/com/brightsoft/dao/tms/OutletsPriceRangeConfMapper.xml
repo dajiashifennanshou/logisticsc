@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.OutletsPriceRangeConfMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.OutletsPriceRangeConf" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="volume" property="volume" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="county_val" property="countyVal"/>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="name" property="name"/>
+    	<association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    		<result column="company_name" property="companyName"/>
+    	</association>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, county, weight, volume, status, outlets_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_outlets_price_range_conf
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_outlets_price_range_conf
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.OutletsPriceRangeConf" >
+    insert into tms_outlets_price_range_conf (id, county, weight, 
+      volume, status, outlets_id
+      )
+    values 
+    	(#{id}, #{county}, #{weight},#{volume}, #{status}, #{outletsId})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.OutletsPriceRangeConf" >
+    insert into tms_outlets_price_range_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.OutletsPriceRangeConf" >
+  		update tms_outlets_price_range_conf
+		<set>
+			<if test="county != null">
+				county = #{county,jdbcType=VARCHAR},
+			</if>
+	        <if test="weight != null">
+				weight = #{weight,jdbcType=DOUBLE},
+			</if>
+			<if test="volume != null">
+				volume = #{volume,jdbcType=DOUBLE},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="outletsId != null">
+				outlets_id = #{outletsId,jdbcType=BIGINT}
+			</if>
+	     </set>
+    	where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.OutletsPriceRangeConf" >
+    update tms_outlets_price_range_conf
+    set county = #{county,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=DOUBLE},
+      volume = #{volume,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
+      outlets_id = #{outletsId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 网点获取网点价格范围 -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		oprc.*,oi.name,xi.name as county_val
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where
+  		oprc.outlets_id = #{outletsId} and oprc.status != 0
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and xi.name like concat("%",#{searchParams.condition,jdbcType=VARCHAR},"%")
+  		</if>
+  		order by id desc
+  </select>
+  <!-- 网点获取价格范围总记录数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where
+  		oprc.outlets_id =#{outletsId} and oprc.status != 0
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and xi.name = #{searchParams.condition}
+  		</if>
+  </select>
+  <!-- 专线获取网点价格范围 -->
+  <select id="selectByCompanyIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		oprc.*,oi.name,xi.name as county_val
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where
+  		oi.company_id = #{companyId} and oprc.status != 0
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and xi.name = #{searchParams.condition}
+  		</if>
+  		<if test="searchParams.outletsName != null and searchParams.outletsName != ''">
+  			and oi.name = #{searchParams.outletsName}
+  		</if>
+  		order by id desc
+  </select>
+  <!-- 专线获取价格范围总记录数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where
+  		oi.company_id =#{companyId} and oprc.status != 0
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and xi.name = #{searchParams.condition}
+  		</if>
+  		<if test="searchParams.outletsName != null and searchParams.outletsName != ''">
+  			and oi.name = #{searchParams.outletsName}
+  		</if>
+  </select>
+  <!-- 获取查询记录数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where 
+  		outlets_id = #{outletsId} and status != 0
+  </select>
+  <!-- 查询提送货信息 -->
+  <select id="selectByOutletsId" resultMap="BaseResultMap">
+  	select 
+  		oprc.id, oprc.county, oprc.weight, oprc.volume, oprc.status, oprc.outlets_id,xi.name as county_val
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  	where 
+  		outlets_id = #{outletsId}
+  		order by id desc limit #{page.start},#{page.limit}
+  </select>
+  <select id="selectNewByOutletsId" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from tms_outlets_price_range_conf where outlets_id = #{outletsId}
+  </select>
+  <!-- 批量删除 -->
+  <update id="deleteBatch" parameterType="list">
+  	delete from 
+  		tms_outlets_price_range_conf
+  	where 
+  		id in
+		<foreach collection="list" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+  </update>
+  <!-- 货运交易系统：获取提送货信息 -->
+  <select id="selectOutletsConfItems" resultMap="BaseResultMap">
+  	select
+  		oprc.*,xi.name as county_val,oi.name,puc.company_name
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 货运交易系统：获取提送货信息记录数 -->
+  <select id="countRows4OutletsConfItems" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_outlets_price_range_conf oprc
+  		left join lc_xzqh_info xi on oprc.county = xi.id
+  		left join tms_outlets_info oi on oi.id = oprc.outlets_id
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  </select>
+  
+  <select id="selectByOutletsIdAndCounty" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from tms_outlets_price_range_conf where outlets_id = #{outletsId} and county = #{county}
+  </select>
+</mapper>

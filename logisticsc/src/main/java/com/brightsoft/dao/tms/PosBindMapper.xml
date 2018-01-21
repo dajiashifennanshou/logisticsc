@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.PosBindMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PosBind" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="pos_sn" property="posSn" jdbcType="VARCHAR" />
+    <result column="login_account" property="loginAccount" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, outlets_id, pos_sn, login_account, login_pwd, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_bind
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_pos_bind
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PosBind" >
+    insert into tms_pos_bind (id, outlets_id, pos_sn, 
+      login_account, login_pwd, create_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{outletsId,jdbcType=BIGINT}, #{posSn,jdbcType=VARCHAR}, 
+      #{loginAccount,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PosBind" >
+    insert into tms_pos_bind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="posSn != null" >
+        pos_sn,
+      </if>
+      <if test="loginAccount != null" >
+        login_account,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="posSn != null" >
+        #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null" >
+        #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PosBind" >
+    update tms_pos_bind
+    <set >
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="posSn != null" >
+        pos_sn = #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="loginAccount != null" >
+        login_account = #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PosBind" >
+    update tms_pos_bind
+    set outlets_id = #{outletsId,jdbcType=BIGINT},
+      pos_sn = #{posSn,jdbcType=VARCHAR},
+      login_account = #{loginAccount,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectNewestByOutletsIds" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_bind
+    where outlets_id in 
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+    	#{item}
+   	</foreach>
+   	order by login_account desc limit 1
+  </select>
+  
+  <select id="selectByOutletsId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_bind
+    where outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByLoginAccount" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_bind
+    where login_account = #{loginAccount,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPosSn" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_bind
+    where pos_sn = #{posSn,jdbcType=VARCHAR}
+  </select>
+</mapper>

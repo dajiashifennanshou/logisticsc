@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+	<AppSettings>
+		<DBUrl><![CDATA[jdbc:mysql://localhost:3306/wuliuold?characterEncoding=utf8]]></DBUrl>
+		<DBUser><![CDATA[root]]></DBUser>	
+		<DBPassword><![CDATA[SILUkamila1688]]></DBPassword>	
+		<testconfig><![CDATA[1111]]></testconfig>	
+		<imgPath><![CDATA[/root/img]]></imgPath>
+		<!-- <DBUrl><![CDATA[jdbc:mysql://rm-wz9tw7ts1rn3h6fpe.mysql.rds.aliyuncs.com:3306/cloud?characterEncoding=utf8]]></DBUrl>
+		<DBUser><![CDATA[xsl56]]></DBUser>
+		<DBPassword><![CDATA[ASDqwe123-2wsx]]></DBPassword>
+		<testconfig><![CDATA[1111]]></testconfig>
+		<imgPath><![CDATA[e:/TempResource/]]></imgPath> -->
+	</AppSettings>
+</Config>

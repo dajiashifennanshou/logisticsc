@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformUserCompanyDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformUserCompany"></resultMap>
+	<resultMap id="LogisticsInfoMap" type="com.yc.Entity.LogisticsInfo"></resultMap>
+	<resultMap id="PlatformDeliverGoodsMap" type="com.yc.Entity.PlatformDeliverGoods"></resultMap>
+	<sql id="Base_Column_List"> 
+		id,company_name,company_address,legal_person,legal_mobile,contacts,contacts_mobile,qq,post_code,company_phone,company_fax,company_tax_no,finance_email,company_info,logo,business_license,company_photo,legal_photo,card_photo,company_code,recommended,contacts1,contacts1_mobile,contacts2,contacts2_mobile
+	</sql>
+	<select id="getListLogisticsInfo" resultMap="LogisticsInfoMap" parameterType="map" >
+		SELECT a.`id` as cId,a.`company_name` as companyName,b.`id` as outletsId,(SELECT NAME FROM lc_xzqh_info WHERE id=b.`province`) AS province, 
+		(SELECT NAME FROM lc_xzqh_info WHERE id=b.`city`) AS city,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=b.`county`) AS county,
+		b.`address`
+		FROM lc_platform_user_company a INNER JOIN tms_outlets_info b ON a.`id`=b.`company_id`
+		AND b.`id`=(SELECT DISTINCT(line.`outlets_id`) FROM tms_line_info AS line WHERE line.`outlets_id`=b.`id`)
+		AND b.province = #{province} 
+		AND b.city = #{city}
+		<if test="county!=null">
+			AND b.county = #{county}
+		</if>
+	</select>
+	<select id="getPageLineInfo" resultMap="PlatformDeliverGoodsMap" parameterType="map">
+		SELECT * FROM( SELECT line.*, (SELECT NAME FROM lc_xzqh_info WHERE id=start.province) AS startProvince,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=start.city) AS startCity,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=start.county) AS startCounty,
+		start.address as startAddress,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=end.province) AS endProvince,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=end.city) AS endCity,
+		(SELECT NAME FROM lc_xzqh_info WHERE id=end.county) AS endCounty,
+		com.company_name as companyName,com.id as companyId,com.qq as qq,(SELECT COUNT(1) FROM lc_platform_order WHERE tms_line_id = o.tms_line_id) AS countOrder,com.contacts_mobile AS contactsMobile 
+		FROM (SELECT * FROM tms_line_info WHERE start_outlets IN (SELECT id FROM tms_outlets_info WHERE 1 = 1 AND province = #{startProvince} AND city = #{startCity} ) AND end_outlets 
+		IN (SELECT id FROM tms_outlets_info WHERE 1 = 1 AND province = #{endProvince} AND city = #{endCity} ) AND release_state = 1 ) line LEFT JOIN tms_outlets_info START 
+		ON start.id = line.start_outlets LEFT JOIN tms_outlets_info END ON end.id = line.end_outlets LEFT JOIN lc_platform_user_company com ON com.id = end.company_id 
+		LEFT JOIN lc_platform_order o ON line.id = o.tms_line_id GROUP BY line.id UNION 
+		SELECT sli.id,sli.server_type,sli.start_outlets,sli.start_outlets_name,sli.end_outlets, sli.end_outlets_name,sli.transport_mode,sli.time_long,sli.heavy_cargo_price_low,
+		sli.bulky_cargo_price_low,sli.heavy_cargo_price_mid, sli.bulky_cargo_price_mid,sli.heavy_cargo_price_high,sli.bulky_cargo_price_high, sli.lowest_price,sli.status,
+		sli.release_state, sli.create_time,sli.create_person_id,sli.is_take_cargo,sli.is_give_cargo,sli.outlets_id, sli.evaluate_level,sli.remain_money,sli.recommended,
+		sli.start_province,sli.start_city,sli.start_county,sli.start_address, sli.end_province,sli.end_city,sli.end_county, sli.company_name,sli.company_id,sli.qq,0 AS count_order, 
+		sli.qq contacts1_mobile FROM lc_system_line_info sli WHERE 1 = 1 AND sli.start_province = (SELECT NAME FROM lc_xzqh_info WHERE id = #{startProvince}) AND sli.start_city = 
+		(SELECT NAME FROM lc_xzqh_info WHERE id = #{startCity}) AND sli.end_province = (SELECT NAME FROM lc_xzqh_info WHERE id = #{endProvince}) AND sli.end_city = 
+		(SELECT NAME FROM lc_xzqh_info WHERE id = #{endCity}) ) t 
+		limit #{limitMax} offset #{limitMin} 
+	</select>
+	<select id="getPagerCompanyInfo" resultMap="BaseResultMap" parameterType="map">
+		SELECT id,company_name,logo FROM lc_platform_user_company where 
+		<bind name="company_name" value="'%'+company_name+'%'"/>
+		company_name LIKE #{company_name}
+		limit #{limitMax} offset #{limitMin} 
+	</select>
+	<select id="getPlatformUserCompany" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformUserCompany">
+		SELECT  id,company_name,logo,contacts_mobile FROM lc_platform_user_company AS com WHERE 1=1
+		<if test="id!=null">
+			and com.id=#{id}
+		</if>
+	</select>
+	<select id="getCommonCompany" resultMap="BaseResultMap">
+		SELECT DISTINCT(d.`id`),d.`company_name`,d.`logo` FROM lc_platform_order AS a,tms_line_info AS b,tms_outlets_info AS c,lc_platform_user_company AS d WHERE
+		a.`tms_line_id`=b.`id` AND b.`outlets_id`=c.`id` AND c.`company_id`=d.`id` AND a.`user_id`=#{userId}
+		limit #{limitMax} offset #{limitMin} 
+	</select>
+	<select id="getCompanyByLineId" resultMap="BaseResultMap">
+		SELECT com.id,com.`company_name`,com.`logo` FROM lc_platform_user_company AS com,tms_outlets_info AS o,tms_line_info AS line 
+		WHERE com.`id`=o.`company_id` AND o.`id`=line.`outlets_id` AND line.id=#{param1}
+	</select>
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformUserCompany" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user_company where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select> 	
+</mapper> 
+

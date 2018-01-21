@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/input_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_company"
+        android:textSize="@dimen/common_text_size"
+        android:drawableLeft="@mipmap/wuliushang_search"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:imeOptions="actionGo"
+        android:singleLine="true"
+        android:inputType="text"
+        android:background="@android:color/white"
+        android:layout_margin="20dp"/>
+</LinearLayout>

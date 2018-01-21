@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcOrderGoodsDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcOrderGoods"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,deliveryNo,zoneGoodsId,wayBillNo,installCost,createTime,createUser,updateTime,updateUser,remark,zoneNo
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcOrderGoods" > 
+		select  <include refid="Base_Column_List" />  from yc_order_goods where id=#{id}
+	</select> 
+	<select id="getOrderGoodsByDeliveryNo" resultMap="BaseResultMap" > 
+		select  <include refid="Base_Column_List" />  from yc_order_goods where deliveryNo=#{param1}
+	</select> 
+	<select id="getinstallCostCount" resultType="int" parameterType="com.brightsoft.entity.YcOrderGoods" > 
+		select  count(1)  from yc_order_goods 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_order_goods order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcOrderGoods"> 
+		delete from yc_order_goods where 1=1
+		 <if test="zoneGoodsId !=null"> 
+			and zoneGoodsId=#{zoneGoodsId}
+		</if>
+		<if test="deliveryNo !=null"> 
+			and deliveryNo=#{deliveryNo}
+		</if> 
+	</delete> 
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcOrderGoods"> 
+		delete from yc_car_manage where id in (
+			<foreach collection="list" item="item" separator=",">
+				#{item}
+			</foreach>
+		) 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcOrderGoods" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_order_goods  
+		(deliveryNo,zoneGoodsId,wayBillNo,installCost,createTime,createUser,updateTime,updateUser,remark,zoneNo) 
+		values ( #{deliveryNo},#{zoneGoodsId},#{wayBillNo},#{installCost},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark},#{zoneNo} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcOrderGoods">   
+	update YcOrderGoods 
+	<set> 
+		<if test="deliveryNo !=null"> 
+			deliveryNo=#{deliveryNo},
+		</if>
+		<if test="zoneGoodsId !=null"> 
+			zoneGoodsId=#{zoneGoodsId},
+		</if>
+		<if test="wayBillNo !=null"> 
+			wayBillNo=#{wayBillNo},
+		</if>
+		<if test="installCost !=null"> 
+			installCost=#{installCost},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

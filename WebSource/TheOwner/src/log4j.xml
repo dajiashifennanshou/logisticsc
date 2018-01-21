@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>	
+	<!-- 输出系统中各种引用包错误日志到文件，用于上线 -->
+	<appender name="logErrorsys" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="ERROR"/>
+		<param name="Encoding" value="UTF-8"/>
+		<param name="File" value="E:/ProjectGlobal/Errorsys.log"/>
+		<param name="DatePattern" value="'.'yyyyMMdd" /> 
+		<layout class="org.apache.log4j.PatternLayout">  
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH\:mm\:ss,SSS} [%t]-[%l]-[%p] %m%n" />  
+		</layout>  		
+	</appender> 
+
+	<!-- 输出程序错误日志到文件，用于上线 -->
+	<appender name="logError" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="ERROR"/>
+		<param name="Encoding" value="UTF-8"/>
+		<param name="File" value="E:/ProjectGlobal/Error.log"/>
+		<param name="DatePattern" value="'.'yyyyMMdd" /> 
+		<layout class="org.apache.log4j.PatternLayout">  
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH\:mm\:ss,SSS} [%t]-[%l]-[%p] %m%n" />  
+		</layout>  		
+	</appender>  
+   
+	<!-- 输出程序普通日志到文件，用于上线 -->
+	<appender name="logInfo" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="INFO"/>
+		<param name="Encoding" value="UTF-8"/>
+		<param name="File" value="E:/ProjectGlobal/Info.log"/>
+		<param name="DatePattern" value="'.'yyyyMMdd" /> 
+		<layout class="org.apache.log4j.PatternLayout">  
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH\:mm\:ss,SSS} [%t]-[%l]-[%p] %m%n" />  
+		</layout> 			 
+	</appender> 	
+	
+	<!-- 输出日志到控制台，用于开发 -->
+	<appender name="logConsole" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="INFO"/>
+		<layout class="org.apache.log4j.PatternLayout">  
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH\:mm\:ss,SSS} [%t]-[%l]-[%p] %m%n" />  
+		</layout>  		
+	</appender> 
+	
+	<!-- 日志输出定义 --> 
+	<logger name="logError" additivity="false">     
+		<level value="ERROR" />     
+		<appender-ref ref="logError" /> 
+		<appender-ref ref="logConsole" /> <!-- 开发配置：输出日志到控制台，正式上线需去除 -->  
+	</logger>	
+	<logger name="logInfo" additivity="false">     
+		<level value="INFO" />     
+		<appender-ref ref="logInfo" /> 
+		<appender-ref ref="logConsole" /> <!-- 开发配置：输出日志到控制台，正式上线需去除 -->  
+	</logger>
+	<!-- 根日志输出定义 -->
+	<root>  
+		<priority value="ERROR" />  
+		<appender-ref ref="logErrorsys" />
+		<appender-ref ref="logConsole" /> <!-- 开发配置：输出日志到控制台，正式上线需去除 -->  
+	</root> 
+</log4j:configuration>

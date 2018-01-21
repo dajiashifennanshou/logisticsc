@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcInstallChargeDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcInstallCharge"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,installCharge,deliverCharge,branchNo,discount,firstLvCode,firstLvName,firstLvExplan,firstLvTips,twoLvCode,towLvName,twoLvExplan,twoLvTips,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<sql id="Base_Column_List2"> 
+		id,installCharge,deliverCharge,branchNo,twoLvCode,towLvName,createTime
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcInstallCharge" > 
+		select  <include refid="Base_Column_List" />  from yc_install_charge where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcInstallCharge" > 
+		select  count(1)  from yc_install_charge 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List2" /> from yc_install_charge order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getYcInstallCostBy" resultMap="BaseResultMap" > 
+		select <include refid="Base_Column_List2" /> from yc_install_charge where FIND_IN_SET(twoLvCode,#{param1})
+		<if test="param2 !=null"> 
+			 and branchNo=#{param2}
+		</if>
+		
+	</select> 
+	<select id="getYcSingleCostBy" resultMap="BaseResultMap" > 
+		select <include refid="Base_Column_List2" /> from yc_install_charge where twoLvCode=#{param1}
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcInstallCharge"> 
+		delete from yc_install_charge where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcInstallCharge" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_install_charge  
+		(installCharge,deliverCharge,branchNo,discount,firstLvCode,firstLvName,firstLvExplan,firstLvTips,twoLvCode,towLvName,twoLvExplan,twoLvTips,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{installCharge},#{deliverCharge},#{branchNo},#{discount},#{firstLvCode},#{firstLvName},#{firstLvExplan},#{firstLvTips},#{twoLvCode},#{towLvName},#{twoLvExplan},#{twoLvTips},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcInstallCharge">   
+	update yc_install_charge 
+	<set> 
+		<if test="installCharge !=null"> 
+			installCharge=#{installCharge},
+		</if>
+		<if test="deliverCharge !=null"> 
+			deliverCharge=#{deliverCharge},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="discount !=null"> 
+			discount=#{discount},
+		</if>
+		<if test="firstLvCode !=null"> 
+			firstLvCode=#{firstLvCode},
+		</if>
+		<if test="firstLvName !=null"> 
+			firstLvName=#{firstLvName},
+		</if>
+		<if test="firstLvExplan !=null"> 
+			firstLvExplan=#{firstLvExplan},
+		</if>
+		<if test="firstLvTips !=null"> 
+			firstLvTips=#{firstLvTips},
+		</if>
+		<if test="twoLvCode !=null"> 
+			twoLvCode=#{twoLvCode},
+		</if>
+		<if test="towLvName !=null"> 
+			towLvName=#{towLvName},
+		</if>
+		<if test="twoLvExplan !=null"> 
+			twoLvExplan=#{twoLvExplan},
+		</if>
+		<if test="twoLvTips !=null"> 
+			twoLvTips=#{twoLvTips},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

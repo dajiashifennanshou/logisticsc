@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+
+    <LinearLayout
+        style="@style/hor_style"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <LinearLayout
+            style="@style/myStyle"
+            android:gravity="center|left"
+            android:paddingLeft="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="时效:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/line_time"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="服务类型:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/service_type"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="运输方式:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/transport_way"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+            >
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/myStyle"
+            android:paddingLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="重货:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/weight"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="泡货:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/foam"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:text="最低价:"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <TextView
+                        android:id="@+id/lower_money"
+                        style="@style/myStyle"
+                        android:layout_marginLeft="5dp"
+                        android:text=""
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="14dp">
+
+            <ImageView
+                android:id="@+id/commit"
+                style="@style/myStyle"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/my_collection_xiadan_nor" />
+
+            <ImageView
+                android:id="@+id/xianshi"
+                style="@style/myStyle"
+                android:layout_marginRight="32dp"
+                android:src="@mipmap/my_collection_yixiajia"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

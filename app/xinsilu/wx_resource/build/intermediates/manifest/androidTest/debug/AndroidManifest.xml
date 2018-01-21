@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xsl.distributor.wx_resource.test" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.xsl.distributor.wx_resource.test"
+        android:targetPackage="com.xsl.distributor.wx_resource.test" />
+
+    <applications android:theme="@style/AppTheme.NoActionBar" >
+    </applications>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 读取设备信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 获取WIFI权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取手机任务信息（进程,app列表） -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- 检查是否wifi网络 (CrashHanler保存日志信息用到) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 拨打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.xsl.lerist.llibrarys.utils.LResultActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+        <activity
+            android:name="com.xsl.lerist.llibrarys.utils.LContactsChooser"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+
+        <provider
+            android:name="net.grandcentrix.tray.provider.TrayContentProvider"
+            android:authorities="@string/tray__authority"
+            android:exported="false"
+            android:multiprocess="false" />
+
+        <activity
+            android:name="cn.finalteam.galleryfinal.PhotoSelectActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.finalteam.galleryfinal.PhotoEditActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.finalteam.galleryfinal.PhotoPreviewActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+            android:theme="@style/Theme.Transparent" />
+    </application>
+
+</manifest>

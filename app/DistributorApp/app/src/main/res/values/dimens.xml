@@ -1,0 +1,19 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="radius_corner">3dp</dimen>
+
+    <dimen name="user_padding_without_margin">20dp</dimen>
+    <!--内间距，整体修改的时候就修改这里，个别请手动-->
+    <dimen name="user_padding">5dp</dimen>
+    <!--外间距-->
+    <dimen name="margin_top_or_button">10dp</dimen>
+    <!--常规字体-->
+    <dimen name="common_text_size">16sp</dimen>
+    <!--最小字体-->
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="mid_text_size">14sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="btn_radius">4dp</dimen>
+</resources>

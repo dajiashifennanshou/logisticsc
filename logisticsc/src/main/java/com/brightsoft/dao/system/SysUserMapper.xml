@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.system.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SysUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="adminType" property="admintype" jdbcType="INTEGER" />
+    <result column="adminStatus" property="adminstatus" jdbcType="BIGINT" />
+    <result column="creatTime" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="organization_id" property="organizationId" jdbcType="BIGINT" />
+    <result column="lastLoginTime" property="lastlogintime" jdbcType="TIMESTAMP" />
+    <result column="lastLoginIP" property="lastloginip" jdbcType="VARCHAR" />
+    <result column="finalLoginTime" property="finallogintime" jdbcType="TIMESTAMP" />
+    <result column="finalLoginIP" property="finalloginip" jdbcType="VARCHAR" />
+    <result column="realName" property="realname" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
+    <result column="effect" property="effect" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, adminType, adminStatus, creatTime, organization_id, lastLoginTime, 
+    lastLoginIP, finalLoginTime, finalLoginIP, realName, role_id, effect,branchNo,isBranch
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_sys_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_sys_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SysUser" useGeneratedKeys="true" keyProperty="id">
+    insert into lc_sys_user (id, username, password, 
+      adminType, adminStatus, creatTime, 
+      organization_id, lastLoginTime, lastLoginIP, 
+      finalLoginTime, finalLoginIP, realName, 
+      role_id, effect,branchNo,isBranch)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{admintype,jdbcType=INTEGER}, #{adminstatus,jdbcType=BIGINT}, #{creattime,jdbcType=TIMESTAMP}, 
+      #{organizationId,jdbcType=BIGINT}, #{lastlogintime,jdbcType=TIMESTAMP}, #{lastloginip,jdbcType=VARCHAR}, 
+      #{finallogintime,jdbcType=TIMESTAMP}, #{finalloginip,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=BIGINT}, #{effect,jdbcType=BIGINT}, #{branchNo,jdbcType=BIGINT},#{isBranch,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SysUser" >
+    insert into lc_sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="admintype != null" >
+        adminType,
+      </if>
+      <if test="adminstatus != null" >
+        adminStatus,
+      </if>
+      <if test="creattime != null" >
+        creatTime,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime,
+      </if>
+      <if test="lastloginip != null" >
+        lastLoginIP,
+      </if>
+      <if test="finallogintime != null" >
+        finalLoginTime,
+      </if>
+      <if test="finalloginip != null" >
+        finalLoginIP,
+      </if>
+      <if test="realname != null" >
+        realName,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="effect != null" >
+        effect,
+      </if>
+      <if test="branchNo != null" >
+        branchNo,
+      </if>
+      <if test="isBranch != null" >
+        isBranch,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="admintype != null" >
+        #{admintype,jdbcType=INTEGER},
+      </if>
+      <if test="adminstatus != null" >
+        #{adminstatus,jdbcType=BIGINT},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null" >
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="finallogintime != null" >
+        #{finallogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalloginip != null" >
+        #{finalloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="effect != null" >
+        #{effect,jdbcType=BIGINT},
+      </if>
+      <if test="effect != null" >
+        #{branchNo,jdbcType=BIGINT},
+      </if>
+      <if test="isBranch != null" >
+        #{isBranch,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SysUser" >
+    update lc_sys_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="admintype != null" >
+        adminType = #{admintype,jdbcType=INTEGER},
+      </if>
+      <if test="adminstatus != null" >
+        adminStatus = #{adminstatus,jdbcType=BIGINT},
+      </if>
+      <if test="creattime != null" >
+        creatTime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="lastlogintime != null" >
+        lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null" >
+        lastLoginIP = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="finallogintime != null" >
+        finalLoginTime = #{finallogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finalloginip != null" >
+        finalLoginIP = #{finalloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="effect != null" >
+        effect = #{effect,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SysUser" >
+    update lc_sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      adminType = #{admintype,jdbcType=INTEGER},
+      adminStatus = #{adminstatus,jdbcType=BIGINT},
+      creatTime = #{creattime,jdbcType=TIMESTAMP},
+      organization_id = #{organizationId,jdbcType=BIGINT},
+      lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      lastLoginIP = #{lastloginip,jdbcType=VARCHAR},
+      finalLoginTime = #{finallogintime,jdbcType=TIMESTAMP},
+      finalLoginIP = #{finalloginip,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT},
+      effect = #{effect,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_user
+	</select>
+	
+	<select id="selectByPage" resultMap="BaseResultMap"
+		parameterType="com.brightsoft.utils.Page">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM lc_sys_user as a
+		
+		WHERE 1 = 1
+		<if test="params.username != null" >
+        	AND a.username like "%"#{params.username}"%"
+      	</if>
+		<if test="params.realname != null" >
+        	AND a.realname like "%"#{params.realname}"%"
+      	</if>
+		ORDER BY a.creatTime DESC
+		limit #{start},#{limit}
+	</select>
+	
+	<select id="selectByNameAndPwd" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select u.* from lc_sys_user u  
+		WHERE
+		u.password=#{loginpass,jdbcType=VARCHAR}
+		AND
+		u.username=#{loginname,jdbcType=VARCHAR}
+		<!-- AND
+		u.adminStatus = 1 -->
+	</select>
+	
+	<select id="getSysUsersCount" resultType="int"
+		parameterType="com.brightsoft.utils.Page">
+		SELECT
+		count(*)
+		
+		FROM lc_sys_user as a
+		where 1=1
+		<if test="params.username != null" >
+        	AND a.username like "%"#{params.username}"%"
+      	</if>
+      	<if test="params.realname != null" >
+        	AND a.realname like "%"#{params.realname}"%"
+      	</if>
+	</select>
+	
+	<select id="selectByName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select u.* from lc_sys_user u  
+		WHERE
+		u.username=#{loginname,jdbcType=VARCHAR}
+		<!-- AND
+		u.adminStatus = 1 -->
+	</select>
+  
+</mapper>

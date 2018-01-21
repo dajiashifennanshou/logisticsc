@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="reference" name="SwipeBackLayoutStyle"/>
+    <color name="bg_defult_foc">@color/white</color>
+    <color name="bg_defult_nor">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="colorAccent">#e15957</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#737373</color>
+    <color name="colorPrimaryStateBar">#00000000</color>
+    <color name="colorPrimaryText">#fafafa</color>
+    <color name="color_primary">#ffffff</color>
+    <color name="color_primary_content">#f5f5f6</color>
+    <color name="color_primary_dark">#737373</color>
+    <color name="color_primary_line">#e5d4d4d4</color>
+    <color name="color_primary_text">#c6737373</color>
+    <color name="color_pstsTextFocColor">@color/colorPrimary</color>
+    <color name="color_pstsTextNorColor">@color/color_primary_dark</color>
+    <color name="color_psts_background">@color/colorPrimary</color>
+    <color name="color_psts_indicator">@color/colorPrimary</color>
+    <color name="color_row_foc">#9eededed</color>
+    <color name="color_row_nor">#00000000</color>
+    <color name="color_tab_foc">#9eededed</color>
+    <color name="color_tab_nor">#00000000</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="drak">#ea181818</color>
+    <color name="font_color_focused">#212121</color>
+    <color name="font_color_hint">#a1a1a1</color>
+    <color name="font_color_hint_light">#f5f5f5</color>
+    <color name="font_color_normal">#797979</color>
+    <color name="font_color_normal_light">#f5f5f5</color>
+    <color name="gentleman_black">#2b2e31</color>
+    <color name="gray">#eaa4a4a4</color>
+    <color name="green">#ff00ff00</color>
+    <color name="mdl_cardview_background">@color/color_primary_content</color>
+    <color name="mdl_cardview_highlight_button_color">#ffab40</color>
+    <color name="mdl_cardview_image_left_description_color">#757575</color>
+    <color name="mdl_cardview_image_left_title_color">#212121</color>
+    <color name="mdl_cardview_image_top_description_color">#212121</color>
+    <color name="mdl_cardview_image_top_title_color">#ffffff</color>
+    <color name="mdl_cardview_normal_button_color">#212121</color>
+    <color name="mdl_cardview_normal_button_ripple_color">#66999999</color>
+    <color name="mdl_cardview_normal_description_color">@color/color_primary_text</color>
+    <color name="mdl_cardview_separator_color">#dcdcdc</color>
+    <color name="mdl_color_primary">@color/color_primary</color>
+    <color name="mdl_color_primary_dark">@color/color_primary_dark</color>
+    <color name="orange">#f68a42</color>
+    <color name="overlay">#37000000</color>
+    <color name="overlay2">#60000000</color>
+    <color name="red">#ffff0000</color>
+    <color name="red_dark">#d20000</color>
+    <color name="reveal_color">#ccffffff</color>
+    <color name="rippelColor">#FFFFFF</color>
+    <color name="ripple">#464f504f</color>
+    <color name="shadow">#1a000000</color>
+    <color name="shadow2">#29000000</color>
+    <color name="translucent">#9a000000</color>
+    <color name="translucent2">#c4000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#ffc800</color>
+    <declare-styleable name="LPageIndicator"><attr format="dimension" name="icon_width">
+            <enum name="fill_parent" value="-1"/>
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
+        </attr><attr format="dimension" name="icon_height">
+            <enum name="fill_parent" value="-1"/>
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
+        </attr><attr format="dimension" name="in_padding"/><attr format="dimension" name="in_paddingLeft"/><attr format="dimension" name="in_paddingTop"/><attr format="dimension" name="in_paddingRight"/><attr format="dimension" name="in_paddingBottom"/><attr format="dimension" name="icon_marginBottom"/><attr format="dimension" name="text_size"/><attr format="color" name="text_color_nor"/><attr format="color" name="text_color_foc"/></declare-styleable>
+    <declare-styleable name="LRotateLayout"><attr format="float" name="rotate_angle"/></declare-styleable>
+    <declare-styleable name="MDLCardView"><attr format="string" name="mdl_title"/><attr format="string" name="mdl_description"/><attr format="reference" name="mdl_image"/><attr format="string" name="mdl_imageUrl"/><attr format="enum" name="mdl_imagePosition">
+            <enum name="none" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+        </attr><attr format="string" name="mdl_normalButton"/><attr format="string" name="mdl_highlightButton"/></declare-styleable>
+    <declare-styleable name="MaterialLoadingView"><attr format="color" name="mp_startColor"/><attr format="color" name="mp_midColor"/><attr format="color" name="mp_endColor"/><attr format="dimension" name="mp_radius"/><attr format="dimension" name="mp_strokeWidth"/><attr format="float" name="mp_speed"/></declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="color" name="pstsUnderlineColor"/><attr format="color" name="pstsDividerColor"/><attr format="color" name="pstsTextFocColor"/><attr format="color" name="pstsTextNorColor"/><attr format="dimension" name="pstsTextSize"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="dimension" name="pstsScrollOffset"/><attr format="reference" name="pstsTabBackground"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsTextAllCaps"/></declare-styleable>
+    <declare-styleable name="RippleLayout"><attr format="integer" name="rv_alpha"/><attr format="integer" name="rv_framerate"/><attr format="integer" name="rv_rippleDuration"/><attr format="integer" name="rv_zoomDuration"/><attr format="color" name="rv_color"/><attr format="boolean" name="rv_centered"/><attr format="enum" name="rv_type">
+            <enum name="simpleRipple" value="0"/>
+            <enum name="doubleRipple" value="1"/>
+            <enum name="rectangle" value="2"/>
+        </attr><attr format="dimension" name="rv_ripplePadding"/><attr format="boolean" name="rv_zoom"/><attr format="float" name="rv_zoomScale"/></declare-styleable>
+    <declare-styleable name="SwipeBackLayout"><attr format="dimension" name="edge_size"/><attr name="edge_flag">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="all" value="3"/>
+        </attr><attr format="reference" name="shadow_left"/><attr format="reference" name="shadow_right"/><attr format="reference" name="shadow_bottom"/></declare-styleable>
+    <declare-styleable name="SwipeLayout"><attr name="dragEdge">
+            <flag name="left" value="1"/>
+            <flag name="right" value="2"/>
+            <flag name="top" value="4"/>
+            <flag name="bottom" value="8"/>
+        </attr><attr format="dimension" name="leftEdgeSwipeOffset"/><attr format="dimension" name="rightEdgeSwipeOffset"/><attr format="dimension" name="topEdgeSwipeOffset"/><attr format="dimension" name="bottomEdgeSwipeOffset"/><attr format="enum" name="showMode">
+            <enum name="lay_down" value="0"/>
+            <enum name="pull_out" value="1"/>
+        </attr><attr format="boolean" name="clickToClose"/><attr format="dimension" name="swipeBorderSize"/><attr format="boolean" name="touchReverse"/></declare-styleable>
+    <item name="adapter_item_tag_key" type="id"/>
+    <item name="btn_back" type="id"/>
+    <item name="tv_title" type="id"/>
+    <string name="app_name">Llibrarys</string>
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    <style mce_bogus="1" name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in_back</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out_back</item>
+    </style>
+    <style name="Animator_Flip_Down">
+        <item name="android:interpolator">@android:interpolator/accelerate_quad</item>
+        <item name="android:propertyName">rotateX</item>
+        <item name="android:valueType">floatType</item>
+        <item name="android:valueFrom">0</item>
+        <item name="android:valueTo">180</item>
+        <item name="android:duration">500</item>
+    </style>
+    <style name="Animator_Flip_Up">
+        <item name="android:interpolator">@android:interpolator/accelerate_quad</item>
+        <item name="android:propertyName">rotationX</item>
+        <item name="android:valueType">floatType</item>
+        <item name="android:valueFrom">0</item>
+        <item name="android:valueTo">-180</item>
+        <item name="android:duration">500</item>
+    </style>
+    <style name="AppDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.Dialog" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+    <style name="AppTheme.Dialog.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+    <style name="AppTheme.Dialog.FullScreen.Translucent">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+    <style name="AppTheme.FullScreen.Translucent" parent="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="AppTheme.FullScreen.Transparent" parent="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.Translucent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="AppTheme.Transparent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style mce_bogus="1" name="PopupAnim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/popup_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/popup_out</item>
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+    <style name="SwipeBackLayout">
+        <item name="edge_size">24dp</item>
+        <item name="shadow_left">@android:color/transparent</item>
+        <item name="shadow_right">@android:color/transparent</item>
+        <item name="shadow_bottom">@android:color/transparent</item>
+    </style>
+    <style name="TranslucentAlertDialog" parent="TranslucentDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+    <style name="TranslucentDialog" parent="AppDialogTheme">
+
+        <item name="windowMinWidthMinor">100%</item>
+
+        <item name="listPreferredItemPaddingLeft">0dip</item>
+
+        <item name="listPreferredItemPaddingRight">0dip</item>
+
+        <item name="android:windowFrame">@null</item><!--边框-->
+
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@color/transparent</item>
+
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+    <style name="TransparentAlertDialog" parent="TranslucentDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+    <style name="TransparentDialog" parent="TranslucentDialog">
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+</resources>

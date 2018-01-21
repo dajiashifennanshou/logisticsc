@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcOutStorageDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcOutStorage"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,zoneNo,dealerId,jionType,stowageNo,branchNo,deliveryNo,createTime,createUser,updateTime,updateUser,remark,goodsNum,outType
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcOutStorage" > 
+		select  <include refid="Base_Column_List" />  from yc_out_storage where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcOutStorage" > 
+		select  count(1)  from yc_out_storage 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_out_storage 
+		where 1=1
+		
+		<if test="outType !=null"> 
+			and outType=#{outType}
+		</if>
+		 order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcOutStorage"> 
+		delete from yc_out_storage where id=#{id} 
+	</delete> 
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcEmployee"> 
+		delete from yc_out_storage where id in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcOutStorage" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_out_storage  
+		(zoneNo,dealerId,jionType,stowageNo,branchNo,deliveryNo,createTime,createUser,updateTime,updateUser,remark,goodsNum,outType) 
+		values (#{zoneNo},#{dealerId},#{jionType},#{stowageNo},#{branchNo},#{deliveryNo},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark},#{goodsNum},#{outType} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcOutStorage">   
+	update yc_out_storage 
+	<set> 
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="jionType != null">
+			jionType = #{jionType},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="deliveryNo !=null"> 
+			deliveryNo=#{deliveryNo},
+		</if>
+		<if test="stowageNo !=null"> 
+			stowageNo=#{stowageNo},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+		<if test="goodsNum !=null"> 
+			goodsNum=#{goodsNum}
+		</if>
+		<if test="outType !=null"> 
+			outType=#{outType}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserBankCardMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserBankCard" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="card_type" property="cardType" jdbcType="INTEGER" />
+    <result column="card_state" property="cardState" jdbcType="INTEGER" />
+    <result column="identity_card" property="identityCard" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="DATE" />
+ 
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, name, bank, card_no,card_type,card_state,identity_card,time
+  </sql>
+  <!-- 添加银行卡信息 -->
+  <insert id="insertUserBankCard" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    insert into lc_platform_user_bank_card (user_id, name, 
+      bank, card_no,card_state,card_type,identity_card,time)
+    values (#{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR},
+      #{cardState,jdbcType=INTEGER},#{cardType,jdbcType=INTEGER},#{identityCard,jdbcType=VARCHAR},#{time,jdbcType=DATE}
+      )
+  </insert>
+   <!-- 查看用户银行卡详细信息 -->
+  <select id="selectUserBanCard" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  	select * from lc_platform_user_bank_card where user_id = #{userId,jdbcType=BIGINT} and id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 查看用户银行卡 -->
+  <select id="selectUserBankCard" parameterType="java.lang.Long" resultType="int">
+    select count(id) from lc_platform_user_bank_card 
+    where 
+    user_id = #{userId,jdbcType=BIGINT}
+    and
+    card_state = 0;
+  </select>
+  <!-- 获取当前用户银行卡 -->
+   <select id="selectBankCard" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_bank_card
+    where user_id = #{userId,jdbcType=BIGINT}
+    and
+    card_state = 0;
+  </select>
+  <!-- 获取当前用户银行卡详细信息-->
+   <select id="selectBankCardId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_bank_card
+    where id = #{id,jdbcType=BIGINT}
+    and
+    card_state = 0;
+  </select>
+  <!-- 修改银行卡信息 -->
+  <update id="updateUserBankCard" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    update lc_platform_user_bank_card
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+       <if test="cardNo != null" >
+        card_type = #{cardType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+<!--   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_bank_card
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_bank_card
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    insert into lc_platform_user_bank_card (id, user_id, name, 
+      bank, card_no)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    insert into lc_platform_user_bank_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    update lc_platform_user_bank_card
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserBankCard" >
+    update lc_platform_user_bank_card
+    set user_id = #{userId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderComplainMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderComplain" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="complaint_content" property="complaintContent" jdbcType="VARCHAR" />
+    <result column="complaint_time" property="complaintTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="line" property="line"/>
+    <result column="login_name" property="loginName"/>
+    <result column="handle_people" property="handlePeople"/>
+    <result column="handle_content" property="handleContent"/>
+    <result column="handle_time" property="handleTime"/>
+    <result column="handle_satisfied_degree" property="handleSatisfiedDegree" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="BaseMineComplainMap" type="com.brightsoft.model.PlatformOrderMineComplain" >
+  	<result column="complain_id" property="complainId" jdbcType="BIGINT" />
+    <result column="complaint_content" property="complaintContent" jdbcType="VARCHAR" />
+    <result column="complaint_time" property="complaintTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, complaint_content, complaint_time, state, user_id,status
+  </sql>
+  <!-- 是否已投诉 -->
+   <select id="selectComplain" resultType="int">
+	select COUNT(*) from lc_platform_order_complain where order_number =#{orderNumber,jdbcType=VARCHAR}
+  </select>
+  	<!-- 增加投诉 -->
+   <insert id="insertComplain" parameterType="com.brightsoft.model.PlatformOrderComplain" >
+    insert into lc_platform_order_complain (order_number, complaint_content, 
+      complaint_time, state, user_id
+      )
+    values (#{orderNumber,jdbcType=VARCHAR}, #{complaintContent,jdbcType=VARCHAR}, 
+      #{complaintTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <!-- 货运交易系统投诉详情  -->
+  <select id="selectOrderMineComplain" resultMap="BaseMineComplainMap">
+	select orders.order_number,orders.way_bill_number,
+		com.company_name,complain.status,
+	complain.complaint_content,complain.complaint_time,complain.state,complain.id as complain_id
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE complain.id = #{complaintId,jdbcType=BIGINT}
+  </select>
+  <!-- 货运交易系统查询我的投诉  -->
+  <select id="selectByConditionPlatfrom" resultMap="BaseMineComplainMap">
+  	select 
+	start.order_number,start.way_bill_number,
+	start.start_province,start.start_city,start.start_county,
+	end.end_province,end.end_city,end.end_county,
+	start.company_name,
+	start.complaint_content,start.complaint_time,start.state,start.complain_id,start.status
+	from
+	(select line.id,orders.order_number,orders.way_bill_number,
+	outlets.province as start_province,outlets.city as start_city,outlets.county as start_county,
+	com.company_name,
+	complain.complaint_content,complain.complaint_time,complain.state,complain.id as complain_id,complain.status
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="mineComplain.outletsIds != null and mineComplain.outletsIds !='' ">
+   		and complain.user_id in (#{mineComplain.outletsIds})
+   	</if>	
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+   		and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+   	</if>
+   	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+	<if test="mineComplain.state!=null and mineComplain.state!=''">
+		and #{mineComplain.state,jdbcType=VARCHAR} = complain.state
+	</if>
+	order by complain.complaint_time desc
+	limit #{page.start},#{page.limit}) start
+	JOIN
+	(
+	select line.id,orders.order_number,orders.way_bill_number
+	,outlets.province as end_province,outlets.city as end_city,outlets.county as end_county,
+	com.company_name,
+	complain.complaint_content,complain.complaint_time,complain.state,complain.id as complain_id
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="mineComplain.outletsIds != null and mineComplain.outletsIds !='' ">
+   		and complain.user_id in (#{mineComplain.outletsIds})
+   	</if>	
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+   		and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+   	</if>
+   	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+	<if test="mineComplain.state!=null and mineComplain.state!=''">
+		and #{mineComplain.state,jdbcType=VARCHAR} = complain.state
+	</if>
+	order by complain.complaint_time desc
+	limit #{page.start},#{page.limit}
+	) end on start.id = end.id
+	GROUP BY start.order_number
+	order by start.complaint_time desc
+  </select>
+  <!-- 货运交易系统查询投诉总数 -->
+  <select id="countRowsPlatfrom" resultType="int">
+ 	select count(*)
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	WHERE 1 = 1
+	<if test="mineComplain.outletsIds != null and mineComplain.outletsIds !='' ">
+   		and complain.user_id in (#{mineComplain.outletsIds})
+   	</if>	
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+			and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+	</if>
+	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+	<if test="mineComplain.state!=null and mineComplain.state!=''">
+		and #{mineComplain.state,jdbcType=VARCHAR} = complain.state
+	</if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderComplain" >
+    update lc_platform_order_complain
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintTime != null" >
+        complaint_time = #{complaintTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_complain
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!--
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_complain
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderComplain" >
+    insert into lc_platform_order_complain (id, order_number, complaint_content, 
+      complaint_time, state, user_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{complaintContent,jdbcType=VARCHAR}, 
+      #{complaintTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderComplain" >
+    insert into lc_platform_order_complain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="complaintContent != null" >
+        complaint_content,
+      </if>
+      <if test="complaintTime != null" >
+        complaint_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintContent != null" >
+        #{complaintContent,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintTime != null" >
+        #{complaintTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  -->
+  
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderComplain" >
+    update lc_platform_order_complain
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      complaint_content = #{complaintContent,jdbcType=VARCHAR},
+      complaint_time = #{complaintTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update> 
+  
+  <!-- 查询条件 -->
+  <sql id="base_query">
+  	<if test="platformOrderComplain.startTime != null and platformOrderComplain.endTime != null ">
+  		and poc.complaint_time between #{platformOrderComplain.startTime} and #{platformOrderComplain.endTime}
+  	</if>
+  	<if test="platformOrderComplain.startTime == null and platformOrderComplain.endTime != null">
+  		and poc.complaint_time &lt; #{platformOrderComplain.endTime}
+  	</if>
+  	<if test="platformOrderComplain.startTime != null and platformOrderComplain.endTime == null">
+  		and poc.complaint_time &gt; #{platformOrderComplain.startTime}
+  	</if>
+  	<if test="platformOrderComplain.condition != null and platformOrderComplain.condition != ''">
+  		and poc.order_number = #{platformOrderComplain.orderNumber}
+  	</if>
+  </sql>
+  
+  <!-- 查询投诉信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 
+  		poc.id, poc.order_number, poc.complaint_content, poc.complaint_time, poc.state, poc.user_id,
+  		concat(li.start_outlets_name,'（到）',li.end_outlets_name) as line,pu.login_name,poch.handle_people,
+  		poch.handle_content,poch.handle_time,handle_satisfied_degree
+  	from 
+  		lc_platform_order_complain poc
+  		left join lc_platform_user pu on poc.user_id = pu.id
+  		left join lc_platform_order po on poc.order_number = po.order_number
+  		left join tms_line_info li on po.tms_line_id = li.id
+  		left join lc_platform_order_complain_handle poch on poc.id = poch.complaint_id
+  	<where>
+  		<choose>
+  			<when test="user.outletsId != null">
+  				li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				li.outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"/>
+  		order by poc.complaint_time desc limit #{page.start},#{page.limit}
+  	</where> 
+  </select>
+  
+  <!-- 获取结果集总数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		lc_platform_order_complain poc
+  		left join lc_platform_user pu on poc.user_id = pu.id
+  		left join lc_platform_order po on poc.order_number = po.order_number
+  		left join tms_line_info li on po.tms_line_id = li.id
+  		left join lc_platform_order_complain_handle poch on poc.id = poch.complaint_id
+  	<where>
+  		<choose>
+  			<when test="user.outletsId != null">
+  				li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				li.outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"></include>
+  	</where> 
+  </select>
+  
+  
+  
+   <!-- 货运交易系统查询投诉总数 -->
+  <select id="countRowsPlatfromList" resultType="int">
+ 	select count(*)
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	WHERE 1 = 1
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+		and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+	</if>
+	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+  </select>
+  
+  <!-- 货运交易系统查询我的投诉  -->
+  <select id="selectByConditionPlatfromList" resultMap="BaseMineComplainMap">
+  	select 
+	start.order_number,start.way_bill_number,
+	start.start_province,start.start_city,start.start_county,
+	end.end_province,end.end_city,end.end_county,
+	start.company_name,start.company_code,
+	start.complaint_content,start.complaint_time,start.state,start.complain_id,start.status
+	from
+	(select line.id,orders.order_number,orders.way_bill_number,
+	outlets.province as start_province,outlets.city as start_city,outlets.county as start_county,
+	com.company_name,com.company_code,
+	complain.complaint_content,complain.complaint_time,complain.state,complain.id as complain_id,complain.status
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+   		and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+   	</if>
+   	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+	order by complain.complaint_time desc
+	limit #{page.start},#{page.limit}) start
+	JOIN
+	(
+	select line.id,orders.order_number,orders.way_bill_number
+	,outlets.province as end_province,outlets.city as end_city,outlets.county as end_county,
+	com.company_name,
+	complain.complaint_content,complain.complaint_time,complain.state,complain.id as complain_id
+	from lc_platform_order_complain as complain
+	JOIN lc_platform_order as orders on orders.order_number = complain.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="mineComplain.condition != null and mineComplain.condition !='' ">
+   		and (orders.order_number like concat("%",#{mineComplain.condition},"%") or orders.way_bill_number like concat("%",#{mineComplain.condition},"%"))
+   	</if>
+   	<if test="mineComplain.startTime!=null and mineComplain.startTime!=''">
+		and complain.complaint_time >=#{mineComplain.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineComplain.endTime!=null and mineComplain.endTime!=''">
+		and #{mineComplain.endTime,jdbcType=VARCHAR} >= complain.complaint_time
+	</if>
+	order by complain.complaint_time desc
+	limit #{page.start},#{page.limit}
+	) end on start.id = end.id
+	GROUP BY start.order_number
+	order by start.complaint_time desc
+  </select>
+</mapper>

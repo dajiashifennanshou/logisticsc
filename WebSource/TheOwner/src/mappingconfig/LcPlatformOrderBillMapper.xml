@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ILcPlatformOrderBillDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformOrderBill"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,order_number,freight,agency_fund_poundage,load_unload_charge,added_service_charge,insurance,total_cost,prepaid_cost,other_cost,pay_date,state,start_outlets,end_outlets,company_name,create_time,take_cargo_cost,send_cargo_cost,load_cargo_cost,unload_cargo_cost,estimate_take_cargo_cost,estimate_send_cargo_cost,estimate_load_cargo_cost,estimate_unload_cargo_cost,estimate_freight,estimate_total_cost,is_confirm,is_payment
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformOrderBill" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_bill where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.LcPlatformOrderBill" > 
+		select  count(1)  from lc_platform_order_bill 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_bill order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderBill"> 
+		delete from lc_platform_order_bill where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderBill" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_bill  
+		(order_number,freight,agency_fund_poundage,load_unload_charge,added_service_charge,insurance,total_cost,prepaid_cost,other_cost,pay_date,state,start_outlets,end_outlets,company_name,create_time,take_cargo_cost,send_cargo_cost,load_cargo_cost,unload_cargo_cost,estimate_take_cargo_cost,estimate_send_cargo_cost,estimate_load_cargo_cost,estimate_unload_cargo_cost,estimate_freight,estimate_total_cost,is_confirm,is_payment) 
+		values ( #{order_number},#{freight},#{agency_fund_poundage},#{load_unload_charge},#{added_service_charge},#{insurance},#{total_cost},#{prepaid_cost},#{other_cost},#{pay_date},#{state},#{start_outlets},#{end_outlets},#{company_name},#{create_time},#{take_cargo_cost},#{send_cargo_cost},#{load_cargo_cost},#{unload_cargo_cost},#{estimate_take_cargo_cost},#{estimate_send_cargo_cost},#{estimate_load_cargo_cost},#{estimate_unload_cargo_cost},#{estimate_freight},#{estimate_total_cost},#{is_confirm},#{is_payment} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderBill">   
+	update lc_platform_order_bill 
+	<set> 
+		<if test="order_number !=null"> 
+			order_number=#{order_number},
+		</if>
+		<if test="freight !=null"> 
+			freight=#{freight},
+		</if>
+		<if test="agency_fund_poundage !=null"> 
+			agency_fund_poundage=#{agency_fund_poundage},
+		</if>
+		<if test="load_unload_charge !=null"> 
+			load_unload_charge=#{load_unload_charge},
+		</if>
+		<if test="added_service_charge !=null"> 
+			added_service_charge=#{added_service_charge},
+		</if>
+		<if test="insurance !=null"> 
+			insurance=#{insurance},
+		</if>
+		<if test="total_cost !=null"> 
+			total_cost=#{total_cost},
+		</if>
+		<if test="prepaid_cost !=null"> 
+			prepaid_cost=#{prepaid_cost},
+		</if>
+		<if test="other_cost !=null"> 
+			other_cost=#{other_cost},
+		</if>
+		<if test="pay_date !=null"> 
+			pay_date=#{pay_date},
+		</if>
+		<if test="state !=null"> 
+			state=#{state},
+		</if>
+		<if test="start_outlets !=null"> 
+			start_outlets=#{start_outlets},
+		</if>
+		<if test="end_outlets !=null"> 
+			end_outlets=#{end_outlets},
+		</if>
+		<if test="company_name !=null"> 
+			company_name=#{company_name},
+		</if>
+		<if test="create_time !=null"> 
+			create_time=#{create_time},
+		</if>
+		<if test="take_cargo_cost !=null"> 
+			take_cargo_cost=#{take_cargo_cost},
+		</if>
+		<if test="send_cargo_cost !=null"> 
+			send_cargo_cost=#{send_cargo_cost},
+		</if>
+		<if test="load_cargo_cost !=null"> 
+			load_cargo_cost=#{load_cargo_cost},
+		</if>
+		<if test="unload_cargo_cost !=null"> 
+			unload_cargo_cost=#{unload_cargo_cost},
+		</if>
+		<if test="estimate_take_cargo_cost !=null"> 
+			estimate_take_cargo_cost=#{estimate_take_cargo_cost},
+		</if>
+		<if test="estimate_send_cargo_cost !=null"> 
+			estimate_send_cargo_cost=#{estimate_send_cargo_cost},
+		</if>
+		<if test="estimate_load_cargo_cost !=null"> 
+			estimate_load_cargo_cost=#{estimate_load_cargo_cost},
+		</if>
+		<if test="estimate_unload_cargo_cost !=null"> 
+			estimate_unload_cargo_cost=#{estimate_unload_cargo_cost},
+		</if>
+		<if test="estimate_freight !=null"> 
+			estimate_freight=#{estimate_freight},
+		</if>
+		<if test="estimate_total_cost !=null"> 
+			estimate_total_cost=#{estimate_total_cost},
+		</if>
+		<if test="is_confirm !=null"> 
+			is_confirm=#{is_confirm},
+		</if>
+		<if test="is_payment !=null"> 
+			is_payment=#{is_payment}
+		</if>
+	</set> 
+	where 1=1
+	<if test="id!=null">
+		and id=#{id} 
+	</if>
+	<if test="order_number!=null">
+		and order_number=#{order_number}
+	</if>
+	</update> 
+</mapper> 
+

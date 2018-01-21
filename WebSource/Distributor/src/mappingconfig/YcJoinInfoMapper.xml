@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcJoinInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcJoinInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,joinName,joinerId,branchNo,joinType,zoneNo,apolyArea,applyStatus,days,startUseTime,endUseTime,dealerMsg,prepaid,surplus,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcJoinInfo" > 
+		select  <include refid="Base_Column_List" />  from yc_join_info where 1=1
+		<if test="id!=null">
+			and id=#{id} 
+		</if>
+		<if test="joinerId!=null">
+			and joinerId=#{joinerId} 
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcJoinInfo" > 
+		select  count(1)  from yc_join_info where 1=1
+		<if test="applyStatus!=null">
+			and applyStatus=#{applyStatus}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_join_info where 1=1
+		<if test="applyStatus!=null">
+			and applyStatus=#{applyStatus}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcJoinInfo"> 
+		delete from yc_join_info where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcJoinInfo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_join_info  
+		(joinName,joinerId,branchNo,joinType,zoneNo,apolyArea,applyStatus,days,startUseTime,endUseTime,dealerMsg,prepaid,surplus,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{joinName},#{joinerId},#{branchNo},#{joinType},#{zoneNo},#{apolyArea},#{applyStatus},#{days},#{startUseTime},#{endUseTime},#{dealerMsg},#{prepaid},#{surplus},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcJoinInfo">   
+	update yc_join_info 
+	<set> 
+		<if test="joinName !=null"> 
+			joinName=#{joinName},
+		</if>
+		<if test="joinerId !=null"> 
+			joinerId=#{joinerId},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="joinType !=null"> 
+			joinType=#{joinType},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="apolyArea !=null"> 
+			apolyArea=#{apolyArea},
+		</if>
+		<if test="applyStatus !=null"> 
+			applyStatus=#{applyStatus},
+		</if>
+		<if test="days !=null"> 
+			days=#{days},
+		</if>
+		<if test="startUseTime !=null"> 
+			startUseTime=#{startUseTime},
+		</if>
+		<if test="endUseTime !=null"> 
+			endUseTime=#{endUseTime},
+		</if>
+		<if test="dealerMsg !=null"> 
+			dealerMsg=#{dealerMsg},
+		</if>
+		<if test="prepaid !=null"> 
+			prepaid=#{prepaid},
+		</if>
+		<if test="surplus !=null"> 
+			surplus=#{surplus},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+	<select id="getYcJoinInfoList" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcJoinInfo">
+		select <include refid="Base_Column_List"/> from yc_join_info where 1=1
+		<if test="applyStatus !=null">
+			and applyStatus = #{applyStatus}
+		</if>
+		<if test="joinType !=null">
+			and joinType = #{joinType}
+		</if>
+	</select>
+	<select id="getJoinInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcJoinInfo">
+		SELECT a.id,a.joinName,a.joinerId,b.branchName,a.branchNo,a.joinType,a.zoneNo,a.apolyArea,a.applyStatus,a.days,a.startUseTime,
+			a.endUseTime,a.dealerMsg,a.prepaid,a.surplus FROM yc_join_info AS a,yc_storage_branch AS b 
+			WHERE a.`branchNo`=b.`branchNo` and a.`joinerId`=#{joinerId} 
+	</select>
+</mapper> 
+

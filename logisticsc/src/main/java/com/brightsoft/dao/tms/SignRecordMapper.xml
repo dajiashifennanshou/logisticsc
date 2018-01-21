@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.SignRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SignRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="sign_time" property="signTime" jdbcType="TIMESTAMP" />
+    <result column="sign_person" property="signPerson" jdbcType="VARCHAR" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="receive_money" property="receiveMoney" jdbcType="DOUBLE" />
+    <result column="is_completed" property="isCompleted" jdbcType="INTEGER" />
+    <result column="is_advance_money" property="isAdvanceMoney" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_number, sign_time, sign_person, id_card, phone, address, receive_money, 
+    is_completed, is_advance_money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_sign_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_sign_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SignRecord" >
+    insert into tms_sign_record (id, way_bill_number, sign_time, 
+      sign_person, id_card, phone, 
+      address, receive_money, is_completed, 
+      is_advance_money)
+    values (#{id,jdbcType=BIGINT}, #{wayBillNumber,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, 
+      #{signPerson,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{receiveMoney,jdbcType=DOUBLE}, #{isCompleted,jdbcType=INTEGER}, 
+      #{isAdvanceMoney,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SignRecord" >
+    insert into tms_sign_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="signTime != null" >
+        sign_time,
+      </if>
+      <if test="signPerson != null" >
+        sign_person,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money,
+      </if>
+      <if test="isCompleted != null" >
+        is_completed,
+      </if>
+      <if test="isAdvanceMoney != null" >
+        is_advance_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null" >
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signPerson != null" >
+        #{signPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMoney != null" >
+        #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="isAdvanceMoney != null" >
+        #{isAdvanceMoney,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SignRecord" >
+    update tms_sign_record
+    <set >
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null" >
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signPerson != null" >
+        sign_person = #{signPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        is_completed = #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="isAdvanceMoney != null" >
+        is_advance_money = #{isAdvanceMoney,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SignRecord" >
+    update tms_sign_record
+    set way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      sign_person = #{signPerson,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      receive_money = #{receiveMoney,jdbcType=DOUBLE},
+      is_completed = #{isCompleted,jdbcType=INTEGER},
+      is_advance_money = #{isAdvanceMoney,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByWayBillNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_sign_record
+    where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+  </select>
+</mapper>

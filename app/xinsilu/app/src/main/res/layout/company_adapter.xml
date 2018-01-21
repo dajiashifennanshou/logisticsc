@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/hor_style"
+        >
+
+        <TextView
+            android:id="@+id/company_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:gravity="center|left"
+            android:textColor="@color/font_color_normal2"
+            android:textSize="@dimen/mid_text_size" />
+
+        <EditText
+            android:id="@+id/company_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="left|center"
+            android:textColorHint="@color/font_color_hint_light2"
+            android:textColor="@color/font_color_normal2"
+            android:background="@null"
+            android:textSize="@dimen/mid_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

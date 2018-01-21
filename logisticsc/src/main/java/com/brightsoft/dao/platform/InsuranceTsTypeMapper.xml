@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.InsuranceTsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.InsuranceTsType" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ins_ts_type_name" property="insTsTypeName" jdbcType="VARCHAR" />
+    <result column="ins_ts_type_tag" property="insTsTypeTag" jdbcType="VARCHAR" />
+    <result column="ins_status" property="insStatus" jdbcType="INTEGER" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ins_ts_type_name, ins_ts_type_tag, ins_status,create_person_id,create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_insurance_ts_type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_insurance_ts_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.InsuranceTsType" >
+    insert into lc_insurance_ts_type (id, ins_ts_type_name, ins_ts_type_tag, 
+      ins_status,create_time,create_person_id)
+    values (#{id,jdbcType=BIGINT}, #{insTsTypeName,jdbcType=VARCHAR}, #{insTsTypeTag,jdbcType=VARCHAR}, 
+      #{insStatus,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},
+      #{createPersonId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.InsuranceTsType" >
+    insert into lc_insurance_ts_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insTsTypeName != null" >
+        ins_ts_type_name,
+      </if>
+      <if test="insTsTypeTag != null" >
+        ins_ts_type_tag,
+      </if>
+      <if test="insStatus != null" >
+        ins_status,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="insTsTypeName != null" >
+        #{insTsTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="insTsTypeTag != null" >
+        #{insTsTypeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.InsuranceTsType" >
+    update lc_insurance_ts_type
+    <set >
+      <if test="insTsTypeName != null" >
+        ins_ts_type_name = #{insTsTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="insTsTypeTag != null" >
+        ins_ts_type_tag = #{insTsTypeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        ins_status = #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_Time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.InsuranceTsType" >
+    update lc_insurance_ts_type
+    set ins_ts_type_name = #{insTsTypeName,jdbcType=VARCHAR},
+      ins_ts_type_tag = #{insTsTypeTag,jdbcType=VARCHAR},
+      ins_status = #{insStatus,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 查询特殊类型 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select
+  		*
+  	from
+  		lc_insurance_ts_type
+  	where
+  		1=1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+  			and ins_ts_type_name = #{searchParams.condition} or ins_ts_type_tag = #{searchParams.condition}
+  		</if>
+  		order by id limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取记录数 -->
+  <select id="countRows" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_insurance_ts_type
+  	where
+  		1=1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+  			and ins_ts_type_name = #{searchParams.condition} or ins_ts_type_tag = #{searchParams.condition}
+  		</if>
+  </select>
+  <!-- 获取所有点特殊类型 -->
+  <select id="selectInsTsType" resultMap="BaseResultMap">
+  	select 
+  		*
+  	from
+  		lc_insurance_ts_type
+  </select>
+  <!-- 根据公司id获取特殊类型 -->
+  <select id="selectByComId" resultMap="BaseResultMap">
+  	select 
+  		it.*
+  	from
+  		lc_insurance_ts_type it
+  		inner join lc_ins_com_ts_type ict on it.id = ict.ins_ts_type_id
+  	where
+  		ict.ins_com_id = #{companyId}
+  </select>
+  <!-- 通过保险公司tag获取特殊类型 -->
+  <select id="selectByComTag" resultMap="BaseResultMap">
+  	select
+  		it.*
+  	from
+  		lc_insurance_ts_type it
+  		inner join lc_ins_com_ts_type ict on it.id = ict.ins_ts_type_id
+  		inner join lc_insurance_company ic on ict.ins_com_id = ic.id 
+  	where
+  		ic.ins_com_tag = #{companyTag}
+  </select>
+  <!-- 查询特殊类型是否存在 -->
+  <select id="countByTsTypeTag" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		lc_insurance_ts_type
+  	where
+  		ins_ts_type_tag = #{tsTypeTag}
+  </select>
+   <!-- 批量删除特殊类型 -->
+  <delete id="deleteBatch">
+  	delete from lc_insurance_ts_type
+  	where
+  		id in 
+  		<foreach collection="array" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </delete>
+</mapper>

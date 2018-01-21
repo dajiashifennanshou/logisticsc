@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcSpecialDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcSpecial"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,companyCode,companyName,branchNo,zoneNo,branchCode,branchName,zoneArea,status,branchzone,linkman,phone,telephone,email,address,startJoinTime,endJoinTime,joinCost,payOrderNum,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcSpecial" > 
+		select  <include refid="Base_Column_List" />  from yc_special where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcSpecial" > 
+		select  count(1)  from yc_special 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_special order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcSpecial"> 
+		delete from yc_special where id=#{id} 
+	</delete>
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcSpecial" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_special  
+		(companyCode,companyName,branchNo,zoneNo,branchCode,branchName,zoneArea,status,branchzone,linkman,phone,telephone,email,address,startJoinTime,endJoinTime,joinCost,payOrderNum,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{companyCode},#{companyName},#{branchNo},#{zoneNo},#{branchCode},#{branchName},#{zoneArea},#{status},#{branchzone},#{linkman},#{phone},#{telephone},#{email},#{address},#{startJoinTime},#{endJoinTime},#{joinCost},#{payOrderNum},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcSpecial">   
+	update yc_special 
+	<set> 
+		<if test="companyCode !=null"> 
+			companyCode=#{companyCode},
+		</if>
+		<if test="companyName !=null"> 
+			companyName=#{companyName},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="branchCode !=null"> 
+			branchCode=#{branchCode},
+		</if>
+		<if test="branchName !=null"> 
+			branchName=#{branchName},
+		</if>
+		<if test="zoneArea !=null"> 
+			zoneArea=#{zoneArea},
+		</if>
+		<if test="status !=null"> 
+			status=#{status},
+		</if>
+		<if test="branchzone !=null"> 
+			branchzone=#{branchzone},
+		</if>
+		<if test="linkman !=null"> 
+			linkman=#{linkman},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="telephone !=null"> 
+			telephone=#{telephone},
+		</if>
+		<if test="email !=null"> 
+			email=#{email},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="startJoinTime !=null"> 
+			startJoinTime=#{startJoinTime},
+		</if>
+		<if test="endJoinTime !=null"> 
+			endJoinTime=#{endJoinTime},
+		</if>
+		<if test="joinCost !=null"> 
+			joinCost=#{joinCost},
+		</if>
+		<if test="payOrderNum !=null"> 
+			payOrderNum=#{payOrderNum},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+	<!-- 查询没有注册加盟商的专线用户 -->
+	<select id="getUnRegisterSpecial" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" /> FROM yc_special AS a 
+		WHERE (SELECT COUNT(1) FROM yc_join_info AS b WHERE b.`joinerId`=a.`id` and b.joinType=1)=0;
+	</select>
+</mapper> 
+

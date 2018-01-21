@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserCompaninfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserCompaninfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="staff_number" property="staffNumber" jdbcType="INTEGER" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="warehouse_info" property="warehouseInfo" jdbcType="VARCHAR" />
+    <result column="carriage_goods" property="carriageGoods" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="vehicle_info" property="vehicleInfo" jdbcType="VARCHAR" />
+    <result column="annual_money" property="annualMoney" jdbcType="DOUBLE" />
+    <result column="service_info" property="serviceInfo" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, staff_number, region, warehouse_info,carriage_goods, brand_name, vehicle_info, 
+    annual_money, service_info, company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_companyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_companyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserCompaninfo" >
+    insert into lc_platform_user_companyinfo (id, staff_number, region, 
+      warehouse_info,carriage_goods, brand_name, 
+      vehicle_info, annual_money, service_info, 
+      company_id)
+    values (#{id,jdbcType=BIGINT}, #{staffNumber,jdbcType=INTEGER}, #{region,jdbcType=VARCHAR}, 
+      #{warehouseInfo,jdbcType=VARCHAR}, #{carriageGoods,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{vehicleInfo,jdbcType=VARCHAR}, #{annualMoney,jdbcType=DOUBLE}, #{serviceInfo,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserCompaninfo" >
+    insert into lc_platform_user_companyinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="staffNumber != null" >
+        staff_number,
+      </if>
+      <if test="region != null" >
+        region,
+      </if>
+      <if test="warehouseInfo != null" >
+        warehouse_info,
+      </if>
+      <if test="carriageGoods != null" >
+       carriage_goods,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="vehicleInfo != null" >
+        vehicle_info,
+      </if>
+      <if test="annualMoney != null" >
+        annual_money,
+      </if>
+      <if test="serviceInfo != null" >
+        service_info,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="staffNumber != null" >
+        #{staffNumber,jdbcType=INTEGER},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseInfo != null" >
+        #{warehouseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageGoods != null" >
+        #{carriageGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleInfo != null" >
+        #{vehicleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="annualMoney != null" >
+        #{annualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="serviceInfo != null" >
+        #{serviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserCompaninfo" >
+    update lc_platform_user_companyinfo
+    <set >
+      <if test="staffNumber != null" >
+        staff_number = #{staffNumber,jdbcType=INTEGER},
+      </if>
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseInfo != null" >
+        warehouse_info = #{warehouseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageGoods != null" >
+       carriage_goods = #{carriageGoods,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleInfo != null" >
+        vehicle_info = #{vehicleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="annualMoney != null" >
+        annual_money = #{annualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="serviceInfo != null" >
+        service_info = #{serviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserCompaninfo" >
+    update lc_platform_user_companyinfo
+    set staff_number = #{staffNumber,jdbcType=INTEGER},
+      region = #{region,jdbcType=VARCHAR},
+      warehouse_info = #{warehouseInfo,jdbcType=VARCHAR},
+     carriage_goods = #{carriageGoods,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      vehicle_info = #{vehicleInfo,jdbcType=VARCHAR},
+      annual_money = #{annualMoney,jdbcType=DOUBLE},
+      service_info = #{serviceInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 根据公司id获取公司信息 -->
+  <select id="selectByCompanyId" resultMap="BaseResultMap">
+  	select
+  		*
+  	from
+  		lc_platform_user_companyinfo
+  	where
+  		company_id = #{companyId}
+  </select>
+</mapper>

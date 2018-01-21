@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ITmsOutletsInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.TmsOutletsInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,outlets_number,name,type,nature,province,city,county,address,contact_person,mobile,phone,email,remark,status,create_time,create_person_id,company_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.TmsOutletsInfo" > 
+		select  <include refid="Base_Column_List" />  from tms_outlets_info where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.TmsOutletsInfo" > 
+		select  count(1)  from tms_outlets_info 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from tms_outlets_info order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.TmsOutletsInfo"> 
+		delete from tms_outlets_info where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.TmsOutletsInfo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into tms_outlets_info  
+		(outlets_number,name,type,nature,province,city,county,address,contact_person,mobile,phone,email,remark,status,create_time,create_person_id,company_id) 
+		values ( #{outlets_number},#{name},#{type},#{nature},#{province},#{city},#{county},#{address},#{contact_person},#{mobile},#{phone},#{email},#{remark},#{status},#{create_time},#{create_person_id},#{company_id} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.TmsOutletsInfo">   
+	update tms_outlets_info 
+	<set> 
+		<if test="outlets_number !=null"> 
+			outlets_number=#{outlets_number},
+		</if>
+		<if test="name !=null"> 
+			name=#{name},
+		</if>
+		<if test="type !=null"> 
+			type=#{type},
+		</if>
+		<if test="nature !=null"> 
+			nature=#{nature},
+		</if>
+		<if test="province !=null"> 
+			province=#{province},
+		</if>
+		<if test="city !=null"> 
+			city=#{city},
+		</if>
+		<if test="county !=null"> 
+			county=#{county},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="contact_person !=null"> 
+			contact_person=#{contact_person},
+		</if>
+		<if test="mobile !=null"> 
+			mobile=#{mobile},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="email !=null"> 
+			email=#{email},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="status !=null"> 
+			status=#{status},
+		</if>
+		<if test="create_time !=null"> 
+			create_time=#{create_time},
+		</if>
+		<if test="create_person_id !=null"> 
+			create_person_id=#{create_person_id},
+		</if>
+		<if test="company_id !=null"> 
+			company_id=#{company_id}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformBankConfigureDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformBankConfigure"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,minsettleamount,riskreserveday,manualsettle,time,username
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankConfigure" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_bank_configure where 1=1
+		<if test="id!=null">
+			and id=#{id} 
+		</if>
+	</select> 
+</mapper> 
+

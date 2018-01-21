@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/search_layout"
+    android:background="@color/colorPrimaryContent"
+    tools:context="com.xsl.distributor.ws.ui.activity.SearchActivity">
+    <!--<include layout="@layout/layout_title_with_back" />-->
+    <!--<include layout="@layout/layout_line"/>-->
+
+    <FrameLayout
+        android:id="@+id/search_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+
+</LinearLayout>

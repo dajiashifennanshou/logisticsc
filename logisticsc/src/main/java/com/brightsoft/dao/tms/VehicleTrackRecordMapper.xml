@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.VehicleTrackRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.VehicleTrackRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="vehicle_number" property="vehicleNumber" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="depart_number" property="departNumber" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="desc_info" property="descInfo" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vehicle_number, driver_name, depart_number, address, desc_info, operate_person, 
+    operate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_vehicle_track_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_vehicle_track_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.VehicleTrackRecord" >
+    insert into tms_vehicle_track_record (id, vehicle_number, driver_name, 
+      depart_number, address, desc_info, 
+      operate_person, operate_time)
+    values (#{id,jdbcType=BIGINT}, #{vehicleNumber,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, 
+      #{departNumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{descInfo,jdbcType=VARCHAR}, 
+      #{operatePerson,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.VehicleTrackRecord" >
+    insert into tms_vehicle_track_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="departNumber != null" >
+        depart_number,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="descInfo != null" >
+        desc_info,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="vehicleNumber != null" >
+        #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="departNumber != null" >
+        #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="descInfo != null" >
+        #{descInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.VehicleTrackRecord" >
+    update tms_vehicle_track_record
+    <set >
+      <if test="vehicleNumber != null" >
+        vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="departNumber != null" >
+        depart_number = #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="descInfo != null" >
+        desc_info = #{descInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.VehicleTrackRecord" >
+    update tms_vehicle_track_record
+    set vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      depart_number = #{departNumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      desc_info = #{descInfo,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

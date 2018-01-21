@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformOrderDao"> 
+	<resultMap id="BaseResultMap1" type="com.yc.Entity.LcPlatformOrder"></resultMap> 
+	<resultMap id="BaseResultMap2" type="com.yc.Entity.LcPlatformOrderCargo"></resultMap> 
+	<resultMap id="BaseResultMap3" type="com.yc.Entity.LcPlatformOrderAdditionalServer"></resultMap>
+	<sql id="Base_Column_List"> 
+		id,order_number,way_bill_number,consignor_name,consignor_province,consignor_city,consignor_county,consignor_address,consignor_phone_number,consignor_telephone,driver_name,driver_phone,vehicle_number,vehicle_type,consignee_name,consignee_province,consignee_city,consignee_county,consignee_address,consignee_phone_number,consignee_telephone,send_cargo_type,delivery_date,delivery_start_time,delivery_end_time,receive_cargo_type,is_insurance,insurance_money,receipt_type,receipt_title,receipt_company_name,pay_type,total_weight,total_volume,total_worth,advance_price,paid_price,final_price,state,order_time,user_id,tms_line_id,is_delete,is_draft,is_wait_pay,estimate_weight,estimate_volume,estimate_freight,is_confirm,take_cargo_cost,estimate_total,is_payment
+	</sql> 
+	<select id="getOrder" resultMap="BaseResultMap1" parameterType="com.yc.Entity.LcPlatformOrder" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order where 1=1
+		<if test="order_number!=null">
+			and order_number = #{order_number}
+		</if>
+		<if test="way_bill_number!=null">
+			and way_bill_number = #{way_bill_number}
+		</if>
+	</select>
+	<select id="getOrderCargoList" resultMap="BaseResultMap2" parameterType="com.yc.Entity.LcPlatformOrderCargo">
+		SELECT a.id,a.name,a.brand,a.model,a.package_type,a.number,a.set_number,a.single_weight,a.single_volume,a.count_cost_mode,a.price,a.order_id FROM lc_platform_order_cargo AS a WHERE a.order_id=#{order_id}
+	</select>
+	<select id="getOrderAdditionalServer" resultMap="BaseResultMap3" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer" > 
+		SELECT a.id,a.is_receipt,a.is_im_ex_store,a.is_load_cargo,a.load_cargo_floor,a.load_cargo_is_elevator,a.is_unload_cargo,a.unload_cargo_floor,a.unload_cargo_is_elevator,a.is_collection_delivery,a.collection_delivery_money,a.order_id
+ 			FROM lc_platform_order_additional_server AS a WHERE a.order_id=#{order_id}
+	</select>
+	<update id="updatePlatformOrder" parameterType="com.yc.Entity.LcPlatformOrder">
+		update lc_platform_order set is_payment=#{is_payment} where way_bill_number=#{way_bill_number}
+	</update>
+</mapper> 
+

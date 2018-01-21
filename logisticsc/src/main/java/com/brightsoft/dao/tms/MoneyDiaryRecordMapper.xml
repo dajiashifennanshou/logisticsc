@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.MoneyDiaryRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.MoneyDiaryRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="cost_subject" property="costSubject" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="person" property="person" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="depart_number" property="departNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, date, type, cost_subject, money, person, company, depart_number, way_bill_number, remark, outlets_id, operate_person
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_money_diary_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_money_diary_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.MoneyDiaryRecord" >
+    insert into tms_money_diary_record (id, date, type, cost_subject, 
+      money, person, company, 
+      depart_number, way_bill_number, remark, outlets_id, operate_person
+      )
+    values (#{id,jdbcType=BIGINT}, #{date,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, #{costSubject,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DOUBLE}, #{person,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{departNumber,jdbcType=VARCHAR}, #{wayBillNumber,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{outletsId,jdbcType=BIGINT}, #{operatePerson,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.MoneyDiaryRecord" >
+    insert into tms_money_diary_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="costSubject != null" >
+        cost_subject,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="person != null" >
+        person,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="departNumber != null" >
+        depart_number,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="costSubject != null" >
+        #{costSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="person != null" >
+        #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="departNumber != null" >
+        #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.MoneyDiaryRecord" >
+    update tms_money_diary_record
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="costSubject != null" >
+        cost_subject = #{costSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="person != null" >
+        person = #{person,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="departNumber != null" >
+        depart_number = #{departNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.MoneyDiaryRecord" >
+    update tms_money_diary_record
+    set date = #{date,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      cost_subject = #{costSubject,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      person = #{person,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      depart_number = #{departNumber,jdbcType=VARCHAR},
+      way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      operate_person = #{operatePerson,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_money_diary_record
+    where 1 = 1
+   	<if test="subject != null and subject != '' ">
+   		and cost_subject = #{subject}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and date >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and date <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition != '' ">
+   		and depart_number like concat("%",#{condition},"%")
+   	</if>
+   	and outlets_id = #{outletsId} limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int" >
+    select count(1)
+    from tms_money_diary_record
+    where 1 = 1
+   	<if test="subject != null and subject != '' ">
+   		and cost_subject = #{subject}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and date >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and date <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and depart_number like concat("%",#{condition},"%")
+   	</if>
+   	and outlets_id = #{outletsId}
+  </select>
+  <select id="selectIncomeByParamsTotal" resultType="double" >
+    SELECT CASE WHEN SUM(money) IS NULL THEN 0 ELSE SUM(money) END money FROM tms_money_diary_record WHERE type = 0
+   	<if test="subject != null and subject != '' ">
+   		and cost_subject = #{subject}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and date >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and date <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and depart_number like concat("%",#{condition},"%")
+   	</if>
+   	and outlets_id = #{outletsId}
+  </select>
+  <select id="selectExpendByParamsTotal" resultType="Double" >
+    SELECT CASE WHEN SUM(money) IS NULL THEN 0 ELSE SUM(money) END money FROM tms_money_diary_record WHERE type = 1
+   	<if test="subject != null and subject != '' ">
+   		and cost_subject = #{subject}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and date >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and date <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and depart_number like concat("%",#{condition},"%")
+   	</if>
+   	and outlets_id = #{outletsId}
+  </select>
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_cloud_repository"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.xsl.distributor.lerist.ui.activity.MyCloudRepositoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_with_back" />
+
+        <include layout="@layout/layout_line" />
+
+        <fragment
+            android:id="@+id/a_my_cloud_repository_list"
+            class="com.xsl.distributor.lerist.ui.fragment.home.CloudRepositoryListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:text="请添加货物"
+                android:textColor="@color/font_color_normal"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="88dp"
+                android:text="安装费用 "
+                android:textColor="@color/font_color_normal"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/a_my_cloud_repository_tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0.0"
+                android:textColor="@color/font_color_normal"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 元"
+                android:textColor="@color/font_color_normal"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/a_my_cloud_repository_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/translucent2"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/a_my_cloud_repository_ll_car_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="40dp"
+        android:alpha="0"
+        android:background="@color/font_color_hint"
+        android:orientation="vertical" />
+
+    <FrameLayout
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|left"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp">
+
+        <ImageView
+            android:id="@+id/a_my_cloud_repository_iv_car"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/my_warehouse_xiadan_nor" />
+
+        <carbon.widget.TextView
+            android:id="@+id/a_my_cloud_repository_tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:background="@color/colorAccent3"
+            android:gravity="center"
+            android:hint=" 0 "
+            android:lines="1"
+            android:padding="4dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:carbon_cornerRadius="10dp"
+            app:carbon_rippleColor="@color/ripple" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/a_my_cloud_repository_btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="right|bottom"
+        android:background="@color/font_color_hint"
+        android:gravity="center"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="下单"
+        android:textColor="@color/white" />
+</FrameLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/order_detail_footer_name"
+        style="@style/myStyle"
+        android:hint="　　　　　　　　　"
+        android:layout_marginLeft="26dp"
+        android:textSize="@dimen/small_text_size" />
+
+    <TextView
+        android:id="@+id/order_detail_footer_money"
+        style="@style/myStyle"
+        android:layout_marginLeft="8dp"
+        android:textSize="@dimen/small_text_size" />
+</LinearLayout>

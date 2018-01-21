@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformBankDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformBank"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,requestid,bindmobile,customertype,signedname,linkman,idcard,businesslicence,legalperson,minsettleamount,riskreserveday,bankaccountnumber,provincename,cityname,bankheadname,bankname,accountname,bankaccounttype,bankprovince,bankcity,manualsettle,deposit,email,id_card_front,id_ccard_back,bank_card_front,bank_card_back,persou_photo,bussiness_license,bussiness_certficates,organization_code,tax_registron,bank_account_licence,state,bank_time,user_id,is_qualifications
+	</sql>
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBank" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_bank where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+	</select> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformBank" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_bank  
+		(requestid,bindmobile,customertype,signedname,linkman,idcard,businesslicence,legalperson,minsettleamount,riskreserveday,bankaccountnumber,provincename,cityname,bankheadname,bankname,accountname,bankaccounttype,bankprovince,bankcity,manualsettle,deposit,email,id_card_front,id_ccard_back,bank_card_front,bank_card_back,persou_photo,bussiness_license,bussiness_certficates,organization_code,tax_registron,bank_account_licence,state,bank_time,user_id,is_qualifications) 
+		values ( #{requestid},#{bindmobile},#{customertype},#{signedname},#{linkman},#{idcard},#{businesslicence},#{legalperson},#{minsettleamount},#{riskreserveday},#{bankaccountnumber},#{provincename},#{cityname},#{bankheadname},#{bankname},#{accountname},#{bankaccounttype},#{bankprovince},#{bankcity},#{manualsettle},#{deposit},#{email},#{id_card_front},#{id_ccard_back},#{bank_card_front},#{bank_card_back},#{persou_photo},#{bussiness_license},#{bussiness_certficates},#{organization_code},#{tax_registron},#{bank_account_licence},#{state},#{bank_time},#{user_id},#{is_qualifications} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformBank">   
+	update lc_platform_bank 
+	<set> 
+		<if test="requestid !=null"> 
+			requestid=#{requestid},
+		</if>
+		<if test="bindmobile !=null"> 
+			bindmobile=#{bindmobile},
+		</if>
+		<if test="customertype !=null"> 
+			customertype=#{customertype},
+		</if>
+		<if test="signedname !=null"> 
+			signedname=#{signedname},
+		</if>
+		<if test="linkman !=null"> 
+			linkman=#{linkman},
+		</if>
+		<if test="idcard !=null"> 
+			idcard=#{idcard},
+		</if>
+		<if test="businesslicence !=null"> 
+			businesslicence=#{businesslicence},
+		</if>
+		<if test="legalperson !=null"> 
+			legalperson=#{legalperson},
+		</if>
+		<if test="minsettleamount !=null"> 
+			minsettleamount=#{minsettleamount},
+		</if>
+		<if test="riskreserveday !=null"> 
+			riskreserveday=#{riskreserveday},
+		</if>
+		<if test="bankaccountnumber !=null"> 
+			bankaccountnumber=#{bankaccountnumber},
+		</if>
+		<if test="provincename !=null"> 
+			provincename=#{provincename},
+		</if>
+		<if test="cityname !=null"> 
+			cityname=#{cityname},
+		</if>
+		<if test="bankheadname !=null"> 
+			bankheadname=#{bankheadname},
+		</if>
+		<if test="bankname !=null"> 
+			bankname=#{bankname},
+		</if>
+		<if test="accountname !=null"> 
+			accountname=#{accountname},
+		</if>
+		<if test="bankaccounttype !=null"> 
+			bankaccounttype=#{bankaccounttype},
+		</if>
+		<if test="bankprovince !=null"> 
+			bankprovince=#{bankprovince},
+		</if>
+		<if test="bankcity !=null"> 
+			bankcity=#{bankcity},
+		</if>
+		<if test="manualsettle !=null"> 
+			manualsettle=#{manualsettle},
+		</if>
+		<if test="deposit !=null"> 
+			deposit=#{deposit},
+		</if>
+		<if test="email !=null"> 
+			email=#{email},
+		</if>
+		<if test="id_card_front !=null"> 
+			id_card_front=#{id_card_front},
+		</if>
+		<if test="id_ccard_back !=null"> 
+			id_ccard_back=#{id_ccard_back},
+		</if>
+		<if test="bank_card_front !=null"> 
+			bank_card_front=#{bank_card_front},
+		</if>
+		<if test="bank_card_back !=null"> 
+			bank_card_back=#{bank_card_back},
+		</if>
+		<if test="persou_photo !=null"> 
+			persou_photo=#{persou_photo},
+		</if>
+		<if test="bussiness_license !=null"> 
+			bussiness_license=#{bussiness_license},
+		</if>
+		<if test="bussiness_certficates !=null"> 
+			bussiness_certficates=#{bussiness_certficates},
+		</if>
+		<if test="organization_code !=null"> 
+			organization_code=#{organization_code},
+		</if>
+		<if test="tax_registron !=null"> 
+			tax_registron=#{tax_registron},
+		</if>
+		<if test="bank_account_licence !=null"> 
+			bank_account_licence=#{bank_account_licence},
+		</if>
+		<if test="state !=null"> 
+			state=#{state},
+		</if>
+		<if test="bank_time !=null"> 
+			bank_time=#{bank_time},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id},
+		</if>
+		<if test="is_qualifications !=null"> 
+			is_qualifications=#{is_qualifications}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update>  
+</mapper> 
+

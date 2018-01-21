@@ -1,0 +1,135 @@
+button{
+	border: none;
+}
+.re-logo{
+	margin-top: 20px;
+	
+}
+.re-line{
+	margin-left: 10px;
+	margin-top: 8px;
+}
+.re-word{
+	margin-left: 10px;
+	margin-top: 23px;
+}
+
+/*内容*/
+.lo-content{
+	width: 100%;
+	height: 398px;
+	margin-top: 30px;
+	background: url(../img/banner.jpg) no-repeat center;
+	background-size: cover;
+}
+.lo-info{
+	width: 380px;
+	height: 335px;
+	background: #fff;
+	margin-top: 20px;
+}
+.lo-word{
+	font-size: 20px;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+.login-user,.login-pwd,.lyanzheng{
+	width: 308px;
+	height: 46px;
+	margin-top: 16px;
+	margin-left: 30px;
+}
+.luser-text,.luser-text1{
+	width: 308px;
+	height: 46px;
+	background: url(../img/user2.png) no-repeat 4px center;
+	padding-left: 30px;
+	border: 1px solid #ddd;
+}
+.luser-text1{
+	background: url(../img/clock2.png) no-repeat 6px center;
+}
+.luser-text2{
+	width: 150px;
+	height: 46px;
+	border: 1px solid #ddd;
+	text-indent: 14px;
+}
+.login-yzheng{
+	width: 150px;
+}
+.lo-remember,.lo-btnco{
+	width: 308px;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+.lo-btn{
+	width: 308px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	background: #01a281;
+	border-bottom: 3px solid #037961;
+}
+.lo-btn:hover{
+	background: #079175;
+}
+
+
+
+
+
+
+
+
+/*底部*/
+.re-foot{
+	text-align: center;
+	margin-top: 10px;
+}
+.line{
+	color: #ccc;
+    padding: 0 10px;
+}
+.footer{
+	margin-top: 40px;
+	padding-bottom: 30px;
+    text-align: center;
+}
+.links a{
+	color: #666;
+    text-decoration: none;
+}
+.links a:hover{
+	color: #FF4E00;
+}
+.copyright{
+	font-size: 12px;
+	margin-top: 8px;
+	color: #666;
+}
+.copyright p{
+	line-height: 22px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcEmployeeDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcEmployee"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,employeeName,useStatus,gender,branchNo,useStatus,age,jobNumber,position,term,phone,cardNumber,address,entryTime,updateTime,createUser,updateUser,remark
+	</sql> 
+	<sql id="Base_Column_List_1"> 
+		id,employeeName,phone,branchNo
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcEmployee" > 
+		select  <include refid="Base_Column_List" />  from yc_employee ye where 1=1
+		<if test="id !=null"> 
+			and ye.id=#{id}
+		</if> 
+		<if test="branchNo !=null"> 
+			and ye.branchNo=#{branchNo}
+		</if> 
+		<if test="cardNumber !=null"> 
+			and ye.cardNumber=#{cardNumber}
+		</if> 
+	</select> 
+	<select id="getEmployeeByCarNo" resultMap="BaseResultMap" >  
+		SELECT  <include refid="Base_Column_List" /> FROM yc_employee ye WHERE ye.branchNo=#{param2} and FIND_IN_SET(id,(SELECT ycm.`driverId` FROM yc_car_manage ycm WHERE ycm.`carNo`=#{param1}))
+		
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcEmployee" > 
+		select count(1) from yc_employee emp INNER JOIN yc_post post ON emp.position = post.id
+		<if test="employeeName!=null">
+			<bind name="empName" value="'%'+employeeName+'%'"/>
+			and emp.employeeName like #{empName}
+		</if>
+		and emp.branchNo=#{branchNo}
+	</select> 
+	<select id="getDriverInfoByDNo" resultMap="BaseResultMap" parameterType="string" > 
+		 SELECT <include refid="Base_Column_List_1" /> FROM yc_employee ye WHERE  FIND_IN_SET (ye.`id`,(SELECT ycm.`driverId`FROM yc_car_manage ycm WHERE ycm.`carNo`=(SELECT ys.`carNo` FROM yc_stowage ys WHERE ys.`stowageNo`=(SELECT DISTINCT(ysd.`stowageNo`) FROM yc_stowage_delivery ysd WHERE ysd.`deliverNo`=#{deliverNo}))))
+	</select> 
+	<select id="getInstallerInfoByDNo" resultMap="BaseResultMap" parameterType="string" > 
+		SELECT <include refid="Base_Column_List_1" /> FROM yc_employee yc WHERE yc.branchNo=#{branchNo} FIND_IN_SET (yc.`id`,(SELECT employeeId FROM yc_stowage_delivery sd WHERE sd.`deliverNo`=#{deliverNo}))
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select emp.id,emp.employeeName,emp.gender,emp.age,emp.useStatus,emp.jobNumber,emp.position,emp.term,emp.phone,emp.cardNumber,emp.address,emp.entryTime,emp.remark,post.postName from yc_employee emp INNER JOIN yc_post post
+		ON emp.position = post.id 
+		<if test="employeeName!=null">
+			<bind name="empName" value="'%'+employeeName+'%'"/>
+			and emp.employeeName like #{empName}
+		</if>
+		and emp.branchNo=#{branchNo}
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcEmployee"> 
+		delete from yc_employee where id=#{id}
+	</delete> 
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcEmployee"> 
+		delete from yc_employee where id in
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcEmployee" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_employee  
+		(employeeName,gender,age,branchNo,jobNumber,position,term,phone,cardNumber,address,entryTime,updateTime,createUser,updateUser,remark) 
+		values (#{employeeName},#{gender},#{age},#{branchNo},#{jobNumber},#{position},#{term},#{phone},#{cardNumber},#{address},#{entryTime},#{updateTime},#{createUser},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modUseStatusByOrderNo"  >   
+		UPDATE yc_employee ye SET ye.`useStatus`=#{param1} WHERE  FIND_IN_SET(id,(SELECT employeeId FROM yc_stowage_delivery WHERE deliverNo=#{param2}))
+	</update>
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcEmployee">   
+	update yc_employee 
+	<set> 
+		<if test="employeeName !=null"> 
+			employeeName=#{employeeName},
+		</if>
+		<if test="gender !=null"> 
+			gender=#{gender},
+		</if>
+		<if test="age !=null"> 
+			age=#{age},
+		</if>
+		<if test="jobNumber !=null"> 
+			jobNumber=#{jobNumber},
+		</if>
+		<if test="position !=null"> 
+			position=#{position},
+		</if>
+		<if test="term !=null"> 
+			term=#{term},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="useStatus !=null"> 
+			useStatus=#{useStatus},
+		</if>
+		<if test="cardNumber !=null"> 
+			cardNumber=#{cardNumber},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="entryTime !=null"> 
+			entryTime=#{entryTime},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+	<select id="getEmployee" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcEmployee" > 
+		select  <include refid="Base_Column_List" />  from yc_employee where 1=1
+		<if test="position !=null"> 
+			and position=#{position}
+		</if>
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+		<if test="employeeName!=null">
+			or FIND_IN_SET(id,#{employeeName})
+		</if>
+	</select>
+	<select id="getYcEmployeeInId" resultMap="BaseResultMap" parameterType="java.util.List"> 
+		select  <include refid="Base_Column_List" />  from yc_employee where id in (
+			<foreach collection="param1" item="item" separator=",">
+				#{item}
+			</foreach>
+			) and branchNo=#{param2}
+	</select>  
+</mapper> 
+

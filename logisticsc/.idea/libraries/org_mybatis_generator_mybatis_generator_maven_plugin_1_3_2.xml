@@ -1,0 +1,37 @@
+<component name="libraryTable">
+  <library name="org.mybatis.generator:mybatis-generator-maven-plugin:1.3.2" type="repository">
+    <properties maven-id="org.mybatis.generator:mybatis-generator-maven-plugin:1.3.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-generator-maven-plugin-1.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-plugin-api-3.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-model-3.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/plexus-utils-1.5.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-artifact-3.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sisu-inject-plexus-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/plexus-component-annotations-1.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/plexus-classworlds-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sisu-inject-bean-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sisu-guice-3.1.0-no_aop.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/sisu-guava-0.9.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-3.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-generator-core-1.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-project-3.0-alpha-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/plexus-interpolation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-compat-3.0-alpha-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/plexus-container-default-1.0-beta-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xbean-reflect-3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/google-collect-snapshot-20080530.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/wagon-provider-api-1.0-beta-4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/wstx-asl-3.2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stax-api-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/model-builder-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maven-project-builder-3.0-alpha-2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-generator-maven-plugin-1.3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.AdditionalServerConfMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.AdditionalServerConf" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="heavy_cargo" property="heavyCargo" jdbcType="DOUBLE" />
+    <result column="bulky_cargo" property="bulkyCargo" jdbcType="DOUBLE" />
+    <result column="no_upstairs_low_price" property="noUpstairsLowPrice" jdbcType="DOUBLE" />
+    <result column="elevator_additional" property="elevatorAdditional" jdbcType="DOUBLE" />
+    <result column="no_elevator_additional" property="noElevatorAdditional" jdbcType="DOUBLE" />
+    <result column="go_upstairs_low_price" property="goUpstairsLowPrice" jdbcType="DOUBLE" />
+    <result column="is_load_and_unload" property="isLoadAndUnload" jdbcType="INTEGER" />
+    <result column="is_im_ex_store" property="isImExStore" jdbcType="INTEGER" />
+    <result column="in_ex_price" property="inExPrice" jdbcType="DOUBLE" />
+    <result column="is_collection_delivery" property="isCollectionDelivery" jdbcType="INTEGER" />
+    <result column="collection_delivery_ratio" property="collectionDeliveryRatio" jdbcType="DOUBLE" />
+    <result column="is_line_insurance" property="isLineInsurance" jdbcType="INTEGER" />
+    <result column="line_insurance_ratio" property="lineInsuranceRatio" jdbcType="DOUBLE" />
+    <result column="is_receipt" property="isReceipt" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="is_immediate_pay" property="isImmediatePay" jdbcType="INTEGER" />
+    <result column="is_arrive_pay" property="isArrivePay" jdbcType="INTEGER" />
+    <result column="is_advance_pay" property="isAdvancePay" jdbcType="INTEGER" />
+    <result column="is_common_receipt" property="isCommonReceipt" jdbcType="INTEGER" />
+    <result column="common_receipt_rate" property="commonReceiptRate" jdbcType="DOUBLE" />
+    <result column="is_add_tax_receipt" property="isAddTaxReceipt" jdbcType="INTEGER" />
+    <result column="add_tax_receipt_rate" property="addTaxReceiptRate" jdbcType="DOUBLE" />
+    <result column="is_no_receipt" property="isNoReceipt" jdbcType="INTEGER" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="outlets_name" property="outletsName" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, heavy_cargo, bulky_cargo, no_upstairs_low_price, elevator_additional, no_elevator_additional, 
+    go_upstairs_low_price, is_load_and_unload, is_im_ex_store, in_ex_price, is_collection_delivery, 
+    collection_delivery_ratio, is_line_insurance, line_insurance_ratio, is_receipt, company_id,
+    is_immediate_pay, is_arrive_pay, is_advance_pay, is_common_receipt, common_receipt_rate, 
+    is_add_tax_receipt, add_tax_receipt_rate, is_no_receipt, outlets_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_additional_server_conf
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_additional_server_conf
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.AdditionalServerConf" >
+    insert into tms_additional_server_conf (id, heavy_cargo, bulky_cargo, 
+      no_upstairs_low_price, elevator_additional, no_elevator_additional, 
+      go_upstairs_low_price, is_load_and_unload, is_im_ex_store, 
+      in_ex_price, is_collection_delivery, collection_delivery_ratio, 
+      is_line_insurance, line_insurance_ratio, is_receipt, company_id, 
+      is_immediate_pay, is_arrive_pay, 
+      is_advance_pay, is_common_receipt, common_receipt_rate, 
+      is_add_tax_receipt, add_tax_receipt_rate, is_no_receipt, outlets_id)
+    values (#{id,jdbcType=BIGINT}, #{heavyCargo,jdbcType=DOUBLE}, #{bulkyCargo,jdbcType=DOUBLE}, 
+      #{noUpstairsLowPrice,jdbcType=DOUBLE}, #{elevatorAdditional,jdbcType=DOUBLE}, #{noElevatorAdditional,jdbcType=DOUBLE}, 
+      #{goUpstairsLowPrice,jdbcType=DOUBLE}, #{isLoadAndUnload,jdbcType=INTEGER}, #{isImExStore,jdbcType=INTEGER}, 
+      #{inExPrice,jdbcType=DOUBLE}, #{isCollectionDelivery,jdbcType=INTEGER}, #{collectionDeliveryRatio,jdbcType=DOUBLE}, 
+      #{isLineInsurance,jdbcType=INTEGER}, #{lineInsuranceRatio,jdbcType=DOUBLE}, 
+      #{isReceipt,jdbcType=INTEGER}, #{companyId,jdbcType=BIGINT},
+      #{isImmediatePay,jdbcType=INTEGER}, #{isArrivePay,jdbcType=INTEGER}, 
+      #{isAdvancePay,jdbcType=INTEGER}, #{isCommonReceipt,jdbcType=INTEGER}, #{commonReceiptRate,jdbcType=DOUBLE}, 
+      #{isAddTaxReceipt,jdbcType=INTEGER}, #{addTaxReceiptRate,jdbcType=DOUBLE}, #{isNoReceipt,jdbcType=INTEGER}, #{outletsId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.AdditionalServerConf" >
+    insert into tms_additional_server_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="heavyCargo != null" >
+        heavy_cargo,
+      </if>
+      <if test="bulkyCargo != null" >
+        bulky_cargo,
+      </if>
+      <if test="noUpstairsLowPrice != null" >
+        no_upstairs_low_price,
+      </if>
+      <if test="elevatorAdditional != null" >
+        elevator_additional,
+      </if>
+      <if test="noElevatorAdditional != null" >
+        no_elevator_additional,
+      </if>
+      <if test="goUpstairsLowPrice != null" >
+        go_upstairs_low_price,
+      </if>
+      <if test="isLoadAndUnload != null" >
+        is_load_and_unload,
+      </if>
+      <if test="isImExStore != null" >
+        is_im_ex_store,
+      </if>
+      <if test="inExPrice != null" >
+        in_ex_price,
+      </if>
+      <if test="isCollectionDelivery != null" >
+        is_collection_delivery,
+      </if>
+      <if test="collectionDeliveryRatio != null" >
+        collection_delivery_ratio,
+      </if>
+      <if test="isLineInsurance != null" >
+        is_line_insurance,
+      </if>
+      <if test="lineInsuranceRatio != null" >
+        line_insurance_ratio,
+      </if>
+      <if test="isReceipt != null" >
+        is_receipt,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="isImmediatePay != null" >
+        is_immediate_pay,
+      </if>
+      <if test="isArrivePay != null" >
+        is_arrive_pay,
+      </if>
+      <if test="isAdvancePay != null" >
+        is_advance_pay,
+      </if>
+      <if test="isCommonReceipt != null" >
+        is_common_receipt,
+      </if>
+      <if test="commonReceiptRate != null" >
+        common_receipt_rate,
+      </if>
+      <if test="isAddTaxReceipt != null" >
+        is_add_tax_receipt,
+      </if>
+      <if test="addTaxReceiptRate != null" >
+        add_tax_receipt_rate,
+      </if>
+      <if test="isNoReceipt != null" >
+        is_no_receipt,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="heavyCargo != null" >
+        #{heavyCargo,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargo != null" >
+        #{bulkyCargo,jdbcType=DOUBLE},
+      </if>
+      <if test="noUpstairsLowPrice != null" >
+        #{noUpstairsLowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="elevatorAdditional != null" >
+        #{elevatorAdditional,jdbcType=DOUBLE},
+      </if>
+      <if test="noElevatorAdditional != null" >
+        #{noElevatorAdditional,jdbcType=DOUBLE},
+      </if>
+      <if test="goUpstairsLowPrice != null" >
+        #{goUpstairsLowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isLoadAndUnload != null" >
+        #{isLoadAndUnload,jdbcType=INTEGER},
+      </if>
+      <if test="isImExStore != null" >
+        #{isImExStore,jdbcType=INTEGER},
+      </if>
+      <if test="inExPrice != null" >
+        #{inExPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isCollectionDelivery != null" >
+        #{isCollectionDelivery,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDeliveryRatio != null" >
+        #{collectionDeliveryRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="isLineInsurance != null" >
+        #{isLineInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="lineInsuranceRatio != null" >
+        #{lineInsuranceRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="isReceipt != null" >
+        #{isReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="isImmediatePay != null" >
+        #{isImmediatePay,jdbcType=INTEGER},
+      </if>
+      <if test="isArrivePay != null" >
+        #{isArrivePay,jdbcType=INTEGER},
+      </if>
+      <if test="isAdvancePay != null" >
+        #{isAdvancePay,jdbcType=INTEGER},
+      </if>
+      <if test="isCommonReceipt != null" >
+        #{isCommonReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="commonReceiptRate != null" >
+        #{commonReceiptRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isAddTaxReceipt != null" >
+        #{isAddTaxReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="addTaxReceiptRate != null" >
+        #{addTaxReceiptRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isNoReceipt != null" >
+        #{isNoReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.AdditionalServerConf" >
+    update tms_additional_server_conf
+    <set >
+      <if test="heavyCargo != null" >
+        heavy_cargo = #{heavyCargo,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargo != null" >
+        bulky_cargo = #{bulkyCargo,jdbcType=DOUBLE},
+      </if>
+      <if test="noUpstairsLowPrice != null" >
+        no_upstairs_low_price = #{noUpstairsLowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="elevatorAdditional != null" >
+        elevator_additional = #{elevatorAdditional,jdbcType=DOUBLE},
+      </if>
+      <if test="noElevatorAdditional != null" >
+        no_elevator_additional = #{noElevatorAdditional,jdbcType=DOUBLE},
+      </if>
+      <if test="goUpstairsLowPrice != null" >
+        go_upstairs_low_price = #{goUpstairsLowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isLoadAndUnload != null" >
+        is_load_and_unload = #{isLoadAndUnload,jdbcType=INTEGER},
+      </if>
+      <if test="isImExStore != null" >
+        is_im_ex_store = #{isImExStore,jdbcType=INTEGER},
+      </if>
+      <if test="inExPrice != null" >
+        in_ex_price = #{inExPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isCollectionDelivery != null" >
+        is_collection_delivery = #{isCollectionDelivery,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDeliveryRatio != null" >
+        collection_delivery_ratio = #{collectionDeliveryRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="isLineInsurance != null" >
+        is_line_insurance = #{isLineInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="lineInsuranceRatio != null" >
+        line_insurance_ratio = #{lineInsuranceRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="isReceipt != null" >
+        is_receipt = #{isReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="isImmediatePay != null" >
+        is_immediate_pay = #{isImmediatePay,jdbcType=INTEGER},
+      </if>
+      <if test="isArrivePay != null" >
+        is_arrive_pay = #{isArrivePay,jdbcType=INTEGER},
+      </if>
+      <if test="isAdvancePay != null" >
+        is_advance_pay = #{isAdvancePay,jdbcType=INTEGER},
+      </if>
+      <if test="isCommonReceipt != null" >
+        is_common_receipt = #{isCommonReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="commonReceiptRate != null" >
+        common_receipt_rate = #{commonReceiptRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isAddTaxReceipt != null" >
+        is_add_tax_receipt = #{isAddTaxReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="addTaxReceiptRate != null" >
+        add_tax_receipt_rate = #{addTaxReceiptRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isNoReceipt != null" >
+        is_no_receipt = #{isNoReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.AdditionalServerConf" >
+    update tms_additional_server_conf
+    set heavy_cargo = #{heavyCargo,jdbcType=DOUBLE},
+      bulky_cargo = #{bulkyCargo,jdbcType=DOUBLE},
+      no_upstairs_low_price = #{noUpstairsLowPrice,jdbcType=DOUBLE},
+      elevator_additional = #{elevatorAdditional,jdbcType=DOUBLE},
+      no_elevator_additional = #{noElevatorAdditional,jdbcType=DOUBLE},
+      go_upstairs_low_price = #{goUpstairsLowPrice,jdbcType=DOUBLE},
+      is_load_and_unload = #{isLoadAndUnload,jdbcType=INTEGER},
+      is_im_ex_store = #{isImExStore,jdbcType=INTEGER},
+      in_ex_price = #{inExPrice,jdbcType=DOUBLE},
+      is_collection_delivery = #{isCollectionDelivery,jdbcType=INTEGER},
+      collection_delivery_ratio = #{collectionDeliveryRatio,jdbcType=DOUBLE},
+      is_line_insurance = #{isLineInsurance,jdbcType=INTEGER},
+      line_insurance_ratio = #{lineInsuranceRatio,jdbcType=DOUBLE},
+      is_receipt = #{isReceipt,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=BIGINT},
+      is_immediate_pay = #{isImmediatePay,jdbcType=INTEGER},
+      is_arrive_pay = #{isArrivePay,jdbcType=INTEGER},
+      is_advance_pay = #{isAdvancePay,jdbcType=INTEGER},
+      is_common_receipt = #{isCommonReceipt,jdbcType=INTEGER},
+      common_receipt_rate = #{commonReceiptRate,jdbcType=DOUBLE},
+      is_add_tax_receipt = #{isAddTaxReceipt,jdbcType=INTEGER},
+      add_tax_receipt_rate = #{addTaxReceiptRate,jdbcType=DOUBLE},
+      is_no_receipt = #{isNoReceipt,jdbcType=INTEGER},
+      outlets_id = #{outletsId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_additional_server_conf
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByOutletsId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_additional_server_conf
+    where outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByLineId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    FROM tms_additional_server_conf WHERE outlets_id = 
+	(SELECT start_outlets FROM tms_line_info WHERE id = #{lineId,jdbcType=BIGINT})
+  </select>
+  
+  <select id="selectByParamsOfPlatform" resultMap="BaseResultMap" >
+    SELECT conf.*,outlets.name outlets_name,com.company_name FROM tms_additional_server_conf conf
+	LEFT JOIN tms_outlets_info outlets ON conf.outlets_id = outlets.id
+	LEFT JOIN lc_platform_user_company com ON conf.company_id = com.id where 1 = 1
+	<if test="condition != null and condition != ''">
+   		and (com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   			or outlets.name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+  <select id="selectByParamsOfPlatformCount" resultType="int" >
+    SELECT count(1) FROM tms_additional_server_conf conf
+	LEFT JOIN tms_outlets_info outlets ON conf.outlets_id = outlets.id
+	LEFT JOIN lc_platform_user_company com ON conf.company_id = com.id where 1 = 1
+	<if test="condition != null and condition != ''">
+   		and (com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   			or outlets.name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+</mapper>

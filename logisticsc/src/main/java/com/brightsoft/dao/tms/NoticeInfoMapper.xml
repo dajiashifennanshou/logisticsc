@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.NoticeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.NoticeInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="notice_type" property="noticeType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, subject, content, notice_type, create_time, status, create_person_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_notice_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_notice_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.NoticeInfo" >
+    insert into tms_notice_info (id, subject, content, 
+      notice_type, create_time, status, 
+      create_person_id)
+    values (#{id,jdbcType=BIGINT}, #{subject,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{noticeType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{createPersonId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.NoticeInfo" >
+    insert into tms_notice_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="noticeType != null" >
+        notice_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeType != null" >
+        #{noticeType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.NoticeInfo" >
+    update tms_notice_info
+    <set >
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeType != null" >
+        notice_type = #{noticeType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.NoticeInfo" >
+    update tms_notice_info
+    set subject = #{subject,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      notice_type = #{noticeType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 通过通知类型获取记录总数 -->
+  <select id="countRows" parameterType="com.brightsoft.model.NoticeInfo" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_notice_info
+  	where
+  		notice_type = #{noticeInfo.noticeType} and status != 0
+  		<if test="noticeInfo.startTime != null and noticeInfo.endTime != null">
+  			and create_time between #{noticeInfo.startTime} and #{noticeInfo.endTime}
+  		</if>
+  		<if test="noticeInfo.startTime == null and noticeInfo.endTime != null">
+  			and create_time &lt; #{noticeInfo.endTime}
+  		</if>
+  		<if test="noticeInfo.startTime != null and noticeInfo.endTime == null">
+  			and create_time &gt; #{noticeInfo.startTime}
+  		</if>
+  </select>
+  <!-- 通过通知类型获取信息 -->
+  <select id="selectByNoticeType" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+  	from
+  		tms_notice_info
+  	where 
+  		notice_type = #{noticeInfo.noticeType} and status != 0
+  		<if test="noticeInfo.startTime != null and noticeInfo.endTime != null">
+  			and create_time between #{noticeInfo.startTime} and #{noticeInfo.endTime}
+  		</if>
+  		<if test="noticeInfo.startTime == null and noticeInfo.endTime != null">
+  			and create_time &lt; #{noticeInfo.endTime}
+  		</if>
+  		<if test="noticeInfo.startTime != null and noticeInfo.endTime == null">
+  			and create_time &gt; #{noticeInfo.startTime}
+  		</if>
+  		order by create_time desc limit #{page.start},#{page.limit}
+  </select>
+</mapper>

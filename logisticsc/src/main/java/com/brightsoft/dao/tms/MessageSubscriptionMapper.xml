@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.MessageSubscriptionMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.MessageSubscription" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="message_type" property="messageType" jdbcType="VARCHAR" />
+    <result column="handle_segment" property="handleSegment" jdbcType="VARCHAR" />
+     <result column="notice_type" property="noticeType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, message_type, handle_segment,notice_type
+  </sql>
+   <select id="selectMessageSubscription" resultMap="BaseResultMap">
+   	select <include refid="Base_Column_List" /> from tms_message_subscription;
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_message_subscription
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_message_subscription
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.MessageSubscription" >
+    insert into tms_message_subscription (id, message_type, handle_segment
+      )
+    values (#{id,jdbcType=BIGINT}, #{messageType,jdbcType=VARCHAR}, #{handleSegment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.MessageSubscription" >
+    insert into tms_message_subscription
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="messageType != null" >
+        message_type,
+      </if>
+      <if test="handleSegment != null" >
+        handle_segment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="messageType != null" >
+        #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="handleSegment != null" >
+        #{handleSegment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.MessageSubscription" >
+    update tms_message_subscription
+    <set >
+      <if test="messageType != null" >
+        message_type = #{messageType,jdbcType=VARCHAR},
+      </if>
+      <if test="handleSegment != null" >
+        handle_segment = #{handleSegment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.MessageSubscription" >
+    update tms_message_subscription
+    set message_type = #{messageType,jdbcType=VARCHAR},
+      handle_segment = #{handleSegment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

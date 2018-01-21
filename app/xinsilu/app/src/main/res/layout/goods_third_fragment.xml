@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/commit_background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/hor_style_padding"
+                android:text="配送方式"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:background="@android:color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/myStyle"
+                    android:layout_margin="20dp"
+                    android:button="@null"
+                    android:text="发货方式: "
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <LinearLayout
+                    android:id="@+id/goods_third_ll_sendway"
+                    style="@style/hor_style"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <CheckedTextView
+                        android:id="@+id/mood_box1"
+                        style="@style/myStyle"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:button="@null"
+                        android:checked="true"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="上门取货"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <CheckedTextView
+                        android:id="@+id/mood_box2"
+                        style="@style/myStyle"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:button="@null"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="自送网点"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/goods_third_tv_sendnet"
+                style="@style/hor_style"
+                android:background="@android:color/white"
+                android:hint="送货网点地址: "
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#acacac"
+                android:textColorHint="#acacac"
+                android:textSize="@dimen/small_text_size" />
+
+            <LinearLayout
+                style="@style/hor_style"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    style="@style/hor_style"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        style="@style/myStyle"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="20dp"
+                        android:text="收货方式: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <LinearLayout
+                        android:id="@+id/goods_third_ll_receiveway"
+                        style="@style/hor_style"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <CheckedTextView
+                            android:id="@+id/mood_box3"
+                            style="@style/myStyle"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/bg_selector_goodspack_type"
+                            android:button="@null"
+                            android:checked="true"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="送货上门"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/small_text_size" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <CheckedTextView
+                            android:id="@+id/mood_box4"
+                            style="@style/myStyle"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/bg_selector_goodspack_type"
+                            android:button="@null"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="客户自提"
+                            android:textColor="@color/font_color_hint"
+                            android:textSize="@dimen/small_text_size" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/goods_third_tv_ainpicknet"
+                style="@style/hor_style"
+                android:background="@android:color/white"
+                android:hint="自提网点地址: "
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#acacac"
+                android:textColorHint="#acacac"
+                android:textSize="@dimen/small_text_size" />
+
+            <LinearLayout
+                android:id="@+id/goods_third_ll_driver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/hor_style_padding"
+                    android:layout_marginTop="20dp"
+                    android:text="送货司机"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <LinearLayout
+                    style="@style/hor_style_padding"
+                    android:layout_height="@dimen/height"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/myStyle"
+                        android:text="司机姓名: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <EditText
+                        android:id="@+id/driver_name"
+                        style="@style/myStyle"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入司机姓名"
+                        android:paddingLeft="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/font_color_focused"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <TextView
+                        android:id="@+id/line"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@+id/driver_name_button"
+                        android:background="@color/background" />
+
+                    <TextView
+                        android:id="@+id/driver_name_button"
+                        style="@style/myStyle"
+                        android:drawableTop="@mipmap/xiadan_tianjiashouhuoren"
+                        android:text="常用司机"
+                        android:textSize="@dimen/small_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/number"
+                    style="@style/hor_style_padding"
+                    android:layout_height="@dimen/height"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal"
+                    android:paddingRight="0dp">
+
+                    <TextView
+                        android:id="@+id/textview2"
+                        style="@style/myStyle"
+                        android:text="手机号码: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <EditText
+                        android:id="@+id/driver_phone_number"
+                        style="@style/BasicParamNoMargin_h"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入司机的手机号码"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:paddingLeft="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/font_color_focused"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <ImageView
+                        android:id="@+id/receive_number_button"
+                        style="@style/myStyle"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/xiadan_tianjiashoujihao" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/hor_style_padding"
+                    android:layout_height="@dimen/height"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        style="@style/BasicParamNoMargin_h"
+                        android:layout_width="wrap_content"
+                        android:text="车牌号码: "
+                        android:textColor="@color/font_color_focused"
+                        android:textSize="@dimen/mid_text_size" />
+
+                    <EditText
+                        android:id="@+id/driver_carnumber"
+                        style="@style/BasicParamNoMargin_h"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入车牌号码"
+                        android:maxLength="7"
+                        android:paddingLeft="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/font_color_focused"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/mid_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

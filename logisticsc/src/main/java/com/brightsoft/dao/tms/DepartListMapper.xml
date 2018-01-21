@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.DepartListMapper">
+	<resultMap id="BaseResultMap" type="com.brightsoft.model.DepartList">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="depart_number" property="departNumber"
+			jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="start_outlets" property="startOutlets"
+			jdbcType="BIGINT" />
+		<result column="start_outlets_name" property="startOutletsName"
+			jdbcType="VARCHAR" />
+		<result column="way_outlets" property="wayOutlets" jdbcType="VARCHAR" />
+		<result column="way_outlets_name" property="wayOutletsName"
+			jdbcType="VARCHAR" />
+		<result column="target_outlets" property="targetOutlets"
+			jdbcType="BIGINT" />
+		<result column="target_outlets_name" property="targetOutletsName"
+			jdbcType="VARCHAR" />
+		<result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+		<result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+		<result column="driver" property="driver" jdbcType="BIGINT" />
+		<result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+		<result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+		<result column="vehicle_number" property="vehicleNumber"
+			jdbcType="VARCHAR" />
+		<result column="hang_vehicle_number" property="hangVehicleNumber"
+			jdbcType="VARCHAR" />
+		<result column="vehicle_type" property="vehicleType" jdbcType="INTEGER" />
+		<result column="should_pay_driver_cost" property="shouldPayDriverCost"
+			jdbcType="DOUBLE" />
+		<result column="now_pay_driver_cost" property="nowPayDriverCost"
+			jdbcType="DOUBLE" />
+		<result column="arrive_pay_driver_cost" property="arrivePayDriverCost"
+			jdbcType="DOUBLE" />
+		<result column="back_pay_driver_cost" property="backPayDriverCost"
+			jdbcType="DOUBLE" />
+		<result column="load_cost" property="loadCost" jdbcType="DOUBLE" />
+		<result column="unload_cost" property="unloadCost" jdbcType="DOUBLE" />
+		<result column="shunt_cost" property="shuntCost" jdbcType="DOUBLE" />
+		<result column="insurance_money" property="insuranceMoney"
+			jdbcType="DOUBLE" />
+		<result column="insurance_cost" property="insuranceCost"
+			jdbcType="DOUBLE" />
+		<result column="is_year_insurance" property="isYearInsurance"
+			jdbcType="INTEGER" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="operate_person" property="operatePerson"
+			jdbcType="BIGINT" />
+		<result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+		<result column="way_bill_numbers" property="wayBillNumbers"
+			jdbcType="VARCHAR" />
+		<result column="receivable_total" property="receivableTotal"
+			jdbcType="DOUBLE" />
+		<result column="actual_receive_total" property="actualReceiveTotal"
+			jdbcType="DOUBLE" />
+		<result column="is_completed" property="isCompleted" jdbcType="INTEGER" />
+		<result column="vehicle_type_name" property="vehicleTypeName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, depart_number, status, start_outlets,
+		start_outlets_name,
+		way_outlets, way_outlets_name,
+		target_outlets,
+		target_outlets_name, start_time, end_time, driver, driver_name,
+		driver_phone,
+		vehicle_number, hang_vehicle_number, vehicle_type,
+		should_pay_driver_cost,
+		now_pay_driver_cost,
+		arrive_pay_driver_cost,
+		back_pay_driver_cost, load_cost, unload_cost, shunt_cost,
+		insurance_money, insurance_cost, is_year_insurance, remark,
+		operate_person, operate_time,
+		way_bill_numbers, receivable_total,
+		actual_receive_total, is_completed
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		tms_depart_list
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.brightsoft.model.DepartList">
+		insert into tms_depart_list
+		(id, depart_number, status,
+		start_outlets, start_outlets_name,
+		way_outlets,
+		way_outlets_name, target_outlets, target_outlets_name,
+		start_time, end_time, driver, driver_name,
+		driver_phone,
+		vehicle_number, hang_vehicle_number,
+		vehicle_type,
+		should_pay_driver_cost, now_pay_driver_cost,
+		arrive_pay_driver_cost,
+		back_pay_driver_cost, load_cost,
+		unload_cost, shunt_cost,
+		insurance_money,
+		insurance_cost, is_year_insurance, remark,
+		operate_person, operate_time, way_bill_numbers,
+		receivable_total,
+		actual_receive_total, is_completed
+		)
+		values (#{id,jdbcType=BIGINT},
+		#{departNumber,jdbcType=VARCHAR},
+		#{status,jdbcType=INTEGER},
+		#{startOutlets,jdbcType=BIGINT}, #{startOutletsName,jdbcType=VARCHAR},
+		#{wayOutlets,jdbcType=VARCHAR},
+		#{wayOutletsName,jdbcType=VARCHAR},
+		#{targetOutlets,jdbcType=BIGINT},
+		#{targetOutletsName,jdbcType=VARCHAR},
+		#{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
+		#{driver,jdbcType=BIGINT}, #{driverName,jdbcType=VARCHAR},
+		#{driverPhone,jdbcType=VARCHAR}, #{vehicleNumber,jdbcType=VARCHAR},
+		#{hangVehicleNumber,jdbcType=VARCHAR},
+		#{vehicleType,jdbcType=INTEGER},
+		#{shouldPayDriverCost,jdbcType=DOUBLE},
+		#{nowPayDriverCost,jdbcType=DOUBLE},
+		#{arrivePayDriverCost,jdbcType=DOUBLE},
+		#{backPayDriverCost,jdbcType=DOUBLE}, #{loadCost,jdbcType=DOUBLE},
+		#{unloadCost,jdbcType=DOUBLE}, #{shuntCost,jdbcType=DOUBLE},
+		#{insuranceMoney,jdbcType=DOUBLE},
+		#{insuranceCost,jdbcType=DOUBLE},
+		#{isYearInsurance,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
+		#{operatePerson,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP},
+		#{wayBillNumbers,jdbcType=VARCHAR},
+		#{receivableTotal,jdbcType=DOUBLE},
+		#{actualReceiveTotal,jdbcType=DOUBLE}, #{isCompleted,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.brightsoft.model.DepartList">
+		insert into tms_depart_list
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="departNumber != null">
+				depart_number,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="startOutlets != null">
+				start_outlets,
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name,
+			</if>
+			<if test="wayOutlets != null">
+				way_outlets,
+			</if>
+			<if test="wayOutletsName != null">
+				way_outlets_name,
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets,
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name,
+			</if>
+			<if test="startTime != null">
+				start_time,
+			</if>
+			<if test="endTime != null">
+				end_time,
+			</if>
+			<if test="driver != null">
+				driver,
+			</if>
+			<if test="driverName != null">
+				driver_name,
+			</if>
+			<if test="driverPhone != null">
+				driver_phone,
+			</if>
+			<if test="vehicleNumber != null">
+				vehicle_number,
+			</if>
+			<if test="hangVehicleNumber != null">
+				hang_vehicle_number,
+			</if>
+			<if test="vehicleType != null">
+				vehicle_type,
+			</if>
+			<if test="shouldPayDriverCost != null">
+				should_pay_driver_cost,
+			</if>
+			<if test="nowPayDriverCost != null">
+				now_pay_driver_cost,
+			</if>
+			<if test="arrivePayDriverCost != null">
+				arrive_pay_driver_cost,
+			</if>
+			<if test="backPayDriverCost != null">
+				back_pay_driver_cost,
+			</if>
+			<if test="loadCost != null">
+				load_cost,
+			</if>
+			<if test="unloadCost != null">
+				unload_cost,
+			</if>
+			<if test="shuntCost != null">
+				shunt_cost,
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money,
+			</if>
+			<if test="insuranceCost != null">
+				insurance_cost,
+			</if>
+			<if test="isYearInsurance != null">
+				is_year_insurance,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="operatePerson != null">
+				operate_person,
+			</if>
+			<if test="operateTime != null">
+				operate_time,
+			</if>
+			<if test="wayBillNumbers != null">
+				way_bill_numbers,
+			</if>
+			<if test="receivableTotal != null">
+				receivable_total,
+			</if>
+			<if test="actualReceiveTotal != null">
+				actual_receive_total,
+			</if>
+			<if test="isCompleted != null">
+				is_completed,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="departNumber != null">
+				#{departNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="startOutlets != null">
+				#{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutlets != null">
+				#{wayOutlets,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutletsName != null">
+				#{wayOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				#{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				#{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				#{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="driver != null">
+				#{driver,jdbcType=BIGINT},
+			</if>
+			<if test="driverName != null">
+				#{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="driverPhone != null">
+				#{driverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleNumber != null">
+				#{vehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="hangVehicleNumber != null">
+				#{hangVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleType != null">
+				#{vehicleType,jdbcType=INTEGER},
+			</if>
+			<if test="shouldPayDriverCost != null">
+				#{shouldPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="nowPayDriverCost != null">
+				#{nowPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePayDriverCost != null">
+				#{arrivePayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="backPayDriverCost != null">
+				#{backPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadCost != null">
+				#{loadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="unloadCost != null">
+				#{unloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="shuntCost != null">
+				#{shuntCost,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				#{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceCost != null">
+				#{insuranceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="isYearInsurance != null">
+				#{isYearInsurance,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="operatePerson != null">
+				#{operatePerson,jdbcType=BIGINT},
+			</if>
+			<if test="operateTime != null">
+				#{operateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillNumbers != null">
+				#{wayBillNumbers,jdbcType=VARCHAR},
+			</if>
+			<if test="receivableTotal != null">
+				#{receivableTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="actualReceiveTotal != null">
+				#{actualReceiveTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="isCompleted != null">
+				#{isCompleted,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.DepartList">
+		update tms_depart_list
+		<set>
+			<if test="departNumber != null">
+				depart_number = #{departNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="startOutlets != null">
+				start_outlets = #{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name =
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutlets != null">
+				way_outlets = #{wayOutlets,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutletsName != null">
+				way_outlets_name = #{wayOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets = #{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name =
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				start_time = #{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				end_time = #{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="driver != null">
+				driver = #{driver,jdbcType=BIGINT},
+			</if>
+			<if test="driverName != null">
+				driver_name = #{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="driverPhone != null">
+				driver_phone = #{driverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleNumber != null">
+				vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="hangVehicleNumber != null">
+				hang_vehicle_number =
+				#{hangVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleType != null">
+				vehicle_type = #{vehicleType,jdbcType=INTEGER},
+			</if>
+			<if test="shouldPayDriverCost != null">
+				should_pay_driver_cost =
+				#{shouldPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="nowPayDriverCost != null">
+				now_pay_driver_cost =
+				#{nowPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePayDriverCost != null">
+				arrive_pay_driver_cost =
+				#{arrivePayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="backPayDriverCost != null">
+				back_pay_driver_cost =
+				#{backPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadCost != null">
+				load_cost = #{loadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="unloadCost != null">
+				unload_cost = #{unloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="shuntCost != null">
+				shunt_cost = #{shuntCost,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceCost != null">
+				insurance_cost = #{insuranceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="isYearInsurance != null">
+				is_year_insurance = #{isYearInsurance,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="operatePerson != null">
+				operate_person = #{operatePerson,jdbcType=BIGINT},
+			</if>
+			<if test="operateTime != null">
+				operate_time = #{operateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillNumbers != null">
+				way_bill_numbers = #{wayBillNumbers,jdbcType=VARCHAR},
+			</if>
+			<if test="receivableTotal != null">
+				receivable_total = #{receivableTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="actualReceiveTotal != null">
+				actual_receive_total =
+				#{actualReceiveTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="isCompleted != null">
+				is_completed = #{isCompleted,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.brightsoft.model.DepartList">
+		update
+		tms_depart_list
+		set depart_number = #{departNumber,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		start_outlets =
+		#{startOutlets,jdbcType=BIGINT},
+		start_outlets_name =
+		#{startOutletsName,jdbcType=VARCHAR},
+		way_outlets =
+		#{wayOutlets,jdbcType=VARCHAR},
+		way_outlets_name =
+		#{wayOutletsName,jdbcType=VARCHAR},
+		target_outlets =
+		#{targetOutlets,jdbcType=BIGINT},
+		target_outlets_name =
+		#{targetOutletsName,jdbcType=VARCHAR},
+		start_time =
+		#{startTime,jdbcType=TIMESTAMP},
+		end_time =
+		#{endTime,jdbcType=TIMESTAMP},
+		driver = #{driver,jdbcType=BIGINT},
+		driver_name = #{driverName,jdbcType=VARCHAR},
+		driver_phone =
+		#{driverPhone,jdbcType=VARCHAR},
+		vehicle_number =
+		#{vehicleNumber,jdbcType=VARCHAR},
+		hang_vehicle_number =
+		#{hangVehicleNumber,jdbcType=VARCHAR},
+		vehicle_type =
+		#{vehicleType,jdbcType=INTEGER},
+		should_pay_driver_cost =
+		#{shouldPayDriverCost,jdbcType=DOUBLE},
+		now_pay_driver_cost =
+		#{nowPayDriverCost,jdbcType=DOUBLE},
+		arrive_pay_driver_cost =
+		#{arrivePayDriverCost,jdbcType=DOUBLE},
+		back_pay_driver_cost =
+		#{backPayDriverCost,jdbcType=DOUBLE},
+		load_cost =
+		#{loadCost,jdbcType=DOUBLE},
+		unload_cost =
+		#{unloadCost,jdbcType=DOUBLE},
+		shunt_cost =
+		#{shuntCost,jdbcType=DOUBLE},
+		insurance_money =
+		#{insuranceMoney,jdbcType=DOUBLE},
+		insurance_cost =
+		#{insuranceCost,jdbcType=DOUBLE},
+		is_year_insurance =
+		#{isYearInsurance,jdbcType=INTEGER},
+		remark =
+		#{remark,jdbcType=VARCHAR},
+		operate_person =
+		#{operatePerson,jdbcType=BIGINT},
+		operate_time =
+		#{operateTime,jdbcType=TIMESTAMP},
+		way_bill_numbers =
+		#{wayBillNumbers,jdbcType=VARCHAR},
+		receivable_total =
+		#{receivableTotal,jdbcType=DOUBLE},
+		actual_receive_total =
+		#{actualReceiveTotal,jdbcType=DOUBLE},
+		is_completed =
+		#{isCompleted,jdbcType=INTEGER}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<update id="updateByDepartNumber" parameterType="com.brightsoft.model.DepartList">
+		update tms_depart_list
+		<set>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="startOutlets != null">
+				start_outlets = #{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name =
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutlets != null">
+				way_outlets = #{wayOutlets,jdbcType=VARCHAR},
+			</if>
+			<if test="wayOutletsName != null">
+				way_outlets_name = #{wayOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets = #{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name =
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				start_time = #{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTime != null">
+				end_time = #{endTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="driver != null">
+				driver = #{driver,jdbcType=BIGINT},
+			</if>
+			<if test="driverName != null">
+				driver_name = #{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="driverPhone != null">
+				driver_phone = #{driverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleNumber != null">
+				vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="hangVehicleNumber != null">
+				hang_vehicle_number =
+				#{hangVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleType != null">
+				vehicle_type = #{vehicleType,jdbcType=INTEGER},
+			</if>
+			<if test="shouldPayDriverCost != null">
+				should_pay_driver_cost =
+				#{shouldPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="nowPayDriverCost != null">
+				now_pay_driver_cost =
+				#{nowPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePayDriverCost != null">
+				arrive_pay_driver_cost =
+				#{arrivePayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="backPayDriverCost != null">
+				back_pay_driver_cost =
+				#{backPayDriverCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadCost != null">
+				load_cost = #{loadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="unloadCost != null">
+				unload_cost = #{unloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="shuntCost != null">
+				shunt_cost = #{shuntCost,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceCost != null">
+				insurance_cost = #{insuranceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="isYearInsurance != null">
+				is_year_insurance = #{isYearInsurance,jdbcType=INTEGER},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="operatePerson != null">
+				operate_person = #{operatePerson,jdbcType=BIGINT},
+			</if>
+			<if test="operateTime != null">
+				operate_time = #{operateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillNumbers != null">
+				way_bill_numbers = #{wayBillNumbers,jdbcType=VARCHAR},
+			</if>
+			<if test="receivableTotal != null">
+				receivable_total = #{receivableTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="actualReceiveTotal != null">
+				actual_receive_total =
+				#{actualReceiveTotal,jdbcType=DOUBLE},
+			</if>
+			<if test="isCompleted != null">
+				is_completed = #{isCompleted,jdbcType=INTEGER},
+			</if>
+		</set>
+		where depart_number = #{departNumber,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectByParam" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_numbers like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		and (start_outlets = #{outletsId,jdbcType=BIGINT} or target_outlets =
+		#{outletsId,jdbcType=BIGINT})
+	</select>
+
+	<select id="selectByParamCount" resultType="int" parameterType="java.util.Map">
+		select count(1)
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_numbers like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		and (start_outlets = #{outletsId,jdbcType=BIGINT} or target_outlets =
+		#{outletsId,jdbcType=BIGINT})
+	</select>
+
+	<select id="selectByOutletsAndStatus" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where
+		status = #{status,jdbcType=INTEGER} and
+		(start_outlets = #{outletsId,jdbcType=BIGINT} or target_outlets =
+		#{outletsId,jdbcType=BIGINT})
+	</select>
+
+	<select id="selectByDepartNumber" resultMap="BaseResultMap">
+		SELECT t1.*, t2.name
+		vehicle_type_name FROM tms_depart_list t1
+		LEFT JOIN
+		lc_platform_dictionary t2 ON t1.vehicle_type = t2.id
+		where
+		depart_number = #{departNumber,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByWayBillNumber" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where
+		way_bill_numbers like
+		concat("%",#{wayBillNumber,jdbcType=VARCHAR},"%")
+		and status != 4
+	</select>
+
+	<update id="updateStatusByDepartNumber">
+		update tms_depart_list set status =
+		#{status,jdbcType=INTEGER}
+		<if test="date != null and date != '' ">
+			,end_time = #{date,jdbcType=VARCHAR}
+		</if>
+		where depart_number =
+		#{departNumber,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectByWayOutletsAndStatusList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where
+		way_outlets = #{wayOutlets,jdbcType=VARCHAR}
+		and status in
+		<foreach collection="statusList" index="index" item="status"
+			open="(" separator="," close=")">
+			#{status}
+		</foreach>
+	</select>
+
+	<select id="selectByParams" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and (target_outlets = #{targetOutlets,jdbcType=INTEGER} or
+			way_outlets
+			like concat("%",#{targetOutlets,jdbcType=INTEGER},"%"))
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="wayOutlets != null and wayOutlets != '' ">
+			and way_outlets like
+			concat("%",#{wayOutlets,jdbcType=VARCHAR},"%")
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+		order by operate_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectByParamsCount" resultType="int">
+		select count(1)
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and (target_outlets = #{targetOutlets,jdbcType=INTEGER} or
+			way_outlets
+			like concat("%",#{targetOutlets,jdbcType=INTEGER},"%"))
+		</if>
+		<if test="wayOutlets != null and wayOutlets != '' ">
+			and way_outlets like
+			concat("%",#{wayOutlets,jdbcType=VARCHAR},"%")
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+
+	<select id="selectShouldByParamsTotal" resultType="double">
+		SELECT CASE WHEN SUM(receivable_total) IS NULL THEN 0 ELSE
+		SUM(receivable_total) END receivable_total
+		FROM tms_depart_list where 1
+		= 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="wayOutlets != null and wayOutlets != '' ">
+			and way_outlets like
+			concat("%",#{wayOutlets,jdbcType=VARCHAR},"%")
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+	<select id="selectActualByParamsTotal" resultType="double">
+		SELECT CASE WHEN SUM(actual_receive_total) IS NULL THEN 0 ELSE
+		SUM(actual_receive_total) END actual_receive_total
+		FROM tms_depart_list
+		where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+	<!-- 到站的 -->
+	<select id="selectByParamsArrive" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and (target_outlets = #{targetOutlets,jdbcType=INTEGER} or
+			way_outlets
+			like concat("%",#{targetOutlets,jdbcType=INTEGER},"%"))
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="wayOutlets != null and wayOutlets != '' ">
+			and way_outlets like
+			concat("%",#{wayOutlets,jdbcType=VARCHAR},"%")
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+		order by operate_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectByParamsCountArrive" resultType="int">
+		select count(1)
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and (target_outlets = #{targetOutlets,jdbcType=INTEGER} or
+			way_outlets
+			like concat("%",#{targetOutlets,jdbcType=INTEGER},"%"))
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+
+	<select id="selectShouldByParamsTotalArrive" resultType="double">
+		SELECT CASE WHEN SUM(receivable_total) IS NULL THEN 0 ELSE
+		SUM(receivable_total) END receivable_total
+		FROM tms_depart_list where 1
+		= 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+	<select id="selectActualByParamsTotalArrive" resultType="double">
+		SELECT CASE WHEN SUM(actual_receive_total) IS NULL THEN 0 ELSE
+		SUM(actual_receive_total) END actual_receive_total
+		FROM tms_depart_list
+		where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and operate_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="isCompleted != null and isCompleted != '' ">
+			and is_completed = #{isCompleted,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+		</if>
+	</select>
+	<!-- 查询入库的发车单 -->
+	<select id="selectStoreDepartByParams" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=INTEGER}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and start_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and end_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+	</select>
+	<select id="selectExportByParams" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_depart_list where 1 = 1
+		<if test="status != null and status != '' "> and status = #{status,jdbcType=INTEGER} </if>
+
+		<if test="startTime != null and startTime != '' "> and operate_time >= #{startTime,jdbcType=TIMESTAMP} </if>
+
+
+		<if test="endTime != null and endTime != '' ">
+			and operate_time <![CDATA[<=]]>#{endTime,jdbcType=TIMESTAMP}
+		</if>
+
+		<if test="startOutlets != null and startOutlets != '' "> and start_outlets = #{startOutlets,jdbcType=INTEGER} </if>
+
+		<if test="targetOutlets != null and targetOutlets != '' "> and (target_outlets = #{targetOutlets,jdbcType=INTEGER}
+			or way_outlets like
+			concat("%",#{targetOutlets,jdbcType=INTEGER},"%")) </if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds,jdbcType=INTEGER})
+		</if>
+		<if test="isCompleted != null and isCompleted != '' "> and is_completed = #{isCompleted,jdbcType=INTEGER} </if>
+
+		<if test="wayOutlets != null and wayOutlets != '' "> and way_outlets like
+			concat("%",#{wayOutlets,jdbcType=VARCHAR},"%") </if>
+
+		<if test="condition != null and condition != ''"> and depart_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%") </if>
+		order by operate_time desc
+	</select>
+</mapper>

@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankSplitMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBankSplit" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customernumber" property="customernumber" jdbcType="VARCHAR" />
+    <result column="requestid" property="requestid" jdbcType="VARCHAR" />
+    <result column="orderrequestid" property="orderrequestid" jdbcType="VARCHAR" />
+    <result column="divideinfo" property="divideinfo" jdbcType="VARCHAR" />
+    <result column="callbackurl" property="callbackurl" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="suername" property="suername" jdbcType="VARCHAR" />
+    <result column="tms_user_id" property="tmsUserId" jdbcType="BIGINT" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="SplitInsurance" type="com.brightsoft.model.platformVoSplitInsurance">
+    <result column="customernumber" property="customernumber" jdbcType="VARCHAR" />
+    <result column="requestid" property="requestid" jdbcType="VARCHAR" />
+    <result column="orderrequestid" property="orderrequestid" jdbcType="VARCHAR" />
+    <result column="divideinfo" property="divideinfo" jdbcType="VARCHAR" />
+    <result column="callbackurl" property="callbackurl" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="suername" property="suername" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="ins_order_num" property="insOrderNum" jdbcType="VARCHAR" />
+    <result column="ins_com_tag" property="insComTag" jdbcType="VARCHAR" />
+    <result column="ins_type" property="insType" jdbcType="VARCHAR" />
+    <result column="ins_ts_type" property="insTsType" jdbcType="VARCHAR" />
+    <result column="ins_true_name" property="insTrueName" jdbcType="VARCHAR" />
+    <result column="ins_tel" property="insTel" jdbcType="VARCHAR" />
+    <result column="ins_card_num" property="insCardNum" jdbcType="VARCHAR" />
+    <result column="ins_address" property="insAddress" jdbcType="VARCHAR" />
+    <result column="ins_che_num" property="insCheNum" jdbcType="VARCHAR" />
+    <result column="ins_he_tong_num" property="insHeTongNum" jdbcType="VARCHAR" />
+    <result column="ins_start_time" property="insStartTime" jdbcType="TIMESTAMP" />
+    <result column="ins_huo_wu" property="insHuoWu" jdbcType="VARCHAR" />
+    <result column="ins_huowu_num" property="insHuowuNum" jdbcType="VARCHAR" />
+    <result column="ins_jine" property="insJine" jdbcType="DOUBLE" />
+    <result column="ins_start_add" property="insStartAdd" jdbcType="VARCHAR" />
+    <result column="ins_end_add" property="insEndAdd" jdbcType="VARCHAR" />
+    <result column="ins_mid_add" property="insMidAdd" jdbcType="VARCHAR" />
+    <result column="ins_fee" property="insFee" jdbcType="DOUBLE" />
+    <result column="ins_create_time" property="insCreateTime" jdbcType="TIMESTAMP" />
+    <result column="ins_area" property="insArea" jdbcType="INTEGER" />
+    <result column="ins_status" property="insStatus" jdbcType="INTEGER" />
+    <result column="ins_jsy" property="insJsy" jdbcType="VARCHAR" />
+    <result column="ins_jsy_sfz" property="insJsySfz" jdbcType="VARCHAR" />
+    <result column="ins_jsy_sj" property="insJsySj" jdbcType="VARCHAR" />
+    <result column="ins_xs_num" property="insXsNum" jdbcType="VARCHAR" />
+    <result column="ins_yy_num" property="insYyNum" jdbcType="VARCHAR" />
+    <result column="ins_fdj_num" property="insFdjNum" jdbcType="VARCHAR" />
+    <result column="ins_cj_num" property="insCjNum" jdbcType="VARCHAR" />
+    <result column="ins_des" property="insDes" jdbcType="VARCHAR" />
+    <result column="ins_sys_baodan" property="insSysBaodan" jdbcType="VARCHAR" />
+    <result column="ins_last_baodan" property="insLastBaodan" jdbcType="VARCHAR" />
+    <result column="ins_file_url" property="insFileUrl" jdbcType="VARCHAR" />
+    <result column="ins_goods_type" property="insGoodsType" jdbcType="VARCHAR" />
+    <result column="ins_trans_type" property="insTransType" jdbcType="VARCHAR" />
+    <result column="ins_load_type" property="insLoadType" jdbcType="VARCHAR" />
+    <result column="ins_bao_zhuang" property="insBaoZhuang" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="SplitOrder" type="com.brightsoft.model.platformVoSplitOrder">
+  		<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+  		<result column="order_state" property="orderState" jdbcType="INTEGER" />
+  		<result column="payment_amount" property="paymentAmount" jdbcType="VARCHAR" />
+  		<result column="payment_orderType" property="paymentOrderType" jdbcType="INTEGER" />
+  		<result column="payment_requestid" property="paymentRequestid" jdbcType="VARCHAR" />
+  		<result column="platform_loginName" property="platformLoginName" jdbcType="VARCHAR" />
+  		<result column="tms_loginName" property="tmsLoginName" jdbcType="VARCHAR" />
+  		<result column="tms_user_id" property="tmsUserId" jdbcType="INTEGER" />
+  		<result column="outlets_name" property="outletsName" jdbcType="VARCHAR" />
+  		<result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+  		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+  		<result column="ledgerno" property="ledgerno" jdbcType="VARCHAR" />
+  		<result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP"/>
+  		 <result column="amount" property="amount" jdbcType="VARCHAR" />
+  		<result  column="bankaccountnumber" property="bankaccountnumber" jdbcType="VARCHAR"/>
+	  	<collection property="splitStateList" ofType="com.brightsoft.model.SplitState">
+	    	<result column="split_state" property="splitState" jdbcType="INTEGER" />
+	    </collection>
+  </resultMap>
+  
+  <resultMap id="SplitPos" type="com.brightsoft.model.platformVoSplitPos">
+  		<result column="order_state" property="orderState" jdbcType="INTEGER" />
+  		<result column="tms_loginName" property="tmsLoginName" jdbcType="VARCHAR" />
+  		<result column="tms_user_id" property="tmsUserId" jdbcType="BIGINT" />
+  		<result column="outlets_name" property="outletsName" jdbcType="VARCHAR" />
+  		<result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+  		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+  		<result column="ledgerno" property="ledgerno" jdbcType="VARCHAR" />
+  		<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+	    <result column="cost_type" property="costType" jdbcType="INTEGER" />
+	    <result column="money" property="money" jdbcType="DOUBLE" />
+	    <result column="pos_money" property="posMoney" jdbcType="DOUBLE" />
+	    <result column="cash_money" property="cashMoney" jdbcType="DOUBLE" />
+	    <result column="pay_person" property="payPerson" jdbcType="VARCHAR" />
+	    <result column="pay_person_mobile" property="payPersonMobile" jdbcType="VARCHAR" />
+	    <result column="remark" property="remark" jdbcType="VARCHAR" />
+	    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+	    <result column="operate_person_mobile" property="operatePersonMobile" jdbcType="VARCHAR" />
+	    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="statusys" property="statusys" jdbcType="INTEGER" />
+	    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+	     <collection property="accounts" ofType="com.brightsoft.model.platformBankAccounts">
+	    	<result column="state" property="state" jdbcType="INTEGER" />
+	    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customernumber, requestid, orderrequestid, divideinfo, callbackurl, order_type,order_number, 
+    time, state, suername,tms_user_id,amount
+  </sql>
+  <!-- 分账 -->
+  <select id="selectBankSplitList" resultMap="SplitOrder">
+  	select 
+		o_r.order_number as order_number,o_r.state as order_state,
+		p_t.amount as payment_amount,p_t.order_type as payment_orderType,p_t.requestid as payment_requestid,
+		p_user2.login_name as platform_loginName,
+		u_r.login_name as tms_loginName,
+		i_u.name as outlets_name,
+		c_p.company_code as company_code,c_p.company_name as company_name,
+		s_p.state as split_state,s_p.time as payment_time,s_p.amount as amount,
+		a_t.ledgerno as ledgerno,
+		b_k.bankaccountnumber as bankaccountnumber
+		from lc_platform_order o_r
+		LEFT JOIN lc_platform_bank_payment p_t on o_r.order_number = p_t.order_number
+		LEFT JOIN lc_platform_bank_split s_p on p_t.requestid = s_p.orderrequestid
+		LEFT JOIN tms_line_info i_o on o_r.tms_line_id = i_o.id
+		LEFT JOIN tms_outlets_info i_u on i_o.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.id =s_p.tms_user_id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		LEFT JOIN lc_platform_user p_user2 on p_user2.id = o_r.user_id
+		LEFT JOIN lc_platform_bank b_k on b_k.user_id = p_user.id
+		where 1=1
+		and  r_l.owner_type = 2
+		and p_t.state = 0
+		and o_r.state in
+		<foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}
+		</foreach>
+		and p_t.order_type =#{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER}
+		AND p_t.requestid IN (select orderrequestid from lc_platform_bank_split where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+		<if test="platformVoSplitOrder.orderNumber != null and platformVoSplitOrder.orderNumber !='' ">
+			and o_r.order_number=#{platformVoSplitOrder.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="platformVoSplitOrder.startTime != null and platformVoSplitOrder.startTime != '' ">
+   			and	p_t.time >= #{platformVoSplitOrder.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.endTime != null and platformVoSplitOrder.endTime != '' ">
+	   		and p_t.time <![CDATA[<=]]> #{platformVoSplitOrder.endTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.tmsLoginName != null and platformVoSplitOrder.tmsLoginName != '' ">
+	   		and u_r.login_name = #{platformVoSplitOrder.tmsLoginName,jdbcType=VARCHAR}
+	   	</if>
+		ORDER BY s_p.time DESC
+		limit #{page.start}, #{page.limit}
+  </select>
+  <select id="countBankSplit" resultType="int">
+  	select count(*)
+		from lc_platform_order o_r
+		LEFT JOIN lc_platform_bank_payment p_t on o_r.order_number = p_t.order_number
+		LEFT JOIN tms_line_info i_o on o_r.tms_line_id = i_o.id
+		LEFT JOIN tms_outlets_info i_u on i_o.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		LEFT JOIN lc_platform_user p_user2 on p_user2.id = o_r.user_id
+		where 1=1
+		and  r_l.owner_type = 2
+		and p_t.state = 0
+		and o_r.state in
+		<foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}
+		</foreach>
+		and p_t.order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER}
+		<if test="platformVoSplitOrder.orderNumber != null and platformVoSplitOrder.orderNumber !='' ">
+			and o_r.order_number=#{platformVoSplitOrder.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="platformVoSplitOrder.startTime != null and platformVoSplitOrder.startTime != '' ">
+   			and	p_t.time >= #{platformVoSplitOrder.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.endTime != null and platformVoSplitOrder.endTime != '' ">
+	   		and p_t.time <![CDATA[<=]]> #{platformVoSplitOrder.endTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.tmsLoginName != null and platformVoSplitOrder.tmsLoginName != '' ">
+	   		and u_r.login_name = #{platformVoSplitOrder.tmsLoginName,jdbcType=VARCHAR}
+	   	</if>
+		AND p_t.requestid IN (select orderrequestid from lc_platform_bank_split where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+  </select>
+  
+  <!-- 分账 -->
+  <select id="selectSplitOrderState" resultMap="SplitOrder">
+  	select 
+		o_r.order_number as order_number,o_r.state as order_state,
+		p_t.amount as payment_amount,p_t.order_type as payment_orderType,p_t.requestid as payment_requestid,p_t.time as payment_time,
+		p_user2.login_name as platform_loginName,
+		u_r.login_name as tms_loginName,u_r.id as tms_user_id,
+		i_u.name as outlets_name,
+		c_p.company_code as company_code,c_p.company_name as company_name,
+		s_p.state as split_state,
+		a_t.ledgerno as ledgerno
+		from lc_platform_order o_r
+		LEFT JOIN lc_platform_bank_payment p_t on o_r.order_number = p_t.order_number
+		LEFT JOIN tms_line_info i_o on o_r.tms_line_id = i_o.id
+		LEFT JOIN tms_outlets_info i_u on i_o.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		LEFT JOIN lc_platform_user p_user2 on p_user2.id = o_r.user_id
+		LEFT JOIN lc_platform_bank_split s_p on p_t.requestid = s_p.orderrequestid
+		where 1=1
+		and  r_l.owner_type = 2
+		and p_t.state = 0
+		and u_r.status = 1
+		and o_r.state in
+		<foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}
+		</foreach>
+		and p_t.order_type =#{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER}
+		AND p_t.requestid NOT IN (select orderrequestid from lc_platform_bank_split where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+		AND p_t.requestid NOT IN (select orderrequestid from lc_platform_bank_refund where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+		<if test="platformVoSplitOrder.orderNumber != null and platformVoSplitOrder.orderNumber !='' ">
+			and o_r.order_number=#{platformVoSplitOrder.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="platformVoSplitOrder.startTime != null and platformVoSplitOrder.startTime != '' ">
+   			and	p_t.time >= #{platformVoSplitOrder.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.endTime != null and platformVoSplitOrder.endTime != '' ">
+	   		and p_t.time <![CDATA[<=]]> #{platformVoSplitOrder.endTime,jdbcType=VARCHAR}
+	   	</if>
+		ORDER BY p_t.time DESC
+		limit #{page.start}, #{page.limit}
+  </select>
+  <select id="countSplitOrderState" resultType="int">
+  	select count(*)
+		from lc_platform_order o_r
+		LEFT JOIN lc_platform_bank_payment p_t on o_r.order_number = p_t.order_number
+		LEFT JOIN tms_line_info i_o on o_r.tms_line_id = i_o.id
+		LEFT JOIN tms_outlets_info i_u on i_o.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		LEFT JOIN lc_platform_user p_user2 on p_user2.id = o_r.user_id
+		where 1=1
+		and  r_l.owner_type = 2
+		and p_t.state = 0
+		and u_r.status = 1
+		and o_r.state in
+		<foreach collection="statusList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}
+		</foreach>
+		and p_t.order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER}
+		<if test="platformVoSplitOrder.orderNumber != null and platformVoSplitOrder.orderNumber !='' ">
+			and o_r.order_number=#{platformVoSplitOrder.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="platformVoSplitOrder.startTime != null and platformVoSplitOrder.startTime != '' ">
+   			and	p_t.time >= #{platformVoSplitOrder.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformVoSplitOrder.endTime != null and platformVoSplitOrder.endTime != '' ">
+	   		and p_t.time <![CDATA[<=]]> #{platformVoSplitOrder.endTime,jdbcType=VARCHAR}
+	   	</if>
+		AND p_t.requestid NOT IN (select orderrequestid from lc_platform_bank_split where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+		AND p_t.requestid NOT IN (select orderrequestid from lc_platform_bank_refund where state = 0 and order_type = #{platformVoSplitOrder.paymentOrderType,jdbcType=INTEGER})
+  </select>
+  <select id="selectBankSplit" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_split
+    where requestid = #{requestid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_split
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank_split
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBankSplit" >
+    insert into lc_platform_bank_split (id, customernumber, requestid, 
+      orderrequestid, divideinfo, callbackurl, order_type,
+      order_number, time, state, 
+      suername,tms_user_id,amount)
+    values (#{id,jdbcType=BIGINT}, #{customernumber,jdbcType=VARCHAR}, #{requestid,jdbcType=VARCHAR}, 
+      #{orderrequestid,jdbcType=VARCHAR}, #{divideinfo,jdbcType=VARCHAR}, #{callbackurl,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=INTEGER}, #{orderNumber,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{suername,jdbcType=VARCHAR},#{tmsUserId,jdbcType=BIGINT},#{amount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBankSplit" >
+    insert into lc_platform_bank_split
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="customernumber != null" >
+        customernumber,
+      </if>
+      <if test="requestid != null" >
+        requestid,
+      </if>
+      <if test="orderrequestid != null" >
+        orderrequestid,
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo,
+      </if>
+      <if test="callbackurl != null" >
+        callbackurl,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="suername != null" >
+        suername,
+      </if>
+      <if test="tmsUserId !=null">
+     	 tms_user_id,
+      </if>
+      <if test="amount !=null">
+     	 amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="customernumber != null" >
+        #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestid != null" >
+        #{orderrequestid,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackurl != null" >
+        #{callbackurl,jdbcType=VARCHAR},
+      </if>
+        <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="suername != null" >
+        #{suername,jdbcType=VARCHAR},
+      </if>
+       <if test="tmsUserId !=null">
+     	 #{tmsUserId,jdbcType=BIGINT},
+      </if>
+      <if test="amount !=null">
+     	  #{amount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBankSplit" >
+    update lc_platform_bank_split
+    <set >
+      <if test="customernumber != null" >
+        customernumber = #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        requestid = #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestid != null" >
+        orderrequestid = #{orderrequestid,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackurl != null" >
+        callbackurl = #{callbackurl,jdbcType=VARCHAR},
+      </if>
+       <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="suername != null" >
+        suername = #{suername,jdbcType=VARCHAR},
+      </if>
+      <if test="tmsUserId !=null">
+     	 tms_user_id = #{tmsUserId,jdbcType=BIGINT},
+      </if>
+      <if test="amount !=null">
+     	  #{amount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBankSplit" >
+    update lc_platform_bank_split
+    set customernumber = #{customernumber,jdbcType=VARCHAR},
+      requestid = #{requestid,jdbcType=VARCHAR},
+      orderrequestid = #{orderrequestid,jdbcType=VARCHAR},
+      divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      callbackurl = #{callbackurl,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      suername = #{suername,jdbcType=VARCHAR},
+      tms_user_id = #{tmsUserId,jdbcType=BIGINT},
+   	  amount=  #{amount,jdbcType=VARCHAR}
+    
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectBankInsurance" resultMap="SplitInsurance">
+  		select s_l.*,i_e.*,u_r.login_name from lc_platform_bank_split s_l
+		LEFT JOIN lc_platform_insurance i_e on s_l.order_number = i_e.ins_order_num
+		LEFT JOIN lc_platform_user u_r on u_r.id =i_e.user_id
+		where 1=1 
+		and s_l.state=0
+		and s_l.order_type = 0
+		<if test="insurance.orderNumber != null and insurance.orderNumber !='' ">
+			and s_l.order_number=#{insurance.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="insurance.startTime != null and insurance.startTime != '' ">
+   			and	s_l.time >= #{insurance.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="insurance.endTime != null and insurance.endTime != '' ">
+	   		and s_l.time <![CDATA[<=]]> #{insurance.endTime,jdbcType=VARCHAR}
+	   	</if>
+		ORDER BY s_l.time DESC
+		limit #{page.start}, #{page.limit}
+  </select>
+    <select id="countBankInsurance" resultType="int">
+  		select count(*) from lc_platform_bank_split s_l
+		LEFT JOIN lc_platform_insurance i_e on s_l.order_number = i_e.ins_order_num
+		LEFT JOIN lc_platform_user u_r on u_r.id =i_e.user_id
+		where 1=1 
+		and s_l.state=0
+		and s_l.order_type = 0
+		<if test="insurance.orderNumber != null and insurance.orderNumber !='' ">
+			and s_l.order_number=#{insurance.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="insurance.startTime != null and insurance.startTime != '' ">
+   			and	s_l.time >= #{insurance.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="insurance.endTime != null and insurance.endTime != '' ">
+	   		and s_l.time <![CDATA[<=]]> #{insurance.endTime,jdbcType=VARCHAR}
+	   	</if>
+  </select>
+  <!-- pos机分账 -->
+  <select id="selectBankPos" resultMap="SplitPos">
+  	select 
+		t_p.*,
+		u_r.login_name as tms_loginName,u_r.id as tms_user_id,
+		i_u.name as outlets_name,
+		c_p.company_code as company_code,c_p.company_name as company_name,
+		a_t.ledgerno as ledgerno,
+		r_d.is_cancel as statusys
+		from tms_receive_money_order t_p
+		LEFT JOIN tms_pos_order_record r_d on t_p.order_number = r_d.order_number
+		LEFT JOIN  tms_outlets_info i_u on t_p.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		where 1=1
+		and t_p.pos_money >0
+		and r_l.owner_type = 2
+		and u_r.status = 1
+		and r_d.is_cancel IS NOT NULL
+		<if test="splitPos.userId !=null and splitPos.userId!=''">
+			and p_user.id = #{splitPos.userId,jdbcType=BIGINT}
+		</if>
+		<if test="splitPos.orderNumber != null and splitPos.orderNumber !='' ">
+			and t_p.order_number=#{splitPos.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="splitPos.startTime!=null and splitPos.startTime!=''">
+			and t_p.operate_time >=#{splitPos.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="splitPos.endTime!=null and splitPos.endTime!=''">
+			and #{splitPos.endTime,jdbcType=VARCHAR} >= t_p.operate_time
+		</if>
+		<if test="splitPos.statuss!=null and splitPos.statuss!=''">
+			and #{splitPos.statuss,jdbcType=VARCHAR} = r_d.is_cancel
+		</if>
+		<if test="splitPos.outletsName!=null and splitPos.outletsName!=''">
+			and i_u.name like concat("%",#{splitPos.outletsName},"%")
+		</if>
+		<if test="splitPos.companyName!=null and splitPos.companyName!=''">
+			and c_p.company_name like concat("%",#{splitPos.companyName},"%")
+		</if>
+		<if test="splitPos.companyCode!=null and splitPos.companyCode!=''">
+			and c_p.company_code like concat("%",#{splitPos.companyCode},"%")
+		</if>
+		ORDER BY t_p.operate_time DESC
+		limit #{page.start}, #{page.limit}
+  </select>
+  <select id="countBankPos" resultType="int">
+  		select 
+		count(*)
+		from tms_receive_money_order t_p
+		LEFT JOIN tms_pos_order_record r_d on t_p.order_number = r_d.order_number
+		LEFT JOIN  tms_outlets_info i_u on t_p.outlets_id = i_u.id
+		LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+		LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+		LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+		LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+		LEFT JOIN lc_platform_user p_user on p_user.login_name = u_r.login_name
+		LEFT JOIN lc_platform_bank_account a_t on p_user.id = a_t.user_id
+		where 1=1
+		and t_p.pos_money >0
+		and r_l.owner_type = 2
+		and u_r.status = 1
+		and r_d.is_cancel IS NOT NULL
+		<if test="splitPos.userId !=null and splitPos.userId!=''">
+			and p_user.id = #{splitPos.userId,jdbcType=BIGINT}
+		</if>
+		<if test="splitPos.orderNumber != null and splitPos.orderNumber !='' ">
+			and t_p.order_number=#{splitPos.orderNumber,jdbcType=VARCHAR}
+		</if>
+		<if test="splitPos.startTime!=null and splitPos.startTime!=''">
+			and t_p.operate_time >=#{splitPos.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="splitPos.endTime!=null and splitPos.endTime!=''">
+			and #{splitPos.endTime,jdbcType=VARCHAR} >= t_p.operate_time
+		</if>
+		<if test="splitPos.statuss!=null and splitPos.statuss!=''">
+			and #{splitPos.statuss,jdbcType=VARCHAR} = r_d.is_cancel
+		</if>
+		<if test="splitPos.outletsName!=null and splitPos.outletsName!=''">
+			and i_u.name like concat("%",#{splitPos.outletsName},"%")
+		</if>
+		<if test="splitPos.companyName!=null and splitPos.companyName!=''">
+			and c_p.company_name like concat("%",#{splitPos.companyName},"%")
+		</if>
+		<if test="splitPos.companyCode!=null and splitPos.companyCode!=''">
+			and c_p.company_code  like concat("%",#{splitPos.companyCode},"%")
+		</if>
+  </select>
+</mapper>

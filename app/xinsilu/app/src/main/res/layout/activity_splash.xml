@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/a_splash_app_intro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="visible">
+
+        <com.xsl.lerist.llibrarys.widget.LViewPager
+            android:id="@+id/a_splash_lvp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+        <com.xsl.lerist.llibrarys.widget.LPageIndicator
+            android:id="@+id/a_splash_lpi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="42dp" />
+
+        <carbon.widget.TextView
+            android:id="@+id/a_splash_app_intro_btn_setup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="88dp"
+            android:text="开启服务"
+            android:textColor="@color/white"
+            android:background="@drawable/background_shap_stroke_textview"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</FrameLayout>

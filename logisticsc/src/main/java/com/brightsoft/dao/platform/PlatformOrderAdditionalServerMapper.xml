@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderAdditionalServerMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderAdditionalServer" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="is_receipt" property="isReceipt" jdbcType="INTEGER" />
+    <result column="is_im_ex_store" property="isImExStore" jdbcType="INTEGER" />
+    <result column="is_load_cargo" property="isLoadCargo" jdbcType="INTEGER" />
+    <result column="load_cargo_floor" property="loadCargoFloor" jdbcType="INTEGER" />
+    <result column="load_cargo_is_elevator" property="loadCargoIsElevator" jdbcType="INTEGER" />
+    <result column="is_unload_cargo" property="isUnloadCargo" jdbcType="INTEGER" />
+    <result column="unload_cargo_floor" property="unloadCargoFloor" jdbcType="INTEGER" />
+    <result column="unload_cargo_is_elevator" property="unloadCargoIsElevator" jdbcType="INTEGER" />
+    <result column="is_collection_delivery" property="isCollectionDelivery" jdbcType="INTEGER" />
+    <result column="collection_delivery_money" property="collectionDeliveryMoney" jdbcType="DOUBLE" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, is_receipt, is_im_ex_store, is_load_cargo, load_cargo_floor, load_cargo_is_elevator, 
+    is_unload_cargo, unload_cargo_floor, unload_cargo_is_elevator, is_collection_delivery, 
+    collection_delivery_money, order_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_additional_server
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_additional_server
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderAdditionalServer" >
+    insert into lc_platform_order_additional_server (id, is_receipt, is_im_ex_store, 
+      is_load_cargo, load_cargo_floor, load_cargo_is_elevator, 
+      is_unload_cargo, unload_cargo_floor, unload_cargo_is_elevator, 
+      is_collection_delivery, collection_delivery_money, 
+      order_id)
+    values (#{id,jdbcType=BIGINT}, #{isReceipt,jdbcType=INTEGER}, #{isImExStore,jdbcType=INTEGER}, 
+      #{isLoadCargo,jdbcType=INTEGER}, #{loadCargoFloor,jdbcType=INTEGER}, #{loadCargoIsElevator,jdbcType=INTEGER}, 
+      #{isUnloadCargo,jdbcType=INTEGER}, #{unloadCargoFloor,jdbcType=INTEGER}, #{unloadCargoIsElevator,jdbcType=INTEGER}, 
+      #{isCollectionDelivery,jdbcType=INTEGER}, #{collectionDeliveryMoney,jdbcType=DOUBLE}, 
+      #{orderId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderAdditionalServer" >
+    insert into lc_platform_order_additional_server
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="isReceipt != null" >
+        is_receipt,
+      </if>
+      <if test="isImExStore != null" >
+        is_im_ex_store,
+      </if>
+      <if test="isLoadCargo != null" >
+        is_load_cargo,
+      </if>
+      <if test="loadCargoFloor != null" >
+        load_cargo_floor,
+      </if>
+      <if test="loadCargoIsElevator != null" >
+        load_cargo_is_elevator,
+      </if>
+      <if test="isUnloadCargo != null" >
+        is_unload_cargo,
+      </if>
+      <if test="unloadCargoFloor != null" >
+        unload_cargo_floor,
+      </if>
+      <if test="unloadCargoIsElevator != null" >
+        unload_cargo_is_elevator,
+      </if>
+      <if test="isCollectionDelivery != null" >
+        is_collection_delivery,
+      </if>
+      <if test="collectionDeliveryMoney != null" >
+        collection_delivery_money,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="isReceipt != null" >
+        #{isReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="isImExStore != null" >
+        #{isImExStore,jdbcType=INTEGER},
+      </if>
+      <if test="isLoadCargo != null" >
+        #{isLoadCargo,jdbcType=INTEGER},
+      </if>
+      <if test="loadCargoFloor != null" >
+        #{loadCargoFloor,jdbcType=INTEGER},
+      </if>
+      <if test="loadCargoIsElevator != null" >
+        #{loadCargoIsElevator,jdbcType=INTEGER},
+      </if>
+      <if test="isUnloadCargo != null" >
+        #{isUnloadCargo,jdbcType=INTEGER},
+      </if>
+      <if test="unloadCargoFloor != null" >
+        #{unloadCargoFloor,jdbcType=INTEGER},
+      </if>
+      <if test="unloadCargoIsElevator != null" >
+        #{unloadCargoIsElevator,jdbcType=INTEGER},
+      </if>
+      <if test="isCollectionDelivery != null" >
+        #{isCollectionDelivery,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDeliveryMoney != null" >
+        #{collectionDeliveryMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderAdditionalServer" >
+    update lc_platform_order_additional_server
+    <set >
+      <if test="isReceipt != null" >
+        is_receipt = #{isReceipt,jdbcType=INTEGER},
+      </if>
+      <if test="isImExStore != null" >
+        is_im_ex_store = #{isImExStore,jdbcType=INTEGER},
+      </if>
+      <if test="isLoadCargo != null" >
+        is_load_cargo = #{isLoadCargo,jdbcType=INTEGER},
+      </if>
+      <if test="loadCargoFloor != null" >
+        load_cargo_floor = #{loadCargoFloor,jdbcType=INTEGER},
+      </if>
+      <if test="loadCargoIsElevator != null" >
+        load_cargo_is_elevator = #{loadCargoIsElevator,jdbcType=INTEGER},
+      </if>
+      <if test="isUnloadCargo != null" >
+        is_unload_cargo = #{isUnloadCargo,jdbcType=INTEGER},
+      </if>
+      <if test="unloadCargoFloor != null" >
+        unload_cargo_floor = #{unloadCargoFloor,jdbcType=INTEGER},
+      </if>
+      <if test="unloadCargoIsElevator != null" >
+        unload_cargo_is_elevator = #{unloadCargoIsElevator,jdbcType=INTEGER},
+      </if>
+      <if test="isCollectionDelivery != null" >
+        is_collection_delivery = #{isCollectionDelivery,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDeliveryMoney != null" >
+        collection_delivery_money = #{collectionDeliveryMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderAdditionalServer" >
+    update lc_platform_order_additional_server
+    set is_receipt = #{isReceipt,jdbcType=INTEGER},
+      is_im_ex_store = #{isImExStore,jdbcType=INTEGER},
+      is_load_cargo = #{isLoadCargo,jdbcType=INTEGER},
+      load_cargo_floor = #{loadCargoFloor,jdbcType=INTEGER},
+      load_cargo_is_elevator = #{loadCargoIsElevator,jdbcType=INTEGER},
+      is_unload_cargo = #{isUnloadCargo,jdbcType=INTEGER},
+      unload_cargo_floor = #{unloadCargoFloor,jdbcType=INTEGER},
+      unload_cargo_is_elevator = #{unloadCargoIsElevator,jdbcType=INTEGER},
+      is_collection_delivery = #{isCollectionDelivery,jdbcType=INTEGER},
+      collection_delivery_money = #{collectionDeliveryMoney,jdbcType=DOUBLE},
+      order_id = #{orderId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_additional_server
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByOrderNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_additional_server
+    where order_id = 
+    (select id from lc_platform_order where order_number = #{orderNumber,jdbcType=VARCHAR})
+  </select>
+</mapper>

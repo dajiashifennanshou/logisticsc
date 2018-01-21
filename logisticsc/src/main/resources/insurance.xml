@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<document>
+	<userName>test12345</userName>
+	<userPwd>123456</userPwd>
+	<userKey>c06db68e819be6ec3d26c6038d8e8d1f</userKey>
+	<insComTag>taipingyang</insComTag>
+	<insType>jb</insType>
+	<insTrueName>dddd</insTrueName>
+	<insCardNum>dd23482342983749287</insCardNum>
+	<insTel>18202806211</insTel>
+	<insAddress>sssss</insAddress>
+	<insCheNum>川A12345</insCheNum>
+	<insHetongNum>213412313</insHetongNum>
+	<insStartTime>2017-1-1</insStartTime>
+	<insHuoWu>huowu</insHuoWu>
+	<insBaoZhuang>aaaa</insBaoZhuang>
+	<insJine>100.00</insJine>
+	<insTsType>es</insTsType>
+	<insStartAdd>四川省#@#成都市#@#双流县#@#机场路某小区</insStartAdd>
+	<insEndAdd>四川省#@#成都市#@#双流县#@#机场路某小</insEndAdd>
+	<insMidAdd>fgdgfdg</insMidAdd>
+	<insArea>0</insArea>
+	<insOrderNum>XLS1603180331wrwqr8</insOrderNum>
+	<backDataUrl>http://localhost:8080/</backDataUrl>
+</document>	

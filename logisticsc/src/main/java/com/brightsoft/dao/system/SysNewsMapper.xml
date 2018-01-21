@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.system.SysNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SysNews" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="news_title" property="newsTitle" jdbcType="VARCHAR" />
+    <result column="title_picture" property="titlePicture" jdbcType="VARCHAR" />
+    <result column="news_type" property="newsType" jdbcType="INTEGER" />
+    <result column="news_url" property="newsUrl" jdbcType="VARCHAR" />
+    <result column="news_time" property="newsTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.brightsoft.model.SysNews" extends="BaseResultMap" >
+    <result column="news_content" property="newsContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, news_title, title_picture, news_type, news_url, news_time, user_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    news_content
+  </sql>
+   <select id="selectNewsList" resultMap="ResultMapWithBLOBs" parameterType="com.brightsoft.model.SysNews" >
+   select  <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+     from lc_sys_news
+	where news_type =#{newsType,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByCondition" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+   select n_e.*,u_s.username from lc_sys_news n_e LEFT JOIN lc_sys_user u_s
+	on n_e.user_id = u_s.id
+	where 1=1
+	and n_e.news_type = #{searchParams.newsType,jdbcType=INTEGER}
+    <if test="searchParams.startTime != null and searchParams.startTime !=''" >
+	    and n_e.news_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+    </if>
+    <if test="searchParams.endTime != null and searchParams.endTime !=''" >
+     	and  n_e.news_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+    </if>
+    <if test="searchParams.condition != null and searchParams.condition != ''" >
+     	and  n_e.news_time like concat("%",#{searchParams.condition},"%") 
+    </if>
+    order by n_e.news_time desc limit #{page.start},#{page.limit}
+  </select>
+   <select id="countRows" resultType="int">
+   select COUNT(*) from lc_sys_news n_e LEFT JOIN lc_sys_user u_s
+	on n_e.user_id = u_s.id
+	where 1=1
+	and n_e.news_type = #{searchParams.newsType,jdbcType=INTEGER}
+    <if test="searchParams.startTime != null and searchParams.startTime !=''" >
+	    and n_e.news_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+    </if>
+    <if test="searchParams.endTime != null and searchParams.endTime !=''" >
+     	and  n_e.news_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+    </if>
+    <if test="searchParams.condition != null and searchParams.condition != ''" >
+     	and  n_e.news_time like concat("%",#{searchParams.condition},"%") 
+    </if>
+  </select>
+  
+   <delete id="deleteNews" parameterType="java.lang.Long" >
+    delete from lc_sys_news
+    where id in
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+     #{item}
+   </foreach>
+  </delete>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lc_sys_news
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_sys_news
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SysNews" >
+    insert into lc_sys_news (news_title, title_picture, 
+      news_type, news_url, news_time, 
+      user_id, news_content)
+    values (#{newsTitle,jdbcType=VARCHAR}, #{titlePicture,jdbcType=VARCHAR}, 
+      #{newsType,jdbcType=INTEGER}, #{newsUrl,jdbcType=VARCHAR}, #{newsTime,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=BIGINT}, #{newsContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SysNews" >
+    insert into lc_sys_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="newsTitle != null" >
+        news_title,
+      </if>
+      <if test="titlePicture != null" >
+        title_picture,
+      </if>
+      <if test="newsType != null" >
+        news_type,
+      </if>
+      <if test="newsUrl != null" >
+        news_url,
+      </if>
+      <if test="newsTime != null" >
+        news_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="newsContent != null" >
+        news_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="newsTitle != null" >
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="titlePicture != null" >
+        #{titlePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="newsType != null" >
+        #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsUrl != null" >
+        #{newsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTime != null" >
+        #{newsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="newsContent != null" >
+        #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SysNews" >
+    update lc_sys_news
+    <set >
+      <if test="newsTitle != null" >
+        news_title = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="titlePicture != null" >
+        title_picture = #{titlePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="newsType != null" >
+        news_type = #{newsType,jdbcType=INTEGER},
+      </if>
+      <if test="newsUrl != null" >
+        news_url = #{newsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="newsTime != null" >
+        news_time = #{newsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="newsContent != null" >
+        news_content = #{newsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.brightsoft.model.SysNews" >
+    update lc_sys_news
+    set news_title = #{newsTitle,jdbcType=VARCHAR},
+      title_picture = #{titlePicture,jdbcType=VARCHAR},
+      news_type = #{newsType,jdbcType=INTEGER},
+      news_url = #{newsUrl,jdbcType=VARCHAR},
+      news_time = #{newsTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT},
+      news_content = #{newsContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SysNews" >
+    update lc_sys_news
+    set news_title = #{newsTitle,jdbcType=VARCHAR},
+      title_picture = #{titlePicture,jdbcType=VARCHAR},
+      news_type = #{newsType,jdbcType=INTEGER},
+      news_url = #{newsUrl,jdbcType=VARCHAR},
+      news_time = #{newsTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

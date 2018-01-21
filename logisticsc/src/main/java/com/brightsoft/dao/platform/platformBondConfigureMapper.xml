@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBondConfigureMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBondConfigure" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="money" property="money" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, money, time, username
+  </sql>
+   <select id="selectBond" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bond_configure
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bond_configure
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bond_configure
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBondConfigure" >
+    insert into lc_platform_bond_configure (id, money, time, 
+      username)
+    values (#{id,jdbcType=BIGINT}, #{money,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBondConfigure" >
+    insert into lc_platform_bond_configure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBondConfigure" >
+    update lc_platform_bond_configure
+    <set >
+      <if test="money != null" >
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBondConfigure" >
+    update lc_platform_bond_configure
+    set money = #{money,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      username = #{username,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformUserCommonContactDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformUserCommonContact"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,contacts_name,phone_number,telephone,address,province,city,county,state,create_time,contacts_type,company_name,user_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformUserCommonContact" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user_common_contact where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+		<if test="phone_number!=null">
+			and phone_number=#{phone_number}
+		</if>
+		<if test="contacts_type!=null">
+			and contacts_type = #{contacts_type}
+		</if>
+	</select>
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformUserCommonContact" > 
+		select  count(1)  from lc_platform_user_common_contact where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="user_id!=null">
+			and user_id=#{user_id}
+		</if>
+		<if test="phone_number!=null">
+			and phone_number=#{phone_number}
+		</if>
+		<if test="contacts_type!=null">
+			and contacts_type = #{contacts_type}
+		</if>
+	</select>
+	
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_user_common_contact where
+		user_id=#{user_id} and contacts_type = #{contacts_type} and state=1
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformUserCommonContact"> 
+		delete from lc_platform_user_common_contact where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformUserCommonContact" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_user_common_contact  
+		(contacts_name,phone_number,telephone,address,province,city,county,state,create_time,contacts_type,company_name,user_id) 
+		values ( #{contacts_name},#{phone_number},#{telephone},#{address},#{province},#{city},#{county},#{state},#{create_time},#{contacts_type},#{company_name},#{user_id} )
+	</insert> 
+</mapper> 
+

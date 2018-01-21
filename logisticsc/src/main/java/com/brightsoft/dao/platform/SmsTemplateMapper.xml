@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.SmsTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SmsTemplate" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="template_abbr" property="templateAbbr" jdbcType="VARCHAR" />
+    <result column="template_content" property="templateContent" jdbcType="VARCHAR" />
+    <result column="template_desc" property="templateDesc" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="INTEGER" />
+    <result column="send_consignor" property="sendConsignor" jdbcType="INTEGER" />
+    <result column="send_consignee" property="sendConsignee" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.brightsoft.model.SmsTemplate" >
+    insert into sys_sms_template (id, template_name, template_abbr, template_content, 
+      template_desc, is_enabled, send_consignor, send_consignee)
+    values (#{id,jdbcType=BIGINT}, #{templateName,jdbcType=VARCHAR}, #{templateAbbr,jdbcType=VARCHAR}, #{templateContent,jdbcType=VARCHAR}, 
+      #{templateDesc,jdbcType=VARCHAR}, #{isEnabled,jdbcType=INTEGER}, #{sendConsignor,jdbcType=INTEGER}, #{sendConsignee,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SmsTemplate" >
+    insert into sys_sms_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="templateAbbr != null" >
+        template_abbr,
+      </if>
+      <if test="templateContent != null" >
+        template_content,
+      </if>
+      <if test="templateDesc != null" >
+        template_desc,
+      </if>
+      <if test="iseEabled != null" >
+        is_enabled,
+      </if>
+      <if test="sendConsignor != null" >
+        send_consignor,
+      </if>
+      <if test="sendConsignee != null" >
+        send_consignee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateAbbr != null" >
+        #{templateAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContent != null" >
+        #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="templateDesc != null" >
+        #{templateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=INTEGER},
+      </if>
+      <if test="sendConsignor != null" >
+        #{sendConsignor,jdbcType=INTEGER},
+      </if>
+      <if test="sendConsignee != null" >
+        #{sendConsignee,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.brightsoft.model.SmsTemplate">
+  	update sys_sms_template
+    <set >
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateAbbr != null" >
+        template_abbr = #{templateAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContent != null" >
+        template_content = #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="templateDesc != null" >
+        template_desc = #{templateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=INTEGER},
+      </if>
+      <if test="sendConsignor != null" >
+        send_consignor = #{sendConsignor,jdbcType=INTEGER},
+      </if>
+      <if test="sendConsignee != null" >
+        send_consignee = #{sendConsignee,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getSmsTemplateList" resultMap="BaseResultMap">
+  	select
+  		*
+  	from sys_sms_template
+  	limit #{page.start},#{page.limit}
+  </select>
+  <select id="getSmsTemplateListCount" resultType="int">
+  	select
+  		count(1)
+  	from sys_sms_template
+  </select>
+  <select id="getSmsTemplateByAbbr" resultMap="BaseResultMap">
+  	select 
+  		*
+  	from sys_sms_template
+  	where template_abbr = #{templateAbbr}
+  </select>
+</mapper>

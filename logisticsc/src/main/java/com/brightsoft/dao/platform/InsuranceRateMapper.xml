@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.InsuranceRateMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.InsuranceRate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ins_company_id" property="insCompanyId" jdbcType="BIGINT" />
+    <result column="ins_type_id" property="insTypeId" jdbcType="BIGINT" />
+    <result column="ins_ts_type_id" property="insTsTypeId" jdbcType="BIGINT" />
+    <result column="ins_rate" property="insRate" jdbcType="DOUBLE" />
+    <result column="ins_remark" property="insRemark" jdbcType="VARCHAR" />
+    <result column="ins_status" property="insStatus" jdbcType="INTEGER" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="ins_lowest_price" property="insLowestPrice" jdbcType="FLOAT"/>
+    <association property="insType" javaType="com.brightsoft.model.InsuranceType">
+    	<result column="ins_type_name" property="insTypeName"/>
+    </association>
+    <association property="insTsType" javaType="com.brightsoft.model.InsuranceTsType">
+    	<result column="ins_ts_type_name" property="insTsTypeName"/>
+    </association>
+    <association property="insuranceCompany" javaType="com.brightsoft.model.InsuranceCompany">
+    	<result column="ins_com_name" property="insComName"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ins_company_id, ins_type_id, ins_ts_type_id, ins_rate, ins_remark, ins_status,create_person_id,create_time,ins_lowest_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_insurance_rate
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_insurance_rate
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.InsuranceRate" >
+    insert into lc_insurance_rate (id, ins_company_id, ins_type_id, 
+      ins_ts_type_id, ins_rate, ins_remark, 
+      ins_status,create_time,create_person_id,ins_lowest_price}
+    values (#{id,jdbcType=BIGINT}, #{insCompanyId,jdbcType=BIGINT}, #{insTypeId,jdbcType=BIGINT}, 
+      #{insTsTypeId,jdbcType=BIGINT}, #{insRate,jdbcType=DOUBLE}, #{insRemark,jdbcType=VARCHAR}, 
+      #{insStatus,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},
+      #{createPersonId,jdbcType=BIGINT},#{insLowestPrice,jdbcType=FLOAT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.InsuranceRate" >
+    insert into lc_insurance_rate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insCompanyId != null" >
+        ins_company_id,
+      </if>
+      <if test="insTypeId != null" >
+        ins_type_id,
+      </if>
+      <if test="insTsTypeId != null" >
+        ins_ts_type_id,
+      </if>
+      <if test="insRate != null" >
+        ins_rate,
+      </if>
+      <if test="insRemark != null" >
+        ins_remark,
+      </if>
+      <if test="insStatus != null" >
+        ins_status,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="insLowestPrice != null" >
+        ins_lowest_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="insCompanyId != null" >
+        #{insCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="insTypeId != null" >
+        #{insTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="insTsTypeId != null" >
+        #{insTsTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="insRate != null" >
+        #{insRate,jdbcType=DOUBLE},
+      </if>
+      <if test="insRemark != null" >
+        #{insRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insLowestPrice != null" >
+        #{insLowestPrice,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.InsuranceRate" >
+    update lc_insurance_rate
+    <set >
+      <if test="insCompanyId != null" >
+        ins_company_id = #{insCompanyId,jdbcType=BIGINT},
+      </if>
+      <if test="insTypeId != null" >
+        ins_type_id = #{insTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="insTsTypeId != null" >
+        ins_ts_type_id = #{insTsTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="insRate != null" >
+        ins_rate = #{insRate,jdbcType=DOUBLE},
+      </if>
+      <if test="insRemark != null" >
+        ins_remark = #{insRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="insStatus != null" >
+        ins_status = #{insStatus,jdbcType=INTEGER},
+      </if><if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_Time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insLowestPrice != null" >
+        ins_lowest_price = #{insLowestPrice,jdbcType=FLOAT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.InsuranceRate" >
+    update lc_insurance_rate
+    set ins_company_id = #{insCompanyId,jdbcType=BIGINT},
+      ins_type_id = #{insTypeId,jdbcType=BIGINT},
+      ins_ts_type_id = #{insTsTypeId,jdbcType=BIGINT},
+      ins_rate = #{insRate,jdbcType=DOUBLE},
+      ins_remark = #{insRemark,jdbcType=VARCHAR},
+      ins_status = #{insStatus,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      ins_lowest_price = #{insLowestPrice,jdbcType=FLOAT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select
+  		ir.*,it.ins_type_name,itt.ins_ts_type_name,ic.ins_com_name
+  	from
+  		lc_insurance_rate ir
+  		left join lc_insurance_type it on ir.ins_type_id = it.id
+  		left join lc_insurance_ts_type itt on ir.ins_ts_type_id = itt.id
+  		left join lc_insurance_company ic on ir.ins_company_id = ic.id
+  	where 1= 1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and ic.ins_com_name = #{searchParams.condition} 
+  			or it.ins_type_name = #{searchParams.condition}
+  		</if>
+  		order by ir.id limit #{page.start},#{page.limit}
+  </select>
+  
+  <select id="countRows" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_insurance_rate ir
+  		left join lc_insurance_type it on ir.ins_type_id = it.id
+  		left join lc_insurance_ts_type itt on ir.ins_ts_type_id = itt.id
+  		left join lc_insurance_company ic on ir.ins_company_id = ic.id
+  	where 1= 1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and ic.ins_com_name = #{searchParams.condition} 
+  			or it.ins_type_name = #{searchParams.condition}
+  		</if>
+  </select>
+  
+  <!-- 根据公司tag,险种tag，特殊类型tag获取费率 -->
+  <select id="selectByComTyTsTY" resultMap="BaseResultMap">
+  	select
+  		ir.*
+  	from
+  		lc_insurance_rate ir
+  		inner join lc_insurance_company ic on ir.ins_company_id = ic.id
+  		<if test="insTsTypeTag!=null and insTsTypeTag != ''">
+  		inner join lc_insurance_ts_type itt on itt.id = ir.ins_ts_type_id
+  		</if>
+  		<if test="insTypeTag!=null and insTypeTag != ''">
+  		inner join lc_insurance_type it on it.id = ir.ins_type_id
+  		</if>
+  	where
+		ic.ins_com_tag = #{insCompanyTag}
+		<if test="insTsTypeTag!=null and insTsTypeTag != ''">
+  			and itt.ins_ts_type_tag = #{insTsTypeTag}
+  		</if>
+  		<if test="insTypeTag!=null and insTypeTag != ''">
+  			and it.ins_type_tag = #{insTypeTag}
+  		</if>
+  </select>
+  <!-- 批量删除保险公司-->
+  <delete id="deleteBatch">
+  	delete from lc_insurance_rate
+  	where
+  		id in 
+  		<foreach collection="array" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </delete>
+  <update id="updateInsRate" parameterType="com.brightsoft.model.InsuranceRate">
+  	update lc_insurance_rate
+    set ins_company_id = #{insCompanyId,jdbcType=BIGINT},
+      ins_type_id = #{insTypeId,jdbcType=BIGINT},
+      ins_ts_type_id = #{insTsTypeId,jdbcType=BIGINT},
+      ins_rate = #{insRate,jdbcType=DOUBLE},
+      ins_remark = #{insRemark,jdbcType=VARCHAR},
+      ins_lowest_price = #{insLowestPrice,jdbcType=FLOAT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 根据公司tag和险种tag获取费率 -->
+  <select id="countByComAndType" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_insurance_rate ir
+  		left join lc_insurance_company ic on ir.ins_company_id = ic.id
+  		left join lc_insurance_type it on it.id = ir.ins_type_id
+  	where
+  		ic.ins_com_tag = #{comTag}
+  		and it.ins_type_tag = #{typeTag}
+  </select>
+  <!-- 根据公司tag和特殊类型tag获取费率 -->
+  <select id="countByComAndTsType" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_insurance_rate ir
+  		left join lc_insurance_company ic on ir.ins_company_id = ic.id
+  		left join lc_insurance_ts_type itt on itt.id = ir.ins_ts_type_id
+  	where
+  		ic.ins_com_tag = #{comTag}
+  		and itt.ins_ts_type_tag = #{tsTypeTag}
+  </select>
+</mapper>

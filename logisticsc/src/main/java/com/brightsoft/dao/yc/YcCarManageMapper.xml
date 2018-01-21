@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcCarManageDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcCarManage"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,carNo,branchNo,trailerNo,carStatus,carType,carLength,weight,volume,driverId,createTime,creatUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcCarManage" > 
+		select  <include refid="Base_Column_List" />  from yc_car_manage where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcCarManage" > 
+		select  count(1)  from yc_car_manage where branchNo=#{branchNo}
+		<if test="carNo!=null">
+			<bind name="carno" value="'%'+carNo+'%'"/>
+			and carNo like #{carno}
+		</if>
+		<if test="carType!=null">
+			and carType = #{carType}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_car_manage where branchNo=#{branchNo}
+		<if test="carNo!=null">
+			<bind name="carno" value="'%'+carNo+'%'"/>
+			and carNo like #{carno}
+		</if>
+		<if test="carType!=null">
+			and carType = #{carType}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getYcCarAllList" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcCarManage" > 
+		select <include refid="Base_Column_List" /> from yc_car_manage where branchNo=#{branchNo}
+		<if test="carStatus !=null"> 
+			and carStatus=#{carStatus}
+		</if>
+		<if test="carNo !=null"> 
+			or carNo=#{carNo}
+		</if>
+		 order by id desc 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcCarManage"> 
+		delete from yc_car_manage where id=#{id} 
+	</delete>
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcEmployee"> 
+		delete from yc_car_manage where id in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>  
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcCarManage" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_car_manage  
+		(carNo,trailerNo,branchNo,carStatus,carType,carLength,weight,volume,driverId,createTime,creatUser,updateTime,updateUser,remark) 
+		values ( #{carNo},#{trailerNo},#{branchNo},#{carStatus},#{carType},#{carLength},#{weight},#{volume},#{driverId},#{createTime},#{creatUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modCarByNo" parameterType="com.brightsoft.entity.YcCarManage">   
+		update yc_car_manage
+	<set>
+		<if test="carStatus !=null"> 
+			carStatus=#{carStatus}
+		</if>
+	</set>
+	where carNo=#{carNo}
+	</update>
+	<update id="modCarStatusByStowage" >   
+		update yc_car_manage ycm
+		
+		SET ycm.`carStatus`=#{param1} 
+		
+		WHERE ycm.`carNo`=(SELECT ys.`carNo` FROM yc_stowage ys WHERE ys.`stowageNo`=#{param2})
+	</update>
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcCarManage">   
+		update yc_car_manage 
+	<set> 
+		<if test="carNo !=null"> 
+			carNo=#{carNo},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="trailerNo !=null"> 
+			trailerNo=#{trailerNo},
+		</if>
+		<if test="carStatus !=null"> 
+			carStatus=#{carStatus},
+		</if>
+		<if test="carType !=null"> 
+			carType=#{carType},
+		</if>
+		<if test="carLength !=null"> 
+			carLength=#{carLength},
+		</if>
+		<if test="weight !=null"> 
+			weight=#{weight},
+		</if>
+		<if test="volume !=null"> 
+			volume=#{volume},
+		</if>
+		<if test="driverId !=null"> 
+			driverId=#{driverId},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="creatUser !=null"> 
+			creatUser=#{creatUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,230 @@
+h atml,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+	margin: 0;
+	padding: 0;
+}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+	font-family: "微软雅黑"; 
+}
+caption,
+th {
+	text-align: left;
+	font-weight: normal;
+}
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+i,cite,em,var,address,dfn {
+	font-style: normal;
+}
+[hidefocus],summary {
+	outline: 0;
+}
+li {
+	list-style: none;
+}
+.f {
+	float: left;
+}
+.clr
+{
+	clear: both;
+}
+body {
+	font-family: Microsoft Yahei,Arial;
+}
+/********************************************************头部****************************************************************/
+.top
+{
+	width: 100%;
+	height: 35px;
+	background: #f6f6f6;
+}
+.top-con
+{
+	width: 1200px;
+	height: 35px;
+	margin: 0px auto;
+}
+.top-tu
+{
+	float: right;
+}
+.top-tu ul li
+{
+	width: 90px;
+	height: 35px;
+	float: left;
+	color: #5d86b9;
+	line-height: 35px;
+	position: relative;
+/*	background: grey;*/
+}
+.top-daohang
+{
+	width: 23px;
+	height: 19px;
+	background: url(../img/index_head_ditu.png) no-repeat;
+	position: absolute;
+	top: 8px;
+}
+.top-denglu
+{
+	width: 23px;
+	height: 19px;
+	background: url(../img/index_head_denglu.png) no-repeat;
+	position: absolute;
+	top: 8px;
+}
+.top-zhuce
+{
+	width: 23px;
+	height: 19px;
+	background: url(../img/index_head_zhuce.png) no-repeat;
+	position: absolute;
+	top: 8px;
+}
+/*.top-tu ul li img
+{
+	position: absolute;
+	top: 8px;
+}*/
+.top-tu ul li p
+{
+	margin-left: 30px;
+	font-size: 14px;
+}
+.top-tu ul .li3
+{
+	width: 160px;
+/*	background: yellow;*/
+}
+.top-tu ul .li4
+{
+	width: 140px;
+/*	background: green;*/
+}
+.top-tu ul .li4 a 
+{
+	margin-left:30px
+}
+.top-tu ul .li5 
+{
+	width:100px
+}
+.top-tu ul .li5 a 
+{
+	margin-left:30px	
+}
+.top-btn
+{
+	width: 90px;
+	height: 26px;
+	background: white;
+	border-radius:10px ;
+	text-align: center;
+	color: rgb(255, 102, 0);
+	margin-left: 75px;
+	font-size: 16px;
+	line-height: 25px;
+	margin-top: 4px;
+	float: left;
+	border: 1px solid rgb(255, 102, 0);
+}
+.top-btn1
+{
+	width: 90px;
+	height: 26px;
+
+	border-radius:10px ;
+	text-align: center;
+
+	margin-left: 20px;
+	font-size: 16px;
+	line-height: 25px;
+	margin-top: 4px;
+	float: right;
+
+}
+/********************************************************导航****************************************************************/
+.dd-nav
+{
+	width: 100%;
+	height: 70px;
+	background:white;
+	border-bottom: 5px solid #0055bf;
+    z-index: 1000;
+}
+.nav-con
+{
+	width: 1200px;
+	height: 70px;
+	margin: 0px auto;
+	/*background: red;*/
+}
+.logo-top
+{
+	width: 114px;
+	height: 44px;
+	margin-top: 15px;
+}
+.logo img {
+	width:100%;
+	height:100%;
+}
+.nav-con2
+{
+	margin-left: 170px;
+}
+.nav-con2 ul
+{
+}
+.nav-con2 ul li
+{
+	float: left;
+	list-style: none;
+	font-size: 16px;
+	color: #696969;
+	width: 130px;
+	height: 70px;
+	color: #696969;
+	text-align: center;
+	line-height: 70px;
+	/*background: yellow;*/
+}
+.nav-con2 ul li a{
+	color: #696969;
+	font-size:  16px;
+}
+.nav-con2 ul li a:hover
+{
+	color:#0055bf;
+	text-decoration:none;
+}
+.nav-con2 ul li a:active{
+	color:#2ecc71;
+}
+.nav-con2 ul li .a1 {
+	color:;
+}
+.tips-notice {
+    width: 320px;
+    height: 30px;
+    border: 1px solid #EDD8AD;
+    margin: 0px auto;
+    margin-top: 30px;
+    background-color: #fcf8e3;
+    border-radius: 4px;
+}
+.tubiao1 {
+    color: #f0ad4e;
+    font-size: 16px;
+    margin-left: 10px;
+    padding-top: 7px;
+}

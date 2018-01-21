@@ -1,0 +1,75 @@
+.zixun{
+	padding-bottom: 30px;
+	width: 410px;
+}
+.zx-head{
+	height: 50px;
+	line-height: 50px;
+	background: #E3EEF5;
+	font-size: 20px;
+	color: #3d9fe1;
+	padding-left: 10px;
+}
+.zi-name{
+	width: 80px;
+	text-align: right;
+	margin-right: 8px;
+	color: #525252;
+}
+.zx-info{
+	padding-left: 30px;
+	margin-top: 14px;
+}
+.zx-list{
+	/*height: 40px;
+	line-height: 40px;*/
+	margin-bottom: 4px;
+}
+.zi-name,.zi-input{
+	height: 40px;
+	line-height: 40px;
+}
+.zx-text{
+	  background-color: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 -1px 2px 0 rgba(4, 0, 0, 0.1) inset;
+    /*font-size: 16px;*/
+    height: 40px;
+    /*padding: 9px 10px;*/
+    width: 228px;
+    text-indent: 12px;
+}
+.zx-yz{
+	margin-left: 88px;
+	color: #DD1100;
+	font-size: 12px;
+	margin-top: 6px;
+}
+.zx-btn{
+	background-color: #f90;
+    border: 1px solid #f60;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    height: 40px;
+    /*line-height: 40px;*/
+    text-align: center;
+    width: 158px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

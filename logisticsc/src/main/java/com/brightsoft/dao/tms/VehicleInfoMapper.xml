@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.VehicleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.VehicleInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="plate_number" property="plateNumber" jdbcType="VARCHAR" />
+    <result column="trailer_number" property="trailerNumber" jdbcType="VARCHAR" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="INTEGER" />
+    <result column="vehicle_long" property="vehicleLong" jdbcType="INTEGER" />
+    <result column="vehicle_volume" property="vehicleVolume" jdbcType="DOUBLE" />
+    <result column="vehicle_weight" property="vehicleWeight" jdbcType="DOUBLE" />
+    <result column="engine_number" property="engineNumber" jdbcType="VARCHAR" />
+    <result column="vehicle_frame_number" property="vehicleFrameNumber" jdbcType="VARCHAR" />
+    <result column="transport_license_no" property="transportLicenseNo" jdbcType="VARCHAR" />
+    <result column="purchase_date" property="purchaseDate" jdbcType="TIMESTAMP" />
+    <result column="insurance_policy_no" property="insurancePolicyNo" jdbcType="VARCHAR" />
+    <result column="insurance_company" property="insuranceCompany" jdbcType="VARCHAR" />
+    <result column="cooperation_way" property="cooperationWay" jdbcType="VARCHAR" />
+    <result column="owner_name" property="ownerName" jdbcType="VARCHAR" />
+    <result column="owner_id_number" property="ownerIdNumber" jdbcType="VARCHAR" />
+    <result column="owner_dphone_number" property="ownerDphoneNumber" jdbcType="VARCHAR" />
+    <result column="owner_address" property="ownerAddress" jdbcType="VARCHAR" />
+    <result column="owner_company" property="ownerCompany" jdbcType="VARCHAR" />
+    <result column="owner_company_address" property="ownerCompanyAddress" jdbcType="VARCHAR" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="driver_id" property="driverId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_persion_id" property="createPersionId" jdbcType="BIGINT" />
+    <result column="vehicle_type_val" property="vehicleTypeVal"/>
+    <result column="vehicle_long_val" property="vehicleLongVal"/>
+    <result column="cooperation_way_val" property="cooperationWayVal"/>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="name" property="name"/>
+    </association>
+    <association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    	<result column="company_name" property="companyName"/>
+    </association>
+    <association property="driverInfo" javaType="com.brightsoft.model.DriverInfo">
+    	<id column="d_id" property="id"/>
+	    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+	    <result column="driver_age" property="driverAge" jdbcType="INTEGER" />
+	    <result column="driver_license_type" property="driverLicenseType" jdbcType="VARCHAR" />
+	    <result column="driver_license_no" property="driverLicenseNo" jdbcType="VARCHAR" />
+	    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+	    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+	    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+	    <result column="d_create_time" property="createTime"/>
+	    <result column="d_status" property="status"/>
+	    <result column="bank_number" property="bankNumber" jdbcType="VARCHAR" />
+	    <result column="address" property="address" jdbcType="VARCHAR" />
+	    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    </association>
+  </resultMap>
+ 
+  <sql id="Base_Column_List" >
+    plate_number, trailer_number, vehicle_type, vehicle_long, vehicle_volume, vehicle_weight, 
+    engine_number, vehicle_frame_number, transport_license_no, purchase_date, insurance_policy_no, 
+    insurance_company, cooperation_way, owner_name, owner_id_number, owner_dphone_number, 
+    owner_address, owner_company, owner_company_address, driver_id, status, 
+    create_persion_id
+  </sql>
+  <sql id="Base_Column_List_Driver" >
+    driver_name, driver_age, driver_license_type, driver_license_no, id_card, phone_number, 
+    bank_name, bank_number, address, create_person_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_vehicle_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_vehicle_info
+    where id in
+    	<foreach collection="list" item="id" open="(" close=")" separator=",">
+    	 	#{id,jdbcType=BIGINT}
+    	</foreach>
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.VehicleInfo" >
+    insert into tms_vehicle_info (id, plate_number, trailer_number, 
+      vehicle_type, vehicle_long, vehicle_volume, 
+      vehicle_weight, engine_number, vehicle_frame_number, 
+      transport_license_no, purchase_date, insurance_policy_no, 
+      insurance_company, cooperation_way, owner_name, 
+      owner_id_number, owner_dphone_number, owner_address, 
+      owner_company, owner_company_address, outlets_id, 
+      driver_id, status, create_time, 
+      create_persion_id)
+    values (#{id,jdbcType=BIGINT}, #{plateNumber,jdbcType=VARCHAR}, #{trailerNumber,jdbcType=VARCHAR}, 
+      #{vehicleType,jdbcType=INTEGER}, #{vehicleLong,jdbcType=INTEGER}, #{vehicleVolume,jdbcType=DOUBLE}, 
+      #{vehicleWeight,jdbcType=DOUBLE}, #{engineNumber,jdbcType=VARCHAR}, #{vehicleFrameNumber,jdbcType=VARCHAR}, 
+      #{transportLicenseNo,jdbcType=VARCHAR}, #{purchaseDate,jdbcType=TIMESTAMP}, #{insurancePolicyNo,jdbcType=VARCHAR}, 
+      #{insuranceCompany,jdbcType=VARCHAR}, #{cooperationWay,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, 
+      #{ownerIdNumber,jdbcType=VARCHAR}, #{ownerDphoneNumber,jdbcType=VARCHAR}, #{ownerAddress,jdbcType=VARCHAR}, 
+      #{ownerCompany,jdbcType=VARCHAR}, #{ownerCompanyAddress,jdbcType=VARCHAR}, #{outletsId,jdbcType=BIGINT}, 
+      #{driverId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createPersionId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.VehicleInfo" >
+    insert into tms_vehicle_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="plateNumber != null" >
+        plate_number,
+      </if>
+      <if test="trailerNumber != null" >
+        trailer_number,
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type,
+      </if>
+      <if test="vehicleLong != null" >
+        vehicle_long,
+      </if>
+      <if test="vehicleVolume != null" >
+        vehicle_volume,
+      </if>
+      <if test="vehicleWeight != null" >
+        vehicle_weight,
+      </if>
+      <if test="engineNumber != null" >
+        engine_number,
+      </if>
+      <if test="vehicleFrameNumber != null" >
+        vehicle_frame_number,
+      </if>
+      <if test="transportLicenseNo != null" >
+        transport_license_no,
+      </if>
+      <if test="purchaseDate != null" >
+        purchase_date,
+      </if>
+      <if test="insurancePolicyNo != null" >
+        insurance_policy_no,
+      </if>
+      <if test="insuranceCompany != null" >
+        insurance_company,
+      </if>
+      <if test="cooperationWay != null" >
+        cooperation_way,
+      </if>
+      <if test="ownerName != null" >
+        owner_name,
+      </if>
+      <if test="ownerIdNumber != null" >
+        owner_id_number,
+      </if>
+      <if test="ownerDphoneNumber != null" >
+        owner_dphone_number,
+      </if>
+      <if test="ownerAddress != null" >
+        owner_address,
+      </if>
+      <if test="ownerCompany != null" >
+        owner_company,
+      </if>
+      <if test="ownerCompanyAddress != null" >
+        owner_company_address,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="driverId != null" >
+        driver_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPersionId != null" >
+        create_persion_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="plateNumber != null" >
+        #{plateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trailerNumber != null" >
+        #{trailerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleLong != null" >
+        #{vehicleLong,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleVolume != null" >
+        #{vehicleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="vehicleWeight != null" >
+        #{vehicleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="engineNumber != null" >
+        #{engineNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleFrameNumber != null" >
+        #{vehicleFrameNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transportLicenseNo != null" >
+        #{transportLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insurancePolicyNo != null" >
+        #{insurancePolicyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCompany != null" >
+        #{insuranceCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationWay != null" >
+        #{cooperationWay,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerIdNumber != null" >
+        #{ownerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerDphoneNumber != null" >
+        #{ownerDphoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerAddress != null" >
+        #{ownerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCompany != null" >
+        #{ownerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCompanyAddress != null" >
+        #{ownerCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="driverId != null" >
+        #{driverId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersionId != null" >
+        #{createPersionId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.VehicleInfo" >
+    update tms_vehicle_info
+    <set >
+      <if test="plateNumber != null" >
+        plate_number = #{plateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trailerNumber != null" >
+        trailer_number = #{trailerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleLong != null" >
+        vehicle_long = #{vehicleLong,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleVolume != null" >
+        vehicle_volume = #{vehicleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="vehicleWeight != null" >
+        vehicle_weight = #{vehicleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="engineNumber != null" >
+        engine_number = #{engineNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleFrameNumber != null" >
+        vehicle_frame_number = #{vehicleFrameNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transportLicenseNo != null" >
+        transport_license_no = #{transportLicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        purchase_date = #{purchaseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insurancePolicyNo != null" >
+        insurance_policy_no = #{insurancePolicyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCompany != null" >
+        insurance_company = #{insuranceCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="cooperationWay != null" >
+        cooperation_way = #{cooperationWay,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        owner_name = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerIdNumber != null" >
+        owner_id_number = #{ownerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerDphoneNumber != null" >
+        owner_dphone_number = #{ownerDphoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerAddress != null" >
+        owner_address = #{ownerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCompany != null" >
+        owner_company = #{ownerCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCompanyAddress != null" >
+        owner_company_address = #{ownerCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="driverId != null" >
+        driver_id = #{driverId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersionId != null" >
+        create_persion_id = #{createPersionId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.VehicleInfo" >
+    update tms_vehicle_info
+    set plate_number = #{plateNumber,jdbcType=VARCHAR},
+      trailer_number = #{trailerNumber,jdbcType=VARCHAR},
+      vehicle_type = #{vehicleType,jdbcType=INTEGER},
+      vehicle_long = #{vehicleLong,jdbcType=INTEGER},
+      vehicle_volume = #{vehicleVolume,jdbcType=DOUBLE},
+      vehicle_weight = #{vehicleWeight,jdbcType=DOUBLE},
+      engine_number = #{engineNumber,jdbcType=VARCHAR},
+      vehicle_frame_number = #{vehicleFrameNumber,jdbcType=VARCHAR},
+      transport_license_no = #{transportLicenseNo,jdbcType=VARCHAR},
+      purchase_date = #{purchaseDate,jdbcType=TIMESTAMP},
+      insurance_policy_no = #{insurancePolicyNo,jdbcType=VARCHAR},
+      insurance_company = #{insuranceCompany,jdbcType=VARCHAR},
+      cooperation_way = #{cooperationWay,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
+      owner_id_number = #{ownerIdNumber,jdbcType=VARCHAR},
+      owner_dphone_number = #{ownerDphoneNumber,jdbcType=VARCHAR},
+      owner_address = #{ownerAddress,jdbcType=VARCHAR},
+      owner_company = #{ownerCompany,jdbcType=VARCHAR},
+      owner_company_address = #{ownerCompanyAddress,jdbcType=VARCHAR},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      driver_id = #{driverId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_persion_id = #{createPersionId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 网点获取车辆信息 -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		vi.*,oi.name,pd.name as vehicle_type_val,pd1.name as vehicle_long_val,pd2.name as cooperation_way_val
+  	from
+  		tms_vehicle_info vi
+  		left join tms_outlets_info oi on oi.id = vi.outlets_id
+  		left join lc_platform_dictionary pd on pd.id = vi.vehicle_type
+  		left join lc_platform_dictionary pd1 on pd1.id = vi.vehicle_Long
+  		left join lc_platform_dictionary pd2 on pd2.id = vi.cooperation_way
+  	where
+  		vi.outlets_id = #{outletsId} and vi.status != 0
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and vi.plate_number like concat("%",#{searchParams.condition},"%")
+	  	</if>
+	  	order by create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 网点获取车辆记录数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_vehicle_info vi
+  		left join tms_outlets_info oi on oi.id = vi.outlets_id
+  	where
+  		vi.outlets_id = #{outletsId} and vi.status != 0
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and vi.plate_number like concat("%",#{searchParams.condition},"%")
+	  	</if>
+  </select>
+  <!-- 专线获取车辆信息 -->
+  <select id="selectByCompanyIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		vi.*,oi.name,pd.name as vehicle_type_val,pd1.name as vehicle_long_val,pd2.name as cooperation_way_val
+  	from
+  		tms_vehicle_info vi
+  		left join tms_outlets_info oi on vi.outlets_id = oi.id
+  		left join lc_platform_dictionary pd on pd.id = vi.vehicle_type
+  		left join lc_platform_dictionary pd1 on pd1.id = vi.vehicle_Long
+  		left join lc_platform_dictionary pd2 on pd2.id = vi.cooperation_way
+  	where
+  		oi.company_id = #{companyId} and vi.status != 0
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and vi.plate_number like concat("%",#{searchParams.condition},"%")
+	  	</if>
+	  	order by create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 专线获取车辆记录数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_vehicle_info vi
+  		left join tms_outlets_info oi on oi.id = vi.outlets_id
+  	where
+  		oi.company_id = #{companyId} and vi.status != 0
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and vi.plate_number like concat("%",#{searchParams.condition},"%")
+	  	</if>
+  </select>
+  <!-- 查询车辆信息 -->
+  <!-- <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+  	select 
+  		t.*,pd.name as vehicle_type_val,pdi.name as vehicle_long_val,pdii.name as cooperation_way_val
+  	from 
+  		<choose>
+	  		<when test="user.outletsId != null ">
+	  			(select * from tms_vehicle_info where outlets_id = #{user.outletsId} and status !=0)t
+	  			join lc_platform_dictionary pd on t.vehicle_type = pd.id
+	  			join lc_platform_dictionary pdi on t.vehicle_long = pdi.id
+	  			join lc_platform_dictionary pdii on t.cooperation_way = pdii.id	
+	  		</when>
+	  		<otherwise>
+	  			 (select * from tms_vehicle_info where outlets_id in 
+	  				(select id from tms_outlets_info where company_id = #{user.companyId} and status != 0) and status != 0)t
+	  			join lc_platform_dictionary pd on t.vehicle_type = pd.id
+	  			join lc_platform_dictionary pdi on t.vehicle_long = pdi.id
+	  			join lc_platform_dictionary pdii on t.cooperation_way = pdii.id	
+	  		</otherwise>
+  		</choose>
+  	<where>
+  		<if test="vehicleInfo.condition!=null and vehicleInfo.condition!=''">
+	  		t.plate_number like concat(concat("%",#{vehicleInfo.condition},"%"))
+	  	</if>
+  	</where>
+  	order by create_time desc limit #{page.start},#{page.limit}
+  </select> -->
+  
+  <!--获取记录总数 -->
+  <!-- <select id="countRows" resultType="int">
+  	select 
+  		count(1) 
+  	from 
+  		<choose>
+	  		<when test="user.outletsId != null ">
+	  			(select * from tms_vehicle_info where outlets_id = #{user.outletsId} and status !=0)t	
+	  			join lc_platform_dictionary pd on t.vehicle_type = pd.id
+	  			join lc_platform_dictionary pdi on t.vehicle_long = pdi.id
+	  			join lc_platform_dictionary pdii on t.cooperation_way = pdii.id	
+	  		</when>
+	  		<otherwise>
+	  			 (select * from tms_vehicle_info where outlets_id in 
+	  				(select id from tms_outlets_info where company_id = #{user.companyId} and status != 0) and status != 0)t
+	  			join lc_platform_dictionary pd on t.vehicle_type = pd.id
+	  			join lc_platform_dictionary pdi on t.vehicle_long = pdi.id
+	  			join lc_platform_dictionary pdii on t.cooperation_way = pdii.id	
+	  		</otherwise>
+  		</choose>
+  	<where>
+  		<if test="vehicleInfo.condition!=null and vehicleInfo.condition!=''">
+	  		t.plate_number like concat(concat("%",#{vehicleInfo.condition},"%"))
+	  	</if>
+  	</where>
+  </select> -->
+  
+  <select id="selectByOutletsId" resultMap="BaseResultMap" parameterType="long">
+  	select * from tms_vehicle_info where outlets_id = #{outletsId}
+  </select>
+  
+  <!-- 通过id获取车辆信息 -->
+  <select id="selectVehicleById" parameterType="long" resultMap="BaseResultMap">
+  	select 	
+  		tdi.id as d_id, tdi.driver_name, tdi.driver_age, tdi.driver_license_type, tdi.driver_license_no, 
+  		tdi.id_card, tdi.phone_number, tdi.bank_name, tdi.bank_number, tdi.create_time as d_create_time, 
+  		tdi.address, tdi.create_person_id, tdi.outlets_id,tdi.status as d_status,tvi.id,tvi.plate_number,
+  		tvi.trailer_number, tvi.vehicle_type, tvi.vehicle_long, tvi.vehicle_volume, tvi.vehicle_weight, 
+    	tvi.engine_number, tvi.vehicle_frame_number, tvi.transport_license_no, tvi.purchase_date, 
+    	tvi.insurance_policy_no, tvi.insurance_company, tvi.cooperation_way, tvi.owner_name, 
+    	tvi.owner_id_number, tvi.owner_dphone_number, tvi.owner_address, tvi.owner_company, 
+    	tvi.owner_company_address, tvi.driver_id, tvi.status, tvi.create_persion_id
+  	from 
+  		tms_vehicle_info tvi
+  		left join tms_driver_info tdi on tvi.driver_id = tdi.id
+  	where 
+  		tvi.id = #{vehicleId}
+  </select>
+  
+  <!-- 删除车辆 -->
+  <update id="deleteVehicleById" parameterType="list">
+  	update 
+  		tms_vehicle_info 
+  	set 
+  		status = 0
+  	where 
+  		id in
+  		<foreach collection="list" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </update>
+  <!-- 通过outletsId分页获取车辆信息 -->
+  <select id="selectByOutletsId4Page" resultMap="BaseResultMap">
+  	select 
+  		<include refid="Base_Column_List" />
+  	from 
+  		tms_vehicle_info 
+  	where 
+  		outlets_id = #{outletsId}
+  		and status != 0
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 通过outletsId获取车辆总记录数 -->
+  <!-- <select id="countRowsByOutletsId" parameterType="long" resultType="int"> 
+  	select 
+  		count(1)
+  	from 
+  		tms_vehicle_info 
+  	where 
+  		outlets_id = #{outletsId}
+  		and status != 0
+  </select> -->
+  <!-- 运营货运交易系统: 获取车辆信息 -->
+  <select id="selectVehicleItems" resultMap="BaseResultMap">
+  	select
+  		vi.*,oi.name,puc.company_name,
+  		pd.name as vehicle_type_val,pdi.name as vehicle_long_val,pdii.name as cooperation_way_val
+  	from
+  		tms_vehicle_info vi
+  		join lc_platform_dictionary pd on vi.vehicle_type = pd.id
+		join lc_platform_dictionary pdi on vi.vehicle_long = pdi.id
+		join lc_platform_dictionary pdii on vi.cooperation_way = pdii.id
+  		left join tms_outlets_info oi on oi.id = vi.outlets_id
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  	where 
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and vi.plate_number = #{searchParams.condition}
+  		</if>
+  		limit #{page.start},#{page.limit}
+  </select>
+   <!-- 运营货运交易系统: 获取车辆记录 -->
+  <select id="countRows4VehicleItems" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_vehicle_info vi
+  		left join tms_outlets_info oi on oi.id = vi.outlets_id
+  		left join lc_platform_user_company puc on puc.id = oi.company_id
+  	where 
+  		1=1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and vi.plate_number = #{searchParams.condition}
+  		</if>
+  </select>
+  
+  <select id="selectByVehicleNumberAndOutletsId" resultMap="BaseResultMap">
+  	select v.*, d.name vehicle_type_val
+  	from tms_vehicle_info v 
+  	LEFT JOIN lc_platform_dictionary d ON v.vehicle_type = d.id 
+  	where v.plate_number = #{vehicleNumber} and v.outlets_id = #{outletsId}
+  </select>
+  
+  <select id="selectByOutletsIdAndVehicleNumber" resultMap="BaseResultMap">
+  	select v.*, d.name vehicle_type_val
+  	from tms_vehicle_info v 
+  	LEFT JOIN lc_platform_dictionary d ON v.vehicle_type = d.id where v.outlets_id = #{outletsId} and v.plate_number = #{vehicleNumber}
+  </select>
+</mapper>

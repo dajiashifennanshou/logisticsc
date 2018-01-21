@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CODMS>
+<SessionHead>
+	<Version>1.0</Version>
+	<ServiceCode>COD414</ServiceCode>
+	<TransactionID>HXDDCOD414201601150825764850</TransactionID>
+	<SrcSysID>yeepay</SrcSysID>
+	<DstSysID>HXDD</DstSysID>
+	<ResultCode>2</ResultCode>
+	<ResultMsg>查询成功</ResultMsg>
+	<ReqTime>20160115184815</ReqTime>
+	<HMAC>3afcf23858ce246dfc11b4aaed601e8d</HMAC>
+</SessionHead>
+<SessionBody>
+	<item>
+		<PosSn>J6NL00014150</PosSn>
+		<OrderNo>445555</OrderNo>
+		<Amount>0.01</Amount>
+		<PosRequestID>983728</PosRequestID>
+		<ReferNo>529222229307</ReferNo>
+		<PayTypeCode>1</PayTypeCode>
+		<TrxTime>20151216122805</TrxTime>
+		<PayStatus>0</PayStatus>
+		<BankCardNo>621488******4608</BankCardNo>
+		<BankCardName></BankCardName>
+		<BankOrderNo>00000110000001122804061402</BankOrderNo>
+		<YeepayOrderNo>92772634311732141B</YeepayOrderNo>
+		<CustomerNo>10040012459</CustomerNo>
+	</item>
+	<item>
+		<PosSn>J6NL00014150</PosSn>
+		<OrderNo>445555</OrderNo>
+		<Amount>0.01</Amount>
+		<PosRequestID>348418</PosRequestID>
+		<ReferNo>529222229308</ReferNo>
+		<PayTypeCode>1</PayTypeCode>
+		<TrxTime>20151216123410</TrxTime>
+		<PayStatus>0</PayStatus>
+		<BankCardNo>621488******4608</BankCardNo>
+		<BankCardName></BankCardName>
+		<BankOrderNo>00000110000001123410061403</BankOrderNo>
+		<YeepayOrderNo>529222229308</YeepayOrderNo>
+		<CustomerNo>10040012459</CustomerNo>
+	</item>
+</SessionBody>
+</CODMS>

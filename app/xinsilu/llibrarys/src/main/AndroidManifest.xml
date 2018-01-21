@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xsl.lerist.llibrarys">
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:supportsRtl="true">
+        <activity
+            android:name=".utils.LResultActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+        <activity
+            android:name=".utils.LContactsChooser"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+    </application>
+</manifest>

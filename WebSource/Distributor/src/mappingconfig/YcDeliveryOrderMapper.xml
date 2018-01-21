@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcDeliveryOrderDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcDeliveryOrder"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,branchNo,deliveryNo,subscribeTime,orderSource,dealerId,consigneeName,consigneePhone,consigneeAddr,consigneeTelephone,orderStatus,zoneCost,deliveryCost,installCost,otherCost,sumCost,payType,insdelPayStatus,paidCost,agentPaidCost,satisfaction,evaluateStatus,evaluateTime,customerSug,signer,signTime,createTime,createUser,updateTime,updateUser,remark,agentCostStatus
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcDeliveryOrder" > 
+		select  <include refid="Base_Column_List" />  from yc_delivery_order where 1=1 
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="deliveryNo!=null">
+			and deliveryNo = #{deliveryNo}
+		</if>
+		<if test="consigneePhone!=null">
+			and consigneePhone = #{consigneePhone} 
+		</if>
+		<if test="dealerId!=null">
+			and dealerId = #{dealerId} 
+		</if>
+	</select> 
+	<select id="getYcDeliveryOrderAllList" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcDeliveryOrder" > 
+		select  <include refid="Base_Column_List" />  from yc_delivery_order where 1=1
+		<if test="orderStatus !=null">
+			and orderStatus = #{orderStatus}
+		</if>
+		<if test="deliveryNo !=null">
+			or FIND_IN_SET(deliveryNo,#{deliveryNo})
+		</if>
+	</select> 
+	<select id="getYcDeliveryOrderByStowage" resultMap="BaseResultMap"  > 
+		SELECT <include refid="Base_Column_List" /> FROM yc_delivery_order ydo WHERE  deliveryNo IN (SELECT deliverNo FROM yc_stowage_delivery sd WHERE stowageNo=#{param1})
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcDeliveryOrder" > 
+		select  count(1)  from yc_delivery_order where 1=1
+		<if test="evaluateStatus!=null">
+			and evaluateStatus = #{evaluateStatus} and  evaluateStatus != 2
+		</if>
+		<if test="orderStatus !=null">
+			and orderStatus = #{orderStatus}
+		</if>
+		<if test="deliveryNo!=null">
+			<bind name="bName" value="'%'+deliveryNo+'%'"/>
+			and deliveryNo like #{bName}
+		</if>
+		<if test="dealerId!=null">
+			and dealerId = #{dealerId}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map">
+		SELECT a.id,a.branchNo,a.deliveryNo,a.subscribeTime,a.dealerId,a.consigneeName,a.consigneePhone,a.consigneeAddr,a.consigneeTelephone,
+		 a.orderStatus,a.zoneCost,a.deliveryCost,a.installCost,a.otherCost,a.sumCost,a.payType,a.paidCost,a.agentPaidCost,a.satisfaction,a.evaluateStatus,a.customerSug,a.signer,a.signTime,a.insdelPayStatus,a.agentCostStatus
+			 FROM yc_delivery_order a where 1=1
+		 <if test="evaluateStatus!=null">
+			and a.evaluateStatus = #{evaluateStatus} and a.evaluateStatus != 2
+		</if>
+		<if test="deliveryNo!=null">
+			<bind name="bName" value="'%'+deliveryNo+'%'"/>
+			and a.deliveryNo like #{bName}
+		</if>
+		<if test="customerSug !=null"> 
+			and FIND_IN_SET(a.orderStatus,#{customerSug})
+		</if>
+		<if test="orderStatus!=null">
+			and a.orderStatus = #{orderStatus}
+		</if>
+		<if test="branchNo!=null">
+			and a.branchNo = #{branchNo}
+		</if>
+		<if test="dealerId!=null">
+			and a.dealerId = #{dealerId}
+		</if>
+		order by a.id desc limit #{limitMax} offset #{limitMin}
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcDeliveryOrder"> 
+		delete from yc_delivery_order where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcDeliveryOrder" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_delivery_order  
+		(branchNo,deliveryNo,subscribeTime,orderSource,dealerId,consigneeName,consigneePhone,consigneeAddr,consigneeTelephone,orderStatus,zoneCost,deliveryCost,installCost,otherCost,sumCost,payType,insdelPayStatus,paidCost,agentPaidCost,satisfaction,evaluateStatus,evaluateTime,customerSug,signer,signTime,createTime,createUser,updateTime,updateUser,remark,agentCostStatus) 
+		values ( #{branchNo},#{deliveryNo},#{subscribeTime},#{orderSource},#{dealerId},#{consigneeName},#{consigneePhone},#{consigneeAddr},#{consigneeTelephone},#{orderStatus},#{zoneCost},#{deliveryCost},#{installCost},#{otherCost},#{sumCost},#{payType},#{insdelPayStatus},#{paidCost},#{agentPaidCost},#{satisfaction},#{evaluateStatus},#{evaluateTime},#{customerSug},#{signer},#{signTime},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark},#{agentCostStatus} )
+	</insert>
+	<insert id="addCustomer" parameterType="com.yc.Entity.YcDeliveryOrder" useGeneratedKeys="true" keyProperty="id"> 
+		call yc_pro_add_common_client(#{dealerId},0,#{consigneeName},#{consigneePhone},#{consigneeTelephone},#{consigneeAddr},#{createTime},#{createUser})
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcDeliveryOrder">   
+	update yc_delivery_order 
+	<set> 
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="deliveryNo !=null"> 
+			deliveryNo=#{deliveryNo},
+		</if>
+		<if test="subscribeTime !=null"> 
+			subscribeTime=#{subscribeTime},
+		</if>
+		<if test="orderSource !=null"> 
+			orderSource=#{orderSource},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="consigneeName !=null"> 
+			consigneeName=#{consigneeName},
+		</if>
+		<if test="consigneePhone !=null"> 
+			consigneePhone=#{consigneePhone},
+		</if>
+		<if test="consigneeAddr !=null"> 
+			consigneeAddr=#{consigneeAddr},
+		</if>
+		<if test="consigneeTelephone !=null"> 
+			consigneeTelephone=#{consigneeTelephone},
+		</if>
+		<if test="orderStatus !=null"> 
+			orderStatus=#{orderStatus},
+		</if>
+		<if test="zoneCost !=null"> 
+			zoneCost=#{zoneCost},
+		</if>
+		<if test="deliveryCost !=null"> 
+			deliveryCost=#{deliveryCost},
+		</if>
+		<if test="installCost !=null"> 
+			installCost=#{installCost},
+		</if>
+		<if test="otherCost !=null"> 
+			otherCost=#{otherCost},
+		</if>
+		<if test="sumCost !=null"> 
+			sumCost=#{sumCost},
+		</if>
+		<if test="payType !=null"> 
+			payType=#{payType},
+		</if>
+		<if test="insdelPayStatus !=null"> 
+			insdelPayStatus=#{insdelPayStatus},
+		</if>
+		<if test="paidCost !=null"> 
+			paidCost=#{paidCost},
+		</if>
+		<if test="agentPaidCost !=null"> 
+			agentPaidCost=#{agentPaidCost},
+		</if>
+		<if test="satisfaction !=null"> 
+			satisfaction=#{satisfaction},
+		</if>
+		<if test="evaluateStatus !=null"> 
+			evaluateStatus=#{evaluateStatus},
+		</if>
+		<if test="evaluateTime !=null"> 
+			evaluateTime=#{evaluateTime},
+		</if>
+		<if test="customerSug !=null"> 
+			customerSug=#{customerSug},
+		</if>
+		<if test="signer !=null"> 
+			signer=#{signer},
+		</if>
+		<if test="signTime !=null"> 
+			signTime=#{signTime},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="agentCostStatus !=null"> 
+			agentCostStatus=#{agentCostStatus}
+		</if>
+	</set> 
+	where  id=#{id} 
+	</update> 
+	<update id="modEvaluateStatus" parameterType="com.yc.Entity.YcDeliveryOrder">
+		update yc_delivery_order 
+		<set> 
+			evaluateStatus=2 
+		</set>
+		where id in (
+			<foreach collection="list" item="item" separator=",">
+				#{item}
+			</foreach>
+			)
+	</update>
+	<update id="modOrderByNo" parameterType="com.yc.Entity.YcDeliveryOrder">
+		update yc_delivery_order 
+		<set> 
+			<if test="orderStatus !=null"> 
+			orderStatus=#{orderStatus},
+			</if>
+			<if test="deliveryCost !=null"> 
+				deliveryCost=#{deliveryCost}
+			</if>
+			
+		</set>
+		where deliveryNo=#{deliveryNo}
+	</update>
+	<select id="getOrderCostList" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_delivery_order where dealerId = #{dealerId}
+		<if test="startTime!=null and startTime!='' and endTime!=null and startTime!=''">
+			and createTime&gt;=#{startTime} and createTime&lt;=#{endTime}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getDeliveryNo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcDeliveryOrder" > 
+		select deliveryNo from yc_delivery_order where consigneePhone = #{consigneePhone} and dealerId = #{dealerId} and consigneeName=#{consigneeName} and consigneeAddr=#{consigneeAddr}
+	</select>
+	<update id="updatePayStatus" parameterType="com.yc.Entity.YcDeliveryOrder">
+		UPDATE yc_delivery_order SET insdelPayStatus=#{insdelPayStatus} where deliveryNo=#{deliveryNo}
+	</update>
+</mapper> 

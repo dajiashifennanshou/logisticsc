@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/i_list_goods_order_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="　　　　"
+            android:padding="16dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/mid_text_size" />
+
+        <TextView
+            android:id="@+id/i_list_goods_order_tv_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:paddingRight="8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/mid_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(件/套)"
+            android:gravity="center|right"
+            android:textColor="@color/black"
+            android:paddingRight="16dp"
+            android:textSize="@dimen/mid_text_size" />
+
+    </LinearLayout>
+
+</LinearLayout>

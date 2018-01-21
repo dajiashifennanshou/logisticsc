@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical">
+
+    <com.liaoinstan.springview.widget.SpringView
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scoreView"
+            android:layout_width="match_parent"
+            android:overScrollMode="never"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/begin_to_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_shap_textview">
+
+                    <TextView
+                        android:id="@+id/start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/home_qidian"
+                        android:drawablePadding="8dp"
+                        android:padding="4dp"
+                        android:hint="@string/start_way"
+                        android:textColorHint="@color/font_color_hint_light2"
+                        android:textSize="@dimen/mid_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/end_to_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/background_shap_textview"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/home_zhongdian"
+                        android:drawablePadding="8dp"
+                        android:padding="4dp"
+                        android:hint="@string/end_way"
+                        android:textColorHint="@color/font_color_hint_light2"
+                        android:textSize="@dimen/mid_text_size" />
+
+                </LinearLayout>
+
+                <carbon.widget.TextView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="搜索"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/mid_text_size"
+                    app:carbon_cornerRadius="@dimen/btn_radius"
+                    app:carbon_rippleColor="@color/carbon_white" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:drawableLeft="@mipmap/home_recommended"
+                    android:drawablePadding="4dp"
+                    android:text="推荐附近路线"
+                    android:textColor="@color/font_color_normal"
+                    android:textSize="@dimen/small_text_size" />
+
+                <com.wrt.xinsilu.ui.view.MyListView
+                    android:id="@+id/send_child_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:divider="@color/transparent"
+                    android:dividerHeight="16dp" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.liaoinstan.springview.widget.SpringView>
+</LinearLayout>

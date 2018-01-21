@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.AppVersionInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.AppVersionInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,versionCode,versionName,releaseTime,fileSize,latestMd5,changeLog,fileUri
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.AppVersionInfo" > 
+		select  <include refid="Base_Column_List" />  from app_version_info where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.AppVersionInfo" > 
+		select  count(1)  from app_version_info 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from app_version_info order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.AppVersionInfo"> 
+		delete from app_version_info where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.AppVersionInfo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into app_version_info  
+		(versionCode,versionName,releaseTime,fileSize,latestMd5,changeLog,fileUri) 
+		values ( #{versionCode},#{versionName},#{releaseTime},#{fileSize},#{latestMd5},#{changeLog},#{fileUri} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.AppVersionInfo">   
+	update app_version_info 
+	<set> 
+		<if test="versionCode !=null"> 
+			versionCode=#{versionCode},
+		</if>
+		<if test="versionName !=null"> 
+			versionName=#{versionName},
+		</if>
+		<if test="releaseTime !=null"> 
+			releaseTime=#{releaseTime},
+		</if>
+		<if test="fileSize !=null"> 
+			fileSize=#{fileSize},
+		</if>
+		<if test="latestMd5 !=null"> 
+			latestMd5=#{latestMd5},
+		</if>
+		<if test="changeLog !=null"> 
+			changeLog=#{changeLog},
+		</if>
+		<if test="fileUri !=null"> 
+			fileUri=#{fileUri}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

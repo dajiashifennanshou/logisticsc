@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<declare-styleable name="CircleImageView">-->
+        <!--<attr name="border_width" format="dimension" />-->
+        <!--<attr name="border_color" format="color" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="LPageIndicator">
+        <attr name="icon_width" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="icon_height" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="in_padding" format="dimension" />
+        <attr name="in_paddingLeft" format="dimension" />
+        <attr name="in_paddingTop" format="dimension" />
+        <attr name="in_paddingRight" format="dimension" />
+        <attr name="in_paddingBottom" format="dimension" />
+        <attr name="icon_marginBottom" format="dimension" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color_nor" format="color" />
+        <attr name="text_color_foc" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="pstsIndicatorColor" format="color" />
+        <attr name="pstsUnderlineColor" format="color" />
+        <attr name="pstsDividerColor" format="color" />
+        <attr name="pstsTextFocColor" format="color" />
+        <attr name="pstsTextNorColor" format="color" />
+        <attr name="pstsTextSize" format="dimension" />
+        <attr name="pstsIndicatorHeight" format="dimension" />
+        <attr name="pstsUnderlineHeight" format="dimension" />
+        <attr name="pstsDividerPadding" format="dimension" />
+        <attr name="pstsTabPaddingLeftRight" format="dimension" />
+        <attr name="pstsScrollOffset" format="dimension" />
+        <attr name="pstsTabBackground" format="reference" />
+        <attr name="pstsShouldExpand" format="boolean" />
+        <attr name="pstsTextAllCaps" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MDLCardView">
+        <attr name="mdl_title" format="string" />
+        <attr name="mdl_description" format="string" />
+        <attr name="mdl_image" format="reference" />
+        <attr name="mdl_imageUrl" format="string" />
+        <attr name="mdl_imagePosition" format="enum">
+            <enum name="none" value="0" />
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+        </attr>
+        <attr name="mdl_normalButton" format="string" />
+        <attr name="mdl_highlightButton" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RippleLayout">
+        <attr name="rv_alpha" format="integer" />
+        <attr name="rv_framerate" format="integer" />
+        <attr name="rv_rippleDuration" format="integer" />
+        <attr name="rv_zoomDuration" format="integer" />
+        <attr name="rv_color" format="color" />
+        <attr name="rv_centered" format="boolean" />
+        <attr name="rv_type" format="enum">
+            <enum name="simpleRipple" value="0" />
+            <enum name="doubleRipple" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
+        <attr name="rv_ripplePadding" format="dimension" />
+        <attr name="rv_zoom" format="boolean" />
+        <attr name="rv_zoomScale" format="float" />
+
+    </declare-styleable>
+
+    <declare-styleable name="LRotateLayout">
+        <attr name="rotate_angle" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="SwipeLayout">
+        <attr name="dragEdge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="top" value="4" />
+            <flag name="bottom" value="8" />
+        </attr>
+        <attr name="leftEdgeSwipeOffset" format="dimension" />
+        <attr name="rightEdgeSwipeOffset" format="dimension" />
+        <attr name="topEdgeSwipeOffset" format="dimension" />
+        <attr name="bottomEdgeSwipeOffset" format="dimension" />
+        <attr name="showMode" format="enum">
+            <enum name="lay_down" value="0" />
+            <enum name="pull_out" value="1" />
+        </attr>
+        <attr name="clickToClose" format="boolean" />
+        <attr name="swipeBorderSize" format="dimension" />
+        <attr name="touchReverse" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialLoadingView">
+        <attr name="mp_startColor" format="color" />
+        <attr name="mp_midColor" format="color" />
+        <attr name="mp_endColor" format="color" />
+        <attr name="mp_radius" format="dimension" />
+        <attr name="mp_strokeWidth" format="dimension" />
+        <attr name="mp_speed" format="float" />
+    </declare-styleable>
+
+</resources>

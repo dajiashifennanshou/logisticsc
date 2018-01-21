@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.PvStatisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PvStatistics" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="visit_time" property="visitTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ip, visit_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_pv_statistics
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_pv_statistics
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PvStatistics" >
+    insert into lc_pv_statistics (id, ip, visit_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{visitTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PvStatistics" >
+    insert into lc_pv_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="visitTime != null" >
+        visit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        #{visitTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PvStatistics" >
+    update lc_pv_statistics
+    <set >
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null" >
+        visit_time = #{visitTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PvStatistics" >
+    update lc_pv_statistics
+    set ip = #{ip,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="countPv" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_pv_statistics
+  </select>
+  <select id="countPvDay4Month" resultType="com.brightsoft.controller.vo.StatisticsHelper">
+  	select 
+		DAY(visit_time) as day,count(1) as total
+	FROM	
+		lc_pv_statistics
+	where 
+		MONTH(visit_time) = MONTH(CURDATE())
+		GROUP BY 	DAY(visit_time)
+
+  </select>
+</mapper>

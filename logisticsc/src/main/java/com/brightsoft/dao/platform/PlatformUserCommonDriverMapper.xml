@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserCommonDriverMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserCommonDriver" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="license_number" property="licenseNumber" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  	<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  	  <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, driver_name, license_number, phone_number, vehicle_type, address, user_id,create_time,province,city,county
+  </sql>
+  <select id="selectPlatformCommonDriverId" parameterType="com.brightsoft.model.PlatformUserCommonDriver" resultType="int">
+     select 
+   count(*)
+    from lc_platform_user_common_driver
+		where license_number = #{licenseNumber,jdbcType=VARCHAR}
+		and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectPlatformCommonDriverPhone" parameterType="com.brightsoft.model.PlatformUserCommonDriver" resultType="int">
+     select 
+   count(*)
+    from lc_platform_user_common_driver
+		where phone_number =#{phoneNumber,jdbcType=VARCHAR}
+		and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <!-- 删除常用  -->
+  <delete id="deleteCommonDriver" parameterType="java.lang.Long" >
+    delete from lc_platform_user_common_driver
+    where id in
+    <foreach collection="commonDriver" index="index" item="item" open="(" separator="," close=")">
+     #{item}
+     </foreach>
+  </delete>
+  <!-- 常用司机信息 -->
+  <insert id="inserPlatformUserCommonDriver" parameterType="com.brightsoft.model.PlatformUserCommonDriver" >
+    insert into lc_platform_user_common_driver (driver_name, license_number, 
+      phone_number, vehicle_type, address,user_id,create_time,province,city,county)
+    values (#{driverName,jdbcType=VARCHAR}, #{licenseNumber,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{vehicleType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT},#{createTime,jdbcType=TIMESTAMP},#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{county,jdbcType=VARCHAR})
+  </insert>
+  <!-- 获取我的常用司机信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_driver
+    where user_id = #{commonDriver.userId,jdbcType=BIGINT}
+    <if test="commonDriver.driverName!=null and commonDriver.driverName!=''">
+  		AND driver_name LIKE concat("%",#{commonDriver.driverName,jdbcType=VARCHAR},"%")
+  	</if>
+    order by id desc 
+	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取常用司机总数 -->
+  <select id="countRows" resultType="int">
+    select 
+   	count(1)
+    from lc_platform_user_common_driver
+    where user_id = #{commonDriver.userId,jdbcType=BIGINT}
+    <if test="commonDriver.driverName!=null and commonDriver.driverName!=''">
+  		AND driver_name LIKE concat("%",#{commonDriver.driverName,jdbcType=VARCHAR},"%")
+  	</if>
+  </select>
+  <select id="selectByPhoneAndUserId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_driver
+    where phone_number =#{phone,jdbcType=VARCHAR}
+    and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_driver
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_common_driver
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="inserPlatformUserCommonDriver" parameterType="com.brightsoft.model.PlatformUserCommonDriver" >
+    insert into lc_platform_user_common_driver (driver_name, license_number, 
+      phone_number, vehicle_type, address, 
+      user_id)
+    values (#{driverName,jdbcType=VARCHAR}, #{licenseNumber,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{vehicleType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserCommonDriver" >
+    insert into lc_platform_user_common_driver
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="licenseNumber != null" >
+        license_number,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null" >
+        #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserCommonDriver" >
+    update lc_platform_user_common_driver
+    <set >
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNumber != null" >
+        license_number = #{licenseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserCommonDriver" >
+    update lc_platform_user_common_driver
+    set driver_name = #{driverName,jdbcType=VARCHAR},
+      license_number = #{licenseNumber,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      vehicle_type = #{vehicleType,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

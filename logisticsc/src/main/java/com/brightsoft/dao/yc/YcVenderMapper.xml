@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcVenderDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcVender"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,venderName,brandName,phone,telephone,address,createTime,creatUser,updateTime,remark,updateUser
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcVender" > 
+		select  <include refid="Base_Column_List" />  from yc_vender where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcVender" > 
+		select  count(1)  from yc_vender 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_vender order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcVender"> 
+		delete from yc_vender where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcVender" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_vender  
+		(venderName,brandName,phone,telephone,address,createTime,creatUser,updateTime,remark,updateUser) 
+		values ( #{id},#{venderName},#{brandName},#{phone},#{telephone},#{address},#{createTime},#{creatUser},#{updateTime},#{remark},#{updateUser} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcVender">   
+	update YcVender 
+	<set> 
+		<if test="venderName !=null"> 
+			venderName=#{venderName},
+		</if>
+		<if test="brandName !=null"> 
+			brandName=#{brandName},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="telephone !=null"> 
+			telephone=#{telephone},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="creatUser !=null"> 
+			creatUser=#{creatUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.xsl.distributor.ws.ui.view.CircleImageView
+            android:id="@+id/company_icon"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@mipmap/peisongdan_pingjia_touxiang" />
+
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/company_icon"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size" />
+
+        <TextView
+            android:id="@+id/comment_date"
+            style="@style/myStyle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/mid_text_size" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/font_color_hint_light" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/myStyle"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:text="评分"
+            android:textColor="@color/black"
+            android:textSize="@dimen/mid_text_size" />
+
+        <android.support.v7.widget.AppCompatRatingBar
+            android:id="@+id/rating_bar"
+            style="@style/foodRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="5" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/comment_detail"
+        style="@style/myStyle"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/mid_text_size" />
+
+</LinearLayout>

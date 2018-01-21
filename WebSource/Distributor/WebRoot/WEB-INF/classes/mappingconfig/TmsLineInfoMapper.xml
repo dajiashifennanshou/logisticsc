@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.TmsLineInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.TmsLineInfo"></resultMap>
+	<resultMap id="BaseResultMap2" type="com.yc.Entity.CompanyOutletsLine"></resultMap>     
+	<sql id="Base_Column_List"> 
+		id,server_type,start_outlets,start_outlets_name,end_outlets,end_outlets_name,transport_mode,time_long,heavy_cargo_price_low,bulky_cargo_price_low,heavy_cargo_price_mid,bulky_cargo_price_mid,heavy_cargo_price_high,bulky_cargo_price_high,lowest_price,status,release_state,create_time,create_person_id,is_take_cargo,is_give_cargo,outlets_id,evaluate_level,remain_money,recommended
+	</sql> 
+	<select id="getCompanyOutletsLine" resultMap="BaseResultMap2" parameterType="com.yc.Entity.CompanyOutletsLine">
+		SELECT a.id,a.server_type,a.start_outlets,a.start_outlets_name,a.end_outlets,a.end_outlets_name,a.transport_mode,a.time_long,a.heavy_cargo_price_low,a.bulky_cargo_price_low,a.heavy_cargo_price_mid,
+			  a.bulky_cargo_price_mid,a.heavy_cargo_price_high,a.bulky_cargo_price_high,a.lowest_price,a.status,a.release_state,a.is_take_cargo,a.is_give_cargo,a.outlets_id,
+			  a.evaluate_level,a.remain_money,
+			  b.id,b.outlets_number, b.name,b.type, b.nature, b.province, b.city, b.county, b.address, b.contact_person,b.mobile,b.phone,b.email,b.remark,b.create_time,b.create_person_id,b.company_id,
+			  c.id,c.company_name,c.company_address,c.legal_person,c.legal_mobile,c.contacts,
+			  c.contacts_mobile,c.qq,c.post_code,c.company_phone,c.company_fax,c.company_tax_no,c.finance_email,c.company_info,c.logo,c.business_license,
+			  c.company_photo,c.legal_photo,c.card_photo,c.company_code
+			FROM
+			  tms_line_info AS a,
+			  tms_outlets_info AS b,
+			  lc_platform_user_company AS c 
+			WHERE  
+			  a.outlets_id= b.id
+			  AND b.company_id= c.id 
+			  AND a.id = #{id}
+	</select>
+</mapper> 
+

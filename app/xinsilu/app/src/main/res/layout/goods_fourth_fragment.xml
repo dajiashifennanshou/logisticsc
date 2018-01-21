@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/commit_background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/hor_style_padding"
+                android:text="增值服务"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/goods_fourth_rl_addedvalue"
+                    style="@style/hor_style_padding"
+                    android:orientation="horizontal">
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_rl_addedvalue_receipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:hint="　　　　"
+                        android:text="回单"
+                        android:textAlignment="center"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_rl_addedvalue_composite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="综合信息服务"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_rl_addedvalue_loan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:hint="　　　　"
+                        android:text="等待放款"
+                        android:textAlignment="center"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/hor_style_padding"
+                    android:background="@android:color/white"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp">
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_ctv_agencyfund"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:checked="false"
+                        android:hint="　　　　"
+                        android:text="代收款"
+                        android:textAlignment="center"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <EditText
+                        android:id="@+id/goods_fourth_et_agencyfund_money"
+                        style="@style/BasicParamNoMargin_h"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:alpha="0.2"
+                        android:background="@drawable/background_shap_textview1"
+                        android:digits="0987654321."
+                        android:enabled="false"
+                        android:gravity="left"
+                        android:hint="请输入代收金额(元)"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/hor_style_padding"
+                    android:background="@android:color/white"
+                    android:paddingBottom="0dp">
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_ctv_shipment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:checked="false"
+                        android:hint="　　　　"
+                        android:text="装货"
+                        android:textAlignment="center"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <EditText
+                        android:id="@+id/goods_fourth_et_shipment_floor"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:alpha="0.2"
+                        android:background="@drawable/background_shap_textview1"
+                        android:digits="0987654321"
+                        android:enabled="false"
+                        android:gravity="left"
+                        android:hint="请输入楼层"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <CheckBox
+                        android:id="@+id/goods_fourth_et_shipment_isexist_lift"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:button="@drawable/selector_checkbox"
+                        android:enabled="false"
+                        android:text="电梯"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/hor_style_padding"
+                    android:background="@android:color/white">
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_ctv_unload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:checked="false"
+                        android:hint="　　　　"
+                        android:text="卸货"
+                        android:textAlignment="center"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <EditText
+                        android:id="@+id/goods_fourth_et_unload_floor"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:alpha="0.2"
+                        android:background="@drawable/background_shap_textview1"
+                        android:digits="0987654321"
+                        android:enabled="false"
+                        android:gravity="left"
+                        android:hint="请输入楼层"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <CheckBox
+                        android:id="@+id/goods_fourth_et_unload_isexist_lift"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:button="@drawable/selector_checkbox"
+                        android:enabled="false"
+                        android:text="电梯"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/hor_style_padding"
+                android:text="保险信息"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                style="@style/hor_style_padding"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/hor_style"
+                    android:background="@android:color/white">
+
+                    <CheckedTextView
+                        android:id="@+id/goods_fourth_ctv_insure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_selector_goodspack_type"
+                        android:checked="false"
+                        android:text="专线投保"
+                        android:textColor="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+
+                    <EditText
+                        android:id="@+id/goods_fourth_et_insure_money"
+                        style="@style/BasicParamNoMargin_h"
+                        android:layout_marginLeft="40dp"
+                        android:layout_weight="1"
+                        android:alpha="0.2"
+                        android:background="@drawable/background_shap_textview1"
+                        android:digits="0987654321."
+                        android:enabled="false"
+                        android:gravity="left"
+                        android:hint="请输入投保金额(元)"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColorHint="@color/font_color_hint"
+                        android:textSize="@dimen/small_text_size" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/hor_style"
+                    android:layout_marginTop="10dp"
+                    android:text="费率0.03%投保金额不得大于货物价值"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/hor_style_padding"
+                android:text="支付方式"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                android:id="@+id/goods_fourth_ll_payway"
+                style="@style/hor_style_padding"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <CheckedTextView
+                    android:id="@+id/pay_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_selector_goodspack_type"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="在线支付"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_text_size" />
+
+                <CheckedTextView
+                    android:id="@+id/pay_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/bg_selector_goodspack_type"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="线下支付"
+                    android:textColor="@color/font_color_hint"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+            <carbon.widget.TextView
+                android:id="@+id/goods_fourth_btn_submit"
+                style="@style/myStyle"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/background_shap_stroke_textview"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="确认提交"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

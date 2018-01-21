@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserLineMoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserLineMoney" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="line_id" property="lineId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="oper_time" property="operTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="BaseLineMoneyMap" type="com.brightsoft.model.PlatformLineStorage" >
+   	<result column="money_id" property="moneyId" jdbcType="BIGINT" />
+  	<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+  	<result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+  	<result column="start_city" property="startCity" jdbcType="VARCHAR" />
+  	<result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+  	<result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="line_id" property="lineId" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="oper_time" property="operTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, line_id, user_id, money, oper_time
+  </sql>
+  <insert id="insertUserLineMoney" parameterType="com.brightsoft.model.PlatformUserLineMoney" >
+    insert into lc_platform_user_line_money (line_id, user_id, 
+      money, oper_time)
+    values (#{lineId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{money,jdbcType=DOUBLE}, #{operTime,jdbcType=TIMESTAMP})
+  </insert>
+  <!-- 修改当前线路金额 -->
+  <update id="updateUserLineMoney">
+    update lc_platform_user_line_money
+    set money = #{money,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectlineId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    	<include refid="Base_Column_List" />
+    from lc_platform_user_line_money
+    where line_id = #{lineId,jdbcType=BIGINT} and user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectUserLineMoney" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_line_money
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  	<!-- 获取用户线路余额 -->
+  <select id="selectBySelectedCondition" resultMap="BaseLineMoneyMap">
+   	select money.money,money.line_id,money.id as money_id,
+   			start.start_province,start.start_city,
+   			end.end_province,end.end_city,
+   			start.company_id,start.company_name,money.oper_time
+	FROM lc_platform_user_line_money as money 
+	JOIN 
+	(select line.*, outle.province as start_province,outle.city as start_city,company.company_name,company.id as company_id from tms_outlets_info as outle
+	join tms_line_info as line on line.start_outlets = outle.id
+	JOIN lc_platform_user_company as company on outle.company_id = company.id) as start
+	on start.id = money.line_id
+	JOIN
+	(select line.*,outle.province as end_province,outle.city as end_city,company.company_name from tms_outlets_info as outle
+	join tms_line_info as line on line.end_outlets = outle.id
+	JOIN lc_platform_user_company as company on outle.company_id = company.id) as end
+	on start.id = end.id
+	where money.user_id = #{lineStorage.userId,jdbcType=BIGINT}
+	order by money.money desc 
+	limit #{page.start},#{page.limit}
+  </select>
+  <select id="countRows" resultType="int">
+   select count(*)
+	FROM lc_platform_user_line_money as money 
+	JOIN 
+	(select line.*, outle.province as start_province,outle.city as start_city,company.company_name from tms_outlets_info as outle
+	join tms_line_info as line on line.start_outlets = outle.id
+	JOIN lc_platform_user_company as company on outle.company_id = company.id) as start
+	on start.id = money.line_id
+	JOIN
+	(select line.*,outle.province as end_province,outle.city as end_city,company.company_name from tms_outlets_info as outle
+	join tms_line_info as line on line.end_outlets = outle.id
+	JOIN lc_platform_user_company as company on outle.company_id = company.id) as end
+	on start.id = end.id
+	where money.user_id = #{lineStorage.userId,jdbcType=BIGINT}
+	order by money.money desc 
+  </select>
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_line_money
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_line_money
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserLineMoney" >
+    insert into lc_platform_user_line_money (id, line_id, user_id, 
+      money, oper_time)
+    values (#{id,jdbcType=BIGINT}, #{lineId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{money,jdbcType=DOUBLE}, #{operTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserLineMoney" >
+    insert into lc_platform_user_line_money
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lineId != null" >
+        line_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="operTime != null" >
+        oper_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="operTime != null" >
+        #{operTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserLineMoney" >
+    update lc_platform_user_line_money
+    <set >
+      <if test="lineId != null" >
+        line_id = #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="operTime != null" >
+        oper_time = #{operTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserLineMoney" >
+    update lc_platform_user_line_money
+    set line_id = #{lineId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      money = #{money,jdbcType=DOUBLE},
+      oper_time = #{operTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

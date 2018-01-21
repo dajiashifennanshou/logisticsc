@@ -1,0 +1,226 @@
+@charset "utf-8";
+h atml,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+	margin: 0;
+	padding: 0;
+}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th {
+	text-align: left;
+	font-weight: normal;
+}
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+i,cite,em,var,address,dfn {
+	font-style: normal;
+}
+[hidefocus],summary {
+	outline: 0;
+}
+li {
+	list-style: none;
+}
+* {
+	font-family: "微软雅黑"; 
+}
+.f {
+	float: left;
+}
+.clr
+{
+	clear: both;
+}
+
+
+
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+	/*background: url(../img/zhuce-bg.jpg) center no-repeat;
+	background-size: cover;
+	-ms-behavior: url(css/backgroundsize.min.htc);
+	behavior: url(css/backgroundsize.min.htc);*/
+	font-size: 12px;
+	
+}
+/**************************************顶部********************/
+.top {
+	width: 100%;
+	height: 50px;
+	background: white;
+	
+}
+.top-content {
+	width: 1200px;
+	height: 42px;
+/*	background: red;*/
+	margin: 0px auto;
+}
+
+
+.logo {
+	color: cornflowerblue;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 42px;
+	
+}
+.dh {
+	line-height: 42px;
+	color: #5D86B9;
+}
+.zhuce-dh {
+	color: #5d86b9;
+	font-size: 14px;
+	margin-left: 20px;
+}
+.denglu {
+	line-height: 42px;
+	float: right;
+	color: #5D86B9;
+}
+/*内容*/
+.content {
+	width: 100%;
+	height: 636px;
+	background: url(/logisticsc/resources/platform/img/login.jpg) center no-repeat;
+	background-size: cover;
+	-ms-behavior: url(css/backgroundsize.min.htc);
+	behavior: url(css/backgroundsize.min.htc);
+	position: relative;
+}
+.container {
+	width: 80%;
+	background: white;
+	margin: 0px auto;
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	margin-left: -40%;
+}
+.row {
+	height: 60px;
+	background: #6f9fd9;
+	position: relative;
+}
+.row p {
+	color: white;
+	font-size: 22px;
+	line-height: 60px;
+	text-align: center;
+	z-index: 2;
+}
+.row a {
+	line-height: 60px;
+	color: white;
+	z-index: 999;
+}
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.grhz {
+	right: 16%;
+	position: absolute;
+}
+.zxhz {
+	right: 5%;
+	position: absolute;
+}
+
+.row i {
+	color: #6f9fd9;
+	position: absolute;
+	top: 7px;
+	font-size: 70px;
+	left: 50%;
+	z-index: 1;
+	margin-left: -55px;
+}
+
+.con1 {
+	margin-top: 82px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto; 
+}
+.con2 {
+	margin-top: 30px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto; 
+}
+.con3 {
+	margin-top: 50px;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto; 
+	display: table;
+}
+.wc-btn {
+	width: 50%;
+}
+.user {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.bottom2 {
+	width: 100%;
+	height: 74px;
+	padding-top: 8px;
+	line-height: 30px;
+	background: #f8f8f8;
+	text-align: center;
+	color: #333333;
+}
+/*登陆1-top*/
+.denglu1-top {
+	width: 668px;
+	height: 46px;
+	background: url(../img/zhuce-qiye1.png) ;
+	position: absolute;
+	top: 110px;
+	left: 50%;
+	margin-left: -334px;
+
+}
+#id-login,#password,#repassword,#code{
+	position:relative;
+}
+.login-sjh 
+{
+	color: red;
+	font-size:10px;
+	float: left;
+	line-height:29px;
+	position:absolute;
+	top:-25px;
+	font-weight: 200;
+}
+

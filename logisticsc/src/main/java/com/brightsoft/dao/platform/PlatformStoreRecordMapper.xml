@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformStoreRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformStoreRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="line_id" property="lineId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="collection_time" property="collectionTime" jdbcType="DATE" />
+  </resultMap>
+   <resultMap id="BaseCollectionLineMap" type="com.brightsoft.model.PlatformCollectionLine" >
+  	 <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="record_id" property="recordId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+     <result column="com_id" property="comId" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="server_type" property="serverType" jdbcType="VARCHAR" />
+   <result column="heavy_cargo_price_low" property="heavyCargoPriceLow" jdbcType="DOUBLE" />
+   <result column="heavy_cargo_price_mid" property="heavyCargoPriceMid" jdbcType="DOUBLE" />
+   <result column="heavy_cargo_price_high" property="heavyCargoPriceHigh" jdbcType="DOUBLE" />
+   <result column="bulky_cargo_price_low" property="bulkyCargoPriceLow" jdbcType="DOUBLE" />
+   <result column="bulky_cargo_price_mid" property="bulkyCargoPriceMid" jdbcType="DOUBLE" />
+   <result column="bulky_cargo_price_high" property="bulkyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, line_id, user_id, state, collection_time
+  </sql> 
+  <select id="selectCollecionLineId" parameterType="com.brightsoft.model.PlatformStoreRecord"  resultType="int">
+    select 
+    	count(*)
+    from lc_platform_store_record
+    where user_id =#{userId,jdbcType=BIGINT}
+		and line_id =#{lineId,jdbcType=BIGINT}
+  </select>
+  <!-- 逻辑删除我的收藏 -->
+  <update id="updateCollectionLine">
+    update lc_platform_store_record
+    set 
+      state = #{state,jdbcType=INTEGER}
+    where id in
+    <foreach collection="collectionLineId" index="index" item="item" open="(" separator="," close=")">
+     #{item}
+     </foreach>
+  </update>
+  <!-- 添加线路收藏 -->
+  <insert id="inserCollectionLine" parameterType="com.brightsoft.model.PlatformStoreRecord" >
+    insert into lc_platform_store_record (line_id, user_id, 
+      state, collection_time)
+    values (#{lineId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{state,jdbcType=INTEGER}, #{collectionTime,jdbcType=DATE})
+  </insert>
+  <!-- 我的收藏 -->
+  <select id="selectBySelectedCondition" resultMap="BaseCollectionLineMap">
+	select start.id,start.record_id,start.com_id,start.company_name,start.server_type,
+	start.start_province,start.start_city,start.start_county,end.end_province,end.end_city,end.end_county,
+	start.heavy_cargo_price_low,start.heavy_cargo_price_mid,start.heavy_cargo_price_high,start.bulky_cargo_price_low,start.bulky_cargo_price_mid,start.bulky_cargo_price_high,start.lowest_price
+	from
+	(select line.id,record.id as record_id,com.id as com_id,com.company_name,line.server_type,outlets.province as start_province,outlets.city as start_city,outlets.county as start_county,
+	line.heavy_cargo_price_low,line.heavy_cargo_price_mid, line.heavy_cargo_price_high,line.bulky_cargo_price_low,line.bulky_cargo_price_mid, line.bulky_cargo_price_high, line.lowest_price,record.collection_time
+	from lc_platform_store_record as record
+	JOIN tms_line_info as line on record.line_id = line.id
+	JOIN tms_outlets_info as outlets on outlets.id = line.start_outlets
+	JOIN lc_platform_user_company as com on outlets.company_id = com.id
+	where record.user_id =#{collectionLine.userId,jdbcType=BIGINT}
+	and record.state = 1
+	<if test="collectionLine.companyName!=null and collectionLine.companyName!=''">
+  		AND com.company_name LIKE concat("%",#{collectionLine.companyName,jdbcType=VARCHAR},"%")
+  	</if>
+  	) as start
+	JOIN
+	(select line.id,outlets.province as end_province,outlets.city as end_city,outlets.county as end_county
+	from lc_platform_store_record as record
+	JOIN tms_line_info as line on record.line_id = line.id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on outlets.company_id = com.id
+	where record.user_id =#{collectionLine.userId,jdbcType=BIGINT}
+	and record.state = 1
+	<if test="collectionLine.companyName!=null and collectionLine.companyName!=''">
+  		AND com.company_name LIKE concat("%",#{collectionLine.companyName,jdbcType=VARCHAR},"%")
+  	</if>
+  	) as end on start.id = end.id
+    group by start.record_id
+	order by start.collection_time desc
+	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取总数 -->
+  <select id="countRows" resultType="int">
+	select count(*) from lc_platform_store_record as record
+	JOIN tms_line_info as line on record.line_id = line.id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on outlets.company_id = com.id
+	where record.user_id =#{collectionLine.userId,jdbcType=BIGINT}
+	and record.state = 1
+	<if test="collectionLine.companyName!=null and collectionLine.companyName!=''">
+  		AND com.company_name LIKE concat("%",#{collectionLine.companyName,jdbcType=VARCHAR},"%")
+  	</if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_store_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_store_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformStoreRecord" >
+    insert into lc_platform_store_record (id, line_id, user_id, 
+      state, collection_time)
+    values (#{id,jdbcType=BIGINT}, #{lineId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{state,jdbcType=INTEGER}, #{collectionTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformStoreRecord" >
+    insert into lc_platform_store_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lineId != null" >
+        line_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="collectionTime != null" >
+        collection_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null" >
+        #{collectionTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformStoreRecord" >
+    update lc_platform_store_record
+    <set >
+      <if test="lineId != null" >
+        line_id = #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="collectionTime != null" >
+        collection_time = #{collectionTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformStoreRecord" >
+    update lc_platform_store_record
+    set line_id = #{lineId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER},
+      collection_time = #{collectionTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderAgencyFundMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderAgencyFund" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="agency_fund" property="agencyFund" jdbcType="DOUBLE" />
+    <result column="received_fund" property="receivedFund" jdbcType="DOUBLE" />
+    <result column="uncollected_fund" property="uncollectedFund" jdbcType="DOUBLE" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseAgencyFundtMap" type="com.brightsoft.model.PlatformCollectionPayment" >
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="consignor_name" property="consignorName" jdbcType="VARCHAR" />
+    <result column="consignee_name" property="consigneeName" jdbcType="VARCHAR" />
+   	<result column="agency_fund" property="agencyFund" jdbcType="DOUBLE" />
+    <result column="received_fund" property="receivedFund" jdbcType="DOUBLE" />
+    <result column="uncollected_fund" property="uncollectedFund" jdbcType="DOUBLE" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+ 	<result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, agency_fund, received_fund, uncollected_fund, operate_time, state
+  </sql>
+  
+  <!-- 我要发货 -->
+  <select id="selectBySelectedCondition" resultMap="BaseAgencyFundtMap">
+    select orders.order_number,orders.way_bill_number,orders.consignor_name,orders.consignee_name,
+	fund.agency_fund,fund.received_fund,fund.uncollected_fund,fund.operate_time,fund.state
+	from lc_platform_order as orders 
+	JOIN lc_platform_order_agency_fund as fund on fund.order_number = orders.order_number
+	where orders.user_id = #{collectionPayment.userId,jdbcType=BIGINT}
+	<if test="collectionPayment.condition != null and collectionPayment.condition !='' ">
+   		and (orders.order_number like concat("%",#{collectionPayment.condition},"%") or orders.way_bill_number like concat("%",#{collectionPayment.condition},"%"))
+   	</if>
+   	<if test="collectionPayment.startTime!=null and collectionPayment.startTime!=''">
+		and fund.operate_time >=#{collectionPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="collectionPayment.endTime!=null and collectionPayment.endTime!=''">
+		and #{collectionPayment.endTime,jdbcType=VARCHAR} >= fund.operate_time
+	</if>
+	<if test="collectionPayment.state!=null and collectionPayment.state!=''">
+		and #{collectionPayment.state,jdbcType=VARCHAR} >= fund.state
+	</if>
+	order by fund.operate_time desc
+	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取总数 -->
+  <select id="countRows" resultType="int">
+  		select count(*)
+	from lc_platform_order as orders 
+	JOIN lc_platform_order_agency_fund as fund on fund.order_number = orders.order_number
+	where orders.user_id = #{collectionPayment.userId,jdbcType=BIGINT}
+	<if test="collectionPayment.condition != null and collectionPayment.condition !='' ">
+   		and (orders.order_number like concat("%",#{collectionPayment.condition},"%") or orders.way_bill_number like concat("%",#{collectionPayment.condition},"%"))
+   	</if>
+   	<if test="collectionPayment.startTime!=null and collectionPayment.startTime!=''">
+		and fund.operate_time >=#{collectionPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="collectionPayment.endTime!=null and collectionPayment.endTime!=''">
+		and #{collectionPayment.endTime,jdbcType=VARCHAR} >= fund.operate_time
+	</if>
+	<if test="collectionPayment.state!=null and collectionPayment.state!=''">
+		and #{collectionPayment.state,jdbcType=VARCHAR} >= fund.state
+	</if>
+  </select>
+  <!-- 增加代收货款 -->
+  <insert id="inserOrderAgencyFund" parameterType="com.brightsoft.model.PlatformOrderAgencyFund" >
+    insert into lc_platform_order_agency_fund (order_number, agency_fund, 
+      received_fund, uncollected_fund, operate_time, 
+      state)
+    values (#{orderNumber,jdbcType=VARCHAR}, #{agencyFund,jdbcType=DOUBLE}, 
+      #{receivedFund,jdbcType=DOUBLE}, #{uncollectedFund,jdbcType=DOUBLE}, #{operateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_agency_fund
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_agency_fund
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderAgencyFund" >
+    insert into lc_platform_order_agency_fund (id, order_number, agency_fund, 
+      received_fund, uncollected_fund, operate_time, 
+      state)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{agencyFund,jdbcType=DOUBLE}, 
+      #{receivedFund,jdbcType=DOUBLE}, #{uncollectedFund,jdbcType=DOUBLE}, #{operateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderAgencyFund" >
+    insert into lc_platform_order_agency_fund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="agencyFund != null" >
+        agency_fund,
+      </if>
+      <if test="receivedFund != null" >
+        received_fund,
+      </if>
+      <if test="uncollectedFund != null" >
+        uncollected_fund,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyFund != null" >
+        #{agencyFund,jdbcType=DOUBLE},
+      </if>
+      <if test="receivedFund != null" >
+        #{receivedFund,jdbcType=DOUBLE},
+      </if>
+      <if test="uncollectedFund != null" >
+        #{uncollectedFund,jdbcType=DOUBLE},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderAgencyFund" >
+    update lc_platform_order_agency_fund
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyFund != null" >
+        agency_fund = #{agencyFund,jdbcType=DOUBLE},
+      </if>
+      <if test="receivedFund != null" >
+        received_fund = #{receivedFund,jdbcType=DOUBLE},
+      </if>
+      <if test="uncollectedFund != null" >
+        uncollected_fund = #{uncollectedFund,jdbcType=DOUBLE},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderAgencyFund" >
+    update lc_platform_order_agency_fund
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      agency_fund = #{agencyFund,jdbcType=DOUBLE},
+      received_fund = #{receivedFund,jdbcType=DOUBLE},
+      uncollected_fund = #{uncollectedFund,jdbcType=DOUBLE},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

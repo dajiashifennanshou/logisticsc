@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.WayBillOrderCargoInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.WayBillOrderCargoInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="package_type" property="packageType" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="set_number" property="setNumber" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="DOUBLE" />
+    <result column="total_volume" property="totalVolume" jdbcType="DOUBLE" />
+    <result column="count_cost_mode" property="countCostMode" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="way_bill_order_id" property="wayBillOrderId" jdbcType="BIGINT" />
+    <result column="package_type_name" property="packageTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, brand, model, package_type, number, set_number, total_weight, total_volume, 
+    count_cost_mode, price, way_bill_order_id,goodsType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_order_cargo_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_way_bill_order_cargo_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.WayBillOrderCargoInfo" >
+    insert into tms_way_bill_order_cargo_info (id, name, brand, 
+      model, package_type, number, 
+      set_number,goodsType,total_weight, total_volume, 
+      count_cost_mode, price, way_bill_order_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{packageType,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{setNumber,jdbcType=INTEGER},#{goodsType,jdbcType=INTEGER}, #{totalWeight,jdbcType=DOUBLE}, #{totalVolume,jdbcType=DOUBLE}, 
+      #{countCostMode,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{wayBillOrderId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into tms_way_bill_order_cargo_info (id, name, brand, 
+      model, package_type, number, 
+      set_number,goodsType,total_weight, total_volume, 
+      count_cost_mode, price, way_bill_order_id)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, 
+      #{item.model,jdbcType=VARCHAR}, #{item.packageType,jdbcType=INTEGER}, #{item.number,jdbcType=INTEGER}, 
+      #{item.setNumber,jdbcType=INTEGER},#{item.goodsType,jdbcType=INTEGER}, #{item.totalWeight,jdbcType=DOUBLE}, #{item.totalVolume,jdbcType=DOUBLE}, 
+      #{item.countCostMode,jdbcType=INTEGER}, #{item.price,jdbcType=DOUBLE}, #{item.wayBillOrderId,jdbcType=BIGINT}
+      )
+    </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.WayBillOrderCargoInfo" >
+    insert into tms_way_bill_order_cargo_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="packageType != null" >
+        package_type,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="setNumber != null" >
+        set_number,
+      </if>
+      <if test="totalWeight != null" >
+        total_weight,
+      </if>
+      <if test="totalVolume != null" >
+        total_volume,
+      </if>
+      <if test="countCostMode != null" >
+        count_cost_mode,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="wayBillOrderId != null" >
+        way_bill_order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="packageType != null" >
+        #{packageType,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="setNumber != null" >
+        #{setNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalVolume != null" >
+        #{totalVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="countCostMode != null" >
+        #{countCostMode,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="wayBillOrderId != null" >
+        #{wayBillOrderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.WayBillOrderCargoInfo" >
+    update tms_way_bill_order_cargo_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="packageType != null" >
+        package_type = #{packageType,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="setNumber != null" >
+        set_number = #{setNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalVolume != null" >
+        total_volume = #{totalVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="countCostMode != null" >
+        count_cost_mode = #{countCostMode,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="wayBillOrderId != null" >
+        way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.WayBillOrderCargoInfo" >
+    update tms_way_bill_order_cargo_info
+    set name = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      package_type = #{packageType,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      set_number = #{setNumber,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=DOUBLE},
+      total_volume = #{totalVolume,jdbcType=DOUBLE},
+      count_cost_mode = #{countCostMode,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByWayBillOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  	select cargo.*, dict.name package_type_name
+    from tms_way_bill_order_cargo_info cargo 
+    LEFT JOIN lc_platform_dictionary dict ON cargo.package_type = dict.id
+  	where cargo.way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT}
+  </select>
+  
+  <delete id="deleteByWayBillOrderId" parameterType="java.lang.Long" >
+    delete from tms_way_bill_order_cargo_info
+    where way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT}
+  </delete>
+</mapper>

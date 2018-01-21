@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <carbon.widget.ProgressBar
+            android:id="@+id/v_pull_refresh_header_pb_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/v_pull_refresh_header_iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/arrow" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/v_pull_refresh_header_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下拉刷新"
+            android:textColor="@color/font_color_focused"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="最后更新:　"
+                android:textColor="@color/font_color_focused"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/v_pull_refresh_header_tv_lasttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="--:--"
+                android:textColor="@color/font_color_focused"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

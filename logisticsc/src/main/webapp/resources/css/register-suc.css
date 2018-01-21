@@ -1,0 +1,130 @@
+button{
+	border: none;
+}
+.re-logo{
+	margin-top: 20px;
+	
+}
+.re-line{
+	margin-left: 10px;
+	margin-top: 8px;
+}
+.re-word{
+	margin-left: 10px;
+	margin-top: -23px;
+}
+.re-content{
+	width: 100%;
+	/*height: 200px;*/
+	margin-top: 20px;
+	background: #b4d6e9 url(../img/re-bg.png) top center;
+	padding-bottom: 30px;
+}
+.re-conbg{
+	width: 100%;
+	height: 500px;
+	margin-top: 40px;
+	background: #fff url(../img/registerbg1.png) no-repeat -29px top;
+	padding-top: 30px;
+}
+/*.re-l1{
+	margin-top: 30px;
+}*/
+
+.re-suc-info{
+	width: 280px;
+	height: 43px;
+	line-height: 43px;
+	background: url(../img/registercgong.png) no-repeat left center;
+	padding-left: 48px;
+	font-size: 24px;
+	margin-top: 56px;
+	margin-left: 252px;
+}
+.re-fhui{
+	width: 148px;
+	height: 45px;
+	margin-top: 30px;
+}
+.re-fhbtn{
+	width: 148px;
+	height: 45px;
+	color: #fff;
+	font-size: 18px;
+	background: url(../img/btn1.png) no-repeat center;
+	margin-left: 306px;
+}
+.re-fhbtn:hover{
+	background: url(../img/btn2.png) no-repeat center;
+}
+
+
+
+.re-xyi{
+	color: #4ea4d5;
+}
+.re-rlist1{
+	margin-top: 118px;
+}
+.re-rlist2{
+	margin-top: 30px;
+}
+.re-rlist3{
+	margin-top: 20px;
+}
+.brig{
+	border-right: 1px solid #ddd;
+	height: 452px;
+}
+.re-l1{
+	margin-left: 132px;
+}
+/*底部*/
+.re-foot{
+	text-align: center;
+	margin-top: 10px;
+}
+.line{
+	color: #ccc;
+    padding: 0 10px;
+}
+.footer{
+	margin-top: 40px;
+	padding-bottom: 30px;
+    text-align: center;
+}
+.links a{
+	color: #666;
+    text-decoration: none;
+}
+.links a:hover{
+	color: #FF4E00;
+}
+.copyright{
+	font-size: 12px;
+	margin-top: 8px;
+	color: #666;
+}
+.copyright p{
+	line-height: 22px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

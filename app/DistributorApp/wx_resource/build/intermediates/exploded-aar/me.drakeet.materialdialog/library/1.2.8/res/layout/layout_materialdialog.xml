@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:layout_gravity="center"
+    android:minWidth="280dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/material_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/material_card"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="@color/black_de"
+                android:textSize="23sp"
+                android:id="@+id/title"
+                android:text="Material title"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginRight="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ScrollView
+                android:layout_weight="1"
+                android:id="@+id/message_content_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                tools:layout_height="700dp">
+
+                <LinearLayout
+                    android:id="@+id/message_content_view"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="23dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/message"
+                        android:textColor="#8a000000"
+                        android:textSize="16sp"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="message"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:id="@+id/buttonLayout"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:text="cancel"
+                    android:id="@+id/btn_n"
+                    android:textSize="14sp"
+                    android:textColor="@color/black_de"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"/>
+
+                <Button
+                    android:text="ok"
+                    android:textSize="14sp"
+                    android:layout_marginRight="6dp"
+                    android:id="@+id/btn_p"
+                    android:textColor="#ff239ff2"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+<!-- From: file:/Users/drakeet/AndroidStudioProjects/MaterialDialog/library/src/main/res/layout/layout_materialdialog.xml -->

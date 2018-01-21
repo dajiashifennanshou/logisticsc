@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.SystemSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SystemSetting" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="immediate_pay" property="immediatePay" jdbcType="INTEGER" />
+    <result column="after_pay" property="afterPay" jdbcType="INTEGER" />
+    <result column="advance_pay" property="advancePay" jdbcType="INTEGER" />
+    <result column="common_invoice" property="commonInvoice" jdbcType="INTEGER" />
+    <result column="common_invoice_tax" property="commonInvoiceTax" jdbcType="DOUBLE" />
+    <result column="additional_invoice" property="additionalInvoice" jdbcType="INTEGER" />
+    <result column="additional_invoice_tax" property="additionalInvoiceTax" jdbcType="DOUBLE" />
+    <result column="no_invoice" property="noInvoice" jdbcType="INTEGER" />
+    <result column="advance_pay_rate" property="advancePayRate" jdbcType="DOUBLE" />
+    <result column="is_insurance" property="isInsurance" jdbcType="INTEGER" />
+    <result column="insurance_rate" property="insuranceRate" jdbcType="DOUBLE" />
+    <result column="insurance_lowest" property="insuranceLowest" jdbcType="DOUBLE" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, immediate_pay, after_pay, advance_pay, common_invoice, common_invoice_tax, additional_invoice, 
+    additional_invoice_tax, no_invoice, advance_pay_rate, is_insurance, insurance_rate, 
+    insurance_lowest, company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_system_setting
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_system_setting
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SystemSetting" >
+    insert into tms_system_setting (id, immediate_pay, after_pay, 
+      advance_pay, common_invoice, common_invoice_tax, 
+      additional_invoice, additional_invoice_tax, 
+      no_invoice, advance_pay_rate, is_insurance, 
+      insurance_rate, insurance_lowest, company_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{immediatePay,jdbcType=INTEGER}, #{afterPay,jdbcType=INTEGER}, 
+      #{advancePay,jdbcType=INTEGER}, #{commonInvoice,jdbcType=INTEGER}, #{commonInvoiceTax,jdbcType=DOUBLE}, 
+      #{additionalInvoice,jdbcType=INTEGER}, #{additionalInvoiceTax,jdbcType=DOUBLE}, 
+      #{noInvoice,jdbcType=INTEGER}, #{advancePayRate,jdbcType=DOUBLE}, #{isInsurance,jdbcType=INTEGER}, 
+      #{insuranceRate,jdbcType=DOUBLE}, #{insuranceLowest,jdbcType=DOUBLE}, #{companyId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SystemSetting" >
+    insert into tms_system_setting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="immediatePay != null" >
+        immediate_pay,
+      </if>
+      <if test="afterPay != null" >
+        after_pay,
+      </if>
+      <if test="advancePay != null" >
+        advance_pay,
+      </if>
+      <if test="commonInvoice != null" >
+        common_invoice,
+      </if>
+      <if test="commonInvoiceTax != null" >
+        common_invoice_tax,
+      </if>
+      <if test="additionalInvoice != null" >
+        additional_invoice,
+      </if>
+      <if test="additionalInvoiceTax != null" >
+        additional_invoice_tax,
+      </if>
+      <if test="noInvoice != null" >
+        no_invoice,
+      </if>
+      <if test="advancePayRate != null" >
+        advance_pay_rate,
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance,
+      </if>
+      <if test="insuranceRate != null" >
+        insurance_rate,
+      </if>
+      <if test="insuranceLowest != null" >
+        insurance_lowest,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="immediatePay != null" >
+        #{immediatePay,jdbcType=INTEGER},
+      </if>
+      <if test="afterPay != null" >
+        #{afterPay,jdbcType=INTEGER},
+      </if>
+      <if test="advancePay != null" >
+        #{advancePay,jdbcType=INTEGER},
+      </if>
+      <if test="commonInvoice != null" >
+        #{commonInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="commonInvoiceTax != null" >
+        #{commonInvoiceTax,jdbcType=DOUBLE},
+      </if>
+      <if test="additionalInvoice != null" >
+        #{additionalInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="additionalInvoiceTax != null" >
+        #{additionalInvoiceTax,jdbcType=DOUBLE},
+      </if>
+      <if test="noInvoice != null" >
+        #{noInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="advancePayRate != null" >
+        #{advancePayRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isInsurance != null" >
+        #{isInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceRate != null" >
+        #{insuranceRate,jdbcType=DOUBLE},
+      </if>
+      <if test="insuranceLowest != null" >
+        #{insuranceLowest,jdbcType=DOUBLE},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SystemSetting" >
+    update tms_system_setting
+    <set >
+      <if test="immediatePay != null" >
+        immediate_pay = #{immediatePay,jdbcType=INTEGER},
+      </if>
+      <if test="afterPay != null" >
+        after_pay = #{afterPay,jdbcType=INTEGER},
+      </if>
+      <if test="advancePay != null" >
+        advance_pay = #{advancePay,jdbcType=INTEGER},
+      </if>
+      <if test="commonInvoice != null" >
+        common_invoice = #{commonInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="commonInvoiceTax != null" >
+        common_invoice_tax = #{commonInvoiceTax,jdbcType=DOUBLE},
+      </if>
+      <if test="additionalInvoice != null" >
+        additional_invoice = #{additionalInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="additionalInvoiceTax != null" >
+        additional_invoice_tax = #{additionalInvoiceTax,jdbcType=DOUBLE},
+      </if>
+      <if test="noInvoice != null" >
+        no_invoice = #{noInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="advancePayRate != null" >
+        advance_pay_rate = #{advancePayRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance = #{isInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceRate != null" >
+        insurance_rate = #{insuranceRate,jdbcType=DOUBLE},
+      </if>
+      <if test="insuranceLowest != null" >
+        insurance_lowest = #{insuranceLowest,jdbcType=DOUBLE},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SystemSetting" >
+    update tms_system_setting
+    set immediate_pay = #{immediatePay,jdbcType=INTEGER},
+      after_pay = #{afterPay,jdbcType=INTEGER},
+      advance_pay = #{advancePay,jdbcType=INTEGER},
+      common_invoice = #{commonInvoice,jdbcType=INTEGER},
+      common_invoice_tax = #{commonInvoiceTax,jdbcType=DOUBLE},
+      additional_invoice = #{additionalInvoice,jdbcType=INTEGER},
+      additional_invoice_tax = #{additionalInvoiceTax,jdbcType=DOUBLE},
+      no_invoice = #{noInvoice,jdbcType=INTEGER},
+      advance_pay_rate = #{advancePayRate,jdbcType=DOUBLE},
+      is_insurance = #{isInsurance,jdbcType=INTEGER},
+      insurance_rate = #{insuranceRate,jdbcType=DOUBLE},
+      insurance_lowest = #{insuranceLowest,jdbcType=DOUBLE},
+      company_id = #{companyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

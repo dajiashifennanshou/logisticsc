@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.WayBillOrderFollowMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.WayBillOrderFollow" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="handle_time" property="handleTime" jdbcType="TIMESTAMP" />
+    <result column="handle_info" property="handleInfo" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_person_name" property="operatePersonName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_number, status, handle_time, handle_info, operate_person, operate_person_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_order_follow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_way_bill_order_follow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.WayBillOrderFollow" >
+    insert into tms_way_bill_order_follow (id, way_bill_number, status, 
+      handle_time, handle_info, operate_person, 
+      operate_person_name)
+    values (#{id,jdbcType=BIGINT}, #{wayBillNumber,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{handleInfo,jdbcType=VARCHAR}, #{operatePerson,jdbcType=BIGINT}, 
+      #{operatePersonName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.WayBillOrderFollow" >
+    insert into tms_way_bill_order_follow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="handleTime != null" >
+        handle_time,
+      </if>
+      <if test="handleInfo != null" >
+        handle_info,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operatePersonName != null" >
+        operate_person_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handleTime != null" >
+        #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleInfo != null" >
+        #{handleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonName != null" >
+        #{operatePersonName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.WayBillOrderFollow" >
+    update tms_way_bill_order_follow
+    <set >
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handleTime != null" >
+        handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleInfo != null" >
+        handle_info = #{handleInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonName != null" >
+        operate_person_name = #{operatePersonName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.WayBillOrderFollow" >
+    update tms_way_bill_order_follow
+    set way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      handle_info = #{handleInfo,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_person_name = #{operatePersonName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByWayBillNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_order_follow
+    where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+    order by handle_time desc
+  </select>
+</mapper>

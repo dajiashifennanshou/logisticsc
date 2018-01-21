@@ -1,0 +1,274 @@
+[
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_in_back.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_in_back.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\gf_flip_horizontal_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\anim\\gf_flip_horizontal_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\popup_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\push_bottom_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\push_bottom_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\menu_bottombar_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\src\\main\\res\\anim\\menu_bottombar_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\loading_animation.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\loading_animation.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\push_bottom_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\carbon_popup_show.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\anim\\carbon_popup_show.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_fab_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\menu_bottombar_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\src\\main\\res\\anim\\menu_bottombar_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_enter.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\popup_enter.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\gf_flip_horizontal_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\anim\\gf_flip_horizontal_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\carbon_popup_show.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\anim\\carbon_popup_show.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_fab_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_out_back.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_out_back.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_enter.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\popup_enter.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\menu_bottombar_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\src\\main\\res\\anim\\menu_bottombar_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_out_back.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_out_back.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\loading_animation.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\loading_animation.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_exit.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\popup_exit.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\gf_flip_horizontal_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\anim\\gf_flip_horizontal_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\decelerate_cubic.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\decelerate_cubic.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\fade_in_back.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\fade_in_back.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\push_bottom_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\popup_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\decelerate_cubic.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\decelerate_cubic.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\menu_bottombar_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\src\\main\\res\\anim\\menu_bottombar_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_out.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\popup_out.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\gf_flip_horizontal_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\cn.finalteam\\galleryfinal\\1.4.8.7\\res\\anim\\gf_flip_horizontal_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\DistributorApp\\llibrarys\\unspecified\\res\\anim\\popup_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\carbon_popup_hide.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\anim\\carbon_popup_hide.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.0\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\carbon_popup_hide.xml",
+        "source": "D:\\projectapp\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\tk.zielony\\carbon\\0.13.0\\res\\anim\\carbon_popup_hide.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\res\\merged\\debug\\anim\\popup_exit.xml",
+        "source": "D:\\InternetProject\\app\\DistributorApp\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\anim\\popup_exit.xml"
+    }
+]

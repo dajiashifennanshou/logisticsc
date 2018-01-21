@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.CustomWayBillCostMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.CustomWayBillCost" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name, sort, remark, company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_custom_way_bill_cost
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_custom_way_bill_cost
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.CustomWayBillCost" >
+    insert into tms_custom_way_bill_cost (id, code, name, 
+      sort, remark, company_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.CustomWayBillCost" >
+    insert into tms_custom_way_bill_cost
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.CustomWayBillCost" >
+    update tms_custom_way_bill_cost
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.CustomWayBillCost" >
+    update tms_custom_way_bill_cost
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_custom_way_bill_cost
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByParamsOfPlatform" resultMap="BaseResultMap" >
+    SELECT cost.*, com.company_name 
+    FROM tms_custom_way_bill_cost cost LEFT JOIN lc_platform_user_company com ON cost.company_id = com.id
+    where 1 = 1
+    <if test="condition != null and condition != ''" >
+      and com.company_name like concat("%",#{condition},"%")
+    </if>
+    limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCountOfPlatform" resultType="int" >
+    SELECT count(1)
+    FROM tms_custom_way_bill_cost cost LEFT JOIN lc_platform_user_company com ON cost.company_id = com.id
+    where 1 = 1
+    <if test="condition != null and condition != ''" >
+      and com.company_name like concat("%",#{condition},"%")
+    </if>
+  </select>
+</mapper>

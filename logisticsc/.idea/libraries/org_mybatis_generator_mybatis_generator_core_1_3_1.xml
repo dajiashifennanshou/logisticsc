@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="org.mybatis.generator:mybatis-generator-core:1.3.1" type="repository">
+    <properties maven-id="org.mybatis.generator:mybatis-generator-core:1.3.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-generator-core-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ant-1.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ant-launcher-1.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-generator-core-1.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

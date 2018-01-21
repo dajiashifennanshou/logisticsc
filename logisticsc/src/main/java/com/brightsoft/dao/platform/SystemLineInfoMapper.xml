@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.SystemLineInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SystemLineInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="start_outlets_name" property="startOutletsName" jdbcType="VARCHAR" />
+    <result column="end_outlets_name" property="endOutletsName" jdbcType="VARCHAR" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="server_type" property="serverType" jdbcType="VARCHAR" />
+    <result column="transport_mode" property="transportMode" jdbcType="BIGINT" />
+    <result column="time_long" property="timeLong" jdbcType="INTEGER" />
+    <result column="heavy_cargo_price_low" property="heavyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_mid" property="heavyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_high" property="heavyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_low" property="bulkyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_mid" property="bulkyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_high" property="bulkyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+    <result column="release_state" property="releaseState" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="is_take_cargo" property="isTakeCargo" jdbcType="INTEGER" />
+    <result column="is_give_cargo" property="isGiveCargo" jdbcType="INTEGER" />
+    <result column="start_outlets" property="startOutlets" jdbcType="BIGINT" />
+    <result column="end_outlets" property="endOutlets" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="DOUBLE" />
+    <result column="remain_money" property="remainMoney" jdbcType="DOUBLE" />
+    <result column="recommended" property="recommended" jdbcType="INTEGER" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    
+    <result column="start_province_value" property="startProvinceValue" jdbcType="INTEGER" />
+    <result column="start_city_value" property="startCityValue" jdbcType="INTEGER" />
+    <result column="start_county_value" property="startCountyValue" jdbcType="INTEGER" />
+    <result column="end_province_value" property="endProvinceValue" jdbcType="INTEGER" />
+    <result column="end_city_value" property="endCityValue" jdbcType="INTEGER" />
+    <result column="end_county_value" property="endCountyValue" jdbcType="INTEGER" />
+    <result column="trans_mode_value" property="transModeValue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_name, start_outlets_name, end_outlets_name, start_province, start_city, 
+    start_county, end_province, end_city, end_county, server_type, transport_mode, time_long, 
+    heavy_cargo_price_low, heavy_cargo_price_mid, heavy_cargo_price_high, bulky_cargo_price_low, 
+    bulky_cargo_price_mid, bulky_cargo_price_high, lowest_price, release_state, create_time, 
+    is_take_cargo, is_give_cargo, start_outlets, end_outlets, status, create_person_id, 
+    outlets_id, evaluate_level, remain_money, recommended, qq, company_id,phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_system_line_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_system_line_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SystemLineInfo" >
+    insert into lc_system_line_info (id, company_name, start_outlets_name, 
+      end_outlets_name, start_province, start_city, 
+      start_county, end_province, end_city, 
+      end_county, server_type, transport_mode, 
+      time_long, heavy_cargo_price_low, heavy_cargo_price_mid, 
+      heavy_cargo_price_high, bulky_cargo_price_low, 
+      bulky_cargo_price_mid, bulky_cargo_price_high, 
+      lowest_price, release_state, create_time, 
+      is_take_cargo, is_give_cargo, start_outlets, 
+      end_outlets, status, create_person_id, 
+      outlets_id, evaluate_level, remain_money, 
+      recommended, qq, company_id,phone
+      )
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{startOutletsName,jdbcType=VARCHAR}, 
+      #{endOutletsName,jdbcType=VARCHAR}, #{startProvince,jdbcType=VARCHAR}, #{startCity,jdbcType=VARCHAR}, 
+      #{startCounty,jdbcType=VARCHAR}, #{endProvince,jdbcType=VARCHAR}, #{endCity,jdbcType=VARCHAR}, 
+      #{endCounty,jdbcType=VARCHAR}, #{serverType,jdbcType=VARCHAR}, #{transportMode,jdbcType=BIGINT}, 
+      #{timeLong,jdbcType=INTEGER}, #{heavyCargoPriceLow,jdbcType=DOUBLE}, #{heavyCargoPriceMid,jdbcType=DOUBLE}, 
+      #{heavyCargoPriceHigh,jdbcType=DOUBLE}, #{bulkyCargoPriceLow,jdbcType=DOUBLE}, 
+      #{bulkyCargoPriceMid,jdbcType=DOUBLE}, #{bulkyCargoPriceHigh,jdbcType=DOUBLE}, 
+      #{lowestPrice,jdbcType=DOUBLE}, #{releaseState,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+      #{isTakeCargo,jdbcType=INTEGER}, #{isGiveCargo,jdbcType=INTEGER}, #{startOutlets,jdbcType=BIGINT}, 
+      #{endOutlets,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{createPersonId,jdbcType=BIGINT}, 
+      #{outletsId,jdbcType=BIGINT}, #{evaluateLevel,jdbcType=DOUBLE}, #{remainMoney,jdbcType=DOUBLE}, 
+      #{recommended,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, #{companyId,jdbcType=BIGINT},#{phone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SystemLineInfo" >
+    insert into lc_system_line_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="startOutletsName != null" >
+        start_outlets_name,
+      </if>
+      <if test="endOutletsName != null" >
+        end_outlets_name,
+      </if>
+      <if test="startProvince != null" >
+        start_province,
+      </if>
+      <if test="startCity != null" >
+        start_city,
+      </if>
+      <if test="startCounty != null" >
+        start_county,
+      </if>
+      <if test="endProvince != null" >
+        end_province,
+      </if>
+      <if test="endCity != null" >
+        end_city,
+      </if>
+      <if test="endCounty != null" >
+        end_county,
+      </if>
+      <if test="serverType != null" >
+        server_type,
+      </if>
+      <if test="transportMode != null" >
+        transport_mode,
+      </if>
+      <if test="timeLong != null" >
+        time_long,
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        heavy_cargo_price_low,
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        heavy_cargo_price_mid,
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        heavy_cargo_price_high,
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        bulky_cargo_price_low,
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        bulky_cargo_price_mid,
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        bulky_cargo_price_high,
+      </if>
+      <if test="lowestPrice != null" >
+        lowest_price,
+      </if>
+      <if test="releaseState != null" >
+        release_state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isTakeCargo != null" >
+        is_take_cargo,
+      </if>
+      <if test="isGiveCargo != null" >
+        is_give_cargo,
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets,
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level,
+      </if>
+      <if test="remainMoney != null" >
+        remain_money,
+      </if>
+      <if test="recommended != null" >
+        recommended,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="startOutletsName != null" >
+        #{startOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutletsName != null" >
+        #{endOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="startProvince != null" >
+        #{startProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="startCounty != null" >
+        #{startCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="endProvince != null" >
+        #{endProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="endCity != null" >
+        #{endCity,jdbcType=VARCHAR},
+      </if>
+      <if test="endCounty != null" >
+        #{endCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="serverType != null" >
+        #{serverType,jdbcType=VARCHAR},
+      </if>
+      <if test="transportMode != null" >
+        #{transportMode,jdbcType=BIGINT},
+      </if>
+      <if test="timeLong != null" >
+        #{timeLong,jdbcType=INTEGER},
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null" >
+        #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="releaseState != null" >
+        #{releaseState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="isTakeCargo != null" >
+        #{isTakeCargo,jdbcType=INTEGER},
+      </if>
+      <if test="isGiveCargo != null" >
+        #{isGiveCargo,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="endOutlets != null" >
+        #{endOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateLevel != null" >
+        #{evaluateLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="remainMoney != null" >
+        #{remainMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="recommended != null" >
+        #{recommended,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SystemLineInfo" >
+    update lc_system_line_info
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="startOutletsName != null" >
+        start_outlets_name = #{startOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutletsName != null" >
+        end_outlets_name = #{endOutletsName,jdbcType=VARCHAR},
+      </if>
+      <if test="startProvince != null" >
+        start_province = #{startProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        start_city = #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="startCounty != null" >
+        start_county = #{startCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="endProvince != null" >
+        end_province = #{endProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="endCity != null" >
+        end_city = #{endCity,jdbcType=VARCHAR},
+      </if>
+      <if test="endCounty != null" >
+        end_county = #{endCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="serverType != null" >
+        server_type = #{serverType,jdbcType=VARCHAR},
+      </if>
+      <if test="transportMode != null" >
+        transport_mode = #{transportMode,jdbcType=BIGINT},
+      </if>
+      <if test="timeLong != null" >
+        time_long = #{timeLong,jdbcType=INTEGER},
+      </if>
+      <if test="heavyCargoPriceLow != null" >
+        heavy_cargo_price_low = #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceMid != null" >
+        heavy_cargo_price_mid = #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="heavyCargoPriceHigh != null" >
+        heavy_cargo_price_high = #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceLow != null" >
+        bulky_cargo_price_low = #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceMid != null" >
+        bulky_cargo_price_mid = #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      </if>
+      <if test="bulkyCargoPriceHigh != null" >
+        bulky_cargo_price_high = #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      </if>
+      <if test="lowestPrice != null" >
+        lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="releaseState != null" >
+        release_state = #{releaseState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="isTakeCargo != null" >
+        is_take_cargo = #{isTakeCargo,jdbcType=INTEGER},
+      </if>
+      <if test="isGiveCargo != null" >
+        is_give_cargo = #{isGiveCargo,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets = #{endOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level = #{evaluateLevel,jdbcType=DOUBLE},
+      </if>
+      <if test="remainMoney != null" >
+        remain_money = #{remainMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="recommended != null" >
+        recommended = #{recommended,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SystemLineInfo" >
+    update lc_system_line_info
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      start_outlets_name = #{startOutletsName,jdbcType=VARCHAR},
+      end_outlets_name = #{endOutletsName,jdbcType=VARCHAR},
+      start_province = #{startProvince,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      start_county = #{startCounty,jdbcType=VARCHAR},
+      end_province = #{endProvince,jdbcType=VARCHAR},
+      end_city = #{endCity,jdbcType=VARCHAR},
+      end_county = #{endCounty,jdbcType=VARCHAR},
+      server_type = #{serverType,jdbcType=VARCHAR},
+      transport_mode = #{transportMode,jdbcType=BIGINT},
+      time_long = #{timeLong,jdbcType=INTEGER},
+      heavy_cargo_price_low = #{heavyCargoPriceLow,jdbcType=DOUBLE},
+      heavy_cargo_price_mid = #{heavyCargoPriceMid,jdbcType=DOUBLE},
+      heavy_cargo_price_high = #{heavyCargoPriceHigh,jdbcType=DOUBLE},
+      bulky_cargo_price_low = #{bulkyCargoPriceLow,jdbcType=DOUBLE},
+      bulky_cargo_price_mid = #{bulkyCargoPriceMid,jdbcType=DOUBLE},
+      bulky_cargo_price_high = #{bulkyCargoPriceHigh,jdbcType=DOUBLE},
+      lowest_price = #{lowestPrice,jdbcType=DOUBLE},
+      release_state = #{releaseState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      is_take_cargo = #{isTakeCargo,jdbcType=INTEGER},
+      is_give_cargo = #{isGiveCargo,jdbcType=INTEGER},
+      start_outlets = #{startOutlets,jdbcType=BIGINT},
+      end_outlets = #{endOutlets,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      evaluate_level = #{evaluateLevel,jdbcType=DOUBLE},
+      remain_money = #{remainMoney,jdbcType=DOUBLE},
+      recommended = #{recommended,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      phone = #{phone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 批量删除 -->
+  <delete id="deleteBatch" parameterType="list">
+  	delete from lc_system_line_info
+  	where 
+  		id in 
+  		<foreach collection="list" item="id" open="(" separator="," close=")">
+  			#{id}
+  		</foreach>
+  </delete>
+  <!-- 查询系统线路信息 -->
+  <select id="selectByCondition4Page" resultMap="BaseResultMap">
+  	select
+  		sli.*,pd.name as trans_mode_value
+  	from
+  		lc_system_line_info sli 
+  		left join lc_platform_dictionary pd on sli.transport_mode = pd.id
+  	<where>
+  		<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+  			sli.start_province = #{searchParams.startProvince}
+  		</if>
+  		<if test="searchParams.startCity != null and searchParams.startCity != ''">
+  			and sli.start_city = #{searchParams.startCity}
+  		</if>
+  		<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+  			and sli.start_county = #{searchParams.startCounty}
+  		</if>
+  		<if test="searchParams.endProvince != null and searchParams.endProvince != ''">
+  			and sli.end_province = #{searchParams.endProvince}
+  		</if>
+  		<if test="searchParams.endCity != null and searchParams.endCity != ''">
+  			and sli.end_city = #{searchParams.endCity}
+  		</if>
+  		<if test="searchParams.endCounty != null and searchParams.endCounty != ''">
+  			and sli.end_county = #{searchParams.endCounty}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and sli.company_name = #{searchParams.condition} or sli.start_outlets_name = #{searchParams.condition}
+  			or sli.end_outlets_name = #{searchParams.condition}
+  		</if>
+  	</where>
+  		limit #{page.start},#{page.limit}
+  		
+  </select>
+  <!-- 获取信息线路信息记录总是 -->
+  <select id="countRows4Page" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_system_line_info sli
+  	<where>
+  		<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+  			sli.start_province = #{searchParams.startProvince}
+  		</if>
+  		<if test="searchParams.startCity != null and searchParams.startCity != ''">
+  			and sli.start_city = #{searchParams.startCity}
+  		</if>
+  		<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+  			and sli.start_county = #{searchParams.startCounty}
+  		</if>
+  		<if test="searchParams.endProvince != null and searchParams.endProvince != ''">
+  			and sli.end_province = #{searchParams.endProvince}
+  		</if>
+  		<if test="searchParams.endCity != null and searchParams.endCity != ''">
+  			and sli.end_city = #{searchParams.endCity}
+  		</if>
+  		<if test="searchParams.endCounty != null and searchParams.endCounty != ''">
+  			and sli.end_county = #{searchParams.endCounty}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and sli.company_name = #{searchParams.condition} or sli.start_outlets_name = #{searchParams.condition}
+  			or sli.end_outlets_name = #{searchParams.condition}
+  		</if>
+  	</where>
+  </select>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:background="@mipmap/wuliushang_biankuang"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/collection"
+        style="@style/myStyle"
+        android:text="收藏物流商"
+        android:paddingRight="10dp"
+        android:textSize="@dimen/mid_text_size"
+        android:background="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@mipmap/common_collection_shixiao"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/dail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系物流商"
+            android:textSize="@dimen/mid_text_size"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:drawableLeft="@mipmap/xiadan_dail"/>
+    </LinearLayout>
+
+</LinearLayout>

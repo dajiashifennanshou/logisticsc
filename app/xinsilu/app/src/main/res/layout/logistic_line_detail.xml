@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/activity_logistic_line_detail" />
+
+            <com.wrt.xinsilu.ui.view.MyListView
+                android:id="@+id/logistic_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:divider="@color/colorPrimaryContent"
+                android:dividerHeight="10dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderBackMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderBack" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="VARCHAR" />
+    <result column="refund_type" property="refundType" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <association property="platformUser" javaType="com.brightsoft.model.PlatformUser">
+    	<result column="login_name" property="loginName"/>
+    	<result column="true_name" property="trueName"/>
+    </association>
+    <association property="platformOrder" javaType="com.brightsoft.model.PlatformOrder">
+    	<result column="way_bill_number" property="wayBillNumber"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, money, refund_type, time, state, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_back
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_back
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderBack" >
+    insert into lc_platform_order_back (id, order_number, money, 
+      refund_type, time, state, 
+      user_id)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{money,jdbcType=VARCHAR}, 
+      #{refundType,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderBack" >
+    insert into lc_platform_order_back
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="refundType != null" >
+        refund_type,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType != null" >
+        #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderBack" >
+    update lc_platform_order_back
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType != null" >
+        refund_type = #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderBack" >
+    update lc_platform_order_back
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      refund_type = #{refundType,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByRefundType" resultMap="BaseResultMap">
+  	SELECT 	
+  	pob.*,po.way_bill_number,pu.login_name,pu.true_name
+  	FROM
+  	lc_platform_order_back pob
+  	LEFT JOIN lc_platform_order po on po.order_number = pob.order_number
+  	LEFT JOIN lc_platform_user pu on pob.user_id = pu.id 
+  	WHERE refund_type = #{refundType}
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and pob.order_nubmer = #{orderNumber}
+  	</if>
+  	<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  		and pob.time <![CDATA[>=]]> #{searchParams.startTime}
+  	</if>
+  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  		and pob.time <![CDATA[<=]]> #{searchParams.endTime}
+  	</if>
+  	order by time desc limit #{page.start},#{page.limit}
+  </select>
+  <select id="countRowsByRefundType" resultType="int">
+  	SELECT 	
+  	count(1)
+  	FROM
+  	lc_platform_order_back
+  	WHERE refund_type = #{refundType}
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and pob.order_nubmer = #{orderNumber}
+  	</if>
+  	<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  		and pob.time <![CDATA[>=]]> #{searchParams.startTime}
+  	</if>
+  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  		and pob.time <![CDATA[<=]]> #{searchParams.endTime}
+  	</if>
+  </select>
+  <update id="updateOrderBackState">
+  	UPDATE lc_platform_order_back
+  	SET
+  	state = #{state}
+  	WHERE
+  	order_number = #{orderNumber}
+  </update>
+  <select id="selectByOrderNumber" resultMap="BaseResultMap">
+  	SELECT
+  	*
+  	FROM
+  	lc_platform_order_back
+  	WHERE order_number = #{orderNumber}
+  </select>
+</mapper>

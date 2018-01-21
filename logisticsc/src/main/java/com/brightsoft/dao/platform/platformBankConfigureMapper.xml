@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankConfigureMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBankConfigure" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="minsettleamount" property="minsettleamount" jdbcType="VARCHAR" />
+    <result column="riskreserveday" property="riskreserveday" jdbcType="VARCHAR" />
+    <result column="manualsettle" property="manualsettle" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, minsettleamount, riskreserveday, manualsettle, time, username
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_configure
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank_configure
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBankConfigure" >
+    insert into lc_platform_bank_configure (id, minsettleamount, riskreserveday, 
+      manualsettle, time, username
+      )
+    values (#{id,jdbcType=BIGINT}, #{minsettleamount,jdbcType=VARCHAR}, #{riskreserveday,jdbcType=VARCHAR}, 
+      #{manualsettle,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBankConfigure" >
+    insert into lc_platform_bank_configure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="minsettleamount != null" >
+        minsettleamount,
+      </if>
+      <if test="riskreserveday != null" >
+        riskreserveday,
+      </if>
+      <if test="manualsettle != null" >
+        manualsettle,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="minsettleamount != null" >
+        #{minsettleamount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskreserveday != null" >
+        #{riskreserveday,jdbcType=VARCHAR},
+      </if>
+      <if test="manualsettle != null" >
+        #{manualsettle,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBankConfigure" >
+    update lc_platform_bank_configure
+    <set >
+      <if test="minsettleamount != null" >
+        minsettleamount = #{minsettleamount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskreserveday != null" >
+        riskreserveday = #{riskreserveday,jdbcType=VARCHAR},
+      </if>
+      <if test="manualsettle != null" >
+        manualsettle = #{manualsettle,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBankConfigure" >
+    update lc_platform_bank_configure
+    set minsettleamount = #{minsettleamount,jdbcType=VARCHAR},
+      riskreserveday = #{riskreserveday,jdbcType=VARCHAR},
+      manualsettle = #{manualsettle,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      username = #{username,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectPlatformBankInfo" resultMap="BaseResultMap">
+  	select 
+  	*
+  	from
+  	lc_platform_bank_configure
+  </select>
+</mapper>

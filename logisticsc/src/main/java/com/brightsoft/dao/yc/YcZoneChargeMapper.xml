@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcZoneChargeDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcZoneCharge"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,chargeNorm,province,city,county,town,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcZoneCharge" > 
+		select  <include refid="Base_Column_List" />  from yc_zone_charge where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcZoneCharge" > 
+		select  count(1)  from yc_zone_charge 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_zone_charge order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcZoneCharge"> 
+		delete from yc_zone_charge where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcZoneCharge" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_zone_charge  
+		(chargeNorm,province,city,county,town,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{id},#{chargeNorm},#{province},#{city},#{county},#{town},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcZoneCharge">   
+	update YcZoneCharge 
+	<set> 
+		<if test="chargeNorm !=null"> 
+			chargeNorm=#{chargeNorm},
+		</if>
+		<if test="province !=null"> 
+			province=#{province},
+		</if>
+		<if test="city !=null"> 
+			city=#{city},
+		</if>
+		<if test="county !=null"> 
+			county=#{county},
+		</if>
+		<if test="town !=null"> 
+			town=#{town},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

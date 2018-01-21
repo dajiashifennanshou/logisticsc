@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.umeng\message\2.4.1\jars\libs\com.umeng.message.lib_v2.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="2e43bd4164f510a6b4be65f569356d79237b36ed">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.umeng.message.lib_v2.4.1_d8e1430a8b191c543d1a1fc3282e7943ae809c19\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.umeng\fb\5.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="30447d190372c4ad8ecec92ccb510bfaadf4f603">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.umeng-fb-5.4.0_664f8380e86a0ee5b2c8021b89a7dca7a2b28206\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.0.1\345b89f45d02d8b09400b472fab7b7e38f4ede1f\butterknife-annotations-8.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="345b89f45d02d8b09400b472fab7b7e38f4ede1f">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\butterknife-annotations-8.0.1_6a1f39f69232ebc54e6848d146f932f0e84ce85a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\tk.zielony\carbon\0.13.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="bd6449b5a2518f915391c5cb061403fb5b1e784e">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\tk.zielony-carbon-0.13.0_360a527e1d57e7b674d3be1d0ee10df4236e0efe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.11.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.facebook.fresco-fbcore-0.11.0_60515dcd21efe6d2b582cb0ca7768cbb259332d1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\cn.finalteam\toolsfinal\1.1.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="966da5b6a8bfdef0bfc660e349f8765dde5cb6f3">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\cn.finalteam-toolsfinal-1.1.5_342f9b3964dfa908887e33ccca36b424f4ac40c2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\cn.finalteam\galleryfinal\1.4.8.7\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="c74f0952cfb481882d8cedf4ca9f3c60289a3301">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\cn.finalteam-galleryfinal-1.4.8.7_5f9a981ea265a802c43c8e5df112fb3993be2996\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\incremental-runtime-classes\baidu\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4916dda59a56fe96cc7a9ea9e5e0bcd018e79d5e">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\instant-run_808f5ff0ec5586e6e0ddb2123c258be7c843d3dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\library-2.4.0_1eb9e5d9c2ffa15fe7a1ddc83300b6d95fffddd4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e096a5d8343cc9c5a9f6eded36bd0f4c82f8c83e">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-support-v4-24.1.0_55ed0194e2a2c808f986e426914c4a919b46fe3b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8c854b30eca6c442fe842e66cd3b58c5dd08996f">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.1.0_06c90e1214c0605279c8aa65c07028baaa7d3cc1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.11.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.facebook.fresco-drawee-0.11.0_cbac7548bd069584632f7bbc88f7d869025b772d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4157816e81f0820983957687e9a6f4c1cea0f1e5">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-recyclerview-v7-24.1.0_d669eeac496a4719fc7c0e12b9aa2ddf60de6696\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\libs\jpush-android-2.1.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="38dd284400de7ff5fab09098a1b8fd30cc5980c7">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\2\jpush-android-2.1.7_cd09acccf96f9654a89b6771a99713e0a7dbfbe7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4a9f97c742d058ca55948643c06f447895a9af76">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\me.zhanghai.android.materialprogressbar-library-1.1.5_b240ddf5d2a6b7dfdfa46643bbe7ced55e6c9cde\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.0\jars\libs\internal_impl-24.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8c7087216946c546f85a1242a2794c0f271e092c">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\internal_impl-24.1.0_c48f5abb292ccfc127731bdf7bf32e6041e04c2f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.github.afollestad.material-dialogs\core\0.8.5.8\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4f7e1ce5942093c77105c86ef11b782f75aff0c3">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.github.afollestad.material-dialogs-core-0.8.5.8_a58557cb49a2e5a2f02ba5adafabe4b799f8eea5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.umeng.analytics\analytics\6.1.1\4bff754fc05336940a8cb348e455c01515b5d883\analytics-6.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4bff754fc05336940a8cb348e455c01515b5d883">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\analytics-6.1.1_8e83b44143d7294031ba925b9a593a8232ac1d54\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.8\cf615176cd1177edf71d3c9605f8dc148fede6be\otto-1.3.8.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="cf615176cd1177edf71d3c9605f8dc148fede6be">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\otto-1.3.8_544f3ac18c6aa6498dbc88ae824500c044c3c954\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.wang.avi\library\1.0.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="5035aaf60d244038bb143ffad4fbb7cba92ecdc7">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.wang.avi-library-1.0.5_95c7b4ca6badb59b46cdf906fd82f3eb4221674b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.github.dmytrodanylyk.shadow-layout\library\1.0.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="6625ecb586cdd40f3e160486368e5251630899c9">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.github.dmytrodanylyk.shadow-layout-library-1.0.3_df47b65b58dc87374236108d050807034d7436ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\jp.wasabeef\recyclerview-animators\2.2.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8e325e9ba5c23d635d0cfaa76c349fca83101f8a">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\jp.wasabeef-recyclerview-animators-2.2.3_48d52bc14c28c67f298a6253d9e04c00c3c4489a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\me.drakeet.materialdialog\library\1.2.8\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="0573d010bcb1ee874e1c258a31e98ab920e6805f">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\me.drakeet.materialdialog-library-1.2.8_4bbbca4112f64ba92517f4df166e7ff7d0a5100a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-design-23.3.0_769d0c8cdf6a345540d00074a152b23a7a2aa6ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\de.greenrobot\androidsvg\1.2.2-beta-1-tweaked-2\8f38bd2ecc13b4950bfa2aea1b813dd1c6b507b2\androidsvg-1.2.2-beta-1-tweaked-2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8f38bd2ecc13b4950bfa2aea1b813dd1c6b507b2">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\androidsvg-1.2.2-beta-1-tweaked-2_76172e3abe163400357d1c439ccecb0cb4a31970\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="003ebdacd5f75067b8724f92bd5eefa323d870aa">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-gridlayout-v7-23.3.0_5fda6560b2cc109172dbe75a6c4e9b74a7630993\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.11.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.facebook.fresco-imagepipeline-0.11.0_08110d015ebb6a619ee7d25eb1998f6f50232138\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="9340c4f95a4e3916c9ad70296e24576743743712">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-appcompat-v7-24.1.0_ccf647e2232928f8072d4d33d02a4211675e7d38\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.11.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.facebook.fresco-fresco-0.11.0_0f0aa3e0a7e5b0ae5073b30d505baa6827b19be8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\glide-3.7.0_6d61cf3d4850ccd1ca3ef4a3eb899ef7b3ccdb59\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.umeng\message\2.4.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="29939a737c58fd8eb96e3a9eda9ecccb1817edd2">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.umeng-message-2.4.1_90ca027ee7716c89dacfe063b4be67f996595e7b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.github.zhaokaiqiang.klog\library\1.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8d5e74c029eba4b8d4eeb7d680f5e6bb2cbf61bb">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.github.zhaokaiqiang.klog-library-1.4.0_32e3d91d307ba3e158f99bb29f4605376db0b0da\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\org.xutils\xutils\3.3.36\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="a525a7f2e266f577629f68820a462a807c66eec7">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\org.xutils-xutils-3.3.36_d7e9a466c30ff48ca6c464a90482aac087df94b1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="74ca46e7da11e3d065eb64cdbe6568a7ed74c211">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.jakewharton-butterknife-8.0.1_48bbb9b09533c73bb7785f05f022123831c71330\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.alibaba\fastjson\1.2.13\40f60c83fac24f70d4c7c2a255dc9ad8e3749987\fastjson-1.2.13.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="40f60c83fac24f70d4c7c2a255dc9ad8e3749987">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\fastjson-1.2.13_421d72557f75f4e78f5a96d5cdda31edb6b8cf96\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.11.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.facebook.fresco-imagepipeline-base-0.11.0_847151c0a64be6e15399c71426bb0fb510334c5f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\net.grandcentrix.tray\tray\0.10.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="c7e652c05fb6b2ab1f3c98658dbcf52de62dadc4">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\net.grandcentrix.tray-tray-0.10.0_57dfcb0349441b3e13e888e6927fad08876a5b90\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.github.florent37\viewanimator\1.0.4\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="4b56aae076ad1d75f61fb96ea465094dd3844cb8">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.github.florent37-viewanimator-1.0.4_3de74246f4abd1232f262bddd9d48efe9c2e42f6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\incremental-classes\baidu\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="b32374535b1b464931ce1f8d12204556f02e121f">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\instant-run-bootstrap_ab6a15c47b55f498cc5cc9fb14b1ceffae9979be\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.github.afollestad.material-dialogs\commons\0.8.5.9\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="f0acc3f802bd3869db9a24860d7e24bc08965ab8">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.github.afollestad.material-dialogs-commons-0.8.5.9_9131909f70378269780270570676f2c83d0f1aa5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\job\sdk\extras\android\m2repository\com\android\support\support-annotations\24.1.0\support-annotations-24.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="8a23146e1a8c7cb4758e3d3f62449213f1e51f67">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\support-annotations-24.1.0_8daadf689756a9c3122246f5cbce22598ddbafa5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\df\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\bolts-tasks-1.4.0_cfd6fa47f1bf70b98b011832e96f8d2015580d9f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="ba8e8860f7e033c3a503b682337a4bafdf56e6ee">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.android.support-support-vector-drawable-24.1.0_a5062eb40aff5ce2c2d215d63df6665f619119a3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\InternetProject\app\DistributorApp\app\build\intermediates\exploded-aar\com.liaoinstan.springview\library\1.2.5\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="d87ea0764ce442af0807d45221aae1ccb1747c55">
+        <dex dex="D:\InternetProject\app\DistributorApp\app\build\intermediates\transforms\dex\baidu\debug\folders\1000\10\com.liaoinstan.springview-library-1.2.5_4c7f0c2dd365fe8ba396bf119766c315673c7681\classes.dex" />
+    </item>
+
+</items>

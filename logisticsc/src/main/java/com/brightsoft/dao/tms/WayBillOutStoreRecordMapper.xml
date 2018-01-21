@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.WayBillOutStoreRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.WayBillOutStoreRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_order_id" property="wayBillOrderId" jdbcType="BIGINT" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+    <result column="vehicle_number" property="vehicleNumber" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="VARCHAR" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_order_id, driver_name, driver_phone, vehicle_number, operate_person, 
+    operate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_out_store_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_way_bill_out_store_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.WayBillOutStoreRecord" >
+    insert into tms_way_bill_out_store_record (id, way_bill_order_id, driver_name, 
+      driver_phone, vehicle_number, operate_person, 
+      operate_time)
+    values (#{id,jdbcType=BIGINT}, #{wayBillOrderId,jdbcType=BIGINT}, #{driverName,jdbcType=VARCHAR}, 
+      #{driverPhone,jdbcType=VARCHAR}, #{vehicleNumber,jdbcType=VARCHAR}, #{operatePerson,jdbcType=VARCHAR}, 
+      #{operateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.WayBillOutStoreRecord" >
+    insert into tms_way_bill_out_store_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillOrderId != null" >
+        way_bill_order_id,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone,
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillOrderId != null" >
+        #{wayBillOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNumber != null" >
+        #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.WayBillOutStoreRecord" >
+    update tms_way_bill_out_store_record
+    <set >
+      <if test="wayBillOrderId != null" >
+        way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.WayBillOutStoreRecord" >
+    update tms_way_bill_out_store_record
+    set way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByWayBillOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_out_store_record
+    where way_bill_order_id = #{wayBillOrderId,jdbcType=BIGINT}
+  </select>
+</mapper>

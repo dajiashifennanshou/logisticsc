@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#737373</color>
+    <color name="colorAccent">#e15957</color>
+    <color name="colorPrimaryText">#fafafa</color>
+    <color name="colorPrimaryStateBar">#00000000</color>
+
+    <color name="color_primary">#ffffff</color>
+    <color name="color_primary_dark">#737373</color>
+    <color name="color_primary_text">#c6737373</color>
+    <color name="color_primary_content">#f5f5f6</color>
+    <color name="color_primary_line">#e5d4d4d4</color>
+
+    <color name="font_color_focused">#212121</color>
+    <color name="font_color_normal">#797979</color>
+    <color name="font_color_normal2">#666666</color>
+    <color name="font_color_normal_light">#f5f5f5</color>
+    <color name="font_color_hint">#a1a1a1</color>
+    <color name="font_color_hint_light">#f5f5f5</color>
+    <color name="font_color_hint_light2">#d7d7d7</color>
+
+
+    <color name="color_tab_nor">#00000000</color>
+    <color name="color_tab_foc">#9eededed</color>
+    <color name="color_row_nor">#00000000</color>
+    <color name="color_row_foc">#9eededed</color>
+    <color name="mdl_color_primary">@color/color_primary</color>
+    <color name="mdl_color_primary_dark">@color/color_primary_dark</color>
+
+    <!--PagerSlidingTabStrip-->
+    <color name="color_psts_background">@color/colorPrimary</color>
+    <color name="color_psts_indicator">@color/colorPrimary</color>
+    <color name="color_pstsTextFocColor">@color/colorPrimary</color>
+    <color name="color_pstsTextNorColor">@color/color_primary_dark</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="drak">#ea181818</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="gray">#eaa4a4a4</color>
+    <color name="red">#ffff0000</color>
+    <color name="red_dark">#d20000</color>
+    <color name="green">#ff00ff00</color>
+    <color name="orange">#f68a42</color>
+    <color name="yellow">#ffc800</color>
+    <color name="transparent">#00000000</color>
+    <color name="translucent">#9a000000</color>
+    <color name="translucent2">#c4000000</color>
+    <color name="overlay">#37000000</color>
+    <color name="overlay2">#60000000</color>
+    <color name="shadow">#1a000000</color>
+    <color name="shadow2">#29000000</color>
+    <color name="ripple">#464f504f</color>
+    <color name="gentleman_black">#2b2e31</color>
+
+    <!-- CardView -->
+    <color name="mdl_cardview_background">@color/color_primary_content</color>
+    <color name="mdl_cardview_image_left_title_color">#212121</color>
+    <color name="mdl_cardview_image_top_title_color">#ffffff</color>
+    <color name="mdl_cardview_normal_description_color">@color/color_primary_text</color>
+    <color name="mdl_cardview_image_left_description_color">#757575</color>
+    <color name="mdl_cardview_image_top_description_color">#212121</color>
+    <color name="mdl_cardview_normal_button_color">#212121</color>
+    <color name="mdl_cardview_highlight_button_color">#ffab40</color>
+    <color name="mdl_cardview_normal_button_ripple_color">#66999999</color>
+    <color name="mdl_cardview_separator_color">#dcdcdc</color>
+
+    <!--RevealLayout-->
+    <color name="reveal_color">#ccffffff</color>
+
+    <color name="bg_defult_foc">@color/white</color>
+    <color name="bg_defult_nor">#00000000</color>
+
+    <!--RippelColor-->
+    <color name="rippelColor">#FFFFFF</color>
+</resources>

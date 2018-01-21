@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformUserApplyDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformUserApply"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,apply_name,apply_type,apply_state,apply_feedback,user_id,version,time
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformUserApply" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user_apply where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformUserApply" > 
+		select  count(1)  from lc_platform_user_apply 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_user_apply order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformUserApply"> 
+		delete from lc_platform_user_apply where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformUserApply" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_user_apply  
+		(apply_name,apply_type,apply_state,apply_feedback,user_id,version,time) 
+		values ( #{apply_name},#{apply_type},#{apply_state},#{apply_feedback},#{user_id},#{version},#{time} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformUserApply">   
+	update lc_platform_user_apply 
+	<set> 
+		<if test="apply_name !=null"> 
+			apply_name=#{apply_name},
+		</if>
+		<if test="apply_type !=null"> 
+			apply_type=#{apply_type},
+		</if>
+		<if test="apply_state !=null"> 
+			apply_state=#{apply_state},
+		</if>
+		<if test="apply_feedback !=null"> 
+			apply_feedback=#{apply_feedback},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id},
+		</if>
+		<if test="version !=null"> 
+			version=#{version},
+		</if>
+		<if test="time !=null"> 
+			time=#{time}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

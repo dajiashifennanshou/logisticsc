@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.system.SysPartnerMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SysPartner" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="partner_name" property="partnerName" jdbcType="VARCHAR" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="partner_url" property="partnerUrl" jdbcType="VARCHAR" />
+    <result column="partner_time" property="partnerTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, partner_name, picture_url, partner_url, partner_time, user_id
+  </sql>
+  
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.brightsoft.utils.Page">
+    select s_p.*,s_u.username from lc_sys_partner s_p LEFT JOIN lc_sys_user s_u on s_p.user_id = s_u.id
+    where 1=1
+    <if test="searchParams.startTime != null and searchParams.startTime !=''" >
+	    and  s_p.partner_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+    </if>
+    <if test="searchParams.endTime != null and searchParams.endTime !=''" >
+     	and  s_p.partner_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+    </if>
+    <if test="searchParams.condition != null and searchParams.condition != ''" >
+     	and  s_p.partner_name like concat("%",#{searchParams.condition},"%") 
+    </if>
+    order by s_p.partner_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+   <select id="countRows" resultType="int">
+ 		select COUNT(*)from lc_sys_partner s_p LEFT JOIN lc_sys_user s_u on s_p.user_id = s_u.id
+ 		where 1=1
+ 		  <if test="searchParams.startTime != null and searchParams.startTime !=''" >
+	    and  s_p.partner_time <![CDATA[   >=  ]]> #{searchParams.startTime}
+    </if>
+    <if test="searchParams.endTime != null and searchParams.endTime !=''" >
+     	and  s_p.partner_time <![CDATA[   <=  ]]> #{searchParams.endTime}
+    </if>
+    <if test="searchParams.condition != null and searchParams.condition != ''" >
+     	and  s_p.partner_name like concat("%",#{searchParams.condition},"%") 
+    </if>
+  </select>
+  <select id="selectSysPartnerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_sys_partner
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_sys_partner
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_sys_partner
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+   <!-- 删除常用  -->
+  <delete id="deletetPartner" parameterType="java.lang.Long" >
+    delete from lc_sys_partner
+    where id in
+    <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+     #{item}
+   </foreach>
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SysPartner" >
+    insert into lc_sys_partner (partner_name, picture_url, 
+      partner_url, partner_time, user_id
+      )
+    values (#{partnerName,jdbcType=VARCHAR}, #{pictureUrl,jdbcType=VARCHAR}, 
+      #{partnerUrl,jdbcType=VARCHAR}, #{partnerTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SysPartner" >
+    insert into lc_sys_partner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="partnerName != null" >
+        partner_name,
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url,
+      </if>
+      <if test="partnerUrl != null" >
+        partner_url,
+      </if>
+      <if test="partnerTime != null" >
+        partner_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="partnerName != null" >
+        #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerUrl != null" >
+        #{partnerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerTime != null" >
+        #{partnerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SysPartner" >
+    update lc_sys_partner
+    <set >
+      <if test="partnerName != null">
+        partner_name = #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerUrl != null" >
+        partner_url = #{partnerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerTime != null" >
+        partner_time = #{partnerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SysPartner" >
+    update lc_sys_partner
+    set partner_name = #{partnerName,jdbcType=VARCHAR},
+      picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      partner_url = #{partnerUrl,jdbcType=VARCHAR},
+      partner_time = #{partnerTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

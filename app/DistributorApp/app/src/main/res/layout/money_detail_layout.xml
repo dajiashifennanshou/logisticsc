@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/myStyle"
+            android:hint="　　　　　"
+            android:paddingRight="10dp"
+            android:text="费用总额:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/money_detail"
+            style="@style/myStyle"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="-.--元"
+            android:textColor="@color/colorAccent2"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/myStyle"
+            android:hint="　　　　　"
+            android:paddingRight="10dp"
+            android:text="预约费:"
+            android:textSize="@dimen/small_text_size" />
+
+        <TextView
+            android:id="@+id/app_money"
+            style="@style/myStyle"
+            android:gravity="center|left"
+            android:padding="10dp"
+            android:text="-.--元"
+            android:textColor="@color/colorAccent2"
+            android:textSize="@dimen/small_text_size" />
+    </LinearLayout>
+
+    <com.xsl.distributor.ws.ui.view.MyListView
+        android:id="@+id/goods_money_listiew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:divider="@null" />
+
+</LinearLayout>

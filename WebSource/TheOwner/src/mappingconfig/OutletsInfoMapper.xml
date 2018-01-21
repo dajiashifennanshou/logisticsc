@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.Dao.OutletsInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.Entity.OutletsInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="outlets_number" property="outletsNumber" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIGINT" />
+    <result column="nature" property="nature" jdbcType="BIGINT" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName"/>
+    <result column="company_code" property="companyCode"/>
+    <result column="true_name" property="trueName"/>
+    <result column="login_name" property="loginName"/>
+    <result column="province_value" property="provinceValue" jdbcType="VARCHAR" />
+    <result column="city_value" property="cityValue" jdbcType="VARCHAR" />
+    <result column="county_value" property="countyValue" jdbcType="VARCHAR" />
+    <result column="type_value" property="typeValue"/>
+    <result column="nature_value" property="natureValue"/>
+  </resultMap>
+
+  <sql id="Base_Column_List_Base" >
+    id, name, type, nature, province, city, county, address, contact_person, mobile, 
+    phone, email, remark, status, create_time, create_person_id, company_id,outlets_number
+  </sql>
+  <sql id="Base_Column_List" >
+    oi.id, oi.name, oi.type, oi.nature, oi.province, oi.city, oi.county, oi.address, oi.contact_person, oi.mobile, 
+    oi.phone, oi.email, oi.remark, oi.status, oi.create_time, oi.create_person_id, oi.company_id,outlets_number,puc.company_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    SELECT o.*,x1.name province_value,x2.name city_value,x3.name county_value FROM tms_outlets_info o 
+    JOIN lc_xzqh_info x1 ON o.province = x1.id 
+    JOIN lc_xzqh_info x2 ON o.city = x2.id 
+    JOIN lc_xzqh_info x3 ON o.county = x3.id 
+    where o.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_outlets_info
+    where 
+    	id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yc.Entity.OutletsInfo" >
+    insert into tms_outlets_info (id, name, type, 
+      nature, province, city, 
+      county, address, contact_person, 
+      mobile, phone, email, 
+      remark, status, create_time, 
+      create_person_id, company_id,outlets_number)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{nature,jdbcType=BIGINT}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{contactPerson,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createPersonId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{outletsNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.Entity.OutletsInfo" >
+    insert into tms_outlets_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outletsNumber != null" >
+        outlets_number,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="nature != null" >
+        nature,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="contactPerson != null" >
+        contact_person,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+       <if test="outletsNumber != null" >
+        #{outletsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="nature != null" >
+        #{nature,jdbcType=BIGINT},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.Entity.OutletsInfo" >
+    update tms_outlets_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsNumber != null" >
+        name = #{outletsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="nature != null" >
+        nature = #{nature,jdbcType=BIGINT},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.Entity.OutletsInfo" >
+    update tms_outlets_info
+    set name = #{name,jdbcType=VARCHAR},
+    	name = #{outletsNumber,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      nature = #{nature,jdbcType=BIGINT},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      company_id = #{companyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <!-- 查询网点信息 -->
+  <select id="selectOutlets" resultMap="BaseResultMap">
+	select * from tms_outlets_info o_i
+	LEFT JOIN lc_xzqh_info x_i on o_i.county = x_i.id
+	where x_i.`name` =  #{name,jdbcType=VARCHAR}
+	and company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+  <!-- 查询网点信息 -->
+  <select id="selectoutletsInfo" resultMap="BaseResultMap">
+  select * from tms_outlets_info
+	WHERE status = 1
+	and company_id = #{outletsInfo.companyId}
+	<if test="outletsInfo.province != null and outletsInfo.province != ''">
+		and province = #{outletsInfo.province,jdbcType=VARCHAR}
+	</if>
+	<if test="outletsInfo.name != null and outletsInfo.name != ''">
+		and name like concat("%",#{outletsInfo.name,jdbcType=VARCHAR},"%")
+	</if>
+  	limit #{page.start},#{page.limit}
+  </select>
+  <select id="countoutletsInfo" resultType="int">
+  	select 
+  		count(1) 
+  	from tms_outlets_info
+	WHERE status = 1
+	and company_id = #{outletsInfo.companyId,jdbcType=BIGINT}
+	<if test="outletsInfo.province != null and outletsInfo.province != ''">
+		and province = #{outletsInfo.province,jdbcType=VARCHAR}
+	</if>
+	<if test="outletsInfo.name != null and outletsInfo.name != ''">
+		and name like concat("%",#{outletsInfo.name,jdbcType=VARCHAR},"%")
+	</if>
+  </select>
+  <!-- 查询网点信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+  	select 
+  		oi.*,puc.company_name,puc.company_code,xi.name as province_value,xii.name as city_value,
+  		xiii.name as county_value,u.login_name,u.true_name,pd.name as type_value
+  	from 
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join tms_user u on oi.create_person_id = u.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+  	<where>
+		oi.company_id = #{user.companyId}
+		<if test="outletsInfo.condition!=null and outletsInfo.condition!=''">
+		    and oi.name like concat("%",#{outletsInfo.condition},"%")
+		    or oi.contact_person like concat("%",#{outletsInfo.condition},"%")
+		</if>
+  	</where>
+  		order by create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!--获取记录总数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1) 
+  	from
+		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join tms_user u on oi.create_person_id = u.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+	<where>
+			oi.company_id = #{user.companyId}
+		<if test="outletsInfo.condition!=null and outletsInfo.condition!=''">
+		    and oi.name like concat("%",#{outletsInfo.condition},"%")
+		    or oi.contact_person like concat("%",#{outletsInfo.condition},"%")
+		</if>
+  	</where>
+  </select>
+  
+  <!-- 批量删除网点 -->
+  <delete id="deleteBatch" parameterType="java.util.List" >
+    delete from 
+    	tms_outlets_info
+    where 
+    	id in
+    	<foreach collection="list" item="id" open="(" close=")" separator=",">
+    	 	#{id,jdbcType=BIGINT}
+   		</foreach>
+  </delete>
+  
+  <!-- 通过企业id获取最近一次添加的网点的编号 -->
+  <!-- <select id="selectSerNumByCompanyId" resultType="string"> -->
+  <!-- <select id="selectSerNumByCompanyId" resultMap="BaseResultMap">
+  	select 
+  		outlets_number
+  	from 
+  		tms_outlets_info
+  	where
+  		company_id = #{companyId}
+  		order by id desc limit 1
+  </select> -->
+  
+  <!-- 通过企业id获取最近一次添加的网点的编号 -->
+  <select id="selectSerNumByCompanyId" resultType="string">
+  	select 
+  		outlets_number
+  	from 
+  		tms_outlets_info
+  	where
+  		company_id = #{companyId}
+  		order by id desc limit 1
+  </select>
+  
+  
+  
+
+  
+  <select id="selectByCreatePersonId" parameterType="long" resultType="com.yc.Entity.OutletsInfo">
+  	select 
+  		id,name 
+  	from 
+  		tms_outlets_info
+  	where 
+  		company_id = (select company_id from tms_outlets_info where create_person_id = #{userId} limit 1)
+  </select>
+
+  <!-- 通过主键获取网点信息 -->
+  <select id="selectById" parameterType="long" resultMap="BaseResultMap">
+  	select 
+  		oi.*,xi.name as province_value,xii.name as city_value,xiii.name as county_value
+  	from 
+  		tms_outlets_info oi
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  	where 
+  		oi.id=#{outletsId} and oi.status != 0
+  </select>
+  
+  <!-- 通过网点id获取网点，企业信息 -->
+  <select id="selectOutletsById" parameterType="long" resultMap="BaseResultMap">
+  	select
+  		oi.id,oi.name, oi.type, oi.nature, oi.province, oi.city, oi.county, oi.address, oi.contact_person, oi.mobile, 
+    	oi.phone, oi.email, oi.remark, oi.status, oi.create_time, oi.create_person_id, oi.company_id,oi.outlets_number,
+  		puc.company_name
+  	from 
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		
+  	where 
+  		oi.id = #{outletsId}
+  </select>
+  
+  <select id="selectByCompanyId" resultMap="BaseResultMap" parameterType="long">
+  	select 
+  		<include refid="Base_Column_List_Base" />
+  	from 
+  		tms_outlets_info 
+  	where 
+  		company_id = #{companyId} 
+  </select>
+  <select id="selectOutletsAndCompanyCodeByLineId" resultMap="BaseResultMap" parameterType="long">
+  	SELECT o.outlets_number, com.company_code FROM tms_outlets_info o JOIN lc_platform_user_company com ON o.company_id = com.id 
+  	WHERE o.id = (SELECT outlets_id FROM tms_line_info WHERE id = #{lineId})
+  </select>
+  
+  <select id="selectOutletsAndCompanyCodeById" resultMap="BaseResultMap" parameterType="long">
+  	SELECT o.outlets_number, com.company_code FROM tms_outlets_info o JOIN lc_platform_user_company com ON o.company_id = com.id 
+  	WHERE o.id = #{id}
+  </select>
+  
+  <select id="selectOutletsDetailById" parameterType="long" resultMap="BaseResultMap">
+  	select 
+  		oi.*,pd.name as typeValue,pd1.name as natureValue,
+  		xi.name as provinceValue,xi1.name as cityValue,xi2.name as countyValue
+  	from
+  		tms_outlets_info oi
+  		left join lc_platform_dictionary pd on oi.type = pd.id
+  		left join lc_platform_dictionary pd1 on oi.nature = pd.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xi1 on oi.city = xi1.id
+  		left join lc_xzqh_info xi2 on oi.county = xi2.id
+  	where 
+  		oi.id = #{id}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	select <include refid="Base_Column_List_Base" /> from tms_outlets_info
+  </select>
+  
+  
+  <!-- 通过公司信息查询网点-->
+     <select id="selectBySelcompCondition" resultMap="BaseResultMap">
+ 	 select 
+  		oi.*,puc.company_name,xi.name as province_value,xii.name as city_value,
+  		xiii.name as county_value,u.login_name,u.true_name,pd.name as type_value
+  	from 
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join tms_user u on oi.create_person_id = u.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+		  WHERE 
+		    oi.company_id = #{outletsInfo.companyId}
+		    or puc.company_name = #{outletsInfo.companyName}  
+		  limit #{page.start},#{page.limit}
+  </select>
+   <!-- 通过公司信息查询网点的总数量  -->
+  	<select id="countoutcompRows" resultType="int">
+  	select 
+  	COUNT(1)
+  	from 
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join tms_user u on oi.create_person_id = u.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+		 WHERE 
+		    oi.company_id = #{outletsInfo.companyId}
+		    or puc.company_name = #{outletsInfo.companyName}  
+  </select>
+  <!-- 运营平台：查询网点 -->
+  <select id="selectAllOutlets" resultMap="BaseResultMap">
+  	select 
+  		oi.*,puc.company_name,xi.name as province_value,xii.name as city_value,
+  		xiii.name as county_value,pd.name as type_value
+  	from 
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+  	WHERE 
+	   	1=1
+	   	<if test="searchParams.condition != null and searchParams.condition != ''">
+	   		and oi.name = #{searchParams.condition} or puc.company_name = #{searchParams.condition}
+	   	</if>
+	   	<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+	   		and oi.province = #{searchParams.startProvince}
+	   	</if>
+	   	<if test="searchParams.startCity != null and searchParams.startCity != ''">
+	   		and oi.city = #{searchParams.startCity}
+	   	</if>
+	   	<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+	   		and oi.county = #{searchParams.startCounty}
+	   	</if>
+	  	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 运营平台：查询记录数 -->
+  <select id="countAllOutlets" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_outlets_info oi 
+  		left join lc_platform_user_company puc on oi.company_id = puc.id
+  		left join lc_xzqh_info xi on oi.province = xi.id
+  		left join lc_xzqh_info xii on oi.city = xii.id
+  		left join lc_xzqh_info xiii on oi.county = xiii.id
+  		left join lc_platform_dictionary pd on pd.id = oi.type
+  	WHERE 
+	   	1=1
+	   	<if test="searchParams.condition != null and searchParams.condition != ''">
+	   		and oi.name = #{searchParams.condition} or puc.company_name = #{searchParams.condition}
+	   	</if>
+	   	<if test="searchParams.startProvince != null and searchParams.startProvince != ''">
+	   		and oi.province = #{searchParams.startProvince}
+	   	</if>
+	   	<if test="searchParams.startCity != null and searchParams.startCity != ''">
+	   		and oi.city = #{searchParams.startCity}
+	   	</if>
+	   	<if test="searchParams.startCounty != null and searchParams.startCounty != ''">
+	   		and oi.county = #{searchParams.startCounty}
+	   	</if>
+  </select>
+  <!-- 更改网点状态 -->
+  <update id="updateStatus">
+  	update
+  		tms_outlets_info
+  	set
+  		status = #{status}
+  	where
+  		id = #{outletsId}
+  </update>
+  <select id="selectOutletsNotBind" resultMap="BaseResultMap">
+  	select 
+	*
+	from 
+	tms_outlets_info toi
+	WHERE toi.company_id = #{companyId}
+  
+  <!-- 
+  	select 
+	*
+	from 
+	tms_outlets_info toi
+	WHERE toi.company_id = #{companyId} and id not IN (select 
+					t.id 
+					from
+					(SELECT
+ 						oi.*,count(oi.id) s
+				  	FROM
+				  	tms_outlets_info oi 
+				  	inner join tms_user u on oi.id = u.outlets_id WHERE oi.company_id = #{companyId} GROUP BY oi.id)t where t.s > 0)
+				  	 -->
+  </select>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+  	select t.*, pb.*,pb.id pos_bind_id from
+  	(SELECT oi.*, com.company_name, com.company_code FROM tms_outlets_info oi 
+	LEFT JOIN lc_platform_user_company com ON oi.company_id = com.id where 1 = 1
+  	<if test="companyId != null and companyId != '' ">
+   		and oi.company_id = #{companyId,jdbcType=BIGINT}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and oi.id = #{outletsId,jdbcType=BIGINT}
+   	</if>
+   	order by create_time desc limit #{start}, #{limit}) t
+   	left join tms_pos_bind pb on t.id = pb.outlets_id where 1 = 1 
+   	<if test="condition != null and condition != ''">
+   		and (pb.pos_sn like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or pb.login_account like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+  
+  <select id="selectByParamsCountCondition" resultType="int">
+  	select count(1) from
+  	(SELECT oi.*, com.company_name FROM tms_outlets_info oi 
+	LEFT JOIN lc_platform_user_company com ON oi.company_id = com.id where 1 = 1
+  	<if test="companyId != null and companyId != '' ">
+   		and oi.company_id = #{companyId,jdbcType=BIGINT}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and oi.id = #{outletsId,jdbcType=BIGINT}
+   	</if>
+   	) t
+   	left join tms_pos_bind pb on t.id = pb.outlets_id where 1 = 1 
+   	<if test="condition != null and condition != ''">
+   		and (pb.pos_sn like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or pb.login_account like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+  
+  <select id="selectByParamsCountNoCondition" resultType="int">
+  	SELECT count(1) FROM tms_outlets_info oi 
+	LEFT JOIN lc_platform_user_company com ON oi.company_id = com.id where 1 = 1
+  	<if test="companyId != null and companyId != '' ">
+   		and oi.company_id = #{companyId,jdbcType=BIGINT}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and oi.id = #{outletsId,jdbcType=BIGINT}
+   	</if>
+  </select>
+  
+</mapper>

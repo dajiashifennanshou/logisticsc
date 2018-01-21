@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '24'
+
+    defaultConfig {
+        applicationId "com.wrt.xinsilu"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 2
+        versionName "1.0.0"
+        resValue "string", "tray__authority", "${applicationId}.tray"
+        multiDexEnabled true
+
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+//        xiaomi {}
+        qihu360 {}
+        baidu {}
+//        wandoujia {}
+        meizu {}
+        yingyongbao {}
+        huawei {}
+
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile files('libs/locSDK_6.23.jar')
+    compile files('libs/jpush-android-2.1.7.jar')
+    compile project(':llibrarys')
+    compile project(':leristres')
+    compile project(':wx_resource')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:design:24.1.1'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+    compile 'com.umeng:fb:5.4.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcInGoodsDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcInGoods"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,inStorageId,goodsName,dealerId,model,wayBillNo,goodsBrand,goodsType,goodsNum,groupCount,pack,vender,weight,volume,elseExplan,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcInGoods" > 
+		select  <include refid="Base_Column_List" />  from yc_in_goods where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcInGoods" > 
+		select  count(1)  from yc_in_goods  where 1=1
+		<if test="wayBillNo !=null"> 
+			and wayBillNo=#{wayBillNo}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_in_goods where 1=1
+		
+		<if test="wayBillNo !=null"> 
+			and wayBillNo=#{wayBillNo}
+		</if>
+		 order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcInGoods"> 
+		delete from yc_in_goods where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcInGoods" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_in_goods  
+		(inStorageId,goodsName,dealerId,model,wayBillNo,goodsBrand,goodsType,goodsNum,groupCount,pack,vender,weight,volume,elseExplan,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{inStorageId},#{goodsName},#{dealerId},#{model},#{wayBillNo},#{goodsBrand},#{goodsType},#{goodsNum},#{groupCount},#{pack},#{vender},#{weight},#{volume},#{elseExplan},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcInGoods">   
+	update YcInGoods 
+	<set> 
+		<if test="inStorageId !=null"> 
+			inStorageId=#{inStorageId},
+		</if>
+		<if test="goodsName !=null"> 
+			goodsName=#{goodsName},
+		</if>
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="goodsBrand !=null"> 
+			goodsBrand=#{goodsBrand},
+		</if>
+		<if test="goodsType !=null"> 
+			goodsType=#{goodsType},
+		</if>
+		<if test="goodsNum !=null"> 
+			goodsNum=#{goodsNum},
+		</if>
+		<if test="groupCount !=null"> 
+			groupCount=#{groupCount},
+		</if>
+		<if test="wayBillNo !=null"> 
+			wayBillNo=#{wayBillNo},
+		</if>
+		<if test="model !=null"> 
+			model=#{model},
+		</if>
+		<if test="pack !=null"> 
+			pack=#{pack},
+		</if>
+		<if test="vender !=null"> 
+			vender=#{vender},
+		</if>
+		<if test="weight !=null"> 
+			weight=#{weight},
+		</if>
+		<if test="volume !=null"> 
+			volume=#{volume},
+		</if>
+		<if test="elseExplan !=null"> 
+			elseExplan=#{elseExplan},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

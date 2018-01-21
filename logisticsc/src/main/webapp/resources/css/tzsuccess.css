@@ -1,0 +1,57 @@
+.pro-bg1{
+	background: #fff;
+	padding-bottom: 20px;
+}
+.un-word{
+	margin-top: 10px;
+}
+.tztbiao{
+	width: 300px;
+	height: 61px;
+	line-height: 61px;
+	background: url(../img/tzsuccess.png) no-repeat left center;
+	font-size: 24px;
+	text-indent: 72px;
+	margin: 40px auto 0;
+}
+.tzsbtn{
+	width: 274px;
+	margin: 30px auto 0;
+}
+.tz-in,.tz-gr{
+	/*padding: 8px 10px;*/
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	border-radius: 4px;
+	background: #F55800;
+	color: #fff;
+	letter-spacing: 1px;
+	float: left;
+}
+.tz-in:hover,.tz-gr:hover{
+	background: #FF5F08!important;
+	color: #fff;
+}
+.tz-gr{
+	margin-left: 68px;
+	letter-spacing: normal;
+	/*border: 1px solid #ddd;
+	background: #F5F5F5;
+	color: #333;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

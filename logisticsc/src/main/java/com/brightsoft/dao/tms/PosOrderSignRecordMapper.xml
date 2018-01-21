@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.PosOrderSignRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PosOrderSignRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="employee_id" property="employeeId" jdbcType="VARCHAR" />
+    <result column="pos_sn" property="posSn" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR" />
+    <result column="pay_type_msg" property="payTypeMsg" jdbcType="VARCHAR" />
+    <result column="pay_method" property="payMethod" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="sign_self_flag" property="signSelfFlag" jdbcType="VARCHAR" />
+    <result column="sign_name" property="signName" jdbcType="VARCHAR" />
+    <result column="sign_tel" property="signTel" jdbcType="VARCHAR" />
+    <result column="customer_no" property="customerNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, employee_id, pos_sn, order_no, pay_type_code, pay_type_msg, pay_method, amount, 
+    sign_self_flag, sign_name, sign_tel, customer_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_pos_order_sign_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_pos_order_sign_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PosOrderSignRecord" >
+    insert into tms_pos_order_sign_record (id, employee_id, pos_sn, 
+      order_no, pay_type_code, pay_type_msg, 
+      pay_method, amount, sign_self_flag, 
+      sign_name, sign_tel, customer_no
+      )
+    values (#{id,jdbcType=BIGINT}, #{employeeId,jdbcType=VARCHAR}, #{posSn,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=VARCHAR}, #{payTypeCode,jdbcType=VARCHAR}, #{payTypeMsg,jdbcType=VARCHAR}, 
+      #{payMethod,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, #{signSelfFlag,jdbcType=VARCHAR}, 
+      #{signName,jdbcType=VARCHAR}, #{signTel,jdbcType=VARCHAR}, #{customerNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PosOrderSignRecord" >
+    insert into tms_pos_order_sign_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="posSn != null" >
+        pos_sn,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="payTypeCode != null" >
+        pay_type_code,
+      </if>
+      <if test="payTypeMsg != null" >
+        pay_type_msg,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="signSelfFlag != null" >
+        sign_self_flag,
+      </if>
+      <if test="signName != null" >
+        sign_name,
+      </if>
+      <if test="signTel != null" >
+        sign_tel,
+      </if>
+      <if test="customerNo != null" >
+        customer_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSn != null" >
+        #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeCode != null" >
+        #{payTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeMsg != null" >
+        #{payTypeMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="signSelfFlag != null" >
+        #{signSelfFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="signName != null" >
+        #{signName,jdbcType=VARCHAR},
+      </if>
+      <if test="signTel != null" >
+        #{signTel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PosOrderSignRecord" >
+    update tms_pos_order_sign_record
+    <set >
+      <if test="employeeId != null" >
+        employee_id = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="posSn != null" >
+        pos_sn = #{posSn,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeCode != null" >
+        pay_type_code = #{payTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payTypeMsg != null" >
+        pay_type_msg = #{payTypeMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="signSelfFlag != null" >
+        sign_self_flag = #{signSelfFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="signName != null" >
+        sign_name = #{signName,jdbcType=VARCHAR},
+      </if>
+      <if test="signTel != null" >
+        sign_tel = #{signTel,jdbcType=VARCHAR},
+      </if>
+      <if test="customerNo != null" >
+        customer_no = #{customerNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PosOrderSignRecord" >
+    update tms_pos_order_sign_record
+    set employee_id = #{employeeId,jdbcType=VARCHAR},
+      pos_sn = #{posSn,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      pay_type_code = #{payTypeCode,jdbcType=VARCHAR},
+      pay_type_msg = #{payTypeMsg,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      sign_self_flag = #{signSelfFlag,jdbcType=VARCHAR},
+      sign_name = #{signName,jdbcType=VARCHAR},
+      sign_tel = #{signTel,jdbcType=VARCHAR},
+      customer_no = #{customerNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

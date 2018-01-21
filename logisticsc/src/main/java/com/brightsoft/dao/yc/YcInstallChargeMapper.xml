@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcInstallChargeDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcInstallCharge"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,installCharge,deliverCharge,branchNo,discount,firstLvCode,firstLvName,firstLvExplan,firstLvTips,twoLvCode,towLvName,twoLvExplan,twoLvTips,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<sql id="Base_Column_List2"> 
+		deliverCharge,installCharge,branchNo,firstLvCode,firstLvName,twoLvCode,towLvName
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcInstallCharge" > 
+		select  <include refid="Base_Column_List" />  from yc_install_charge where 1=1
+		<if test="id !=null"> 
+			and id=#{id}
+		</if>
+		<if test="firstLvCode !=null"> 
+			and firstLvCode=#{firstLvCode}
+		</if>
+		<if test="twoLvCode !=null"> 
+			and twoLvCode=#{twoLvCode}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcInstallCharge" > 
+		select  count(1)  from yc_install_charge where 1=1
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_install_charge where 1=1
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getYcInstallCostBy" resultMap="BaseResultMap" > 
+		select <include refid="Base_Column_List2" /> from yc_install_charge where FIND_IN_SET(twoLvCode,#{param1}) and branchNo=#{param2}
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcInstallCharge"> 
+		delete from yc_install_charge where id=#{id} 
+	</delete> 
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcStorageBranch"> 
+		delete from yc_install_charge where id in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcInstallCharge" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_install_charge  
+		(installCharge,deliverCharge,branchNo,discount,firstLvCode,firstLvName,firstLvExplan,firstLvTips,twoLvCode,towLvName,twoLvExplan,twoLvTips,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{installCharge},#{deliverCharge},#{branchNo},#{discount},#{firstLvCode},#{firstLvName},#{firstLvExplan},#{firstLvTips},#{twoLvCode},#{towLvName},#{twoLvExplan},#{twoLvTips},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcInstallCharge">   
+	update yc_install_charge 
+	<set> 
+		<if test="installCharge !=null"> 
+			installCharge=#{installCharge},
+		</if>
+		<if test="deliverCharge !=null"> 
+			deliverCharge=#{deliverCharge},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="discount !=null"> 
+			discount=#{discount},
+		</if>
+		<if test="firstLvCode !=null"> 
+			firstLvCode=#{firstLvCode},
+		</if>
+		<if test="firstLvName !=null"> 
+			firstLvName=#{firstLvName},
+		</if>
+		<if test="firstLvExplan !=null"> 
+			firstLvExplan=#{firstLvExplan},
+		</if>
+		<if test="firstLvTips !=null"> 
+			firstLvTips=#{firstLvTips},
+		</if>
+		<if test="twoLvCode !=null"> 
+			twoLvCode=#{twoLvCode},
+		</if>
+		<if test="towLvName !=null"> 
+			towLvName=#{towLvName},
+		</if>
+		<if test="twoLvExplan !=null"> 
+			twoLvExplan=#{twoLvExplan},
+		</if>
+		<if test="twoLvTips !=null"> 
+			twoLvTips=#{twoLvTips},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

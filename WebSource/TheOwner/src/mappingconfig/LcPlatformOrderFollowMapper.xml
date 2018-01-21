@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ILcPlatformOrderFollowDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformOrderFollow"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,order_number,way_bill_number,status,handle_time,handle_info,operate_person
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformOrderFollow" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_follow where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.LcPlatformOrderFollow" > 
+		select  count(1)  from lc_platform_order_follow 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_follow order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderFollow"> 
+		delete from lc_platform_order_follow where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderFollow" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_follow  
+		(order_number,way_bill_number,status,handle_time,handle_info,operate_person) 
+		values ( #{order_number},#{way_bill_number},#{status},#{handle_time},#{handle_info},#{operate_person} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderFollow">   
+	update lc_platform_order_follow 
+	<set> 
+		<if test="order_number !=null"> 
+			order_number=#{order_number},
+		</if>
+		<if test="way_bill_number !=null"> 
+			way_bill_number=#{way_bill_number},
+		</if>
+		<if test="status !=null"> 
+			status=#{status},
+		</if>
+		<if test="handle_time !=null"> 
+			handle_time=#{handle_time},
+		</if>
+		<if test="handle_info !=null"> 
+			handle_info=#{handle_info},
+		</if>
+		<if test="operate_person !=null"> 
+			operate_person=#{operate_person}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

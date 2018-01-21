@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.TransOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.TransOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="lading_id" property="ladingId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="start_outlets" property="startOutlets" jdbcType="BIGINT" />
+    <result column="target_outlets" property="targetOutlets" jdbcType="BIGINT" />
+    <result column="target_province" property="targetProvince" jdbcType="VARCHAR" />
+    <result column="target_city" property="targetCity" jdbcType="VARCHAR" />
+    <result column="target_county" property="targetCounty" jdbcType="VARCHAR" />
+    <result column="consignor" property="consignor" jdbcType="VARCHAR" />
+    <result column="consignor_company" property="consignorCompany" jdbcType="VARCHAR" />
+    <result column="consignor_mobile" property="consignorMobile" jdbcType="VARCHAR" />
+    <result column="consignor_address" property="consignorAddress" jdbcType="VARCHAR" />
+    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
+    <result column="consignee_company" property="consigneeCompany" jdbcType="VARCHAR" />
+    <result column="consignee_mobile" property="consigneeMobile" jdbcType="VARCHAR" />
+    <result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+    <result column="distribution_mode" property="distributionMode" jdbcType="VARCHAR" />
+    <result column="receipt_slip" property="receiptSlip" jdbcType="INTEGER" />
+    <result column="receipt_slip_num" property="receiptSlipNum" jdbcType="INTEGER" />
+    <result column="single_plane_cost_id" property="singlePlaneCostId" jdbcType="BIGINT" />
+    <result column="pay_method" property="payMethod" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, lading_id, order_id, start_outlets, target_outlets, target_province, target_city, 
+    target_county, consignor, consignor_company, consignor_mobile, consignor_address, 
+    consignee, consignee_company, consignee_mobile, consignee_address, distribution_mode, 
+    receipt_slip, receipt_slip_num, single_plane_cost_id, pay_method, total
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_trans_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_trans_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.TransOrder" >
+    insert into tms_trans_order (id, lading_id, order_id, 
+      start_outlets, target_outlets, target_province, 
+      target_city, target_county, consignor, 
+      consignor_company, consignor_mobile, consignor_address, 
+      consignee, consignee_company, consignee_mobile, 
+      consignee_address, distribution_mode, receipt_slip, 
+      receipt_slip_num, single_plane_cost_id, pay_method, 
+      total)
+    values (#{id,jdbcType=BIGINT}, #{ladingId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
+      #{startOutlets,jdbcType=BIGINT}, #{targetOutlets,jdbcType=BIGINT}, #{targetProvince,jdbcType=VARCHAR}, 
+      #{targetCity,jdbcType=VARCHAR}, #{targetCounty,jdbcType=VARCHAR}, #{consignor,jdbcType=VARCHAR}, 
+      #{consignorCompany,jdbcType=VARCHAR}, #{consignorMobile,jdbcType=VARCHAR}, #{consignorAddress,jdbcType=VARCHAR}, 
+      #{consignee,jdbcType=VARCHAR}, #{consigneeCompany,jdbcType=VARCHAR}, #{consigneeMobile,jdbcType=VARCHAR}, 
+      #{consigneeAddress,jdbcType=VARCHAR}, #{distributionMode,jdbcType=VARCHAR}, #{receiptSlip,jdbcType=INTEGER}, 
+      #{receiptSlipNum,jdbcType=INTEGER}, #{singlePlaneCostId,jdbcType=BIGINT}, #{payMethod,jdbcType=VARCHAR}, 
+      #{total,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.TransOrder" >
+    insert into tms_trans_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ladingId != null" >
+        lading_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets,
+      </if>
+      <if test="targetOutlets != null" >
+        target_outlets,
+      </if>
+      <if test="targetProvince != null" >
+        target_province,
+      </if>
+      <if test="targetCity != null" >
+        target_city,
+      </if>
+      <if test="targetCounty != null" >
+        target_county,
+      </if>
+      <if test="consignor != null" >
+        consignor,
+      </if>
+      <if test="consignorCompany != null" >
+        consignor_company,
+      </if>
+      <if test="consignorMobile != null" >
+        consignor_mobile,
+      </if>
+      <if test="consignorAddress != null" >
+        consignor_address,
+      </if>
+      <if test="consignee != null" >
+        consignee,
+      </if>
+      <if test="consigneeCompany != null" >
+        consignee_company,
+      </if>
+      <if test="consigneeMobile != null" >
+        consignee_mobile,
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address,
+      </if>
+      <if test="distributionMode != null" >
+        distribution_mode,
+      </if>
+      <if test="receiptSlip != null" >
+        receipt_slip,
+      </if>
+      <if test="receiptSlipNum != null" >
+        receipt_slip_num,
+      </if>
+      <if test="singlePlaneCostId != null" >
+        single_plane_cost_id,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="ladingId != null" >
+        #{ladingId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="startOutlets != null" >
+        #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="targetOutlets != null" >
+        #{targetOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="targetProvince != null" >
+        #{targetProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="targetCity != null" >
+        #{targetCity,jdbcType=VARCHAR},
+      </if>
+      <if test="targetCounty != null" >
+        #{targetCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consignor != null" >
+        #{consignor,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCompany != null" >
+        #{consignorCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorMobile != null" >
+        #{consignorMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorAddress != null" >
+        #{consignorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCompany != null" >
+        #{consigneeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeMobile != null" >
+        #{consigneeMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionMode != null" >
+        #{distributionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptSlip != null" >
+        #{receiptSlip,jdbcType=INTEGER},
+      </if>
+      <if test="receiptSlipNum != null" >
+        #{receiptSlipNum,jdbcType=INTEGER},
+      </if>
+      <if test="singlePlaneCostId != null" >
+        #{singlePlaneCostId,jdbcType=BIGINT},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.TransOrder" >
+    update tms_trans_order
+    <set >
+      <if test="ladingId != null" >
+        lading_id = #{ladingId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="targetOutlets != null" >
+        target_outlets = #{targetOutlets,jdbcType=BIGINT},
+      </if>
+      <if test="targetProvince != null" >
+        target_province = #{targetProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="targetCity != null" >
+        target_city = #{targetCity,jdbcType=VARCHAR},
+      </if>
+      <if test="targetCounty != null" >
+        target_county = #{targetCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consignor != null" >
+        consignor = #{consignor,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCompany != null" >
+        consignor_company = #{consignorCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorMobile != null" >
+        consignor_mobile = #{consignorMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorAddress != null" >
+        consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null" >
+        consignee = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCompany != null" >
+        consignee_company = #{consigneeCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeMobile != null" >
+        consignee_mobile = #{consigneeMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="distributionMode != null" >
+        distribution_mode = #{distributionMode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptSlip != null" >
+        receipt_slip = #{receiptSlip,jdbcType=INTEGER},
+      </if>
+      <if test="receiptSlipNum != null" >
+        receipt_slip_num = #{receiptSlipNum,jdbcType=INTEGER},
+      </if>
+      <if test="singlePlaneCostId != null" >
+        single_plane_cost_id = #{singlePlaneCostId,jdbcType=BIGINT},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.TransOrder" >
+    update tms_trans_order
+    set lading_id = #{ladingId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
+      start_outlets = #{startOutlets,jdbcType=BIGINT},
+      target_outlets = #{targetOutlets,jdbcType=BIGINT},
+      target_province = #{targetProvince,jdbcType=VARCHAR},
+      target_city = #{targetCity,jdbcType=VARCHAR},
+      target_county = #{targetCounty,jdbcType=VARCHAR},
+      consignor = #{consignor,jdbcType=VARCHAR},
+      consignor_company = #{consignorCompany,jdbcType=VARCHAR},
+      consignor_mobile = #{consignorMobile,jdbcType=VARCHAR},
+      consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+      consignee = #{consignee,jdbcType=VARCHAR},
+      consignee_company = #{consigneeCompany,jdbcType=VARCHAR},
+      consignee_mobile = #{consigneeMobile,jdbcType=VARCHAR},
+      consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      distribution_mode = #{distributionMode,jdbcType=VARCHAR},
+      receipt_slip = #{receiptSlip,jdbcType=INTEGER},
+      receipt_slip_num = #{receiptSlipNum,jdbcType=INTEGER},
+      single_plane_cost_id = #{singlePlaneCostId,jdbcType=BIGINT},
+      pay_method = #{payMethod,jdbcType=VARCHAR},
+      total = #{total,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

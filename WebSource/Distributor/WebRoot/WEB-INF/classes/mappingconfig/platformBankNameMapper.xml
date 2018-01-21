@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.Dao.PlatformBankNameDao" >
+  <resultMap id="BaseResultMap" type="com.yc.Entity.PlatformBankName">
+  	<id column="id" property="id" jdbcType="BIGINT" />
+    <result column="branch_name" property="branchName" jdbcType="VARCHAR" />
+    <result column="contact_number" property="contactNumber" jdbcType="VARCHAR" />
+    <result column="head_name" property="headName" jdbcType="VARCHAR" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, branch_name, contact_number, head_name, province_name, city_name
+  </sql>
+  <select id="selectProvinceName" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankName">
+    select province_name from lc_platform_bank_name GROUP BY province_name order by id asc;
+  </select>
+  <select id="selectCityName" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankName">
+    select city_name from lc_platform_bank_name where province_name=#{provinceName} GROUP BY city_name order by id asc;
+  </select>
+  <select id="selectHeadName" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankName">
+    select head_name from lc_platform_bank_name where province_name=#{provinceName} and city_name=#{cityName} GROUP BY head_name order by id asc;
+  </select>
+  <select id="selectBranchName" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankName">
+   select branch_name from lc_platform_bank_name  
+   where  province_name=#{provinceName} 
+   and city_name=#{cityName}
+   and head_name=#{headName} 
+   GROUP BY branch_name order by id asc;
+  </select>
+</mapper>

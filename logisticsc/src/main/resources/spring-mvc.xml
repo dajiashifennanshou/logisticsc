@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 自动扫描controller包下的所有类，如果@Controller注入为bean -->
+	<context:component-scan base-package="com.brightsoft.controller" />
+	
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- json转换器 -->
+				<ref bean="mappingJacksonHttpMessageConverter" />
+				
+			</list>
+		</property>
+		<property name="webBindingInitializer">  
+	        <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">  
+	            <property name="conversionService">  
+	                <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>  
+	            </property>  
+	        </bean>  
+	    </property>  
+	</bean>
+
+	<bean id="configProps" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	    <property name="locations">
+	        <list><value>classpath:project.properties</value></list>
+	    </property>
+	</bean>
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views" />
+		<property name="suffix" value=".jsp" />
+		<property name="contentType" value="text/html;charset=UTF-8"/>
+		<property name="order" value="1"/>
+		<property name="exposedContextBeanNames">
+        	<list><value>configProps</value></list>
+    	</property>
+	</bean>
+	
+	<!-- 配置多文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			<!-- 上传文件大小限制为31M，31*1024*1024 -->
+			<value>32505856</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+	<context:annotation-config />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 配置静态资源的访问 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	
+	<!-- 自定义转换器 -->
+    <!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
+            <property name="converters">
+                <list>
+                    <bean class="com.brightsoft.utils.dateConvertor.DateFormat"></bean>
+                </list>
+            </property>
+    </bean> -->  
+    <!-- 注册转化器 -->
+    <!-- <mvc:annotation-driven conversion-service="conversionService" /> -->
+	
+   <!-- 拦截器配置 -->  
+    <!-- <mvc:interceptors>  
+      <mvc:interceptor>  
+        <mvc:mapping path="/*/*"/>  
+        <bean class="com.brightsoft.controller.base.InterceptorController">  
+          <property name="allowUrls">  
+            <list>  
+              平台首页  
+               <value>/homeCenter/topInsurance.shtml</value>
+              <value>/homeCenter/toNewsCompanyIndex.shtml</value>
+              <value>/homeCenter/toNewsinfoIndex.shtml</value>
+              <value>/homeCenter/getPartner.shtml</value>
+              <value>/homeCenter/getHotLine.shtml</value>
+              <value>/homeCenter/getRecentlyOrd.shtml</value>
+              <value>/homeCenter/getUserCompany.shtml</value>
+              <value>/homeCenter/getUserCount.shtml</value>
+              <value>/homeCenter/getHomeOrderCity.shtml</value>
+              <value>/homeCenter/getNews.shtml</value>
+              <value>/homeCenter/getNewsInfo.shtml</value>
+              <value>/homeCenter/getNewsList.shtml</value>
+              <value>/deliverGoods/placeOrder.shtml</value>
+              <value>/deliverGoods/doCollectionLine.shtml</value>
+              <value>/deliverGoods/deliverGoods.shtml</value>
+              <value>/orderTracking/toorderorderTracking.shtml</value>
+              <value>/orderCenter/getXzqhInfo.shtml</value>
+              <value>/tms/outlets/ajax/xzqh.shtml</value>
+              注册  登录 退出
+              <value>/user/jumpreGister.shtml</value>
+              <value>/user/register.shtml</value>
+              <value>/user/outUser.shtml</value>
+              <value>/user/getVerCode.shtml</value>
+              <value>/user/loginUser.shtml</value>
+              <value>/user/verificationMessage.shtml</value>
+              <value>/user/getCode.shtml</value>
+              <value>/user/getUser.shtml</value>
+              <value>/user/jumpreForgetPassword.shtml</value>
+              <value>/user/verificationForgetPasswordCode.shtml</value>
+              <value>/user/verificationForgetPassword.shtml</value>
+              我要发货
+              <value>/deliverGoods/getListorderDeliver.shtml</value>
+              <value>/company/toorderPersonalcompany.shtml</value>
+              <value>/orderCenter/getOultesInfo.shtml</value>
+              <value>/deliverGoods/getCollectionLineId.shtml</value>
+              订单跟踪
+              <value>/deliverGoods/getCollectionLineId.shtml</value>  
+              <value>/orderTracking/getOrderTracking.shtml</value> 
+              保险业务
+              <value>/insurance/toInsurance.shtml</value>  
+              订单中心
+              <value>/orderCenter/toorderlistpage.shtml</value>  
+              个人中心
+              <value>/personalCenter/toorderPersonal</value>  
+              申请中心
+              <value>/applyCenter/toorderEnterpriseFlow.shtml</value>  
+              <value>/applyCenter/toorderProviderFlow.shtml</value> 
+              公司店铺
+              <value>/company/getOutletsInfoId.shtml</value>
+              <value>/company/getCompanInfo.shtml</value>
+              <value>/company/getOutletsInfo.shtml</value>
+              <value>/company/getListCompanCondition.shtml</value>
+              <value>/company/getLogisticsCompany.shtml</value>
+              <value>/img/retrive.shtml</value>
+              帮助中心
+              <value>/helpCenter/toHelpCenter.shtml</value>
+              <value>/helpCenter/getHelp.shtml</value>
+       		  <value>/helpCenter/getHelpContent.shtml</value>
+       		  
+       		  <value>/insurance/getInsBackData.shtml</value>
+       		  <value>/xzqh/getxzqhinfo.shtml</value>
+            </list>  
+          </property>  
+        </bean>  
+      </mvc:interceptor>  
+    </mvc:interceptors>   -->
+    
+      <!-- 自定义异常处理，SimpleMappingExceptionResolver这个类可以是个空类，但是要写，方便在java代码里面使用 -->  
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+      <property name="exceptionMappings">  
+        <props>  
+          <prop key="com.brightsoft.controller.base.SessionTimeoutException">redirect:/platform-login.jsp</prop>  
+        </props>  
+      </property>  
+    </bean>
+    
+    <mvc:interceptors>
+    	<bean class="com.brightsoft.repeat.RepeatSubmissionInterceptor"></bean>
+    </mvc:interceptors>
+</beans>

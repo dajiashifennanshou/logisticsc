@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.receiveMoneyRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.receiveMoneyRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="cost_type" property="costType" jdbcType="INTEGER" />
+    <result column="pay_company" property="payCompany" jdbcType="VARCHAR" />
+    <result column="pay_person" property="payPerson" jdbcType="VARCHAR" />
+    <result column="should_receive_money" property="shouldReceiveMoney" jdbcType="DOUBLE" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="actual_receive_money" property="actualReceiveMoney" jdbcType="DOUBLE" />
+    <result column="is_completed" property="isCompleted" jdbcType="INTEGER" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_number, cost_type, pay_company, pay_person, should_receive_money, pay_method, 
+    actual_receive_money, is_completed, outlets_id, operate_person, operate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receive_money_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.receiveMoneyRecord" >
+    insert into tms_receive_money_record (id, way_bill_number, cost_type, 
+      pay_company, pay_person, should_receive_money, 
+      pay_method, actual_receive_money, is_completed, 
+      outlets_id, operate_person, operate_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{wayBillNumber,jdbcType=VARCHAR}, #{costType,jdbcType=INTEGER}, 
+      #{payCompany,jdbcType=VARCHAR}, #{payPerson,jdbcType=VARCHAR}, #{shouldReceiveMoney,jdbcType=DOUBLE}, 
+      #{payMethod,jdbcType=INTEGER}, #{actualReceiveMoney,jdbcType=DOUBLE}, #{isCompleted,jdbcType=INTEGER}, 
+      #{outletsId,jdbcType=BIGINT}, #{operatePerson,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.receiveMoneyRecord" >
+    insert into tms_receive_money_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="costType != null" >
+        cost_type,
+      </if>
+      <if test="payCompany != null" >
+        pay_company,
+      </if>
+      <if test="payPerson != null" >
+        pay_person,
+      </if>
+      <if test="shouldReceiveMoney != null" >
+        should_receive_money,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="actualReceiveMoney != null" >
+        actual_receive_money,
+      </if>
+      <if test="isCompleted != null" >
+        is_completed,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costType != null" >
+        #{costType,jdbcType=INTEGER},
+      </if>
+      <if test="payCompany != null" >
+        #{payCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="payPerson != null" >
+        #{payPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveMoney != null" >
+        #{shouldReceiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="actualReceiveMoney != null" >
+        #{actualReceiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.receiveMoneyRecord" >
+    update tms_receive_money_record
+    <set >
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costType != null" >
+        cost_type = #{costType,jdbcType=INTEGER},
+      </if>
+      <if test="payCompany != null" >
+        pay_company = #{payCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="payPerson != null" >
+        pay_person = #{payPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="shouldReceiveMoney != null" >
+        should_receive_money = #{shouldReceiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="actualReceiveMoney != null" >
+        actual_receive_money = #{actualReceiveMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="isCompleted != null" >
+        is_completed = #{isCompleted,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.receiveMoneyRecord" >
+    update tms_receive_money_record
+    set way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      cost_type = #{costType,jdbcType=INTEGER},
+      pay_company = #{payCompany,jdbcType=VARCHAR},
+      pay_person = #{payPerson,jdbcType=VARCHAR},
+      should_receive_money = #{shouldReceiveMoney,jdbcType=DOUBLE},
+      pay_method = #{payMethod,jdbcType=INTEGER},
+      actual_receive_money = #{actualReceiveMoney,jdbcType=DOUBLE},
+      is_completed = #{isCompleted,jdbcType=INTEGER},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByWayBillNumbers" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_record
+    where way_bill_number in 
+    <foreach collection="wayBillNumbers" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </select>
+</mapper>

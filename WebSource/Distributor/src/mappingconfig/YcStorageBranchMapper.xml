@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcStorageBranchDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcStorageBranch"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,branchNo,branchName,joinType,branchArea,useArea,province,city,county,town,branchType,masterId,createTime,createUser,updateTime,updateUser,remark
+	</sql>
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcStorageBranch" > 
+		select  <include refid="Base_Column_List" />  from yc_storage_branch where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcStorageBranch" > 
+		SELECT COUNT(1) FROM yc_storage_branch sb INNER JOIN yc_employee emp ON sb.masterId=emp.id 
+		<if test="branchName!=null">
+			<bind name="bName" value="'%'+branchName+'%'"/>
+			and sb.branchName like #{bName}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		SELECT sb.id,sb.branchNo,sb.branchName,sb.joinType,sb.branchArea,sb.useArea,sb.province,sb.city,sb.county,sb.town,sb.branchType,sb.masterId,sb.remark,emp.employeeName,emp.phone FROM yc_storage_branch sb INNER JOIN yc_employee emp ON sb.masterId=emp.id 
+		<if test="branchName!=null">
+			<bind name="bName" value="'%'+branchName+'%'"/>
+			and sb.branchName like #{bName}
+		</if>
+		order by sb.id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcStorageBranch"> 
+		delete from yc_storage_branch where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcStorageBranch" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_storage_branch  
+		(branchNo,branchName,joinType,branchArea,province,city,county,town,branchType,masterId,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{branchNo},#{branchName},#{joinType},#{branchArea},#{province},#{city},#{county},#{town},#{branchType},#{masterId},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcStorageBranch">   
+	update yc_storage_branch 
+	<set> 
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="branchName !=null"> 
+			branchName=#{branchName},
+		</if>
+		<if test="joinType !=null"> 
+			joinType=#{joinType},
+		</if>
+		<if test="branchArea !=null"> 
+			branchArea=#{branchArea},
+		</if>
+		<if test="useArea !=null"> 
+			useArea=#{useArea},
+		</if>
+		<if test="province !=null"> 
+			province=#{province},
+		</if>
+		<if test="city !=null"> 
+			city=#{city},
+		</if>
+		<if test="county !=null"> 
+			county=#{county},
+		</if>
+		<if test="town !=null"> 
+			town=#{town},
+		</if>
+		<if test="branchType !=null"> 
+			branchType=#{branchType},
+		</if>
+		<if test="masterId !=null"> 
+			masterId=#{masterId},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+	<select id="getBranchNoList" resultMap="BaseResultMap">
+		select branchNo,branchName from yc_storage_branch
+	</select>
+</mapper> 
+

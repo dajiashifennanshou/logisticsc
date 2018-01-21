@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserApply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="apply_name" property="applyName" jdbcType="VARCHAR" />
+    <result column="apply_type" property="applyType" jdbcType="INTEGER" />
+    <result column="apply_state" property="applyState" jdbcType="INTEGER" />
+    <result column="apply_feedback" property="applyFeedback" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+     <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, apply_name, apply_type, apply_state, apply_feedback, user_id,version,time
+  </sql>
+  	<!-- 查看用户是否申请 -->
+   <select id="selectMacState" resultType="int">
+  	 select CASE WHEN max(apply_state) IS NULL THEN 1 ELSE max(apply_state) END from lc_platform_user_apply 
+    where user_id = #{userId,jdbcType=BIGINT}
+    and id=(select max(id)from lc_platform_user_apply where user_id = #{userId,jdbcType=BIGINT}
+   );
+  </select>
+  <!-- 用户申请 -->
+  <insert id="inserPlatformUserApply" useGeneratedKeys="true" keyProperty="id" parameterType="com.brightsoft.model.PlatformUserApply" >
+    insert into lc_platform_user_apply (id, apply_name, apply_type, 
+      apply_state, user_id,version,time
+      )
+    values (#{id,jdbcType=BIGINT}, #{applyName,jdbcType=VARCHAR}, #{applyType,jdbcType=INTEGER}, 
+      #{applyState,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{version,jdbcType=BIGINT},#{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_apply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_apply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from lc_platform_user_apply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.brightsoft.model.PlatformUserApply" >
+    insert into lc_platform_user_apply (id, apply_name, apply_type, 
+      apply_state, apply_feedback, user_id,version,time
+      )
+    values (#{id,jdbcType=BIGINT}, #{applyName,jdbcType=VARCHAR}, #{applyType,jdbcType=INTEGER}, 
+      #{applyState,jdbcType=INTEGER}, #{applyFeedback,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{version,jdbcType=BIGINT},#{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserApply" >
+    insert into lc_platform_user_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="applyName != null" >
+        apply_name,
+      </if>
+      <if test="applyType != null" >
+        apply_type,
+      </if>
+      <if test="applyState != null" >
+        apply_state,
+      </if>
+      <if test="applyFeedback != null" >
+        apply_feedback,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="time != null">
+      	time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="applyName != null" >
+        #{applyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null" >
+        #{applyType,jdbcType=INTEGER},
+      </if>
+      <if test="applyState != null" >
+        #{applyState,jdbcType=INTEGER},
+      </if>
+      <if test="applyFeedback != null" >
+        #{applyFeedback,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="time != null">
+      	#{time,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserApply" >
+    update lc_platform_user_apply
+    <set >
+      <if test="applyName != null" >
+        apply_name = #{applyName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyType != null" >
+        apply_type = #{applyType,jdbcType=INTEGER},
+      </if>
+      <if test="applyState != null" >
+        apply_state = #{applyState,jdbcType=INTEGER},
+      </if>
+      <if test="applyFeedback != null" >
+        apply_feedback = #{applyFeedback,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="time != null">
+      	time = #{time,jdbcType=TIMESTAMP}
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserApply" >
+    update lc_platform_user_apply
+    set apply_name = #{applyName,jdbcType=VARCHAR},
+      apply_type = #{applyType,jdbcType=INTEGER},
+      apply_state = #{applyState,jdbcType=INTEGER},
+      apply_feedback = #{applyFeedback,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      time = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+     from lc_platform_user_apply s
+      where s.user_id = #{userId,jdbcType=BIGINT} and
+       s.id = (select max(id) from lc_platform_user_apply l where l.user_id = #{userId,jdbcType=BIGINT})
+  </select>
+</mapper>

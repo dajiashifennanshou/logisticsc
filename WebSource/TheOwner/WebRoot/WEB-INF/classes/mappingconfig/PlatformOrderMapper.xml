@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformOrderDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformOrder"></resultMap>   
+	<sql id="Base_Column_List"> 
+		total_cost,id,order_number,way_bill_number,consignor_name,consignor_province,consignor_city,consignor_county,consignor_address,consignor_phone_number,consignor_telephone,driver_name,driver_phone,vehicle_number,vehicle_type,consignee_name,consignee_province,consignee_city,consignee_county,consignee_address,consignee_phone_number,consignee_telephone,send_cargo_type,delivery_date,delivery_start_time,delivery_end_time,receive_cargo_type,is_insurance,insurance_money,receipt_type,receipt_title,receipt_company_name,pay_type,total_weight,total_volume,total_worth,advance_price,paid_price,final_price,state,order_time,user_id,tms_line_id,is_delete,is_draft,is_wait_pay,estimate_weight,estimate_volume,estimate_freight,is_confirm,take_cargo_cost,estimate_total,is_payment
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformOrder" > 
+		SELECT CASE
+		    WHEN bill.`total_cost` IS NULL 
+		    THEN bill.estimate_total_cost 
+		    ELSE bill.total_cost END AS total_cost,
+		    o.* FROM lc_platform_order AS o INNER JOIN lc_platform_order_bill AS bill ON o.`order_number`=bill.`order_number`
+		<if test="order_number !=null"> 
+			and o.order_number=#{order_number}
+		</if>
+		<if test="id !=null"> 
+			and o.id=#{id}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformOrder" > 
+		select  count(1)  from lc_platform_order where 1=1
+		<if test="state !=null"> 
+			and state=#{state}
+		</if>
+		<if test="user_id !=null"> 
+			and user_id=#{user_id}
+		</if>
+	</select> 
+	<select id="getNextId" resultType="int" > 
+		SELECT MAX(id)+1 AS id FROM lc_platform_order 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		SELECT 
+		 	CASE
+		    WHEN bill.`total_cost` IS NULL 
+		    THEN bill.estimate_total_cost 
+		    ELSE bill.total_cost END AS total_cost,
+		    o.* 
+		FROM lc_platform_order AS o INNER JOIN lc_platform_order_bill AS bill ON o.`order_number`=bill.`order_number`
+		<if test="state !=null"> 
+			and o.state=#{state}
+		</if>
+		<if test="user_id !=null"> 
+			and o.user_id=#{user_id}
+		</if>
+		order by o.id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformOrder"> 
+		delete from lc_platform_order where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformOrder" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order  
+		(order_number,way_bill_number,consignor_name,consignor_province,consignor_city,consignor_county,consignor_address,consignor_phone_number,consignor_telephone,driver_name,driver_phone,vehicle_number,vehicle_type,consignee_name,consignee_province,consignee_city,consignee_county,consignee_address,consignee_phone_number,consignee_telephone,send_cargo_type,delivery_date,delivery_start_time,delivery_end_time,receive_cargo_type,is_insurance,insurance_money,receipt_type,receipt_title,receipt_company_name,pay_type,total_weight,total_volume,total_worth,advance_price,paid_price,final_price,state,order_time,user_id,tms_line_id,is_delete,is_draft,is_wait_pay,estimate_weight,estimate_volume,estimate_freight,is_confirm,take_cargo_cost,estimate_total,is_payment) 
+		values ( #{order_number},#{way_bill_number},#{consignor_name},#{consignor_province},#{consignor_city},#{consignor_county},#{consignor_address},#{consignor_phone_number},#{consignor_telephone},#{driver_name},#{driver_phone},#{vehicle_number},#{vehicle_type},#{consignee_name},#{consignee_province},#{consignee_city},#{consignee_county},#{consignee_address},#{consignee_phone_number},#{consignee_telephone},#{send_cargo_type},#{delivery_date},#{delivery_start_time},#{delivery_end_time},#{receive_cargo_type},#{is_insurance},#{insurance_money},#{receipt_type},#{receipt_title},#{receipt_company_name},#{pay_type},#{total_weight},#{total_volume},#{total_worth},#{advance_price},#{paid_price},#{final_price},#{state},#{order_time},#{user_id},#{tms_line_id},#{is_delete},#{is_draft},#{is_wait_pay},#{estimate_weight},#{estimate_volume},#{estimate_freight},#{is_confirm},#{take_cargo_cost},#{estimate_total},#{is_payment} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformOrder">   
+	update lc_platform_order 
+	<set> 
+		<if test="order_number !=null"> 
+			order_number=#{order_number},
+		</if>
+		<if test="way_bill_number !=null"> 
+			way_bill_number=#{way_bill_number},
+		</if>
+		<if test="consignor_name !=null"> 
+			consignor_name=#{consignor_name},
+		</if>
+		<if test="consignor_province !=null"> 
+			consignor_province=#{consignor_province},
+		</if>
+		<if test="consignor_city !=null"> 
+			consignor_city=#{consignor_city},
+		</if>
+		<if test="consignor_county !=null"> 
+			consignor_county=#{consignor_county},
+		</if>
+		<if test="consignor_address !=null"> 
+			consignor_address=#{consignor_address},
+		</if>
+		<if test="consignor_phone_number !=null"> 
+			consignor_phone_number=#{consignor_phone_number},
+		</if>
+		<if test="consignor_telephone !=null"> 
+			consignor_telephone=#{consignor_telephone},
+		</if>
+		<if test="driver_name !=null"> 
+			driver_name=#{driver_name},
+		</if>
+		<if test="driver_phone !=null"> 
+			driver_phone=#{driver_phone},
+		</if>
+		<if test="vehicle_number !=null"> 
+			vehicle_number=#{vehicle_number},
+		</if>
+		<if test="vehicle_type !=null"> 
+			vehicle_type=#{vehicle_type},
+		</if>
+		<if test="consignee_name !=null"> 
+			consignee_name=#{consignee_name},
+		</if>
+		<if test="consignee_province !=null"> 
+			consignee_province=#{consignee_province},
+		</if>
+		<if test="consignee_city !=null"> 
+			consignee_city=#{consignee_city},
+		</if>
+		<if test="consignee_county !=null"> 
+			consignee_county=#{consignee_county},
+		</if>
+		<if test="consignee_address !=null"> 
+			consignee_address=#{consignee_address},
+		</if>
+		<if test="consignee_phone_number !=null"> 
+			consignee_phone_number=#{consignee_phone_number},
+		</if>
+		<if test="consignee_telephone !=null"> 
+			consignee_telephone=#{consignee_telephone},
+		</if>
+		<if test="send_cargo_type !=null"> 
+			send_cargo_type=#{send_cargo_type},
+		</if>
+		<if test="delivery_date !=null"> 
+			delivery_date=#{delivery_date},
+		</if>
+		<if test="delivery_start_time !=null"> 
+			delivery_start_time=#{delivery_start_time},
+		</if>
+		<if test="delivery_end_time !=null"> 
+			delivery_end_time=#{delivery_end_time},
+		</if>
+		<if test="receive_cargo_type !=null"> 
+			receive_cargo_type=#{receive_cargo_type},
+		</if>
+		<if test="is_insurance !=null"> 
+			is_insurance=#{is_insurance},
+		</if>
+		<if test="insurance_money !=null"> 
+			insurance_money=#{insurance_money},
+		</if>
+		<if test="receipt_type !=null"> 
+			receipt_type=#{receipt_type},
+		</if>
+		<if test="receipt_title !=null"> 
+			receipt_title=#{receipt_title},
+		</if>
+		<if test="receipt_company_name !=null"> 
+			receipt_company_name=#{receipt_company_name},
+		</if>
+		<if test="pay_type !=null"> 
+			pay_type=#{pay_type},
+		</if>
+		<if test="total_weight !=null"> 
+			total_weight=#{total_weight},
+		</if>
+		<if test="total_volume !=null"> 
+			total_volume=#{total_volume},
+		</if>
+		<if test="total_worth !=null"> 
+			total_worth=#{total_worth},
+		</if>
+		<if test="advance_price !=null"> 
+			advance_price=#{advance_price},
+		</if>
+		<if test="paid_price !=null"> 
+			paid_price=#{paid_price},
+		</if>
+		<if test="final_price !=null"> 
+			final_price=#{final_price},
+		</if>
+		<if test="state !=null"> 
+			state=#{state},
+		</if>
+		<if test="order_time !=null"> 
+			order_time=#{order_time},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id},
+		</if>
+		<if test="tms_line_id !=null"> 
+			tms_line_id=#{tms_line_id},
+		</if>
+		<if test="is_delete !=null"> 
+			is_delete=#{is_delete},
+		</if>
+		<if test="is_draft !=null"> 
+			is_draft=#{is_draft},
+		</if>
+		<if test="is_wait_pay !=null"> 
+			is_wait_pay=#{is_wait_pay},
+		</if>
+		<if test="estimate_weight !=null"> 
+			estimate_weight=#{estimate_weight},
+		</if>
+		<if test="estimate_volume !=null"> 
+			estimate_volume=#{estimate_volume},
+		</if>
+		<if test="estimate_freight !=null"> 
+			estimate_freight=#{estimate_freight},
+		</if>
+		<if test="is_confirm !=null"> 
+			is_confirm=#{is_confirm},
+		</if>
+		<if test="take_cargo_cost !=null"> 
+			take_cargo_cost=#{take_cargo_cost},
+		</if>
+		<if test="estimate_total !=null"> 
+			estimate_total=#{estimate_total},
+		</if>
+		<if test="is_payment !=null"> 
+			is_payment=#{is_payment}
+		</if>
+	</set> 
+	where 1=1
+	<if test="id!=null">
+		and id=#{id} 
+	</if>
+	<if test="order_number!=null">
+		and order_number=#{order_number}
+	</if>
+	</update> 
+</mapper> 
+

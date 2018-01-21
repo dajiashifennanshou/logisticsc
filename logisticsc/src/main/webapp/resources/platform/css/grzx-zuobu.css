@@ -1,0 +1,125 @@
+h atml,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+	margin: 0;
+	padding: 0;
+}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th {
+	text-align: left;
+	font-weight: normal;
+}
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+i,cite,em,var,address,dfn {
+	font-style: normal;
+}
+[hidefocus],summary {
+	outline: 0;
+}
+li {
+	list-style: none;
+}
+* {
+	font-size: 14px;
+	font-family: "寰蒋闆呴粦"; 
+}
+.f {
+	float: left;
+}
+.clr
+{
+	clear: both;
+}
+
+/********************************************************鍐呭****************************************************************/
+
+/**************************宸�*********************************/
+.nav-left
+{
+	width: 150px;
+	/* height: 377px; */
+	border: 1px solid #C6CDD5;
+	/* background:#FBFBFB; */
+	
+}
+.nav-left ul li
+{
+	height: 50px;
+	line-height: 50px;
+	text-align: left;
+	color: #696969;
+	position: relative;
+	padding-left: 46px;
+	border-bottom: 1px dotted #C6CDD5;
+	width: 149px;
+	font-weight: bold;
+	
+}
+.nav-left ul li .a1
+{
+	color: #80aadd;
+}
+.nav-left ul li a
+{
+	text-decoration: none;
+	color: #696969;
+	font-size: 14px;
+}
+.nav-left ul li a:hover
+{
+	color: #0055bf;;
+}
+.gr-left1,.gr-left2,.gr-left3,.gr-left4,.gr-left5,.gr-left6,.gr-left7,.gr-left8
+{
+	position: absolute;
+	top: 15px;
+	left: 16px;
+	width: 22px;
+	height: 24px;
+}
+.gr-left1
+{
+	background: url(../img/grzx-left1.png) no-repeat;
+}
+.gr-left2
+{
+	background: url(../img/grzx-left2.png) no-repeat;
+}
+.gr-left3
+{
+	background: url(../img/grzx-left3.png) no-repeat;
+}
+.gr-left4
+{
+	background: url(../img/grzx-left4.png) no-repeat;
+}
+.gr-left5
+{
+	background: url(../img/grzx-left5.png) no-repeat;
+}
+.gr-left7
+{
+	background: url(../img/grzx-left7.png) no-repeat;
+}
+.gr-left6
+{
+	background: url(../img/grzx-left6.png) no-repeat;
+}
+.gr-left8
+{
+	background: url(../img/grzx-left8.png) no-repeat;
+}
+.bg {
+	background: #80AADD;
+} 
+.bq-color {
+	color: white;
+}
+

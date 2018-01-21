@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBank" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="requestid" property="requestid" jdbcType="VARCHAR" />
+    <result column="bindmobile" property="bindmobile" jdbcType="VARCHAR" />
+    <result column="customertype" property="customertype" jdbcType="VARCHAR" />
+    <result column="signedname" property="signedname" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="businesslicence" property="businesslicence" jdbcType="VARCHAR" />
+    <result column="legalperson" property="legalperson" jdbcType="VARCHAR" />
+    <result column="minsettleamount" property="minsettleamount" jdbcType="VARCHAR" />
+    <result column="riskreserveday" property="riskreserveday" jdbcType="VARCHAR" />
+    <result column="bankaccountnumber" property="bankaccountnumber" jdbcType="VARCHAR" />
+    <result column="provincename" property="provincename" jdbcType="VARCHAR" />
+    <result column="cityname" property="cityname" jdbcType="VARCHAR" />
+    <result column="bankheadname" property="bankheadname" jdbcType="VARCHAR" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+    <result column="accountname" property="accountname" jdbcType="VARCHAR" />
+    <result column="bankaccounttype" property="bankaccounttype" jdbcType="VARCHAR" />
+    <result column="bankprovince" property="bankprovince" jdbcType="VARCHAR" />
+    <result column="bankcity" property="bankcity" jdbcType="VARCHAR" />
+    <result column="manualsettle" property="manualsettle" jdbcType="VARCHAR" />
+    <result column="deposit" property="deposit" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="id_card_front" property="idCardFront" jdbcType="VARCHAR" />
+    <result column="id_ccard_back" property="idCcardBack" jdbcType="VARCHAR" />
+    <result column="bank_card_front" property="bankCardFront" jdbcType="VARCHAR" />
+    <result column="bank_card_back" property="bankCardBack" jdbcType="VARCHAR" />
+    <result column="persou_photo" property="persouPhoto" jdbcType="VARCHAR" />
+    <result column="bussiness_license" property="bussinessLicense" jdbcType="VARCHAR" />
+    <result column="bussiness_certficates" property="bussinessCertficates" jdbcType="VARCHAR" />
+    <result column="organization_code" property="organizationCode" jdbcType="VARCHAR" />
+    <result column="tax_registron" property="taxRegistron" jdbcType="VARCHAR" />
+    <result column="bank_account_licence" property="bankAccountLicence" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="bank_time" property="bankTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="is_qualifications" property="isQualifications" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, requestid, bindmobile, customertype, signedname, linkman, idcard, businesslicence, 
+    legalperson, minsettleamount, riskreserveday, bankaccountnumber,provincename,cityname,bankheadname,bankname, accountname, 
+    bankaccounttype, bankprovince, bankcity, manualsettle, deposit, email, id_card_front, 
+    id_ccard_back, bank_card_front, bank_card_back, persou_photo, bussiness_license, 
+    bussiness_certficates, organization_code, tax_registron, bank_account_licence, state, 
+    bank_time, user_id,is_qualifications
+  </sql>
+   <select id="selectBankUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBank" >
+    insert into lc_platform_bank (id, requestid, bindmobile, 
+      customertype, signedname, linkman, 
+      idcard, businesslicence, legalperson, 
+      minsettleamount, riskreserveday, bankaccountnumber, 
+      provincename,cityname,bankheadname,bankname, accountname, bankaccounttype, 
+      bankprovince, bankcity, manualsettle, 
+      deposit, email, id_card_front, 
+      id_ccard_back, bank_card_front, bank_card_back, 
+      persou_photo, bussiness_license, bussiness_certficates, 
+      organization_code, tax_registron, bank_account_licence, 
+      state, bank_time, user_id,is_qualifications
+      )
+    values (#{id,jdbcType=BIGINT}, #{requestid,jdbcType=VARCHAR}, #{bindmobile,jdbcType=VARCHAR}, 
+      #{customertype,jdbcType=VARCHAR}, #{signedname,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{businesslicence,jdbcType=VARCHAR}, #{legalperson,jdbcType=VARCHAR}, 
+      #{minsettleamount,jdbcType=VARCHAR}, #{riskreserveday,jdbcType=VARCHAR}, #{bankaccountnumber,jdbcType=VARCHAR}, 
+      #{provincename,jdbcType=VARCHAR},#{cityname,jdbcType=VARCHAR},#{bankheadname,jdbcType=VARCHAR},#{bankname,jdbcType=VARCHAR}, #{accountname,jdbcType=VARCHAR}, #{bankaccounttype,jdbcType=VARCHAR}, 
+      #{bankprovince,jdbcType=VARCHAR}, #{bankcity,jdbcType=VARCHAR}, #{manualsettle,jdbcType=VARCHAR}, 
+      #{deposit,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{idCardFront,jdbcType=VARCHAR}, 
+      #{idCcardBack,jdbcType=VARCHAR}, #{bankCardFront,jdbcType=VARCHAR}, #{bankCardBack,jdbcType=VARCHAR}, 
+      #{persouPhoto,jdbcType=VARCHAR}, #{bussinessLicense,jdbcType=VARCHAR}, #{bussinessCertficates,jdbcType=VARCHAR}, 
+      #{organizationCode,jdbcType=VARCHAR}, #{taxRegistron,jdbcType=VARCHAR}, #{bankAccountLicence,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{bankTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT},#{isQualifications,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBank" >
+    insert into lc_platform_bank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="requestid != null" >
+        requestid,
+      </if>
+      <if test="bindmobile != null" >
+        bindmobile,
+      </if>
+      <if test="customertype != null" >
+        customertype,
+      </if>
+      <if test="signedname != null" >
+        signedname,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="businesslicence != null" >
+        businesslicence,
+      </if>
+      <if test="legalperson != null" >
+        legalperson,
+      </if>
+      <if test="minsettleamount != null" >
+        minsettleamount,
+      </if>
+      <if test="riskreserveday != null" >
+        riskreserveday,
+      </if>
+      <if test="bankaccountnumber != null" >
+        bankaccountnumber,
+      </if>
+      <if test="provincename != null" >
+        provincename,
+      </if>
+      <if test="cityname != null" >
+        cityname,
+      </if>
+       <if test="bankheadname != null" >
+        bankheadname,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="accountname != null" >
+        accountname,
+      </if>
+      <if test="bankaccounttype != null" >
+        bankaccounttype,
+      </if>
+      <if test="bankprovince != null" >
+        bankprovince,
+      </if>
+      <if test="bankcity != null" >
+        bankcity,
+      </if>
+      <if test="manualsettle != null" >
+        manualsettle,
+      </if>
+      <if test="deposit != null" >
+        deposit,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="idCardFront != null" >
+        id_card_front,
+      </if>
+      <if test="idCcardBack != null" >
+        id_ccard_back,
+      </if>
+      <if test="bankCardFront != null" >
+        bank_card_front,
+      </if>
+      <if test="bankCardBack != null" >
+        bank_card_back,
+      </if>
+      <if test="persouPhoto != null" >
+        persou_photo,
+      </if>
+      <if test="bussinessLicense != null" >
+        bussiness_license,
+      </if>
+      <if test="bussinessCertficates != null" >
+        bussiness_certficates,
+      </if>
+      <if test="organizationCode != null" >
+        organization_code,
+      </if>
+      <if test="taxRegistron != null" >
+        tax_registron,
+      </if>
+      <if test="bankAccountLicence != null" >
+        bank_account_licence,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="bankTime != null" >
+        bank_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="isQualifications != null">
+      	is_qualifications,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="requestid != null" >
+        #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="bindmobile != null" >
+        #{bindmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customertype != null" >
+        #{customertype,jdbcType=VARCHAR},
+      </if>
+      <if test="signedname != null" >
+        #{signedname,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicence != null" >
+        #{businesslicence,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="minsettleamount != null" >
+        #{minsettleamount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskreserveday != null" >
+        #{riskreserveday,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccountnumber != null" >
+        #{bankaccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="provincename != null" >
+          #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null" >
+          #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankheadname != null" >
+          #{bankheadname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null" >
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccounttype != null" >
+        #{bankaccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="bankprovince != null" >
+        #{bankprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcity != null" >
+        #{bankcity,jdbcType=VARCHAR},
+      </if>
+      <if test="manualsettle != null" >
+        #{manualsettle,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFront != null" >
+        #{idCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idCcardBack != null" >
+        #{idCcardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardFront != null" >
+        #{bankCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardBack != null" >
+        #{bankCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="persouPhoto != null" >
+        #{persouPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicense != null" >
+        #{bussinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessCertficates != null" >
+        #{bussinessCertficates,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistron != null" >
+        #{taxRegistron,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountLicence != null" >
+        #{bankAccountLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="bankTime != null" >
+        #{bankTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="isQualifications != null" >
+        #{isQualifications,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBank" >
+    update lc_platform_bank
+    <set >
+      <if test="requestid != null" >
+        requestid = #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="bindmobile != null" >
+        bindmobile = #{bindmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="customertype != null" >
+        customertype = #{customertype,jdbcType=VARCHAR},
+      </if>
+      <if test="signedname != null" >
+        signedname = #{signedname,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicence != null" >
+        businesslicence = #{businesslicence,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        legalperson = #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="minsettleamount != null" >
+        minsettleamount = #{minsettleamount,jdbcType=VARCHAR},
+      </if>
+      <if test="riskreserveday != null" >
+        riskreserveday = #{riskreserveday,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccountnumber != null" >
+        bankaccountnumber = #{bankaccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="provincename != null" >
+      	provincename= #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null" >
+      	cityname= #{cityname,jdbcType=VARCHAR},
+      </if>
+       <if test="bankheadname != null" >
+      	bankheadname= #{bankheadname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null" >
+        accountname = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccounttype != null" >
+        bankaccounttype = #{bankaccounttype,jdbcType=VARCHAR},
+      </if>
+      <if test="bankprovince != null" >
+        bankprovince = #{bankprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcity != null" >
+        bankcity = #{bankcity,jdbcType=VARCHAR},
+      </if>
+      <if test="manualsettle != null" >
+        manualsettle = #{manualsettle,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        deposit = #{deposit,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardFront != null" >
+        id_card_front = #{idCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idCcardBack != null" >
+        id_ccard_back = #{idCcardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardFront != null" >
+        bank_card_front = #{bankCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardBack != null" >
+        bank_card_back = #{bankCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="persouPhoto != null" >
+        persou_photo = #{persouPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessLicense != null" >
+        bussiness_license = #{bussinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bussinessCertficates != null" >
+        bussiness_certficates = #{bussinessCertficates,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        organization_code = #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistron != null" >
+        tax_registron = #{taxRegistron,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountLicence != null" >
+        bank_account_licence = #{bankAccountLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="bankTime != null" >
+        bank_time = #{bankTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="isQualifications != null">
+      	is_qualifications = #{isQualifications,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBank" >
+    update lc_platform_bank
+    set requestid = #{requestid,jdbcType=VARCHAR},
+      bindmobile = #{bindmobile,jdbcType=VARCHAR},
+      customertype = #{customertype,jdbcType=VARCHAR},
+      signedname = #{signedname,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      businesslicence = #{businesslicence,jdbcType=VARCHAR},
+      legalperson = #{legalperson,jdbcType=VARCHAR},
+      minsettleamount = #{minsettleamount,jdbcType=VARCHAR},
+      riskreserveday = #{riskreserveday,jdbcType=VARCHAR},
+      bankaccountnumber = #{bankaccountnumber,jdbcType=VARCHAR},
+      provincename = #{provincename,jdbcType=VARCHAR},
+      cityname = #{cityname,jdbcType=VARCHAR},
+      bankheadname = #{bankheadname,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      accountname = #{accountname,jdbcType=VARCHAR},
+      bankaccounttype = #{bankaccounttype,jdbcType=VARCHAR},
+      bankprovince = #{bankprovince,jdbcType=VARCHAR},
+      bankcity = #{bankcity,jdbcType=VARCHAR},
+      manualsettle = #{manualsettle,jdbcType=VARCHAR},
+      deposit = #{deposit,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      id_card_front = #{idCardFront,jdbcType=VARCHAR},
+      id_ccard_back = #{idCcardBack,jdbcType=VARCHAR},
+      bank_card_front = #{bankCardFront,jdbcType=VARCHAR},
+      bank_card_back = #{bankCardBack,jdbcType=VARCHAR},
+      persou_photo = #{persouPhoto,jdbcType=VARCHAR},
+      bussiness_license = #{bussinessLicense,jdbcType=VARCHAR},
+      bussiness_certficates = #{bussinessCertficates,jdbcType=VARCHAR},
+      organization_code = #{organizationCode,jdbcType=VARCHAR},
+      tax_registron = #{taxRegistron,jdbcType=VARCHAR},
+      bank_account_licence = #{bankAccountLicence,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      bank_time = #{bankTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT},
+      is_qualifications = #{isQualifications,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

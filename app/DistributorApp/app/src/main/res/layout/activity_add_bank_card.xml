@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/font_color_hint_light"
+    android:orientation="vertical"
+    tools:context="com.xsl.distributor.ws.ui.activity.AddBankCardActivity">
+
+    <include layout="@layout/layout_title_with_back" />
+
+    <include layout="@layout/layout_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/basic_padding"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center|left"
+                android:text="以下各项均为必填项，绑定银行卡后，可将代收的货款快速提现至对应银行卡中"
+                android:textSize="@dimen/mid_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="绑定手机号码："
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <TextView
+                    android:id="@+id/add_card_get_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    style="@style/params_style"
+                    android:text="注册类型:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RadioGroup
+                    android:id="@+id/add_card_radiogroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/add_card_person"
+                        style="@style/params_style"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableLeft="@drawable/bg_order_checkbox"
+                        android:text="个人" />
+
+                    <RadioButton
+                        android:id="@+id/add_card_company"
+                        style="@style/params_style"
+                        android:layout_marginLeft="20dp"
+                        android:button="@null"
+                        android:drawableLeft="@drawable/bg_order_checkbox"
+                        android:text="企业" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="联系人姓名：    "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/add_card_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:gravity="center|left"
+                    android:hint="请输入联系人姓名"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="银 行 卡 号：     "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/add_card_bank_card_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center|left"
+                    android:hint="请输入银行卡号"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:maxLength="19"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_card_province_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="开  户  行：       "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <TextView
+                    android:id="@+id/add_card_province_choice"
+                    style="@style/basic_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/my_goods_address_arrow"
+                    android:gravity="center|left"
+                    android:hint="请选择开户省"
+                    android:paddingLeft="0dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_card_city_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="开  户  行：       "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/add_card_city_choice"
+                    style="@style/basic_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/my_goods_address_arrow"
+                    android:gravity="center|left"
+                    android:hint="请选择开户城市"
+                    android:paddingLeft="0dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_card_bank_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="开  户  行：       "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/add_card_bank_choice"
+                    style="@style/basic_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/my_goods_address_arrow"
+                    android:gravity="center|left"
+                    android:hint="请选择开户银行"
+                    android:paddingLeft="0dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_card_city_bank_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="开  户  行：       "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/add_card_city_bank_choice"
+                    style="@style/basic_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableRight="@mipmap/my_goods_address_arrow"
+                    android:gravity="center|left"
+                    android:hint="请选择开户银行支行"
+                    android:paddingLeft="0dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="开  户  名：       "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/add_card_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="center|left"
+                    android:singleLine="true"
+                    android:hint="请输入开户姓名"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    style="@style/params_style"
+                    android:text="银行类别:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RadioGroup
+                    android:id="@+id/add_card_bank_typeradiogroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/add_card_type_person"
+                        style="@style/params_style"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableLeft="@drawable/bg_order_checkbox"
+                        android:text="个人" />
+
+                    <RadioButton
+                        android:id="@+id/add_card_type_company"
+                        style="@style/params_style"
+                        android:layout_marginLeft="20dp"
+                        android:button="@null"
+                        android:drawableLeft="@drawable/bg_order_checkbox"
+                        android:text="企业" />
+                </RadioGroup>
+            </LinearLayout>
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_marginTop="1dp"-->
+            <!--android:gravity="center|left"-->
+            <!--android:layout_height="48dp">-->
+
+            <!--<TextView-->
+            <!--style="@style/params_style"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/mid_text_size"-->
+            <!--android:text="开户省市:"/>-->
+            <!--<EditText-->
+            <!--android:id="@+id/add_card_city_choice2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:background="@null"-->
+            <!--style="@style/basic_padding"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/mid_text_size"-->
+            <!--/>-->
+            <!--</LinearLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="身份证号码：    "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <EditText
+                    android:id="@+id/add_card_id_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:digits="1234567890xX"
+                    android:gravity="center|left"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:maxLength="18"
+                    android:hint="请输入身份证号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请上传个人资质照片"
+                    android:textColor="@color/font_color_hint" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ( 资质图片不能大于512KB )"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　　　　"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="请上传身份证正面照"
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_pic"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="20dp"
+                        android:background="@mipmap/add_card_1"
+                        app:carbon_cornerRadius="@dimen/radius_corner" />
+
+                    <ImageView
+                        android:id="@+id/delete1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/update_id_pic"
+                        android:src="@mipmap/add_card_del"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　　　　"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="请上传身份证背面照"
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_pic2"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="20dp"
+                        android:background="@mipmap/add_card_2"
+                        app:carbon_cornerRadius="@dimen/radius_corner"
+                        app:placeholderImage="@mipmap/add_card_2"
+                        app:roundedCornerRadius="@dimen/radius_corner" />
+
+                    <ImageView
+                        android:id="@+id/delete2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/update_id_pic2"
+                        android:src="@mipmap/add_card_del"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　　　　"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="请上传银行卡正面"
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_pic_hand"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="20dp"
+                        android:background="@mipmap/add_pic4"
+                        app:carbon_cornerRadius="@dimen/radius_corner"
+                        app:placeholderImage="@mipmap/add_pic4"
+                        app:roundedCornerRadius="@dimen/radius_corner" />
+
+                    <ImageView
+                        android:id="@+id/delete3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/update_id_pic_hand"
+                        android:src="@mipmap/add_card_del"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:id="@+id/regest_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="　　　　　　　　　　"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="请上传手持身份证正面"
+                    android:textColor="@color/font_color_focused"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <carbon.widget.ImageView
+                        android:id="@+id/update_id_pic2_hand"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="20dp"
+                        android:background="@mipmap/add_card_3"
+                        app:carbon_cornerRadius="@dimen/radius_corner"
+                        app:placeholderImage="@mipmap/add_card_3"
+                        app:placeholderImageScaleType="centerCrop"
+                        app:roundedCornerRadius="@dimen/radius_corner" />
+
+                    <ImageView
+                        android:id="@+id/delete4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/update_id_pic2_hand"
+                        android:src="@mipmap/add_card_del"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="81dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/font_color_hint_light">
+
+                <carbon.widget.TextView
+                    android:id="@+id/commit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@color/colorAccent2"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="56dp"
+                    android:paddingRight="56dp"
+                    android:paddingTop="8dp"
+                    android:text="提交"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/mid_text_size"
+                    app:carbon_cornerRadius="@dimen/radius_corner"
+                    app:carbon_rippleColor="@color/ripple" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

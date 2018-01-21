@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.lineAdvanceMoneyRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.lineAdvanceMoneyRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="line_id" property="lineId" jdbcType="BIGINT" />
+    <result column="advance_money_company" property="advanceMoneyCompany" jdbcType="VARCHAR" />
+    <result column="advance_ratio" property="advanceRatio" jdbcType="DOUBLE" />
+    <result column="advance_money" property="advanceMoney" jdbcType="DOUBLE" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, company_name, line_id, advance_money_company, advance_ratio, advance_money, contact_person, 
+    phone, telephone, email, qq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_line_advance_money_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_line_advance_money_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.lineAdvanceMoneyRecord" >
+    insert into tms_line_advance_money_record (id, company_name, line_id, 
+      advance_money_company, advance_ratio, advance_money, 
+      contact_person, phone, telephone, 
+      email, qq)
+    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{lineId,jdbcType=BIGINT}, 
+      #{advanceMoneyCompany,jdbcType=VARCHAR}, #{advanceRatio,jdbcType=DOUBLE}, #{advanceMoney,jdbcType=DOUBLE}, 
+      #{contactPerson,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.lineAdvanceMoneyRecord" >
+    insert into tms_line_advance_money_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="lineId != null" >
+        line_id,
+      </if>
+      <if test="advanceMoneyCompany != null" >
+        advance_money_company,
+      </if>
+      <if test="advanceRatio != null" >
+        advance_ratio,
+      </if>
+      <if test="advanceMoney != null" >
+        advance_money,
+      </if>
+      <if test="contactPerson != null" >
+        contact_person,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="advanceMoneyCompany != null" >
+        #{advanceMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceRatio != null" >
+        #{advanceRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="advanceMoney != null" >
+        #{advanceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.lineAdvanceMoneyRecord" >
+    update tms_line_advance_money_record
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lineId != null" >
+        line_id = #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="advanceMoneyCompany != null" >
+        advance_money_company = #{advanceMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceRatio != null" >
+        advance_ratio = #{advanceRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="advanceMoney != null" >
+        advance_money = #{advanceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="contactPerson != null" >
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.lineAdvanceMoneyRecord" >
+    update tms_line_advance_money_record
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      line_id = #{lineId,jdbcType=BIGINT},
+      advance_money_company = #{advanceMoneyCompany,jdbcType=VARCHAR},
+      advance_ratio = #{advanceRatio,jdbcType=DOUBLE},
+      advance_money = #{advanceMoney,jdbcType=DOUBLE},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByLineId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_line_advance_money_record
+    where line_id = #{LineId,jdbcType=BIGINT}
+  </select>
+</mapper>

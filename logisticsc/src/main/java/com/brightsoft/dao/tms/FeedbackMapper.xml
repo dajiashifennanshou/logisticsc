@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.Feedback" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_person_id" property="createPersonId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="content_reply" property="contentReply" jdbcType="VARCHAR" />
+    <result column="reply_time" property="replyTime" jdbcType="DATE" />
+    <result column="reply_person_id" property="replyPersonId" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <association property="user" javaType="com.brightsoft.model.User">
+    	<result column="login_name" property="loginName"/>
+    </association>
+    <association property="replyUser" javaType="com.brightsoft.model.SysUser">
+    	<result column="username" property="username"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, content, create_person_id, create_time, content_reply, reply_time, reply_person_id, 
+    status,outlets_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_feedback
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_feedback
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.Feedback" >
+    insert into tms_feedback (id, title, content, 
+      create_person_id, create_time, content_reply, 
+      reply_time, reply_person_id, status, outlets_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{createPersonId,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{contentReply,jdbcType=VARCHAR}, 
+      #{replyTime,jdbcType=DATE}, #{replyPersonId,jdbcType=VARCHAR},
+      #{status,jdbcType=INTEGER}, #{outletsId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.Feedback" >
+    insert into tms_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="contentReply != null" >
+        content_reply,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+      <if test="replyPersonId != null" >
+        reply_person_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="contentReply != null" >
+        #{contentReply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=DATE},
+      </if>
+      <if test="replyPersonId != null" >
+        #{replyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.Feedback" >
+    update tms_feedback
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="contentReply != null" >
+        content_reply = #{contentReply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=DATE},
+      </if>
+      <if test="replyPersonId != null" >
+        reply_person_id = #{replyPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        outletsId = #{outletsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.Feedback" >
+    update tms_feedback
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_person_id = #{createPersonId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      content_reply = #{contentReply,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=DATE},
+      reply_person_id = #{replyPersonId,jdbcType=VARCHAR},
+      status = #{stauts,jdbcType=INTEGER}
+      outlets_id = #{outletsId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 网点查询获取反馈信息 -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select 
+  		f.*,u.login_name
+  	from
+  		tms_feedback f 
+  		left join tms_user u on f.create_person_id = u.id
+  	<where>
+  		f.outlets_id = #{outletsId}
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  		order by f.id desc limit #{page.start},#{page.limit}
+  	</where> 
+  </select>
+  
+  <!-- 网点查询记录总数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_feedback f
+  	<where>
+  		f.outlets_id = #{outletsId}
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  	</where>
+  </select>
+  <!-- 【专线查询获取反馈信息 -->
+  <select id="selectByCompanyIdAndCondition" resultMap="BaseResultMap">
+  	select 
+  		f.*,u.login_name
+  	from
+  		tms_feedback f
+  		left join tms_user u on f.create_person_id = u.id
+  	<where>
+  		f.outlets_id in 
+  			(select oi.id from tms_outlets_info oi where oi.company_id = #{companyId})
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  		order by f.id desc limit #{page.start},#{page.limit}
+  	</where> 
+  </select>
+  
+  <!-- 专线查询记录总数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_feedback f
+  	<where>
+  		f.outlets_id in 
+  			(select oi.id from tms_outlets_info oi where oi.company_id = #{companyId})
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  	</where>
+  </select>
+  <!-- 运营：查询获取反馈信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 
+  		f.*,u.login_name,up.username
+  	from
+  		tms_feedback f
+  		left join tms_user u on f.create_person_id = u.id
+  		left join lc_sys_user up on f.reply_person_id = up.id
+  	<where>
+  		1=1
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  		order by f.id desc limit #{page.start},#{page.limit}
+  	</where> 
+  </select>
+  
+  <!-- 运营：专线查询记录总数 -->
+  <select id="countRows" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_feedback f
+  	<where>
+  		1=1
+  		<if test="searchParams.startTime != null and searchParams.startTime !=''">
+	  		and f.create_time &lt; #{searchParams.startTime}
+	  	</if >
+	  	<if test="searchParams.endTime != null and searchParams.endTime != ''">
+	  		and f.create_time &gt; #{searchParams.endTime}
+	  	</if>
+  	</where>
+  </select>
+</mapper>

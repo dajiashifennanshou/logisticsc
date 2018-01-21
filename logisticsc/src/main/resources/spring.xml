@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!--引入配置属性文件 --> 
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+           <list>  
+           	<value>classpath:insurance.properties</value>
+           	<value>classpath:config.properties</value>
+           	<value>classpath:redis.properties</value>
+           </list>  
+        </property>  
+    </bean>
+	
+	<!--自动扫描含有@Service将其注入为bean -->
+	<context:component-scan base-package="com.brightsoft.service.system" />
+	<context:component-scan base-package="com.brightsoft.service.platform" />
+	<context:component-scan base-package="com.brightsoft.service.tms" />
+	<context:component-scan base-package="com.brightsoft.service.base" />
+	<context:component-scan base-package="com.brightsoft.service.main" />
+	<context:component-scan base-package="com.brightsoft.service.yc.impl" />
+	<context:component-scan base-package="com.brightsoft.service.jpush.impl" />
+
+	<!-- 投保 -->
+	<bean id="insuranceHttpService" class="com.brightsoft.utils.insurance.InsuranceHttpService">
+		<property name="userName" value="${userName}"></property>
+		<property name="userPwd" value="${userPwd}"></property>
+		<property name="userKey" value="${userKey}"></property>
+		<property name="configUri" value="${configUri}"></property>
+		<property name="subUri" value="${subUri}"></property>
+		<property name="backDataUrl" value="${backDataUrl}"></property>
+	</bean>
+	<!-- sms短信发送 -->
+	<bean id="sendSmsTool" class="com.brightsoft.utils.sms.SendSmsTool">
+	</bean>
+	
+	<bean id="smsManagerService" class="com.brightsoft.service.base.SmsManagerService">
+		<property name="appkey" value="${appkey}"></property>
+		<property name="uri" value="${uri}"></property>
+		<property name="tpl_id" value="${tpl_id}"></property>
+	</bean>
+	<!--session 共享 -->
+	<context:annotation-config/> 
+	<bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+		<property name="maxInactiveIntervalInSeconds" value="600"></property>
+	</bean>
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig" />    
+	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"  p:pool-config-ref="poolConfig"/>
+	
+</beans>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.InsComTsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.InsComTsType" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="ins_com_id" property="insComId" jdbcType="BIGINT" />
+    <result column="ins_ts_type_id" property="insTsTypeId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ins_com_id, ins_ts_type_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_ins_com_ts_type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_ins_com_ts_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.InsComTsType" >
+    insert into lc_ins_com_ts_type (id, ins_com_id, ins_ts_type_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{insComId,jdbcType=BIGINT}, #{insTsTypeId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.InsComTsType" >
+    insert into lc_ins_com_ts_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insComId != null" >
+        ins_com_id,
+      </if>
+      <if test="insTsTypeId != null" >
+        ins_ts_type_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="insComId != null" >
+        #{insComId,jdbcType=BIGINT},
+      </if>
+      <if test="insTsTypeId != null" >
+        #{insTsTypeId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.InsComTsType" >
+    update lc_ins_com_ts_type
+    <set >
+      <if test="insComId != null" >
+        ins_com_id = #{insComId,jdbcType=BIGINT},
+      </if>
+      <if test="insTsTypeId != null" >
+        ins_ts_type_id = #{insTsTypeId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.InsComTsType" >
+    update lc_ins_com_ts_type
+    set ins_com_id = #{insComId,jdbcType=BIGINT},
+      ins_ts_type_id = #{insTsTypeId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 添加特殊类型 -->
+  <insert id="insertBatch">
+  	<foreach collection="list" item="insComTsType" separator=";">
+  		insert into lc_ins_com_ts_type
+	  		(id, ins_com_id, ins_ts_type_id)
+	    values 
+	    	(#{insComTsType.id,jdbcType=BIGINT}, #{insComTsType.insComId,jdbcType=BIGINT}, #{insComTsType.insTsTypeId,jdbcType=BIGINT})
+  	</foreach>
+  </insert>
+  <!-- 通过保险公司id获取特殊类型 -->
+  <select id="selectByComId" resultMap="BaseResultMap">
+  	select 
+  		it.*
+  	from
+  		lc_insurance_ts_type it
+  		inner join lc_ins_com_ts_type ict on it.id = ict.ins_ts_type_id
+  	where
+  		ict.ins_com_id = #{companyId}
+  </select>
+  <!-- 批量删除-->
+  <delete id="deleteBatchByComIds">
+  	delete from lc_ins_com_ts_type
+  	where
+  		ins_com_id in 
+  		<foreach collection="array" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </delete>
+  <!-- 根据险种id批量删除-->
+  <delete id="deleteBatchByTsTypeIds">
+  	delete from lc_ins_com_ts_type
+  	where
+  		ins_type_id in 
+  		<foreach collection="array" item="id" open="(" close=")" separator=",">
+  			#{id}
+  		</foreach>
+  </delete>
+</mapper>

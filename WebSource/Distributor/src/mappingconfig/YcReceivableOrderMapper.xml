@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcReceivableOrderDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcReceivableOrder"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,orderNumber,costType,money,posMoney,cashMoney,payPerson,payPersonMobile,remark,createTime,createUser,updateTime,updateUser,status,outletsId
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcReceivableOrder" > 
+		select  <include refid="Base_Column_List" />  from yc_receivable_order where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcReceivableOrder" > 
+		select  count(1)  from yc_receivable_order where 1=1
+		<if test="status !=null"> 
+			and status=#{status}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_receivable_order where 1=1
+		
+		<if test="status !=null"> 
+			and status=#{status}
+		</if>
+		order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcReceivableOrder"> 
+		delete from yc_receivable_order where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcReceivableOrder" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_receivable_order  
+		(orderNumber,costType,money,posMoney,cashMoney,payPerson,payPersonMobile,remark,createTime,createUser,updateTime,updateUser,status,outletsId) 
+		values ( #{orderNumber},#{costType},#{money},#{posMoney},#{cashMoney},#{payPerson},#{payPersonMobile},#{remark},#{createTime},#{createUser},#{updateTime},#{updateUser},#{status},#{outletsId} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcReceivableOrder">   
+	update yc_receivable_order 
+	<set> 
+		<if test="orderNumber !=null"> 
+			orderNumber=#{orderNumber},
+		</if>
+		<if test="costType !=null"> 
+			costType=#{costType},
+		</if>
+		<if test="money !=null"> 
+			money=#{money},
+		</if>
+		<if test="posMoney !=null"> 
+			posMoney=#{posMoney},
+		</if>
+		<if test="cashMoney !=null"> 
+			cashMoney=#{cashMoney},
+		</if>
+		<if test="payPerson !=null"> 
+			payPerson=#{payPerson},
+		</if>
+		<if test="payPersonMobile !=null"> 
+			payPersonMobile=#{payPersonMobile},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="status !=null"> 
+			status=#{status},
+		</if>
+		<if test="outletsId !=null"> 
+			outletsId=#{outletsId}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

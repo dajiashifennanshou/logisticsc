@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/logistic_detail_name"
+        style="@style/myStyle"
+        android:layout_marginLeft="15dp"
+        android:paddingBottom="5dp"
+        android:hint="　　　　　　　"
+        android:paddingTop="5dp" />
+
+    <TextView
+        style="@style/myStyle"
+        android:layout_marginLeft="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="运费：" />
+
+    <TextView
+        android:id="@+id/logistic_detail_money"
+        style="@style/myStyle"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="-.--元"
+        android:textColor="@color/colorAccent2" />
+</LinearLayout>

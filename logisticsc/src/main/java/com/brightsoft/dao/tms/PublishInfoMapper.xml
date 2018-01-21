@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.PublishInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PublishInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_person_id" property="createPersonId" jdbcType="BIGINT" />
+    <association property="sysUser" javaType="com.brightsoft.model.SysUser">
+    	<result column="username" property="username"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, content, type, status, create_time, create_person_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_publish_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_publish_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PublishInfo" >
+    insert into tms_publish_info (id, title, content, 
+      type, status, create_time, 
+      create_person_id)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+      #{createPersonId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PublishInfo" >
+    insert into tms_publish_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createPersonId != null" >
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PublishInfo" >
+    update tms_publish_info
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createPersonId != null" >
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PublishInfo" >
+    update tms_publish_info
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      create_person_id = #{createPersonId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 查询所有发布信息 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+  		pi.*,su.username
+  	from
+  		tms_publish_info pi
+  		left join lc_sys_user su on pi.create_person_id = su.id
+  	where 
+  		pi.type=#{publishType} and pi.status != 0
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.create_time <![CDATA[ > ]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.create_time <![CDATA[ < ]]> #{searchParams.endTime}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition!=''">
+  			and pi.title = #{searchParams.condition}
+  		</if>
+  		order by pi.id desc
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 查询所有发布信息总记录数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_publish_info pi
+  		
+  	where 
+  		pi.type=#{publishType} and pi.status != 0
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.create_time <![CDATA[ > ]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.create_time <![CDATA[ < ]]> #{searchParams.endTime}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition!=''">
+  			and pi.title = #{searchParams.condition}
+  		</if>
+  </select>
+  
+  <!-- 查询信息通知通过类型 -->
+  <select id="selectByTypeAndCondition" resultMap="BaseResultMap">
+  	select 
+  		pi.*,su.username
+  	from
+  		tms_publish_info pi
+  		left join lc_sys_user su on pi.create_person_id = su.id
+  	where 
+  		pi.type = #{type} and pi.status != 0
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.create_time <![CDATA[ > ]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.create_time <![CDATA[ < ]]> #{searchParams.endTime}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition!=''">
+  			and pi.title = #{searchParams.condition}
+  		</if>
+  		order by pi.id desc
+  		limit #{page.start},#{page.limit}
+  </select>
+  <!-- 查询发布信息总记录数通过类型 -->
+  <select id="countRowsByType" parameterType="int" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_publish_info pi
+  	where 
+  		pi.type = #{type} and pi.status != 0
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.create_time <![CDATA[ > ]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.create_time <![CDATA[ < ]]> #{searchParams.endTime}
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition!=''">
+  			and pi.title = #{searchParams.condition}
+  		</if>
+  </select>
+  <!-- 删除信息 -->
+  <update id="updateBatch4Delete" parameterType="list">
+  	<foreach collection="list" item="id" separator=";">
+  		update
+  			tms_publish_info
+  		set
+  			status = 0
+  		where 
+  			id = #{id}
+  	</foreach>
+  </update>
+<!--   查询货运交易系统类型的所有信息 -->
+  <select id="findAllByType" parameterType="com.brightsoft.model.PublishInfo" resultMap="BaseResultMap">
+  select 
+  		<include refid="Base_Column_List"></include>
+  	from
+  		tms_publish_info 
+  	where 
+  		 status != 0
+  		 and type = 1
+  		<if test="publishInfo.startTime != null and publishInfo.endTime != null">
+  			and create_time between #{publishInfo.startTime} and #{publishInfo.endTime}
+  		</if>
+  		<if test="publishInfo.startTime == null and publishInfo.endTime != null">
+  			and create_time &lt; #{publishInfo.endTime}
+  		</if>
+  		<if test="publishInfo.startTime != null and publishInfo.endTime == null">
+  			and create_time &gt; #{publishInfo.startTime}
+  		</if>
+  		<if test="publishInfo.condition != null and publishInfo.condition!=''">
+  			and title = #{publishInfo.condition}
+  		</if>
+  		order by id desc
+  		limit #{page.start},#{page.limit}
+  </select>
+<!--   查询货运交易系统类型的信息数量 -->
+  <select id="counttypeRows" resultType="int">
+	  SELECT
+		COUNT(1)
+	FROM
+		tms_publish_info
+	WHERE
+		type = 1
+  </select>
+  <!--   查询货运交易系统类型的信息数量 -->
+  <select id="selectByType" resultMap="BaseResultMap">
+	SELECT
+		*
+	FROM
+		tms_publish_info
+	WHERE
+		type = #{type}
+		order by id desc
+		limit 2
+  </select>
+</mapper>

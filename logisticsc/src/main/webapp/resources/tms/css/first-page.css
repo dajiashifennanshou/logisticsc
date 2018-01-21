@@ -1,0 +1,304 @@
+*{
+	color: #4e84c6;
+	font-size: 14px;
+	font-family: "arial","ms song","Arial","Helvetica", "sans-serif"; ;
+}
+.flow-con {
+	width: 900px;
+	height: 600px;
+	position: relative;
+	margin: auto;
+}
+#triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 15px solid #7d9cca;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+}
+#triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 15px solid #7d9cca;
+	position: absolute;
+}
+#triangle-right {
+    width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 15px solid #7d9cca;
+	border-bottom: 5px solid transparent;
+	position: absolute;
+}
+#triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 15px solid #7d9cca;
+    position: absolute;
+}
+.ds-dd {
+	font-size: 16px;
+	padding: 8px 18px;
+	background: #4e84c6;
+	color: white;
+	display: inline;
+	border-radius: 5px;
+	position: absolute;
+	top: 153px;
+	left: 9px;
+	cursor: pointer;
+}
+.xian-heng {
+	width: 96px;
+	height: 1px;
+	background: #abafb0;
+	position: absolute;
+}
+.xian-shu {
+	width: 1px;
+	height: 38px;
+	background: #abafb0;
+	position: absolute;
+}
+.xian1 {
+	top: 172px;
+	left: 109px;
+}
+.sjx1 {
+	top: 167px;
+	left: 204px;
+}
+.paiche-tihuo {
+	position: absolute;
+	top: 156px;
+	left: 221px;
+}
+.kaidan-ruku {
+	position: absolute;
+	top: 156px;
+	left: 438px;
+}
+.paiche-liebiao {
+	position: absolute;
+	top: 251px;
+	left: 220px;
+}
+.yundan-liebiao {
+	position: absolute;
+	top: 251px;
+	left: 441px;
+}
+.span1 {
+	margin-top: -26px;
+	display: block;
+	margin-left: 39px;
+	cursor: pointer;
+}
+.xian2 {
+	top: 172px;
+	left: 330px;
+}
+.sjx2 {
+	top: 167px;
+	left: 421px;
+}
+.xians1 {
+	top: 204px;
+	left: 266px;
+}
+.sjx3 {
+	top: 242px;
+	left: 261px;
+}
+.xians2 {
+	top: 204px;
+	left: 484px;
+}
+.sjx4 {
+	top: 242px;
+	left: 479px;
+}
+.xian3 {
+	position: absolute;
+	top: 172px;
+	left: 547px;
+}
+
+.xians3 {
+	position: absolute;
+	right: 255px;
+	top: 134px;
+	height: 72px;
+}
+.sjx5 {
+	top: 129px;
+	right: 206px;
+}
+.xian4 {
+	top: 134px;
+	right: 214px;
+	width: 42px;
+}
+.sjx6 {
+	top: 200px;
+	right: 206px;
+}
+.xian5 {
+	top: 206px;
+	right: 214px;
+	width: 42px;
+}
+.fache-peizai {
+	position: absolute;
+	top: 118px;
+	right: 100px;
+}
+.waibao-peizai {
+	position: absolute;
+	top: 188px;
+	right: 100px;
+}
+.xians4 {
+	top: 74px;
+	right: 139px;
+}
+.sjx7 {
+	top: 69px;
+	right: 135px;
+}
+.fachedan-liebiao {
+	position: absolute;
+	top: 38px;
+	right: 100px;
+}
+.xian6 {
+	top: 59px;
+	right: 32px;
+	width: 65px;
+}
+.xians5 {
+	top: 59px;
+	right: 31px;
+	height: 184px;
+}
+.sjx8 {
+	top: 242px;
+	right: 26px;
+}
+.clgz {
+	top: 262px;
+	right: 9px;
+	position: absolute;
+}
+.xians6 {
+	right: 31px;
+	top: 287px;
+	height: 80px;
+}
+.qiandaork {
+	bottom: 220px;
+	right: 100px;
+	position: absolute;
+}
+.xian7 {
+	bottom: 232px;
+	right: 31px;
+	width: 57px;
+}
+.sjx9 {
+	right: 84px;
+	bottom: 227px;
+}
+.ziti {
+	bottom: 221px;
+	right: 388px;
+	position: absolute;
+}
+.songhuosm {
+	position: absolute;
+	bottom: 260px;
+	right: 355px;
+}
+.zhongzhuan {
+	position: absolute;
+	bottom: 182px;
+	right: 388px;
+}
+.xian8 {
+	right: 214px;
+	bottom: 232px;
+	width: 126px;
+}
+.sjx10 {
+	bottom: 227px;
+	right: 340px;
+}
+.xians7 {
+	bottom: 194px;
+	right: 286px;
+	height: 38px;
+	
+}
+.xians8 {
+	bottom: 233px;
+	right: 286px;
+	height: 38px;
+	
+}
+.xian9 {
+	bottom: 270px;
+	right: 286px;
+	width: 56px;
+}
+.xian10 {
+	bottom: 194px;
+	right: 286px;
+	width: 56px;
+}
+.sjx11 {
+	bottom: 265px;
+}
+.sjx12 {
+	bottom: 189px;
+}
+.qianshou {
+	position: absolute;
+	left: 217px;
+	bottom: 223px;
+}
+.xian11 {
+	right: 470px;
+}
+.sjx13 {
+	right: 592px;
+}
+.xians9 {
+	top: 400px;
+}
+.sjx14 {
+	top: 438px;
+}
+.qianshou-lieb {
+	top: 454px;
+}
+.index-bot {
+	position: absolute;
+	bottom: 30px;
+	left: 27px;
+}
+.index-bot ul li {
+	list-style: none;
+	float: left;
+	width: 162px;
+}
+.span2 {
+	margin-top: -38px;
+	display: block;
+	margin-left: 61px;
+	cursor: pointer;
+}

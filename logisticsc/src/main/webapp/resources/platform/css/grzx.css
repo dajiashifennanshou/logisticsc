@@ -1,0 +1,97 @@
+h atml,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+	margin: 0;
+	padding: 0;
+}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th {
+	text-align: left;
+	font-weight: normal;
+}
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+i,cite,em,var,address,dfn {
+	font-style: normal;
+}
+[hidefocus],summary {
+	outline: 0;
+}
+li {
+	list-style: none;
+}
+* {
+	font-size: 10px;
+	font-family: "微软雅黑"; 
+}
+.f {
+	float: left;
+}
+.clr
+{
+	clear: both;
+}
+/**************************右**********************************/
+.nav-right
+{
+	width: 1038px;
+	margin-left: 10px;
+/*	background: red;*/
+}
+/*********************top1**********************/
+.nav-top1
+{
+	width: 1038px;
+	height: 106px;
+}
+.grzx-tx
+{
+	width: 85px;
+	height: 85px;
+	background: url(../img/grzx-right1.png) no-repeat;
+	margin-left: 40px;
+	line-height: 85px;
+	margin-top: 12px;
+}
+.grzx-name
+{
+	color: #696969;
+	font-size: 12px;
+	margin-top: 22px;
+	margin-left: 20px;
+}
+.grzx-name p
+{
+	font-size: 18px;
+}
+.grzx-icoyx
+{
+	background: url(../img/grzx-right2.png);
+	width: 20px;
+	height: 13px;
+	margin-right: 10px;
+}
+.grzx-yx
+{
+	font-size: 12px;
+	color: #696969;
+	margin-top: 29px;
+	margin-left:10px;
+}
+.grzx-yx2
+{
+	float: right;
+	margin-right: 40px;
+}
+.grzx-yx2 p
+{
+	color: #f9b618;
+	font-weight: bold;
+}
+/*******************专线余额************************/

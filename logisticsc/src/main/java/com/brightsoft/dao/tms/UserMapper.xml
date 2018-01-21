@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="user_number" property="userNumber" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime"/>
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="outlets_name" property="outletsName" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="address" property="address"/>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="outlets_id" property="id"/>
+    	<result column="outlets_name" property="name" jdbcType="VARCHAR" />
+    	<result column="outlets_status" property="status" jdbcType="INTEGER" />
+    </association>
+    <association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    	<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    	<result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    	<result column="legal_person" property="legalPerson" jdbcType="VARCHAR" />
+    	<result column="contacts_mobile" property="contactsMobile" jdbcType="VARCHAR" />
+    	<result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    </association>
+    <collection property="roleList" ofType="com.brightsoft.model.Role">
+    	<id column="role_id" property="id" jdbcType="BIGINT" />
+    	<result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    	<result column="role_status" property="roleStatus" jdbcType="INTEGER" />
+    	<result column="owner_type" property="ownerType" jdbcType="INTEGER" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_name, password, true_name, outlets_id, phone, qq, email,company_id,
+    user_number,user_type,status,user_status,address,create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.User" 
+  	useGeneratedKeys="true" keyProperty="id">
+    insert into tms_user (id, login_name, password, 
+      true_name, outlets_id, phone, company_id,
+      qq, email,user_number,user_type,status,
+      user_status,address,create_time)
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{outletsId,jdbcType=BIGINT}, #{phone,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT},#{qq,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},#{userNumber,jdbcType=VARCHAR},
+      #{userType,jdbcType=INTEGER},#{status,jdbcType=INTEGER},#{userStatus,jdbcType=INTEGER},
+      #{address,jdbcType=VARCHAR},#{createTime})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.User" >
+    insert into tms_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+       <if test="userNumber != null" >
+        userNumber,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="trueName != null" >
+        true_name,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+       <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNumber != null" >
+        #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.User" >
+    update tms_user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNumber != null" >
+        user_number = #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.User" >
+    update tms_user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      user_number = #{userNumber,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      true_name = #{trueName,jdbcType=VARCHAR},
+      outlets_id = #{outletsId,jdbcType=BIGINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      user_type = #{userType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      create_time = #{createTime}
+    where id = #{id,jdbcType=BIGINT}
+  </update> 
+
+  <!-- 专线查询用户信息 -->
+  <select id="selectByCompanyIdCondition" resultMap="BaseResultMap">
+  	select 
+  		u.*,oi.name as outlets_name,oi.outlets_number,r.role_name,r.owner_type,
+  		puc.company_name,puc.company_code,oi.id outlets_id
+  	from 
+  		tms_user u 
+  		left join tms_outlets_info oi on oi.id = u.outlets_id
+  		left join tms_user_role ur on ur.user_id = u.id 
+  		left join tms_role r on r.id = ur.role_id
+  		left join lc_platform_user_company puc on puc.id = u.company_id
+  	where 
+  		u.company_id = #{user.companyId} and u.status = 1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and u.login_name like concat("%",#{searchParams.condition},"%")
+	  		or u.true_name like concat("%",#{searchParams.condition},"%")
+	  	</if>
+	  	<if test="searchParams.outletsName != null and searchParams.outletsName != ''">
+	  		and oi.name = #{searchParams.outletsName}
+	  	</if>
+  		order by id desc limit #{page.start},#{page.limit}
+  </select>
+  
+   <!-- 专线获取总记录数 -->
+  <select id="countRowsByCompanyId" parameterType="com.brightsoft.model.User" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		tms_user u
+  		left join tms_outlets_info oi on oi.id = u.outlets_id
+  		left join tms_user_role ur on ur.user_id = u.id 
+  		left join tms_role r on r.id = ur.role_id
+  		left join lc_platform_user_company puc on puc.id = u.company_id
+  	where 
+  		u.company_id = #{user.companyId} and u.status = 1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and u.login_name like concat("%",#{searchParams.condition},"%")
+	  		or u.true_name like concat("%",#{searchParams.condition},"%")
+	  	</if>
+	  	<if test="searchParams.outletsName != null and searchParams.outletsName != ''">
+	  		and oi.name = #{searchParams.outletsName}
+	  	</if>
+  </select>
+  
+  <!-- 网点查询用户信息 -->
+  <select id="selectByOutletsIdCondition" resultMap="BaseResultMap">
+  	select 
+  		u.*,oi.name as outlets_name,r.role_name,r.owner_type,
+  		puc.company_name,puc.company_code,oi.id outlets_id
+  	from 
+  		tms_user u 
+  		left join tms_outlets_info oi on oi.id = u.outlets_id
+  		left join tms_user_role ur on ur.user_id = u.id 
+  		left join tms_role r on r.id = ur.role_id
+  		left join lc_platform_user_company puc on puc.id = u.company_id
+  	where 
+  		u.outlets_id = #{user.outletsId} and u.status = 1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and u.login_name like concat("%",#{searchParams.condition},"%")
+	  		or u.true_name like concat("%",#{searchParams.condition},"%")
+	  	</if>
+  		order by id desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!-- 网点获取总记录数 -->
+  <select id="countRowsByOutletsId" parameterType="com.brightsoft.model.User" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		tms_user u
+  	where 
+  		u.outlets_id = #{user.outletsId} and u.status = 1
+  		<if test="searchParams.condition!=null and searchParams.condition!=''">
+	  		and u.login_name like concat("%",#{searchParams.condition},"%")
+	  		or u.true_name like concat("%",#{searchParams.condition},"%")
+	  	</if>
+  </select>
+  
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_user
+    where status = 1 and phone = #{phone,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 登录验证 -->
+  <select id="loginByLoginNameAndPwd" resultMap="BaseResultMap">
+  	select
+  		u.*,oi.status outlets_status,r.role_status
+  	from 
+  		tms_user u
+  		left join tms_outlets_info oi on oi.id = u.outlets_id
+  		left join tms_user_role ur on ur.user_id = u.id
+  		left join tms_role r on r.id = ur.role_id
+  	where 
+  		u.login_name = #{loginName} 
+  		and u.password = #{password} 
+  		and u.status = 1
+  </select>
+  
+  <!-- 获取用户序列号中最大值 -->
+  <select id="getMaxUserSerialByOutletsId" parameterType="long" resultType="string">
+  	select 
+  		user_number
+  	from 
+  		tms_user
+  	where 
+  		outlets_id = #{outletsId}
+  		order by convert(user_number,UNSIGNED) desc limit 1
+  </select>
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+  	update tms_user
+  	set status = 0 
+	where 
+		login_name in 
+	  	<foreach collection="array" item="loginName" separator="," open="(" close=")">
+	  		#{loginName}
+	  	</foreach>
+  </delete>
+  <!--  -->
+  <select id="selectUser" resultMap="BaseResultMap">
+  	select	
+  		u.*,puc.company_name,oi.name as outlets_name
+  	from
+  		tms_user u
+  		left join lc_platform_user_company puc on u.company_id = puc.id
+  		left join tms_outlets_info oi on u.outlets_id = oi.id
+  	<where>
+  		u.outlets_id is not null and u.status = 1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and u.true_name = #{searchParams.condition} or u.login_name = #{searchParams.condition}
+  		</if>
+  	</where>
+  		limit #{page.start},#{page.limit}
+  </select>
+  <select id="countUser" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_user
+  	<where>
+  		outlets_id is not null and u.status = 1
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+			true_name = #{searchParams.condition} or login_name = #{searchParams.condition}
+		</if>
+  	</where>
+  </select>
+  
+  <update id="updateUserStatus" parameterType="com.brightsoft.model.User">
+  	update
+  		tms_user
+  	set
+  		user_status = #{userStatus}
+  	where
+  		login_name = #{loginName}
+  </update>
+  
+  <select id="selectByLoginName" parameterType="string" resultMap="BaseResultMap">
+  	select 
+  		*
+  	from
+  		tms_user
+  	where 
+  		login_name = #{loginName} and status = 1
+  </select>
+  <!-- 修改用户密码 -->
+  <update id="updateUserPwd">
+  	update
+  		tms_user
+  	set
+  		password = #{password}
+  	where
+  		login_name = #{loginName}
+  </update>
+  
+  <!-- 更新用户信息 -->
+  <update id="updateUser" parameterType="com.brightsoft.model.User">
+  	update tms_user
+    <set >
+      <if test="userNumber != null" >
+        user_number = #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_name = #{loginName}
+  </update>
+  <select id="selectOutletsSubAccountByLineId" parameterType="long" resultMap="BaseResultMap">
+  	SELECT 
+  	pba.requestid
+  	FROM
+  	tms_user u
+  	LEFT JOIN tms_user_role ur on ur.user_id = u.id
+  	LEFT JOIN tms_role r on r.id = ur.id
+  	RIGHT JOIN tms_outlets_info oi on oi.id = u.outlets_id
+  	RIGHT JOIN tms_line_info li on li.outlets_id = oi.id
+  	LEFT JOIN lc_platform_user pu on pu.login_name = u.login_name
+  	LEFT JOIN lc_platform_bank_account pba on pba.user_id = pu.id
+  	WHERE u.status =1 AND li.id = #{lineId} AND r.id = 3
+  </select>
+  <select id="selectLogisticscSubAccountByLineId" parameterType="long" resultMap="BaseResultMap">
+  	SELECT 
+  	pba.requestid
+  	FROM
+  	tms_user u
+  	RIGHT JOIN tms_outlets_info oi on oi.id = u.outlets_id
+  	RIGHT JOIN tms_line_info li on li.outlets_id = oi.id
+  	LEFT JOIN lc_platform_user pu on pu.login_name = u.login_name
+  	LEFT JOIN lc_platform_bank_account pba on pba.user_id = pu.id
+  	WHERE u.status = 1 AND li.id = #{lineId} AND u.outlets_id is null
+  </select>
+  
+  <select id="selectManagerUserByOutletsId" parameterType="long" resultMap="BaseResultMap">
+  	SELECT 
+  	u.*,r.id,r.owner_type 
+  	FROM tms_user u 
+  	LEFT JOIN tms_user_role u_r ON u.id = u_r.user_id
+	LEFT JOIN tms_role r ON u_r.role_id = r.id 
+	WHERE u.status = 1 AND u.outlets_id = #{outletsId} AND r.owner_type in(2,6)
+  </select>
+  
+  <select id="selectLogisManagerUserByOutletsId" parameterType="long" resultMap="BaseResultMap">
+  	SELECT u.*,r.id,r.owner_type FROM tms_user u LEFT JOIN tms_user_role u_r 
+	ON u.id = u_r.user_id
+	LEFT JOIN tms_role r ON u_r.role_id = r.id 
+	WHERE u.status = 1 AND u.outlets_id = #{outletsId} AND r.owner_type = 2;
+  </select>
+  
+  <select id="selectMasterAccount" resultMap="BaseResultMap">
+  	SELECT 
+  	u.*
+  	FROM
+  	tms_user u
+  	WHERE u.status = 1 AND u.company_id = #{companyId} and u.outlets_id is null
+  </select>
+  <select id="getAllUser" resultMap="BaseResultMap">
+  	SELECT
+  	u.*,puc.company_name,puc.company_code,puc.legal_person,puc.contacts_mobile,puc.company_address
+  	FROM tms_user u
+  	left join lc_platform_user_company puc on puc.id = u.company_id
+  	WHERE u.status = 1
+  	<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  		and u.create_time = #{searchParams.startTime}
+  	</if>
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and puc.company_name = #{searchParams.condition}
+  		or puc.company_code = #{searchParams.condition}
+  		or u.login_name = #{searchParams.condition}
+  	</if>
+  	order by u.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <select id="getResultTotal" resultType="int">
+  	SELECT 
+  	count(1)
+  	FROM tms_user u
+  	left join lc_platform_user_company puc on puc.id = u.company_id
+  	WHERE u.status = 1
+  	<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  		and u.create_time = #{searchParams.startTime}
+  	</if>
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and puc.company_name = #{searchParams.condition}
+  		or puc.company_code = #{searchParams.condition}
+  		or u.login_name = #{searchParams.condition}
+  	</if>
+  </select>
+  <select id="getEnterpriseUserList" resultMap="BaseResultMap">
+  	SELECT
+  	u.id,puc.company_name,puc.company_code,r.role_name,r.id role_id
+  	FROM tms_user u
+  	LEFT JOIN lc_platform_user_company puc on puc.id = u.company_id
+  	LEFT JOIN tms_user_role ur on ur.user_id = u.id
+  	LEFT JOIN tms_role r on r.id = ur.role_id
+  	where u.outlets_id is null and u.status = 1
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and puc.company_name = #{searchParams.condition}
+  		or puc.company_code = #{searchParams.condition}
+  	</if>
+  	order by u.id desc limit #{page.start},#{page.limit}
+  </select>
+  <select id="getEnterPriseUserTotal" resultType="int">
+  	SELECT 
+  	count(1)
+  	FROM tms_user u
+  	LEFT JOIN lc_platform_user_company puc on puc.id = u.company_id
+  	LEFT JOIN tms_user_role ur on ur.user_id = u.id
+  	LEFT JOIN tms_role r on r.id = ur.role_id
+  	where u.outlets_id is null and u.status = 1
+  	<if test="searchParams.condition != null and searchParams.condition != ''">
+  		and puc.company_name = #{searchParams.condition}
+  		or puc.company_code = #{searchParams.condition}
+  	</if>
+  </select>
+  <select id="getResultTotalByOutletsId" parameterType="long" resultType="int">
+  	select 
+  		count(1)
+  	from tms_user u
+  	left join tms_outlets_info oi on u.outlets_id = oi.id
+  	where u.outlets_id = #{outletsId} and u.status = 1
+  </select>
+  <update id="delUserByLoginName" parameterType="string">
+  	update tms_user
+  	set
+  		status = 0
+  	where login_name = #{loginName}
+  </update>
+</mapper>

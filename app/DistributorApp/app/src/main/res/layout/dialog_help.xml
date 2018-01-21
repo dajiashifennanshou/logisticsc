@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <carbon.widget.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:carbon_cornerRadius="6dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:src="@mipmap/photo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="确认拨打云仓电话:"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/d_help_tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="--/----"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <carbon.widget.TextView
+                android:id="@+id/d_help_btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/drawable_coil_accent"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="取消"
+                android:textColor="@color/colorAccent2"
+                android:textSize="14sp"
+                app:carbon_cornerRadius="@dimen/radius_corner"
+                app:carbon_rippleColor="@color/ripple" />
+
+            <carbon.widget.TextView
+                android:id="@+id/d_help_btn_ok"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent2"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:carbon_cornerRadius="@dimen/radius_corner"
+                app:carbon_rippleColor="@color/ripple" />
+        </LinearLayout>
+    </carbon.widget.LinearLayout>
+</FrameLayout>

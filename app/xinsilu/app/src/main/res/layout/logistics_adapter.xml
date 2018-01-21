@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/logistics_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Basic_params"
+        android:text="成都"
+        android:textSize="@dimen/small_text_size"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="————"/>
+
+    <TextView
+        android:id="@+id/logistics_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Basic_params"
+        android:text="乌鲁木齐"
+        android:textSize="@dimen/small_text_size"
+        />
+
+</LinearLayout>

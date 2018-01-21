@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformBankPaymentDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformBankPayment"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,customernumber,requestid,amount,assure,productname,productcat,productdesc,divideinfo,callbackurl,webcallbackurl,bankid,period,memo,payproducttype,order_number,order_type,time,state,user_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformBankPayment" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_bank_payment where 1=1
+		<if test="id!=null">
+			and id=#{id} 
+		</if>
+		<if test="requestid!=null">
+			and requestid =#{requestid}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformBankPayment" > 
+		select  count(1)  from lc_platform_bank_payment 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_bank_payment order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.PlatformBankPayment"> 
+		delete from lc_platform_bank_payment where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformBankPayment" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_bank_payment  
+		(customernumber,requestid,amount,assure,productname,productcat,productdesc,divideinfo,callbackurl,webcallbackurl,bankid,period,memo,payproducttype,order_number,order_type,time,state,user_id) 
+		values ( #{customernumber},#{requestid},#{amount},#{assure},#{productname},#{productcat},#{productdesc},#{divideinfo},#{callbackurl},#{webcallbackurl},#{bankid},#{period},#{memo},#{payproducttype},#{order_number},#{order_type},#{time},#{state},#{user_id} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformBankPayment">   
+	update lc_platform_bank_payment 
+	<set> 
+		<if test="customernumber !=null"> 
+			customernumber=#{customernumber},
+		</if>
+		<if test="requestid !=null"> 
+			requestid=#{requestid},
+		</if>
+		<if test="amount !=null"> 
+			amount=#{amount},
+		</if>
+		<if test="assure !=null"> 
+			assure=#{assure},
+		</if>
+		<if test="productname !=null"> 
+			productname=#{productname},
+		</if>
+		<if test="productcat !=null"> 
+			productcat=#{productcat},
+		</if>
+		<if test="productdesc !=null"> 
+			productdesc=#{productdesc},
+		</if>
+		<if test="divideinfo !=null"> 
+			divideinfo=#{divideinfo},
+		</if>
+		<if test="callbackurl !=null"> 
+			callbackurl=#{callbackurl},
+		</if>
+		<if test="webcallbackurl !=null"> 
+			webcallbackurl=#{webcallbackurl},
+		</if>
+		<if test="bankid !=null"> 
+			bankid=#{bankid},
+		</if>
+		<if test="period !=null"> 
+			period=#{period},
+		</if>
+		<if test="memo !=null"> 
+			memo=#{memo},
+		</if>
+		<if test="payproducttype !=null"> 
+			payproducttype=#{payproducttype},
+		</if>
+		<if test="order_number !=null"> 
+			order_number=#{order_number},
+		</if>
+		<if test="order_type !=null"> 
+			order_type=#{order_type},
+		</if>
+		<if test="time !=null"> 
+			time=#{time},
+		</if>
+		<if test="state !=null"> 
+			state=#{state},
+		</if>
+		<if test="user_id !=null"> 
+			user_id=#{user_id}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

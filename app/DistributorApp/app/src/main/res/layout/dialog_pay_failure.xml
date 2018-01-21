@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carbon.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    app:carbon_cornerRadius="6dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/failure" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="支付未成功"
+        android:textColor="@color/font_color_normal"
+        android:textSize="14sp" />
+
+    <include layout="@layout/layout_line" />
+
+    <carbon.widget.TextView
+        android:id="@+id/d_pay_failure_retry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="重新支付"
+        android:textColor="@color/colorAccent2"
+        android:textSize="14sp"
+        app:carbon_rippleColor="@color/ripple" />
+</carbon.widget.LinearLayout>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+    
+	<!-- 配置注解扫描路径 -->
+	<context:component-scan base-package="com.yc.Service.Impl" />
+
+	<!-- 从配置文件中读取数据库配置，以便在spring配置中可直接使用      -->
+	<bean class="com.yc.Tool.CacheInfoXML" />
+	<!-- 配置c3p0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" 
+		p:driverClass="com.mysql.jdbc.Driver"
+		p:jdbcUrl="${DBUrl}"
+		p:user="${DBUser}"
+		p:password="${DBPassword}"
+		p:maxIdleTime="25000"
+		p:minPoolSize="10"
+		p:maxPoolSize="60" />
+
+	<!-- 配置SqlSessionFactoryBean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" 
+		p:configLocation="classpath:mybatis.xml"
+		p:mapperLocations="classpath:mappingconfig/*.xml" />
+
+    <!-- 通过扫描的模式，扫描目录在com/sol/dao目录下的继承ISqlDao的接口  -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+    	p:sqlSessionFactoryBeanName="sqlSessionFactory"
+    	p:basePackage="com.yc.Dao" 
+    	p:markerInterface="com.yc.Tool.ISqlDao" />
+
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+	<!-- 基于注解的方式使用事务配置声明  -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 全局异常处理  -->
+	<bean class="com.yc.GlobalException.GlobalException"/>
+	
+	<!-- 文件上传 -->    
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" name="multipartResolver">
+    </bean>
+</beans>

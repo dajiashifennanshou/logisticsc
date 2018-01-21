@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.ITmsWayBillOrderDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.TmsWayBillOrder"></resultMap>   
+	<sql id="Base_Column_List">
+		twbo.id,twbo.order_number,twbo.way_bill_number,twbo.start_outlets,twbo.start_outlets_name,twbo.target_outlets,twbo.target_outlets_name,twbo.target_province,twbo.target_city,twbo.target_county,twbo.consignor,twbo.consignor_company,twbo.consignor_mobile,twbo.consignor_address,twbo.consignee,twbo.consignee_company,twbo.consignee_mobile,twbo.consignee_address,twbo.send_type,twbo.receive_type,twbo.receipt_slip,twbo.receipt_slip_num,twbo.receipt_status,twbo.city_driver_name,twbo.city_driver_phone,twbo.city_vehicle_number,twbo.pay_method,twbo.total,twbo.STATUS,twbo.sign_status,twbo.way_bill_order_time,twbo.way_bill_order_user,twbo.remark,twbo.agency_fund,twbo.agency_fund_poundage,twbo.insurance_money,twbo.insurance,take_cargo_cost,twbo.load_unload_cost,twbo.transfer_cost,twbo.other_cost,twbo.freight,twbo.advance_cost,twbo.immediate_pay,twbo.arrive_pay,back_pay,twbo.is_wait_pay,twbo.exception_status 
+	</sql> 
+	<select id="getWayBillOrder" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.TmsWayBillOrder">
+		select <include refid="Base_Column_List" /> from tms_way_bill_order twbo where 1=1 and twbo.way_bill_number not in (select yis.wayBillNo from yc_in_storage yis )
+		<if test="sign_status!=null">
+			and sign_status = #{sign_status}
+		</if>
+		<if test="way_bill_order_user!=null">
+			and way_bill_order_user = #{way_bill_order_user}
+		</if>
+		ORDER BY way_bill_order_time DESC
+	</select>
+</mapper> 
+

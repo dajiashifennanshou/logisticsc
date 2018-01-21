@@ -1,0 +1,1940 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.WayBillOrderMapper">
+	<resultMap id="BaseResultMap" type="com.brightsoft.model.WayBillOrder">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+		<result column="way_bill_number" property="wayBillNumber"
+			jdbcType="VARCHAR" />
+		<result column="start_outlets" property="startOutlets"
+			jdbcType="BIGINT" />
+		<result column="start_outlets_name" property="startOutletsName"
+			jdbcType="VARCHAR" />
+		<result column="target_outlets" property="targetOutlets"
+			jdbcType="BIGINT" />
+		<result column="target_outlets_name" property="targetOutletsName"
+			jdbcType="VARCHAR" />
+		<result column="target_province" property="targetProvince"
+			jdbcType="VARCHAR" />
+		<result column="target_city" property="targetCity" jdbcType="VARCHAR" />
+		<result column="target_county" property="targetCounty"
+			jdbcType="VARCHAR" />
+		<result column="consignor" property="consignor" jdbcType="VARCHAR" />
+		<result column="consignor_company" property="consignorCompany"
+			jdbcType="VARCHAR" />
+		<result column="consignor_mobile" property="consignorMobile"
+			jdbcType="VARCHAR" />
+		<result column="consignor_address" property="consignorAddress"
+			jdbcType="VARCHAR" />
+		<result column="consignee" property="consignee" jdbcType="VARCHAR" />
+		<result column="consignee_company" property="consigneeCompany"
+			jdbcType="VARCHAR" />
+		<result column="consignee_mobile" property="consigneeMobile"
+			jdbcType="VARCHAR" />
+		<result column="consignee_address" property="consigneeAddress"
+			jdbcType="VARCHAR" />
+		<result column="send_type" property="sendType" jdbcType="INTEGER" />
+		<result column="receive_type" property="receiveType" jdbcType="INTEGER" />
+		<result column="receipt_slip" property="receiptSlip" jdbcType="INTEGER" />
+		<result column="receipt_slip_num" property="receiptSlipNum"
+			jdbcType="INTEGER" />
+		<result column="receipt_status" property="receiptStatus"
+			jdbcType="INTEGER" />
+		<result column="city_driver_name" property="cityDriverName"
+			jdbcType="VARCHAR" />
+		<result column="city_driver_phone" property="cityDriverPhone"
+			jdbcType="VARCHAR" />
+		<result column="city_vehicle_number" property="cityVehicleNumber"
+			jdbcType="VARCHAR" />
+		<result column="pay_method" property="payMethod" jdbcType="VARCHAR" />
+		<result column="total" property="total" jdbcType="DOUBLE" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="sign_status" property="signStatus" jdbcType="INTEGER" />
+		<result column="way_bill_order_time" property="wayBillOrderTime"
+			jdbcType="TIMESTAMP" />
+		<result column="way_bill_order_user" property="wayBillOrderUser"
+			jdbcType="BIGINT" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="agency_fund" property="agencyFund" jdbcType="DOUBLE" />
+		<result column="agency_fund_poundage" property="agencyFundPoundage"
+			jdbcType="DOUBLE" />
+		<result column="insurance_money" property="insuranceMoney"
+			jdbcType="DOUBLE" />
+		<result column="insurance" property="insurance" jdbcType="DOUBLE" />
+		<result column="take_cargo_cost" property="takeCargoCost"
+			jdbcType="DOUBLE" />
+		<result column="load_unload_cost" property="loadUnloadCost"
+			jdbcType="DOUBLE" />
+		<result column="transfer_cost" property="transferCost"
+			jdbcType="DOUBLE" />
+		<result column="other_cost" property="otherCost" jdbcType="DOUBLE" />
+		<result column="freight" property="freight" jdbcType="DOUBLE" />
+		<result column="advance_cost" property="advanceCost" jdbcType="DOUBLE" />
+		<result column="immediate_pay" property="immediatePay"
+			jdbcType="DOUBLE" />
+		<result column="arrive_pay" property="arrivePay" jdbcType="DOUBLE" />
+		<result column="back_pay" property="backPay" jdbcType="DOUBLE" />
+		<result column="is_wait_pay" property="isWaitPay" jdbcType="INTEGER" />
+		<result column="exception_status" property="exceptionStatus"
+			jdbcType="INTEGER" />
+		<result column="money" property="money" />
+		<result column="out_way_bill_number" property="outWayBillNumber"
+			jdbcType="VARCHAR" />
+		<result column="out_source_cost" property="outSourceCost"
+			jdbcType="DOUBLE" />
+		<result column="current_pay" property="currentPay" jdbcType="DOUBLE" />
+		<result column="out_back_pay" property="outBackPay" jdbcType="DOUBLE" />
+		<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+		<result column="receive_money_order_id" property="receiveMoneyOrderId"
+			jdbcType="BIGINT" />
+		<collection property="wayBillOrderCargoInfos"
+			ofType="com.brightsoft.model.WayBillOrderCargoInfo">
+			<result column="cargo_id" property="id" jdbcType="BIGINT" />
+			<result column="cargo_name" property="name" jdbcType="VARCHAR" />
+			<result column="brand" property="brand" jdbcType="VARCHAR" />
+			<result column="model" property="model" jdbcType="VARCHAR" />
+			<result column="package_type" property="packageType" jdbcType="INTEGER" />
+			<result column="number" property="number" jdbcType="INTEGER" />
+			<result column="set_number" property="setNumber" jdbcType="INTEGER" />
+			<result column="total_weight" property="totalWeight" jdbcType="DOUBLE" />
+			<result column="total_volume" property="totalVolume" jdbcType="DOUBLE" />
+			<result column="count_cost_mode" property="countCostMode"
+				jdbcType="INTEGER" />
+			<result column="price" property="price" jdbcType="DOUBLE" />
+			<result column="way_bill_order_id" property="wayBillOrderId"
+				jdbcType="BIGINT" />
+			<result column="package_type_name" property="packageTypeName"
+				jdbcType="VARCHAR" />
+		</collection>
+		<collection property="wayBillOrderCostInfos"
+			ofType="com.brightsoft.model.WayBillOrderCostInfo">
+			<result column="cost_id" property="id" jdbcType="BIGINT" />
+			<result column="code" property="code" jdbcType="VARCHAR" />
+			<result column="cost_name" property="name" jdbcType="VARCHAR" />
+			<result column="money" property="money" jdbcType="DOUBLE" />
+			<result column="way_bill_order_id" property="wayBillOrderId"
+				jdbcType="BIGINT" />
+		</collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, order_number, way_bill_number, start_outlets,
+		start_outlets_name,
+		target_outlets,
+		target_outlets_name,
+		target_province, target_city, target_county, consignor,
+		consignor_company,
+		consignor_mobile, consignor_address, consignee,
+		consignee_company, consignee_mobile,
+		consignee_address, send_type,
+		receive_type, receipt_slip,
+		receipt_slip_num, receipt_status,
+		city_driver_name,
+		city_driver_phone, city_vehicle_number, pay_method,
+		total, status, sign_status,
+		way_bill_order_time,
+		way_bill_order_user,
+		remark, agency_fund, agency_fund_poundage,
+		insurance_money, insurance,
+		take_cargo_cost, load_unload_cost, transfer_cost,
+		other_cost,
+		freight,
+		advance_cost, immediate_pay, arrive_pay, back_pay, is_wait_pay,
+		exception_status
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		tms_way_bill_order
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.brightsoft.model.WayBillOrder">
+		insert into tms_way_bill_order
+		(id, order_number, way_bill_number,
+		start_outlets, start_outlets_name,
+		target_outlets,
+		target_outlets_name, target_province, target_city,
+		target_county, consignor, consignor_company,
+		consignor_mobile,
+		consignor_address, consignee,
+		consignee_company, consignee_mobile,
+		consignee_address,
+		send_type, receive_type, receipt_slip,
+		receipt_slip_num, receipt_status,
+		city_driver_name, city_driver_phone,
+		city_vehicle_number,
+		pay_method, total, status, sign_status,
+		way_bill_order_time, way_bill_order_user, remark,
+		agency_fund,
+		agency_fund_poundage, insurance_money,
+		insurance, take_cargo_cost,
+		load_unload_cost,
+		transfer_cost, other_cost, freight,
+		advance_cost,
+		immediate_pay, arrive_pay,
+		back_pay, is_wait_pay, exception_status
+		)
+		values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR},
+		#{wayBillNumber,jdbcType=VARCHAR},
+		#{startOutlets,jdbcType=BIGINT},
+		#{startOutletsName,jdbcType=VARCHAR},
+		#{targetOutlets,jdbcType=BIGINT},
+		#{targetOutletsName,jdbcType=VARCHAR},
+		#{targetProvince,jdbcType=VARCHAR}, #{targetCity,jdbcType=VARCHAR},
+		#{targetCounty,jdbcType=VARCHAR}, #{consignor,jdbcType=VARCHAR},
+		#{consignorCompany,jdbcType=VARCHAR},
+		#{consignorMobile,jdbcType=VARCHAR},
+		#{consignorAddress,jdbcType=VARCHAR}, #{consignee,jdbcType=VARCHAR},
+		#{consigneeCompany,jdbcType=VARCHAR},
+		#{consigneeMobile,jdbcType=VARCHAR},
+		#{consigneeAddress,jdbcType=VARCHAR},
+		#{sendType,jdbcType=INTEGER},
+		#{receiveType,jdbcType=INTEGER}, #{receiptSlip,jdbcType=INTEGER},
+		#{receiptSlipNum,jdbcType=INTEGER}, #{receiptStatus,jdbcType=INTEGER},
+		#{cityDriverName,jdbcType=VARCHAR},
+		#{cityDriverPhone,jdbcType=VARCHAR},
+		#{cityVehicleNumber,jdbcType=VARCHAR},
+		#{payMethod,jdbcType=VARCHAR},
+		#{total,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER},
+		#{signStatus,jdbcType=INTEGER},
+		#{wayBillOrderTime,jdbcType=TIMESTAMP},
+		#{wayBillOrderUser,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR},
+		#{agencyFund,jdbcType=DOUBLE}, #{agencyFundPoundage,jdbcType=DOUBLE},
+		#{insuranceMoney,jdbcType=DOUBLE},
+		#{insurance,jdbcType=DOUBLE},
+		#{takeCargoCost,jdbcType=DOUBLE}, #{loadUnloadCost,jdbcType=DOUBLE},
+		#{transferCost,jdbcType=DOUBLE}, #{otherCost,jdbcType=DOUBLE},
+		#{freight,jdbcType=DOUBLE},
+		#{advanceCost,jdbcType=DOUBLE},
+		#{immediatePay,jdbcType=DOUBLE}, #{arrivePay,jdbcType=DOUBLE},
+		#{backPay,jdbcType=DOUBLE}, #{isWaitPay,jdbcType=INTEGER},
+		#{exceptionStatus,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.brightsoft.model.WayBillOrder"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into tms_way_bill_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="orderNumber != null">
+				order_number,
+			</if>
+			<if test="wayBillNumber != null">
+				way_bill_number,
+			</if>
+			<if test="startOutlets != null">
+				start_outlets,
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name,
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets,
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name,
+			</if>
+			<if test="targetProvince != null">
+				target_province,
+			</if>
+			<if test="targetCity != null">
+				target_city,
+			</if>
+			<if test="targetCounty != null">
+				target_county,
+			</if>
+			<if test="consignor != null">
+				consignor,
+			</if>
+			<if test="consignorCompany != null">
+				consignor_company,
+			</if>
+			<if test="consignorMobile != null">
+				consignor_mobile,
+			</if>
+			<if test="consignorAddress != null">
+				consignor_address,
+			</if>
+			<if test="consignee != null">
+				consignee,
+			</if>
+			<if test="consigneeCompany != null">
+				consignee_company,
+			</if>
+			<if test="consigneeMobile != null">
+				consignee_mobile,
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address,
+			</if>
+			<if test="sendType != null">
+				send_type,
+			</if>
+			<if test="receiveType != null">
+				receive_type,
+			</if>
+			<if test="receiptSlip != null">
+				receipt_slip,
+			</if>
+			<if test="receiptSlipNum != null">
+				receipt_slip_num,
+			</if>
+			<if test="receiptStatus != null">
+				receipt_status,
+			</if>
+			<if test="cityDriverName != null">
+				city_driver_name,
+			</if>
+			<if test="cityDriverPhone != null">
+				city_driver_phone,
+			</if>
+			<if test="cityVehicleNumber != null">
+				city_vehicle_number,
+			</if>
+			<if test="payMethod != null">
+				pay_method,
+			</if>
+			<if test="total != null">
+				total,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="signStatus != null">
+				sign_status,
+			</if>
+			<if test="wayBillOrderTime != null">
+				way_bill_order_time,
+			</if>
+			<if test="wayBillOrderUser != null">
+				way_bill_order_user,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+			<if test="agencyFund != null">
+				agency_fund,
+			</if>
+			<if test="agencyFundPoundage != null">
+				agency_fund_poundage,
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money,
+			</if>
+			<if test="insurance != null">
+				insurance,
+			</if>
+			<if test="takeCargoCost != null">
+				take_cargo_cost,
+			</if>
+			<if test="loadUnloadCost != null">
+				load_unload_cost,
+			</if>
+			<if test="transferCost != null">
+				transfer_cost,
+			</if>
+			<if test="otherCost != null">
+				other_cost,
+			</if>
+			<if test="freight != null">
+				freight,
+			</if>
+			<if test="advanceCost != null">
+				advance_cost,
+			</if>
+			<if test="immediatePay != null">
+				immediate_pay,
+			</if>
+			<if test="arrivePay != null">
+				arrive_pay,
+			</if>
+			<if test="backPay != null">
+				back_pay,
+			</if>
+			<if test="isWaitPay != null">
+				is_wait_pay,
+			</if>
+			<if test="exceptionStatus != null">
+				exception_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="orderNumber != null">
+				#{orderNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="wayBillNumber != null">
+				#{wayBillNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="startOutlets != null">
+				#{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				#{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetProvince != null">
+				#{targetProvince,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCity != null">
+				#{targetCity,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCounty != null">
+				#{targetCounty,jdbcType=VARCHAR},
+			</if>
+			<if test="consignor != null">
+				#{consignor,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorCompany != null">
+				#{consignorCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorMobile != null">
+				#{consignorMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorAddress != null">
+				#{consignorAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="consignee != null">
+				#{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeCompany != null">
+				#{consigneeCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeMobile != null">
+				#{consigneeMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				#{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="sendType != null">
+				#{sendType,jdbcType=INTEGER},
+			</if>
+			<if test="receiveType != null">
+				#{receiveType,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlip != null">
+				#{receiptSlip,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlipNum != null">
+				#{receiptSlipNum,jdbcType=INTEGER},
+			</if>
+			<if test="receiptStatus != null">
+				#{receiptStatus,jdbcType=INTEGER},
+			</if>
+			<if test="cityDriverName != null">
+				#{cityDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="cityDriverPhone != null">
+				#{cityDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="cityVehicleNumber != null">
+				#{cityVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="payMethod != null">
+				#{payMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="total != null">
+				#{total,jdbcType=DOUBLE},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="signStatus != null">
+				#{signStatus,jdbcType=INTEGER},
+			</if>
+			<if test="wayBillOrderTime != null">
+				#{wayBillOrderTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillOrderUser != null">
+				#{wayBillOrderUser,jdbcType=BIGINT},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="agencyFund != null">
+				#{agencyFund,jdbcType=DOUBLE},
+			</if>
+			<if test="agencyFundPoundage != null">
+				#{agencyFundPoundage,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				#{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insurance != null">
+				#{insurance,jdbcType=DOUBLE},
+			</if>
+			<if test="takeCargoCost != null">
+				#{takeCargoCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadUnloadCost != null">
+				#{loadUnloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="transferCost != null">
+				#{transferCost,jdbcType=DOUBLE},
+			</if>
+			<if test="otherCost != null">
+				#{otherCost,jdbcType=DOUBLE},
+			</if>
+			<if test="freight != null">
+				#{freight,jdbcType=DOUBLE},
+			</if>
+			<if test="advanceCost != null">
+				#{advanceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="immediatePay != null">
+				#{immediatePay,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePay != null">
+				#{arrivePay,jdbcType=DOUBLE},
+			</if>
+			<if test="backPay != null">
+				#{backPay,jdbcType=DOUBLE},
+			</if>
+			<if test="isWaitPay != null">
+				#{isWaitPay,jdbcType=INTEGER},
+			</if>
+			<if test="exceptionStatus != null">
+				#{exceptionStatus,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.WayBillOrder">
+		update tms_way_bill_order
+		<set>
+			<if test="orderNumber != null">
+				order_number = #{orderNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="wayBillNumber != null">
+				way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="startOutlets != null">
+				start_outlets = #{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name =
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets = #{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name =
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetProvince != null">
+				target_province = #{targetProvince,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCity != null">
+				target_city = #{targetCity,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCounty != null">
+				target_county = #{targetCounty,jdbcType=VARCHAR},
+			</if>
+			<if test="consignor != null">
+				consignor = #{consignor,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorCompany != null">
+				consignor_company = #{consignorCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorMobile != null">
+				consignor_mobile = #{consignorMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorAddress != null">
+				consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="consignee != null">
+				consignee = #{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeCompany != null">
+				consignee_company = #{consigneeCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeMobile != null">
+				consignee_mobile = #{consigneeMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="sendType != null">
+				send_type = #{sendType,jdbcType=INTEGER},
+			</if>
+			<if test="receiveType != null">
+				receive_type = #{receiveType,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlip != null">
+				receipt_slip = #{receiptSlip,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlipNum != null">
+				receipt_slip_num = #{receiptSlipNum,jdbcType=INTEGER},
+			</if>
+			<if test="receiptStatus != null">
+				receipt_status = #{receiptStatus,jdbcType=INTEGER},
+			</if>
+			<if test="cityDriverName != null">
+				city_driver_name = #{cityDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="cityDriverPhone != null">
+				city_driver_phone = #{cityDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="cityVehicleNumber != null">
+				city_vehicle_number =
+				#{cityVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="payMethod != null">
+				pay_method = #{payMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="total != null">
+				total = #{total,jdbcType=DOUBLE},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="signStatus != null">
+				sign_status = #{signStatus,jdbcType=INTEGER},
+			</if>
+			<if test="wayBillOrderTime != null">
+				way_bill_order_time =
+				#{wayBillOrderTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillOrderUser != null">
+				way_bill_order_user =
+				#{wayBillOrderUser,jdbcType=BIGINT},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="agencyFund != null">
+				agency_fund = #{agencyFund,jdbcType=DOUBLE},
+			</if>
+			<if test="agencyFundPoundage != null">
+				agency_fund_poundage =
+				#{agencyFundPoundage,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insurance != null">
+				insurance = #{insurance,jdbcType=DOUBLE},
+			</if>
+			<if test="takeCargoCost != null">
+				take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadUnloadCost != null">
+				load_unload_cost = #{loadUnloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="transferCost != null">
+				transfer_cost = #{transferCost,jdbcType=DOUBLE},
+			</if>
+			<if test="otherCost != null">
+				other_cost = #{otherCost,jdbcType=DOUBLE},
+			</if>
+			<if test="freight != null">
+				freight = #{freight,jdbcType=DOUBLE},
+			</if>
+			<if test="advanceCost != null">
+				advance_cost = #{advanceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="immediatePay != null">
+				immediate_pay = #{immediatePay,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePay != null">
+				arrive_pay = #{arrivePay,jdbcType=DOUBLE},
+			</if>
+			<if test="backPay != null">
+				back_pay = #{backPay,jdbcType=DOUBLE},
+			</if>
+			<if test="isWaitPay != null">
+				is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+			</if>
+			<if test="exceptionStatus != null">
+				exception_status = #{exceptionStatus,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.brightsoft.model.WayBillOrder">
+		update
+		tms_way_bill_order
+		set order_number = #{orderNumber,jdbcType=VARCHAR},
+		way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+		start_outlets =
+		#{startOutlets,jdbcType=BIGINT},
+		start_outlets_name =
+		#{startOutletsName,jdbcType=VARCHAR},
+		target_outlets =
+		#{targetOutlets,jdbcType=BIGINT},
+		target_outlets_name =
+		#{targetOutletsName,jdbcType=VARCHAR},
+		target_province =
+		#{targetProvince,jdbcType=VARCHAR},
+		target_city =
+		#{targetCity,jdbcType=VARCHAR},
+		target_county =
+		#{targetCounty,jdbcType=VARCHAR},
+		consignor =
+		#{consignor,jdbcType=VARCHAR},
+		consignor_company =
+		#{consignorCompany,jdbcType=VARCHAR},
+		consignor_mobile =
+		#{consignorMobile,jdbcType=VARCHAR},
+		consignor_address =
+		#{consignorAddress,jdbcType=VARCHAR},
+		consignee =
+		#{consignee,jdbcType=VARCHAR},
+		consignee_company =
+		#{consigneeCompany,jdbcType=VARCHAR},
+		consignee_mobile =
+		#{consigneeMobile,jdbcType=VARCHAR},
+		consignee_address =
+		#{consigneeAddress,jdbcType=VARCHAR},
+		send_type =
+		#{sendType,jdbcType=INTEGER},
+		receive_type =
+		#{receiveType,jdbcType=INTEGER},
+		receipt_slip =
+		#{receiptSlip,jdbcType=INTEGER},
+		receipt_slip_num =
+		#{receiptSlipNum,jdbcType=INTEGER},
+		receipt_status =
+		#{receiptStatus,jdbcType=INTEGER},
+		city_driver_name =
+		#{cityDriverName,jdbcType=VARCHAR},
+		city_driver_phone =
+		#{cityDriverPhone,jdbcType=VARCHAR},
+		city_vehicle_number =
+		#{cityVehicleNumber,jdbcType=VARCHAR},
+		pay_method =
+		#{payMethod,jdbcType=VARCHAR},
+		total = #{total,jdbcType=DOUBLE},
+		status
+		= #{status,jdbcType=INTEGER},
+		sign_status =
+		#{signStatus,jdbcType=INTEGER},
+		way_bill_order_time =
+		#{wayBillOrderTime,jdbcType=TIMESTAMP},
+		way_bill_order_user =
+		#{wayBillOrderUser,jdbcType=BIGINT},
+		remark =
+		#{remark,jdbcType=VARCHAR},
+		agency_fund =
+		#{agencyFund,jdbcType=DOUBLE},
+		agency_fund_poundage =
+		#{agencyFundPoundage,jdbcType=DOUBLE},
+		insurance_money =
+		#{insuranceMoney,jdbcType=DOUBLE},
+		insurance =
+		#{insurance,jdbcType=DOUBLE},
+		take_cargo_cost =
+		#{takeCargoCost,jdbcType=DOUBLE},
+		load_unload_cost =
+		#{loadUnloadCost,jdbcType=DOUBLE},
+		transfer_cost =
+		#{transferCost,jdbcType=DOUBLE},
+		other_cost =
+		#{otherCost,jdbcType=DOUBLE},
+		freight = #{freight,jdbcType=DOUBLE},
+		advance_cost = #{advanceCost,jdbcType=DOUBLE},
+		immediate_pay =
+		#{immediatePay,jdbcType=DOUBLE},
+		arrive_pay =
+		#{arrivePay,jdbcType=DOUBLE},
+		back_pay = #{backPay,jdbcType=DOUBLE},
+		is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+		exception_status =
+		#{exceptionStatus,jdbcType=INTEGER}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<update id="updateByWayBillNumberSelective" parameterType="com.brightsoft.model.WayBillOrder">
+		update tms_way_bill_order
+		<set>
+			<if test="orderNumber != null">
+				order_number = #{orderNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="startOutlets != null">
+				start_outlets = #{startOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="startOutletsName != null">
+				start_outlets_name =
+				#{startOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetOutlets != null">
+				target_outlets = #{targetOutlets,jdbcType=BIGINT},
+			</if>
+			<if test="targetOutletsName != null">
+				target_outlets_name =
+				#{targetOutletsName,jdbcType=VARCHAR},
+			</if>
+			<if test="targetProvince != null">
+				target_province = #{targetProvince,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCity != null">
+				target_city = #{targetCity,jdbcType=VARCHAR},
+			</if>
+			<if test="targetCounty != null">
+				target_county = #{targetCounty,jdbcType=VARCHAR},
+			</if>
+			<if test="consignor != null">
+				consignor = #{consignor,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorCompany != null">
+				consignor_company = #{consignorCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorMobile != null">
+				consignor_mobile = #{consignorMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consignorAddress != null">
+				consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="consignee != null">
+				consignee = #{consignee,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeCompany != null">
+				consignee_company = #{consigneeCompany,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeMobile != null">
+				consignee_mobile = #{consigneeMobile,jdbcType=VARCHAR},
+			</if>
+			<if test="consigneeAddress != null">
+				consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="sendType != null">
+				send_type = #{sendType,jdbcType=INTEGER},
+			</if>
+			<if test="receiveType != null">
+				receive_type = #{receiveType,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlip != null">
+				receipt_slip = #{receiptSlip,jdbcType=INTEGER},
+			</if>
+			<if test="receiptSlipNum != null">
+				receipt_slip_num = #{receiptSlipNum,jdbcType=INTEGER},
+			</if>
+			<if test="receiptStatus != null">
+				receipt_status = #{receiptStatus,jdbcType=INTEGER},
+			</if>
+			<if test="cityDriverName != null">
+				city_driver_name = #{cityDriverName,jdbcType=VARCHAR},
+			</if>
+			<if test="cityDriverPhone != null">
+				city_driver_phone = #{cityDriverPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="cityVehicleNumber != null">
+				city_vehicle_number =
+				#{cityVehicleNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="payMethod != null">
+				pay_method = #{payMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="total != null">
+				total = #{total,jdbcType=DOUBLE},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="signStatus != null">
+				sign_status = #{signStatus,jdbcType=INTEGER},
+			</if>
+			<if test="wayBillOrderTime != null">
+				way_bill_order_time =
+				#{wayBillOrderTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="wayBillOrderUser != null">
+				way_bill_order_user =
+				#{wayBillOrderUser,jdbcType=BIGINT},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="agencyFund != null">
+				agency_fund = #{agencyFund,jdbcType=DOUBLE},
+			</if>
+			<if test="agencyFundPoundage != null">
+				agency_fund_poundage =
+				#{agencyFundPoundage,jdbcType=DOUBLE},
+			</if>
+			<if test="insuranceMoney != null">
+				insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+			</if>
+			<if test="insurance != null">
+				insurance = #{insurance,jdbcType=DOUBLE},
+			</if>
+			<if test="takeCargoCost != null">
+				take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+			</if>
+			<if test="loadUnloadCost != null">
+				load_unload_cost = #{loadUnloadCost,jdbcType=DOUBLE},
+			</if>
+			<if test="transferCost != null">
+				transfer_cost = #{transferCost,jdbcType=DOUBLE},
+			</if>
+			<if test="otherCost != null">
+				other_cost = #{otherCost,jdbcType=DOUBLE},
+			</if>
+			<if test="freight != null">
+				freight = #{freight,jdbcType=DOUBLE},
+			</if>
+			<if test="advanceCost != null">
+				advance_cost = #{advanceCost,jdbcType=DOUBLE},
+			</if>
+			<if test="immediatePay != null">
+				immediate_pay = #{immediatePay,jdbcType=DOUBLE},
+			</if>
+			<if test="arrivePay != null">
+				arrive_pay = #{arrivePay,jdbcType=DOUBLE},
+			</if>
+			<if test="backPay != null">
+				back_pay = #{backPay,jdbcType=DOUBLE},
+			</if>
+			<if test="isWaitPay != null">
+				is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+			</if>
+			<if test="exceptionStatus != null">
+				exception_status = #{exceptionStatus,jdbcType=INTEGER},
+			</if>
+		</set>
+		where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectByParams" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+	<select id="selectByParamsCount" resultType="int" parameterType="java.util.Map">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+
+	<select id="selectByWayBillNumbers" resultMap="BaseResultMap"
+		parameterType="java.util.List">
+		select
+		t1.*, t2.out_way_bill_number,
+		t2.out_source_cost,t2.current_pay,t2.out_back_pay,
+		rel.receive_money_order_id
+		from tms_way_bill_order t1 LEFT JOIN
+		tms_way_bill_out_source_record t2 ON
+		t1.way_bill_number =
+		t2.way_bill_number
+		LEFT JOIN tms_receive_money_order_relation rel ON
+		t1.way_bill_number =
+		rel.way_bill_number
+		where t1.way_bill_number in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		order by t1.way_bill_order_time desc
+	</select>
+
+	<update id="updateStatusByWayBillNumber" parameterType="java.util.Map">
+		update
+		tms_way_bill_order
+		set status = #{status,jdbcType=INTEGER}
+		where
+		way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateStatusByWayBillNumbers">
+		update tms_way_bill_order
+		set status = #{status,jdbcType=INTEGER}
+		where
+		way_bill_number in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
+
+	<select id="selectStowageWayBill" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order
+		where status = #{status,jdbcType=INTEGER} and
+		start_outlets =
+		#{startOutlets,jdbcType=BIGINT}
+		<if test="targetOutlets != null and targetOutlets != ''">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="list != null and list.size() > 0">
+			and way_bill_number not in
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		and exception_status = 0 order by way_bill_order_time desc
+	</select>
+
+	<update id="updateReceiveTypeByWayBillNumbers">
+		update tms_way_bill_order
+		set receive_type =
+		#{receiveType,jdbcType=INTEGER}
+		where way_bill_number in
+		<foreach collection="list" index="index" item="item" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
+
+	<select id="selectByBaseParmas" resultMap="BaseResultMap">
+		<!-- select <include refid="Base_Column_List" /> from tms_way_bill_order 
+			where 1 = 1 -->
+		SELECT tms_way_bill_order.*, com.company_name FROM tms_way_bill_order
+		LEFT JOIN tms_outlets_info ON tms_way_bill_order.target_outlets =
+		tms_outlets_info.id
+		LEFT JOIN lc_platform_user_company com ON
+		tms_outlets_info.company_id =
+		com.id where 1 = 1
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or consignor like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or consignee like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or com.company_name like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectByBaseParamsCount" resultType="int">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or consignor like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or consignee like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+
+	<select id="selectByWayBillNumber" parameterType="string"
+		resultMap="BaseResultMap">
+		select
+		*,tms_way_bill_order_cost_info.id
+		cost_id,tms_way_bill_order_cost_info.name
+		cost_name,tms_way_bill_order_cargo_info.id
+		cargo_id,tms_way_bill_order_cargo_info.name cargo_name, dict.name
+		package_type_name
+		from
+		tms_way_bill_order
+		left join
+		tms_way_bill_order_cost_info on tms_way_bill_order.id =
+		tms_way_bill_order_cost_info.way_bill_order_id
+		LEFT JOIN
+		tms_way_bill_order_cargo_info ON tms_way_bill_order.id =
+		tms_way_bill_order_cargo_info.way_bill_order_id
+		LEFT JOIN
+		lc_platform_dictionary dict ON
+		tms_way_bill_order_cargo_info.package_type = dict.id
+		where
+		way_bill_number = #{wayBillNumber}
+	</select>
+
+	<!-- <select id="selectByWayBillNumber" parameterType="string" resultMap="BaseResultMap"> 
+		select wbo.id, wbo.order_number, wbo.way_bill_number, wbo.start_outlets, 
+		wbo.start_outlets_name, wbo.target_outlets, wbo.target_outlets_name, wbo.target_province, 
+		wbo.target_city, wbo.target_county, wbo.consignor,wbo.consignor_company, 
+		wbo.consignor_mobile, wbo.consignor_address, wbo.consignee, wbo.consignee_company, 
+		wbo.consignee_mobile, wbo.consignee_address, wbo.send_type, wbo.receive_type, 
+		wbo.receipt_slip, wbo.receipt_slip_num, wbo.city_driver_name, wbo.city_driver_phone, 
+		wbo.city_vehicle_number, wbo.pay_method, wbo.total, wbo.status, wbo.way_bill_order_time, 
+		wbo.way_bill_order_user, wbo.remark,wboci.money from tms_way_bill_order wbo 
+		left join tms_way_bill_order_cost_info wboci on wbo.id = wboci.way_bill_order_id 
+		where wbo.way_bill_number = #{wayBillNumber} and wboci.code = 'insurance' 
+		</select> -->
+
+	<update id="update2close" parameterType="com.brightsoft.model.WayBillOrder">
+		<foreach collection="list" item="wayBillOrder" separator=";">
+			update
+			tms_way_bill_order
+			set
+			status = #{wayBillOrder.status}
+			where
+			way_bill_number = #{wayBillOrder.wayBillNumber}
+		</foreach>
+	</update>
+
+	<!-- 查询自提/送货上门运单 -->
+	<select id="selectByReceiveTypeAndCondition" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=VARCHAR})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="exceptionStatus != null and exceptionStatus != '' ">
+			and exception_status = #{exceptionStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		AND target_province in (SELECT province FROM tms_outlets_info WHERE id
+		in (#{outletsIds}))
+		AND target_city in (SELECT city FROM
+		tms_outlets_info WHERE id in
+		(#{outletsIds}))
+		order by
+		way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectByReceiveTypeAndConditionCount" resultType="int"
+		parameterType="java.util.Map">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds,jdbcType=VARCHAR})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		AND target_province in (SELECT province FROM tms_outlets_info WHERE id
+		in (#{outletsIds}))
+		AND target_city in (SELECT city FROM
+		tms_outlets_info WHERE id in
+		(#{outletsIds}))
+	</select>
+	<!-- 查询自提/送货上门运单统计 <select id="selectByReceiveTypeAndConditionCount" resultType="int" 
+		parameterType="java.util.Map"> select count(1) from tms_way_bill_order where 
+		1 = 1 <if test="statusList != null and statusList.size() > 0"> and status 
+		in <foreach collection="statusList" index="index" item="item" open="(" separator="," 
+		close=")"> #{item} </foreach> </if> <if test="targetOutlets != null and targetOutlets 
+		!= '' "> and target_outlets = #{targetOutlets,jdbcType=VARCHAR} </if> <if 
+		test="startTime != null and startTime != '' "> and way_bill_order_time >= 
+		#{startTime,jdbcType=TIMESTAMP} </if> <if test="endTime != null and endTime 
+		!= '' "> and way_bill_order_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP} 
+		</if> <if test="receiveType != null and receiveType != '' "> and receive_type 
+		= #{receiveType,jdbcType=INTEGER} </if> <if test="signStatus != null and 
+		signStatus != '' "> and sign_status = #{signStatus,jdbcType=INTEGER} </if> 
+		<if test="condition != null and condition != ''"> and (order_number like 
+		concat("%",#{condition,jdbcType=VARCHAR},"%") or way_bill_number like concat("%",#{condition,jdbcType=VARCHAR},"%")) 
+		</if> AND target_province = (SELECT province FROM tms_outlets_info WHERE 
+		id = #{targetOutlets}) AND target_city = (SELECT city FROM tms_outlets_info 
+		WHERE id = #{targetOutlets}) </select> -->
+	<!-- 查询中转运单 <select id="selectTransferWayBillByParams" resultMap="BaseResultMap" 
+		> select <include refid="Base_Column_List" /> from tms_way_bill_order where 
+		1 = 1 <if test="statusList != null and statusList.size() > 0"> and status 
+		in <foreach collection="statusList" index="index" item="item" open="(" separator="," 
+		close=")"> #{item} </foreach> </if> <if test="targetOutlets != null and targetOutlets 
+		!= '' "> and target_outlets = #{targetOutlets} </if> <if test="startTime 
+		!= null and startTime != '' "> and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP} 
+		</if> <if test="endTime != null and endTime != '' "> and way_bill_order_time 
+		<![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP} </if> <if test="receiveType 
+		!= null and receiveType != '' "> and receive_type = #{receiveType,jdbcType=INTEGER} 
+		</if> <if test="signStatus != null and signStatus != '' "> and sign_status 
+		= #{signStatus,jdbcType=INTEGER} </if> <if test="exceptionStatus != null 
+		and exceptionStatus != '' "> and exception_status = #{exceptionStatus,jdbcType=INTEGER} 
+		</if> <if test="condition != null and condition != ''"> and (order_number 
+		like concat("%",#{condition,jdbcType=VARCHAR},"%") or way_bill_number like 
+		concat("%",#{condition,jdbcType=VARCHAR},"%")) </if> AND ( target_province 
+		!= (SELECT province FROM tms_outlets_info WHERE id = #{targetOutlets}) or 
+		target_city != (SELECT city FROM tms_outlets_info WHERE id = #{targetOutlets}) 
+		) order by way_bill_order_time desc limit #{start}, #{limit} </select> <select 
+		id="selectTransferWayBillByParamsCount" resultType="int" parameterType="java.util.Map"> 
+		select count(1) from tms_way_bill_order where 1 = 1 <if test="statusList 
+		!= null and statusList.size() > 0"> and status in <foreach collection="statusList" 
+		index="index" item="item" open="(" separator="," close=")"> #{item} </foreach> 
+		</if> <if test="targetOutlets != null and targetOutlets != '' "> and target_outlets 
+		= #{targetOutlets} </if> <if test="startTime != null and startTime != '' 
+		"> and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP} </if> <if test="endTime 
+		!= null and endTime != '' "> and way_bill_order_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP} 
+		</if> <if test="receiveType != null and receiveType != '' "> and receive_type 
+		= #{receiveType,jdbcType=INTEGER} </if> <if test="signStatus != null and 
+		signStatus != '' "> and sign_status = #{signStatus,jdbcType=INTEGER} </if> 
+		<if test="condition != null and condition != ''"> and (order_number like 
+		concat("%",#{condition,jdbcType=VARCHAR},"%") or way_bill_number like concat("%",#{condition,jdbcType=VARCHAR},"%")) 
+		</if> AND ( target_province != (SELECT province FROM tms_outlets_info WHERE 
+		id = #{targetOutlets}) or target_city != (SELECT city FROM tms_outlets_info 
+		WHERE id = #{targetOutlets}) ) </select> -->
+	<select id="selectTransferWayBillByParams" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="exceptionStatus != null and exceptionStatus != '' ">
+			and exception_status = #{exceptionStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		AND
+		(
+		target_province not in (SELECT province FROM tms_outlets_info
+		WHERE id in
+		(#{outletsIds}))
+		or target_city not in (SELECT city FROM
+		tms_outlets_info WHERE id in (#{outletsIds}))
+		)
+		order by
+		way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+
+	<select id="selectTransferWayBillByParamsCount" resultType="int"
+		parameterType="java.util.Map">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		AND
+		(
+		target_province not in (SELECT province FROM tms_outlets_info
+		WHERE id in
+		(#{outletsIds}))
+		or target_city not in (SELECT city FROM
+		tms_outlets_info WHERE id in (#{outletsIds}))
+		)
+	</select>
+	<!-- 查询签收列表运单 -->
+	<select id="selectSignWayBillList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="exceptionStatus != null and exceptionStatus != '' ">
+			and exceptionStatus in (#{exceptionStatus})
+		</if>
+		<if test="out_store_status != null and out_store_status != '' ">
+			and out_store_status in (#{out_store_status})
+		</if>
+		<if test="transfer_status != null and transfer_status != '' ">
+			and transfer_status in (#{transfer_status})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+	<!-- 查询签收列表运单统计 -->
+	<select id="selectSignWayBillListCount" resultType="int"
+		parameterType="java.util.Map">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="statusList != null and statusList.size() > 0">
+			and status in
+			<foreach collection="statusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="exceptionStatus != null and exceptionStatus != '' ">
+			and exceptionStatus in (#{exceptionStatus})
+		</if>
+		<if test="out_store_status != null and out_store_status != '' ">
+			and out_store_status in (#{out_store_status})
+		</if>
+		<if test="transfer_status != null and transfer_status != '' ">
+			and transfer_status in (#{transfer_status})
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="receiveType != null and receiveType != '' ">
+			and receive_type = #{receiveType,jdbcType=INTEGER}
+		</if>
+		<if test="signStatus != null and signStatus != '' ">
+			and sign_status = #{signStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (order_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+
+	<!-- <select id="selectNewByParams" resultMap="BaseResultMap" > SELECT t1.*, 
+		com.company_name FROM tms_way_bill_order t1 LEFT JOIN tms_outlets_info t2 
+		ON t1.start_outlets = t2.id LEFT JOIN lc_platform_user_company com ON t2.company_id 
+		= com.id where 1 = 1 <if test="status != null and status != '' "> and t1.status 
+		= #{status,jdbcType=BIGINT} </if> <if test="startTime != null and startTime 
+		!= '' "> and t1.way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP} </if> 
+		<if test="endTime != null and endTime != '' "> and t1.way_bill_order_time 
+		<![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP} </if> <if test="outletsId != 
+		null and outletsId != '' "> and (t1.start_outlets = #{outletsId,jdbcType=BIGINT} 
+		or t1.target_outlets = #{outletsId,jdbcType=BIGINT}) </if> <if test="startOutlets 
+		!= null and startOutlets != '' "> and t1.start_outlets = #{startOutlets,jdbcType=BIGINT} 
+		</if> <if test="targetOutlets != null and targetOutlets != '' "> and t1.target_outlets 
+		= #{targetOutlets,jdbcType=BIGINT} </if> <if test="receiptStatus != null 
+		and receiptStatus != '' "> and t1.receipt_status = #{receiptStatus,jdbcType=INTEGER} 
+		</if> <if test="isReceipt != null and isReceipt != '' "> and t1.receipt_slip 
+		= #{isReceipt,jdbcType=INTEGER} </if> <if test="isAgencyFund != null and 
+		isAgencyFund != '' and isAgencyFund == 1"> and (t1.agency_fund is not null 
+		and t1.agency_fund != 0) </if> <if test="condition != null and condition 
+		!= ''"> and (t1.way_bill_number like concat("%",#{condition,jdbcType=VARCHAR},"%")) 
+		</if> order by t1.way_bill_order_time desc limit #{start}, #{limit} </select> 
+		<select id="selectNewByParamsCount" resultType="int" > select count(1) from 
+		tms_way_bill_order where 1 = 1 <if test="status != null and status != '' 
+		"> and status = #{status,jdbcType=BIGINT} </if> <if test="startTime != null 
+		and startTime != '' "> and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP} 
+		</if> <if test="endTime != null and endTime != '' "> and way_bill_order_time 
+		<![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP} </if> <if test="outletsId != 
+		null and outletsId != '' "> and (start_outlets = #{outletsId,jdbcType=BIGINT} 
+		or target_outlets = #{outletsId,jdbcType=BIGINT}) </if> <if test="startOutlets 
+		!= null and startOutlets != '' "> and start_outlets = #{startOutlets,jdbcType=INTEGER} 
+		</if> <if test="targetOutlets != null and targetOutlets != '' "> and target_outlets 
+		= #{targetOutlets,jdbcType=INTEGER} </if> <if test="receiptStatus != null 
+		and receiptStatus != '' "> and receipt_status = #{receiptStatus,jdbcType=INTEGER} 
+		</if> <if test="isReceipt != null and isReceipt != '' "> and receipt_slip 
+		= #{isReceipt,jdbcType=INTEGER} </if> <if test="isAgencyFund != null and 
+		isAgencyFund != '' and isAgencyFund == 1"> and (agency_fund is not null and 
+		agency_fund != 0) </if> <if test="condition != null and condition != ''"> 
+		and (way_bill_number like concat("%",#{condition,jdbcType=VARCHAR},"%")) 
+		</if> </select> -->
+	<select id="selectNewByParams" resultMap="BaseResultMap">
+		SELECT t1.*, com.company_name FROM tms_way_bill_order t1
+		LEFT JOIN
+		tms_outlets_info t2 ON t1.start_outlets = t2.id
+		LEFT JOIN
+		lc_platform_user_company com ON t2.company_id = com.id where 1 =
+		1
+		<if test="status != null and status != '' ">
+			and t1.status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and t1.way_bill_order_time >=
+			#{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and t1.way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and t1.start_outlets in (#{outletsIds})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and t1.target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and t1.receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and t1.receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (t1.agency_fund is not null and t1.agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (t1.way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by t1.way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectNewByParamsCount" resultType="int">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (agency_fund is not null and agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+	<select id="selectNewByParamsTotal" resultType="double">
+		SELECT CASE WHEN SUM(agency_fund) IS NULL THEN 0 ELSE SUM(agency_fund)
+		END agency_fund FROM tms_way_bill_order WHERE 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (agency_fund is not null and agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+	<!-- 到站管理的运单 -->
+	<select id="selectNewByParamsEnd" resultMap="BaseResultMap">
+		SELECT t1.*, com.company_name FROM tms_way_bill_order t1
+		LEFT JOIN
+		tms_outlets_info t2 ON t1.start_outlets = t2.id
+		LEFT JOIN
+		lc_platform_user_company com ON t2.company_id = com.id where 1 =
+		1
+		<if test="status != null and status != '' ">
+			and t1.status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and t1.way_bill_order_time >=
+			#{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and t1.way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and t1.target_outlets in (#{outletsIds})
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and t1.start_outlets = (#{startOutlets})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and t1.target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and t1.receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and t1.receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (t1.agency_fund is not null and t1.agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (t1.way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by t1.way_bill_order_time desc limit #{start}, #{limit}
+	</select>
+	<select id="selectNewByParamsCountEnd" resultType="int">
+		select count(1)
+		from tms_way_bill_order where 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = (#{startOutlets})
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (agency_fund is not null and agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+	<select id="selectNewByParamsTotalEnd" resultType="double">
+		SELECT CASE WHEN SUM(agency_fund) IS NULL THEN 0 ELSE SUM(agency_fund)
+		END agency_fund FROM tms_way_bill_order WHERE 1 = 1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and target_outlets in (#{outletsIds})
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = (#{startOutlets})
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="isReceipt != null and isReceipt != '' ">
+			and receipt_slip = #{isReceipt,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (agency_fund is not null and agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+	<select id="selectNewExportByParams" resultMap="BaseResultMap">
+		SELECT tms_way_bill_order.*, com.company_name FROM tms_way_bill_order
+		LEFT JOIN tms_outlets_info t2 ON tms_way_bill_order.start_outlets =
+		t2.id
+		LEFT JOIN lc_platform_user_company com ON t2.company_id = com.id
+		where 1 =
+		1
+		<if test="status != null and status != '' ">
+			and status = #{status,jdbcType=BIGINT}
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time >= #{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds})
+		</if>
+		<if test="startOutlets != null and startOutlets != '' ">
+			and start_outlets = #{startOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (agency_fund is not null and agency_fund != 0)
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by way_bill_order_time desc
+	</select>
+
+	<select id="selectWayBillFreightList" resultMap="BaseResultMap">
+		SELECT * FROM
+		(
+
+		<if test="isAgencyFund == null or isAgencyFund == '' or isAgencyFund == 0">
+			SELECT * FROM tms_way_bill_order
+			WHERE start_outlets =
+			#{outletsId,jdbcType=BIGINT} AND STATUS IN
+			<foreach collection="startStatusList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			AND pay_method IN
+			<foreach collection="startPayMethodList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			AND (order_number IS NULL OR order_number = '')
+			UNION
+		</if>
+
+		SELECT * FROM tms_way_bill_order
+		WHERE target_outlets =
+		#{outletsId,jdbcType=BIGINT} AND STATUS IN
+		<foreach collection="targetStatusList" index="index" item="item"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+
+		<if test="isAgencyFund == null or isAgencyFund == '' or isAgencyFund == 0">
+			AND pay_method IN
+			<foreach collection="targetPayMethodList" index="index" item="item"
+				open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+
+		) t
+		where t.way_bill_number NOT IN
+		(SELECT way_bill_number FROM
+		tms_receive_money_order_relation WHERE
+		receive_money_order_id IN
+		(SELECT id FROM tms_receive_money_order WHERE cost_type =
+		#{costType,jdbcType=INTEGER} AND outlets_id =
+		#{outletsId,jdbcType=BIGINT}))
+		<if test="startOutlets != null and startOutlets != '' ">
+			and t.start_outlets = #{startOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and t.target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (t.agency_fund is not null and t.agency_fund != 0)
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and t.way_bill_order_time >=
+			#{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and t.way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (t.way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignor like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignor_mobile
+			like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignee like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignee_mobile
+			like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		ORDER BY t.way_bill_order_time DESC limit #{start}, #{limit}
+	</select>
+	<select id="selectWayBillFreightListCount" resultType="int">
+		SELECT count(1) FROM
+		(
+		SELECT * FROM tms_way_bill_order
+		WHERE
+		start_outlets = #{outletsId,jdbcType=BIGINT} AND STATUS IN
+		<foreach collection="startStatusList" index="index" item="item"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		AND pay_method IN
+		<foreach collection="startPayMethodList" index="index" item="item"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		AND (order_number IS NULL OR order_number = '')
+		UNION
+		SELECT * FROM
+		tms_way_bill_order
+		WHERE target_outlets = #{outletsId,jdbcType=BIGINT}
+		AND STATUS IN
+		<foreach collection="targetStatusList" index="index" item="item"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		AND pay_method IN
+		<foreach collection="targetPayMethodList" index="index" item="item"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		) t
+		where t.way_bill_number NOT IN
+		(SELECT way_bill_number FROM
+		tms_receive_money_order_relation WHERE
+		receive_money_order_id IN
+		(SELECT id FROM tms_receive_money_order WHERE cost_type =
+		#{costType,jdbcType=INTEGER} AND outlets_id =
+		#{outletsId,jdbcType=BIGINT}))
+		<if test="startOutlets != null and startOutlets != '' ">
+			and t.start_outlets = #{startOutlets,jdbcType=BIGINT}
+		</if>
+		<if test="targetOutlets != null and targetOutlets != '' ">
+			and t.target_outlets = #{targetOutlets,jdbcType=BIGINT}
+		</if>
+		<if
+			test="isAgencyFund != null and isAgencyFund != '' and isAgencyFund == 1">
+			and (t.agency_fund is not null and t.agency_fund != 0)
+		</if>
+		<if test="startTime != null and startTime != '' ">
+			and t.way_bill_order_time >=
+			#{startTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and t.way_bill_order_time <![CDATA[<=]]>
+			#{endTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (t.way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignor like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignor_mobile
+			like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignee like
+			concat("%",#{condition,jdbcType=VARCHAR},"%")
+			or t.consignee_mobile
+			like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+	</select>
+
+	<select id="selectExportReceiptByParams" resultMap="BaseResultMap">
+		SELECT tms_way_bill_order.* FROM tms_way_bill_order where 1 = 1
+		<if test="startTime != null and startTime != '' ">
+			and way_bill_order_time <![CDATA[>=]]>
+			#{startTime}
+		</if>
+		<if test="endTime != null and endTime != '' ">
+			and way_bill_order_time <![CDATA[<=]]>
+			#{endTime}
+		</if>
+		<if test="outletsIds != null and outletsIds != '' ">
+			and start_outlets in (#{outletsIds})
+		</if>
+		<if test="receiptStatus != null and receiptStatus != '' ">
+			and receipt_status = #{receiptStatus,jdbcType=INTEGER}
+		</if>
+		<if test="condition != null and condition != ''">
+			and (way_bill_number like
+			concat("%",#{condition,jdbcType=VARCHAR},"%"))
+		</if>
+		order by way_bill_order_time desc
+	</select>
+</mapper>

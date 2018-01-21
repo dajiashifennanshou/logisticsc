@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformUserTemporaryCompanyDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformUserTemporaryCompany"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,company_name,company_address,legal_person,legal_mobile,contacts,contacts_mobile,qq,post_code,company_phone,company_fax,company_tax_no,finance_email,company_info,logo,business_license,company_photo,legal_photo,card_photo,company_code
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformUserTemporaryCompany" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user_temporary_company where 1=1
+		<if test="company_name!=null">
+			and company_name = #{company_name}
+		</if>
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformUserTemporaryCompany" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_user_temporary_company  
+		(company_name,company_address,legal_person,legal_mobile,contacts,contacts_mobile,qq,post_code,company_phone,company_fax,company_tax_no,finance_email,company_info,logo,business_license,company_photo,legal_photo,card_photo,company_code) 
+		values ( #{company_name},#{company_address},#{legal_person},#{legal_mobile},#{contacts},#{contacts_mobile},#{qq},#{post_code},#{company_phone},#{company_fax},#{company_tax_no},#{finance_email},#{company_info},#{logo},#{business_license},#{company_photo},#{legal_photo},#{card_photo},#{company_code} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.PlatformUserTemporaryCompany">   
+	update lc_platform_user_temporary_company 
+	<set> 
+		<if test="company_name !=null"> 
+			company_name=#{company_name},
+		</if>
+		<if test="company_address !=null"> 
+			company_address=#{company_address},
+		</if>
+		<if test="legal_person !=null"> 
+			legal_person=#{legal_person},
+		</if>
+		<if test="legal_mobile !=null"> 
+			legal_mobile=#{legal_mobile},
+		</if>
+		<if test="contacts !=null"> 
+			contacts=#{contacts},
+		</if>
+		<if test="contacts_mobile !=null"> 
+			contacts_mobile=#{contacts_mobile},
+		</if>
+		<if test="qq !=null"> 
+			qq=#{qq},
+		</if>
+		<if test="post_code !=null"> 
+			post_code=#{post_code},
+		</if>
+		<if test="company_phone !=null"> 
+			company_phone=#{company_phone},
+		</if>
+		<if test="company_fax !=null"> 
+			company_fax=#{company_fax},
+		</if>
+		<if test="company_tax_no !=null"> 
+			company_tax_no=#{company_tax_no},
+		</if>
+		<if test="finance_email !=null"> 
+			finance_email=#{finance_email},
+		</if>
+		<if test="company_info !=null"> 
+			company_info=#{company_info},
+		</if>
+		<if test="logo !=null"> 
+			logo=#{logo},
+		</if>
+		<if test="business_license !=null"> 
+			business_license=#{business_license},
+		</if>
+		<if test="company_photo !=null"> 
+			company_photo=#{company_photo},
+		</if>
+		<if test="legal_photo !=null"> 
+			legal_photo=#{legal_photo},
+		</if>
+		<if test="card_photo !=null"> 
+			card_photo=#{card_photo},
+		</if>
+		<if test="company_code !=null"> 
+			company_code=#{company_code}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,217 @@
+h atml,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+	margin: 0;
+	padding: 0;
+}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details {
+	display: block;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th {
+	text-align: left;
+	font-weight: normal;
+}
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+i,cite,em,var,address,dfn {
+	font-style: normal;
+}
+[hidefocus],summary {
+	outline: 0;
+}
+li {
+	list-style: none;
+}
+* {
+	font-family: "瀵邦喛钂嬮梿鍛寸拨"; 
+}
+.f {
+	float: left;
+}
+.clr
+{
+	clear: both;
+}
+
+/********************************************************閸愬懎顔�***************************************************************/
+.woyao-con
+{
+	width: 1200px;
+	margin: 7px auto auto auto;
+}
+.fahuo-guangg
+{
+	width: 1200px;
+	height: 32px;
+}
+.fahuo-laba
+{
+	width: 22px;
+	height: 18px;
+	background: url(../img/fahuo-laba.png) no-repeat;
+	margin-top: 5px;
+}
+.fahuo-guangg p
+{
+	color: #666;
+	font-size: 12px;
+	line-height: 32px;
+	float: left;
+	margin-left: 5px;
+}
+/********************************閹兼粎鍌�*************************/
+.fahuo-sousuo
+{
+	width: 1198px;
+	height: 136px;
+	background: #F6F6F6;
+	padding-left: 45px;
+	padding-top: 15px;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #0055bf;
+	border-bottom: 1px dotted #ccc;
+  	background:url(../img/fahuo-bg1.png) no-repeat;	
+}
+.fahuo-sousuo .shifahuo,.mudidi
+{
+	font-size: 20px;
+	font-weight: bold;
+	color: #2d2d2d;
+	line-height: 64px;
+	margin-left: 26px;
+}
+.shifahuo input,.mudidi input 
+{
+	width: 206px;
+	height: 36px;
+	line-height: 36px;
+	border: 1px solid #c6cdd5;
+	color: #C8C8C8;
+	font-size: 18px;
+}
+.mudidi
+{
+	margin-left: 110px;
+}
+.sousuo-btn
+{
+	width: 206px;
+	height: 36px;
+	background: #6f9fd9;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	line-height: 22px;
+	float: right;
+	margin-right: 26px;
+	margin-top: 11px;
+}
+/********************************缁涙盯锟�*************************/
+.fauo-shaixuan
+{
+	width: 1198px;
+	height: 40px;
+	background: #F6F6F6;
+	border-top: none;
+	margin-top: 1px;
+	background: white;
+	/* padding-left: 26px; */
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px dotted #ccc;
+}
+.huowuxinx
+{
+	font-size: 14px;
+	color: #2d2d2d;
+	line-height: 40px;
+	margin-left: 26px;
+}
+table {
+	background:white;
+}
+.huowuxinx input
+{
+	width: 80px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #c6cdd5;
+	font-size: 16px;
+	color: #C8C8C8;
+}
+.tipaisong
+{
+	font-size: 14px;
+	color: #2d2d2d;
+	line-height: 40px;
+	margin-left: 72px;
+}
+.tipaisong label
+{
+	font-size: 14px;
+	color: #2d2d2d;
+	line-height: 40px;
+}
+checkbox
+{
+	width: 20px;
+	height: 20px;
+	border: 1px solid #c6cdd5;
+}
+/********************************閹烘帒绨�*************************/
+.paixu
+{
+	width: 1198px;
+	height: 40px;
+	border-top: none;
+	margin-top: 2px;
+	line-height: 40px;
+	font-size: 16px;
+	background:white;
+}
+.xuanzepx
+{
+	margin-left: 26px;
+	font-size: 14px;
+	color: #2d2d2d;
+}
+.pttj
+{
+	margin-top: 5px;
+}
+.pttj ul li 
+{
+	border-radius:5px ;
+	color: white;
+	font-size: 14px;
+	line-height: 28px;
+	text-align: center;
+	float: left;
+	margin-left: 5px;
+}
+#anniu{
+	height: 28px;
+	line-height: 14px;
+	background:#0055bf;
+	border:none;
+}
+#table-xx > thead > tr > th {
+	background: white;
+	color: #333;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #0055bf;
+	height: 40px;
+	line-height: 32px;
+	font-size: 14px;
+	border-bottom: 1px solid #0055bf;
+}
+#shoucang {
+	margin-top:6px;
+}

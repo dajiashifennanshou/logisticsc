@@ -1,0 +1,70 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- 自定义宽高 -->
+    <style name="myStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- LinearLayout比重横项布局 -->
+    <style name="lin_v_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <!-- LinearLayout比重纵项布局 -->
+    <style name="lin_h_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="lin_style" parent="basic_padding">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="params_style" parent="myStyle">
+        <item name="android:paddingRight">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingTop">@dimen/user_padding</item>
+        <item name="android:paddingBottom">@dimen/user_padding</item>
+    </style>
+    <!--外间距-->
+    <style name="margin_style" parent="@style/myStyle">
+        <item name="android:layout_marginTop">@dimen/margin_top_or_button</item>
+        <item name="android:layout_marginBottom">@dimen/margin_top_or_button</item>
+        <item name="android:layout_marginLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:layout_marginRight">@dimen/user_padding_without_margin</item>
+    </style>
+
+    <!--内间距-->
+    <style name="basic_padding">
+        <item name="android:paddingRight">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingTop">@dimen/user_padding</item>
+        <item name="android:paddingBottom">@dimen/user_padding</item>
+    </style>
+
+    <style name="PopupAnimation">
+        <item name="android:windowEnterAnimation">@anim/menu_bottombar_in</item>
+        <item name="android:windowExitAnimation">@anim/menu_bottombar_out</item>
+    </style>
+    <style name="customer_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.xsl.distributor.ws.ui.activity.LoginActivity">
+
+    <include layout="@layout/layout_title_with_close" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/login_my_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="top">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:src="@mipmap/login_lianxiren" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/login_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:digits="0123456789"
+                    android:hint="手机号"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <include layout="@layout/layout_line" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="top">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:src="@mipmap/login_key" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/login_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:hint="密码"
+                    android:inputType="textPassword"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/mid_text_size" />
+
+                <include layout="@layout/layout_line" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <carbon.widget.TextView
+            android:id="@+id/login_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorAccent2"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/mid_text_size"
+            app:carbon_cornerRadius="@dimen/radius_corner"
+            app:carbon_rippleColor="@color/ripple" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <carbon.widget.TextView
+                android:id="@+id/login_regest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="注册云仓"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <carbon.widget.TextView
+                android:id="@+id/login_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="忘记密码？"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

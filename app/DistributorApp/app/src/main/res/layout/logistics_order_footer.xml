@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:visibility="gone"
+    >
+
+    <TextView
+        android:id="@+id/line"
+        style="@style/basic_padding"
+        android:paddingRight="@dimen/margin_top_or_button"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/margin_top_or_button"
+        android:layout_marginRight="@dimen/margin_top_or_button"
+        android:background="@drawable/shap_line"
+        android:layerType="software" />
+
+    <TextView
+        android:id="@+id/money_status"
+        style="@style/basic_padding"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:drawableLeft="@mipmap/peisongdan_prompt1"
+        android:text="此款项已提至您的银行卡中"
+        android:drawablePadding="4dp"
+        android:textColor="@color/colorAccent3"
+        android:textSize="@dimen/small_text_size" />
+
+    <carbon.widget.TextView
+        android:id="@+id/detail"
+        style="@style/basic_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="@dimen/margin_top_or_button"
+        android:layout_below="@id/line"
+        android:layout_centerVertical="true"
+        app:carbon_cornerRadius="@dimen/radius_corner"
+        app:carbon_rippleColor="@color/ripple"
+        android:layout_marginRight="@dimen/margin_top_or_button"
+        android:background="@color/colorAccent2"
+        android:text="查看评价"
+        android:textColor="@color/white"
+        android:textSize="@dimen/small_text_size" />
+</RelativeLayout>

@@ -1,0 +1,415 @@
+button{
+	border: none;
+}
+.re-logo{
+	margin-top: 20px;
+	
+}
+.me-line{
+	margin-left: 10px;
+	margin-top: 18px;
+}
+.me-word{
+	margin-left: 10px;
+	margin-top: 26px;
+}
+.me-return {
+	margin-top: 20px;
+}
+.me-return a{
+	display: block;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 8px 14px;
+}
+.member-bg{
+	background: #F5F5F5;
+	padding-bottom: 20px;
+	margin-top: 20px;
+}
+.member-left{
+	width: 180px;
+	border: 1px solid #eaeaea;
+	min-height: 380px;
+	padding-bottom: 20px;
+	background: #fff;
+	margin-top: 20px;
+}
+.member-lnav-title{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #EAEAEA;
+}
+.memeber-nav-list ul{
+	padding-left: 0px;
+}
+.memeber-nav-list ul li{
+	height: 50px;
+	line-height: 50px;
+}
+.memeber-nav-list ul li a{
+	box-sizing: border-box;
+	display: block;
+	padding-left: 40px;
+	height: 50px;
+	line-height: 50px;
+}
+.memeber-nav-list ul li a:hover{
+	border-left: 4px solid #4f90bd;
+	background: #bbddf5!important;
+	color: #fff;
+}
+.member-list-now{
+	color: #fff;
+	border-left: 4px solid #4f90bd;
+	background: #bbddf5;
+}
+.me-ico{
+	width: 17px;
+	height: 16px;
+	background: url(../img/icon1.png) no-repeat center center;
+	margin-top: 18px;
+	margin-right: 8px;
+}
+.me-txt{
+	color: #333;
+}
+.me-ico1{
+	width: 17px;
+	height: 16px;
+	margin-top: 18px;
+	margin-right: 8px;
+	background: url(../img/icon2.png) no-repeat center center;
+}
+.me-ico2{
+	width: 17px;
+	height: 16px;
+	margin-top: 18px;
+	margin-right: 8px;
+	background: url(../img/icon3.png) no-repeat center center;
+}
+.me-ico3{
+	width: 17px;
+	height: 16px;
+	margin-top: 18px;
+	margin-right: 8px;
+	background: url(../img/icon4.png) no-repeat center center;
+}
+
+/*内容*/
+.member-right{
+	width: 975px;
+	margin-top: 20px;
+}
+.member-right-title{
+	border-left: 3px solid #007CC2;
+	text-indent: 8px;
+	font-size: 20px;
+	color: #007CC2;
+	margin-bottom: 10px;
+}
+.member-right-con{
+	width: 100%;
+	min-height: 338px;
+	background: #fff;
+	border: 1px solid #eaeaea;
+	padding: 20px;
+}
+.member-title{
+	height: 30px;
+	line-height: 30px;
+	color: #666;
+}
+.member-info{
+	margin-top: ;
+}
+.member-name{
+	margin-left: 14px;
+	font-size: 24px;
+}
+.me-info-list ul,.member-money ul{
+	padding-left: 16px;
+}
+.me-info-list li{
+	width: 300px;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+}
+.member-money{
+	margin-top: 10px;
+}
+.me-mon1{
+	width: 175px;
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+	background: #f5f5f5;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.me-mon2{
+	width: 175px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #63a3c8;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #fff;
+}
+.member-money li{
+	float: left;
+	width: 300px;
+}
+
+
+/*我的账户*/
+.zhu-info li{
+	float: left;
+	width: 30%;
+	color: #676767;
+}
+.zhu-blue{
+	font-size: 16px;
+	color: #007CC2;
+}
+.me-btn{
+	    margin-left: 200px;
+    margin-top: 34px;
+}
+.me-btn li{
+	float: left;
+	margin-right: 100px;
+}
+.me-bding,.me-czhi,.me-txian{
+	padding: 10px 0px;
+	border-radius: 5px;
+	background: #007CC2;
+	color: #fff;
+	width: 102px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+.me-bding:hover,.me-czhi:hover,.me-txian:hover{
+	background: #159BE8;
+}
+.me-bding:active,.me-czhi:active,.me-txian:active{
+	background: #159BE8;
+}
+.me-bding{
+	letter-spacing: 1px;
+}
+.me-bi-list1{
+	width: 100%;
+	height: 12px;
+	border-bottom: 2px solid #ddd;
+	background: url(../img/me-arrow-up.png) no-repeat 238px center;
+}
+.me-bi-list2,.me-ci-list2,.me-ti-list2{
+	/*height: 44px;*/
+	line-height: 44px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.me-bding-info{
+	margin-top: 10px;
+	display: none;
+}
+.me-bi-text,.me-ci-text{
+	width: 260px;
+	height: 44px;
+	line-height: 44px;
+	text-indent: 10px;
+	font-size: 16px;
+}
+.me-bl-word{
+	width: 130px;
+	text-align: right;
+	margin-right: 10px;
+}
+.me-ci-word{
+	height: 44px;
+	line-height: 44px;
+	width: 130px;
+	text-align: right;
+	margin-right: 10px;
+}
+.me-ti-word{
+	width: 130px;
+	text-align: right;
+	margin-right: 10px;
+}
+.me-bi-btn,.me-ci-btn{
+	background: #FF6600;
+	width: 145px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	letter-spacing: 2px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+/* member form提交按钮  ---start*/
+#submit1 {
+	background: #FF6600;
+	width: 145px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	letter-spacing: 2px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+#submit2 {
+	background: #FF6600;
+	width: 145px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	letter-spacing: 2px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+#submit3 {
+	background: #FF6600;
+	width: 145px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	letter-spacing: 2px;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+/* member form提交按钮  ---end */
+
+.me-bi-btn:hover,.me-ci-btn:hover{
+	background: #FF9900;
+}
+.bd-yzheng{
+	height: 44px;
+	line-height: 44px;
+	margin-left: 10px;
+}
+.me-bd-error{
+	color: #FF0000;
+}
+/*chongzhi*/
+.me-ci-list1{
+	width: 100%;
+	height: 12px;
+	border-bottom: 2px solid #ddd;
+	background: url(../img/me-arrow-up.png) no-repeat 441px center;
+}
+.me-czhi-info{
+	margin-top: 10px;
+	display: none;
+}
+.me-ti-list1{
+	width: 100%;
+	height: 12px;
+	border-bottom: 2px solid #ddd;
+	background: url(../img/me-arrow-up.png) no-repeat 642px center;
+}
+.me-txian-info{
+	margin-top: 10px;
+	display: none;
+}
+.me-bi-bank{
+	width: 760px;
+}
+.me-bi-bank li{
+	    border: 1px solid #abadb3;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    text-align: center;
+    width: 142px;
+    margin-bottom: 10px;
+    /*background: url(../img/bank-bg.png) no-repeat center center;*/
+}
+.me-bi-radio{
+	margin-right: 2px!important;
+}
+
+
+/*银行卡列表*/
+.me-bank{
+	margin-top: 20px;
+}
+.mb-head{
+	height: 40px;
+	line-height: 40px;
+	background: #f5f5f5;
+	padding-left: 20px;
+}
+.card-name{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	/*padding-left: 20px;
+	padding-right: 20px;*/
+	border-bottom: 1px dotted #d9d9d9;
+}
+.me-bank .row{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.me-bank .row .col-xs-4{
+	 border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    box-shadow: 0 0 1px #c9c9c9;
+    display: inline;
+    height: 152px;
+    margin-top: 20px;
+    width: 32%;
+    margin-right: 10px;
+}
+.card-info{
+	height: 70px;
+	line-height: 70px;
+	letter-spacing: 1px;
+}
+.card-h{
+	color: #888;
+}
+.card-per{
+	height: 40px;
+	line-height: 40px;
+	background: #F3F3F3;
+	 border-bottom-left-radius: 5px;
+	 border-bottom-right-radius: 5px;
+}
+
+/*提款已经绑定的银行卡*/
+.me-ybd{
+	margin-top: 20px;
+}
+.me-ybd-head{
+	height: 40px;
+	line-height: 40px;
+	text-indent: 16px;
+	background: #F5F5F5;
+	font-size: 16px;
+}
+.me-ybd td{
+	height: 50px;
+	line-height: 50px!important;
+}
+
+.me-ybd td .me-bank{
+	margin-top:18px;
+}

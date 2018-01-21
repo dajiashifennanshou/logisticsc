@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.RoleMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.RoleMenu" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
+    <result column="menu_id" property="menuId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_id, menu_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_role_menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_role_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.RoleMenu" >
+    insert into tms_role_menu (id, role_id, menu_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.RoleMenu" >
+    insert into tms_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.RoleMenu" >
+    update tms_role_menu
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null" >
+        menu_id = #{menuId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.RoleMenu" >
+    update tms_role_menu
+    set role_id = #{roleId,jdbcType=BIGINT},
+      menu_id = #{menuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 批量插入 -->
+  <insert id="insertBatch" parameterType="list">
+  	insert into tms_role_menu
+  		(role_id,menu_id)
+  	values
+  		<foreach collection="list" item="roleMenu" separator="," >
+  			(#{roleMenu.roleId},#{roleMenu.menuId})
+  		</foreach>
+  </insert>
+  <!-- 批量删除 -->
+  <delete id="deleteBatchByRoleId">
+  	delete from
+  		tms_role_menu
+  	where 
+  		role_id in
+  		<foreach collection="list" item="roleId" open="(" close=")" separator=",">
+  			#{roleId}
+  		</foreach>
+  </delete>
+  
+  <delete id="deleteByRoleId">
+  	delete from tms_role_menu
+  	where 
+  		role_id = #{roleId}
+  </delete>
+</mapper>

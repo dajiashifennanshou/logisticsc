@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceiptMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.Receipt" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_no" property="wayBillNo" jdbcType="VARCHAR" />
+    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="receipt_state" property="receiptState" jdbcType="INTEGER" />
+    <result column="way_bill_id" property="wayBillId" jdbcType="BIGINT" />
+    <result column="receive_peison" property="receivePeison" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_no, receive_time, receipt_state, way_bill_id, receive_peison
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receipt
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receipt
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.Receipt" >
+    insert into tms_receipt (id, way_bill_no, receive_time, 
+      receipt_state, way_bill_id, receive_peison
+      )
+    values (#{id,jdbcType=BIGINT}, #{wayBillNo,jdbcType=VARCHAR}, #{receiveTime,jdbcType=TIMESTAMP}, 
+      #{receiptState,jdbcType=INTEGER}, #{wayBillId,jdbcType=BIGINT}, #{receivePeison,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.Receipt" >
+    insert into tms_receipt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillNo != null" >
+        way_bill_no,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="receiptState != null" >
+        receipt_state,
+      </if>
+      <if test="wayBillId != null" >
+        way_bill_id,
+      </if>
+      <if test="receivePeison != null" >
+        receive_peison,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNo != null" >
+        #{wayBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiptState != null" >
+        #{receiptState,jdbcType=INTEGER},
+      </if>
+      <if test="wayBillId != null" >
+        #{wayBillId,jdbcType=BIGINT},
+      </if>
+      <if test="receivePeison != null" >
+        #{receivePeison,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.Receipt" >
+    update tms_receipt
+    <set >
+      <if test="wayBillNo != null" >
+        way_bill_no = #{wayBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiptState != null" >
+        receipt_state = #{receiptState,jdbcType=INTEGER},
+      </if>
+      <if test="wayBillId != null" >
+        way_bill_id = #{wayBillId,jdbcType=BIGINT},
+      </if>
+      <if test="receivePeison != null" >
+        receive_peison = #{receivePeison,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.Receipt" >
+    update tms_receipt
+    set way_bill_no = #{wayBillNo,jdbcType=VARCHAR},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      receipt_state = #{receiptState,jdbcType=INTEGER},
+      way_bill_id = #{wayBillId,jdbcType=BIGINT},
+      receive_peison = #{receivePeison,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

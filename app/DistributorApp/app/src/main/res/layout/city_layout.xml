@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.dd.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="-8dp"
+        android:layout_marginRight="-8dp"
+        app:sl_shadowColor="@color/shadow2"
+        app:sl_shadowRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/btn_confirm"
+                    style="@style/basic_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+
+                    android:text="确定"
+                    android:textColor="@color/colorAccent2"
+                    android:textSize="@dimen/common_text_size" />
+
+                <TextView
+                    android:id="@+id/btn_delete"
+                    style="@style/basic_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="取消"
+                    android:textColor="@color/colorAccent2"
+                    android:textSize="@dimen/common_text_size" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <com.xsl.distributor.ws.ui.widget.WheelView
+                    android:id="@+id/id_province"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></com.xsl.distributor.ws.ui.widget.WheelView>
+
+                <com.xsl.distributor.ws.ui.widget.WheelView
+                    android:id="@+id/id_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></com.xsl.distributor.ws.ui.widget.WheelView>
+
+                <com.xsl.distributor.ws.ui.widget.WheelView
+                    android:id="@+id/id_district"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></com.xsl.distributor.ws.ui.widget.WheelView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.dd.ShadowLayout>
+</LinearLayout>

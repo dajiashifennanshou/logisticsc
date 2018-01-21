@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcPostDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcPost"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,postName,postDesc,postLevel,belongLevel,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcPost" > 
+		select  <include refid="Base_Column_List" />  from yc_post where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcPost" > 
+		select  count(1)  from yc_post 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_post order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcPost"> 
+		delete from yc_post where id=#{id} 
+	</delete>
+	<delete id="delSelect" parameterType="com.brightsoft.entity.YcEmployee"> 
+		delete from yc_post where id in
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>  
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcPost" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_post  
+		(postName,postDesc,postLevel,belongLevel,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{postName},#{postDesc},#{postLevel},#{belongLevel},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcPost">   
+	update yc_post 
+	<set> 
+		<if test="postName !=null"> 
+			postName=#{postName},
+		</if>
+		<if test="postDesc !=null"> 
+			postDesc=#{postDesc},
+		</if>
+		<if test="postLevel !=null"> 
+			postLevel=#{postLevel},
+		</if>
+		<if test="belongLevel !=null"> 
+			belongLevel=#{belongLevel},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update>
+	<select id="getPost" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcPost" >
+		select  <include refid="Base_Column_List" />  from yc_post
+	</select> 
+</mapper> 
+

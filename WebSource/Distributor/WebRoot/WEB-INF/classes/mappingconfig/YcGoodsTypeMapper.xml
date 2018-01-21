@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcGoodsTypeDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcGoodsType"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,parentSoft,softName,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcGoodsType" > 
+		select  <include refid="Base_Column_List" />  from yc_goods_type where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcGoodsType" > 
+		select  count(1)  from yc_goods_type 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_goods_type order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getGoodsTypeBy" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcGoodsType"> 
+		select <include refid="Base_Column_List" /> from yc_goods_type where 1=1
+		<if test="parentSoft !=null"> 
+			and parentSoft=#{parentSoft}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcGoodsType"> 
+		delete from yc_goods_type where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcGoodsType" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_goods_type  
+		(parentSoft,softName,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{parentSoft},#{softName},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcGoodsType">   
+	update YcGoodsType 
+	<set> 
+		<if test="parentSoft !=null"> 
+			parentSoft=#{parentSoft},
+		</if>
+		<if test="softName !=null"> 
+			softName=#{softName},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

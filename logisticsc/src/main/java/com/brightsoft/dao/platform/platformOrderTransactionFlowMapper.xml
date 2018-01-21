@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformOrderTransactionFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformOrderTransactionFlow" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="flow_number" property="flowNumber" jdbcType="VARCHAR" />
+    <result column="transaction_money" property="transactionMoney" jdbcType="DOUBLE" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="charge_user" property="chargeUser" jdbcType="VARCHAR" />
+    <result column="pay_user" property="payUser" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="MineBaseResultMap" type="com.brightsoft.model.platformMineOrderTransactionFlow" >
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="flow_number" property="flowNumber" jdbcType="VARCHAR" />
+    <result column="transaction_money" property="transactionMoney" jdbcType="DOUBLE" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="charge_user" property="chargeUser" jdbcType="VARCHAR" />
+    <result column="pay_user" property="payUser" jdbcType="VARCHAR" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, way_bill_number, flow_number, transaction_money, time, charge_user, 
+    pay_user
+  </sql>
+  <select id="selectCompanCondition" resultMap="MineBaseResultMap">
+   	SELECT o_t.*, 
+	o1.province start_province, o1.city start_city, o1.county start_county, 
+	o2.province end_province, o2.city end_city, o2.county end_county 
+	FROM
+	(
+		SELECT o.order_number, o.way_bill_number,f.flow_number,f.transaction_money,f.time,f.charge_user,f.pay_user,l.start_outlets, l.end_outlets
+		from lc_platform_order_transaction_flow f
+		LEFT JOIN lc_platform_order o on f.order_number = o.order_number
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		WHERE 1=1  
+		and f.charge_user = #{mineOrderTransactionFlow.chargeUser,jdbcType=VARCHAR}
+		<if test="mineOrderTransactionFlow.condition != null and mineOrderTransactionFlow.condition !='' ">
+   		and (f.order_number like concat("%",#{mineOrderTransactionFlow.condition},"%") or f.way_bill_number like concat("%",#{mineOrderTransactionFlow.condition},"%"))
+   		</if>
+   		<if test="mineOrderTransactionFlow.startTime!=null and mineOrderTransactionFlow.startTime!=''">
+		and time >=#{mineOrderTransactionFlow.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="mineOrderTransactionFlow.endTime!=null and mineOrderTransactionFlow.endTime!=''">
+			and #{mineOrderTransactionFlow.endTime,jdbcType=VARCHAR} >= time
+		</if>
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county
+				FROM tms_outlets_info i_o 		
+	) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+	limit #{page.start}, #{page.limit}
+  </select>
+  <select id="countRows" resultType="int">
+    select count(*) from lc_platform_order_transaction_flow 
+    where charge_user = #{mineOrderTransactionFlow.chargeUser,jdbcType=VARCHAR}
+    <if test="mineOrderTransactionFlow.condition != null and mineOrderTransactionFlow.condition !='' ">
+  		and (order_number like concat("%",#{mineOrderTransactionFlow.condition},"%") or way_bill_number like concat("%",#{mineOrderTransactionFlow.condition},"%"))
+  	</if>
+  	<if test="mineOrderTransactionFlow.startTime!=null and mineOrderTransactionFlow.startTime!=''">
+		and time >=#{mineOrderTransactionFlow.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineOrderTransactionFlow.endTime!=null and mineOrderTransactionFlow.endTime!=''">
+		and #{mineOrderTransactionFlow.endTime,jdbcType=VARCHAR} >= time
+	</if>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_transaction_flow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_transaction_flow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformOrderTransactionFlow" >
+    insert into lc_platform_order_transaction_flow (id, order_number, way_bill_number, 
+      flow_number, transaction_money, time, 
+      charge_user, pay_user)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{wayBillNumber,jdbcType=VARCHAR}, 
+      #{flowNumber,jdbcType=VARCHAR}, #{transactionMoney,jdbcType=DOUBLE}, #{time,jdbcType=TIMESTAMP}, 
+      #{chargeUser,jdbcType=VARCHAR}, #{payUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformOrderTransactionFlow" >
+    insert into lc_platform_order_transaction_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="flowNumber != null" >
+        flow_number,
+      </if>
+      <if test="transactionMoney != null" >
+        transaction_money,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="chargeUser != null" >
+        charge_user,
+      </if>
+      <if test="payUser != null" >
+        pay_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNumber != null" >
+        #{flowNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionMoney != null" >
+        #{transactionMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeUser != null" >
+        #{chargeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="payUser != null" >
+        #{payUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformOrderTransactionFlow" >
+    update lc_platform_order_transaction_flow
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="flowNumber != null" >
+        flow_number = #{flowNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionMoney != null" >
+        transaction_money = #{transactionMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeUser != null" >
+        charge_user = #{chargeUser,jdbcType=VARCHAR},
+      </if>
+      <if test="payUser != null" >
+        pay_user = #{payUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformOrderTransactionFlow" >
+    update lc_platform_order_transaction_flow
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      flow_number = #{flowNumber,jdbcType=VARCHAR},
+      transaction_money = #{transactionMoney,jdbcType=DOUBLE},
+      time = #{time,jdbcType=TIMESTAMP},
+      charge_user = #{chargeUser,jdbcType=VARCHAR},
+      pay_user = #{payUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

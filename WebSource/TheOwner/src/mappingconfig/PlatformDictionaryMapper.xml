@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.Dao.PlatformDictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.yc.Entity.PlatformDictionary" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="abbr" property="abbr" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="level1" property="level1" jdbcType="VARCHAR" />
+    <result column="level2" property="level2" jdbcType="VARCHAR" />
+    <result column="level3" property="level3" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, name, abbr, type, level1, level2, level3
+  </sql>
+  <!-- 运输方式 -->
+  <select id="selectByPrimaryId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_dictionary
+    where id = #{id,jdbcType=BIGINT}
+    and type=#{type,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCradId" resultType="String">
+    select 
+  	 name
+    from lc_platform_dictionary
+    where id = #{id,jdbcType=BIGINT}
+    and type=#{type,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yc.Entity.PlatformDictionary" >
+    insert into lc_platform_dictionary (id, name, abbr, 
+      type, level1, level2, 
+      level3)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{abbr,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{level1,jdbcType=VARCHAR}, #{level2,jdbcType=VARCHAR}, 
+      #{level3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.Entity.PlatformDictionary" >
+    insert into lc_platform_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="abbr != null" >
+        abbr,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="level1 != null" >
+        level1,
+      </if>
+      <if test="level2 != null" >
+        level2,
+      </if>
+      <if test="level3 != null" >
+        level3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="abbr != null" >
+        #{abbr,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level1 != null" >
+        #{level1,jdbcType=VARCHAR},
+      </if>
+      <if test="level2 != null" >
+        #{level2,jdbcType=VARCHAR},
+      </if>
+      <if test="level3 != null" >
+        #{level3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.Entity.PlatformDictionary" >
+    update lc_platform_dictionary
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="abbr != null" >
+        abbr = #{abbr,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level1 != null" >
+        level1 = #{level1,jdbcType=VARCHAR},
+      </if>
+      <if test="level2 != null" >
+        level2 = #{level2,jdbcType=VARCHAR},
+      </if>
+      <if test="level3 != null" >
+        level3 = #{level3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.Entity.PlatformDictionary" >
+    update lc_platform_dictionary
+    set name = #{name,jdbcType=VARCHAR},
+      abbr = #{abbr,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      level1 = #{level1,jdbcType=VARCHAR},
+      level2 = #{level2,jdbcType=VARCHAR},
+      level3 = #{level3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 根据类型 查询字典数据 -->
+  <select id="selectDictDataByType" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+    FROM lc_platform_dictionary
+    where type = #{type,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- bui/根据类型 查询字典数据 -->
+<!--   <select id="selectDictDataByType4Bui" parameterType="java.lang.String" resultMap="BaseResultBuiMap">
+  	select
+  		id,name
+    FROM lc_platform_dictionary
+    where type = #{type,jdbcType=VARCHAR}
+  </select> -->
+</mapper>

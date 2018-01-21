@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformInsuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformInsurance" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="ins_order_num" property="insOrderNum" jdbcType="VARCHAR" />
+    <result column="ins_com_tag" property="insComTag" jdbcType="VARCHAR" />
+    <result column="ins_type" property="insType" jdbcType="VARCHAR" />
+    <result column="ins_ts_type" property="insTsType" jdbcType="VARCHAR" />
+    <result column="ins_true_name" property="insTrueName" jdbcType="VARCHAR" />
+    <result column="ins_tel" property="insTel" jdbcType="VARCHAR" />
+    <result column="ins_card_num" property="insCardNum" jdbcType="VARCHAR" />
+    <result column="ins_address" property="insAddress" jdbcType="VARCHAR" />
+    <result column="ins_che_num" property="insCheNum" jdbcType="VARCHAR" />
+    <result column="ins_he_tong_num" property="insHeTongNum" jdbcType="VARCHAR" />
+    <result column="ins_start_time" property="insStartTime" jdbcType="TIMESTAMP" />
+    <result column="ins_huo_wu" property="insHuoWu" jdbcType="VARCHAR" />
+    <result column="ins_huowu_num" property="insHuowuNum" jdbcType="VARCHAR" />
+    <result column="ins_jine" property="insJine" jdbcType="DOUBLE" />
+    <result column="ins_start_add" property="insStartAdd" jdbcType="VARCHAR" />
+    <result column="ins_end_add" property="insEndAdd" jdbcType="VARCHAR" />
+    <result column="ins_mid_add" property="insMidAdd" jdbcType="VARCHAR" />
+    <result column="ins_fee" property="insFee" jdbcType="DOUBLE" />
+    <result column="ins_create_time" property="insCreateTime" jdbcType="TIMESTAMP" />
+    <result column="ins_area" property="insArea" jdbcType="INTEGER" />
+    <result column="ins_status" property="insStatus" jdbcType="INTEGER" />
+    <result column="ins_jsy" property="insJsy" jdbcType="VARCHAR" />
+    <result column="ins_jsy_sfz" property="insJsySfz" jdbcType="VARCHAR" />
+    <result column="ins_jsy_sj" property="insJsySj" jdbcType="VARCHAR" />
+    <result column="ins_xs_num" property="insXsNum" jdbcType="VARCHAR" />
+    <result column="ins_yy_num" property="insYyNum" jdbcType="VARCHAR" />
+    <result column="ins_fdj_num" property="insFdjNum" jdbcType="VARCHAR" />
+    <result column="ins_cj_num" property="insCjNum" jdbcType="VARCHAR" />
+    <result column="ins_des" property="insDes" jdbcType="VARCHAR" />
+    <result column="ins_sys_baodan" property="insSysBaodan" jdbcType="VARCHAR" />
+    <result column="ins_last_baodan" property="insLastBaodan" jdbcType="VARCHAR" />
+    <result column="ins_file_url" property="insFileUrl" jdbcType="VARCHAR" />
+    <result column="ins_goods_type" property="insGoodsType" jdbcType="VARCHAR" />
+    <result column="ins_trans_type" property="insTransType" jdbcType="VARCHAR" />
+    <result column="ins_load_type" property="insLoadType" jdbcType="VARCHAR" />
+    <result column="ins_bao_zhuang" property="insBaoZhuang" jdbcType="VARCHAR" />
+    <association property="platformUser" javaType="com.brightsoft.model.PlatformUser">
+    	<result column="true_name" property="trueName"/>
+    </association>
+    <association property="insuranceCompany" javaType="com.brightsoft.model.InsuranceCompany">
+    	<result column="ins_com_logo_url" property="insComLogoUrl"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, ins_order_num, ins_com_tag, ins_type, ins_ts_type, ins_true_name, ins_tel, 
+    ins_card_num, ins_address, ins_che_num, ins_he_tong_num, ins_start_time, ins_huo_wu, 
+    ins_huowu_num, ins_jine, ins_start_add, ins_end_add, ins_mid_add, ins_fee, ins_create_time, 
+    ins_area, ins_status, ins_jsy, ins_jsy_sfz, ins_jsy_sj, ins_xs_num, ins_yy_num, ins_fdj_num, 
+    ins_cj_num, ins_des, ins_sys_baodan, ins_last_baodan, ins_file_url, ins_goods_type, 
+    ins_trans_type, ins_load_type, ins_bao_zhuang
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    	pi.*,ic.ins_com_logo_url
+    from 
+    	lc_platform_insurance pi
+    	left join lc_insurance_company ic on pi.ins_com_tag = ic.ins_com_tag
+    where pi.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_insurance
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformInsurance" >
+    insert into lc_platform_insurance (id, user_id, ins_order_num, 
+      ins_com_tag, ins_type, ins_ts_type, 
+      ins_true_name, ins_tel, ins_card_num, 
+      ins_address, ins_che_num, ins_he_tong_num, 
+      ins_start_time, ins_huo_wu, ins_huowu_num, 
+      ins_jine, ins_start_add, ins_end_add, 
+      ins_mid_add, ins_fee, ins_create_time, 
+      ins_area, ins_status, ins_jsy, 
+      ins_jsy_sfz, ins_jsy_sj, ins_xs_num, 
+      ins_yy_num, ins_fdj_num, ins_cj_num, 
+      ins_des, ins_sys_baodan, ins_last_baodan, 
+      ins_file_url, ins_goods_type, ins_trans_type, 
+      ins_load_type, ins_bao_zhuang)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{insOrderNum,jdbcType=VARCHAR}, 
+      #{insComTag,jdbcType=VARCHAR}, #{insType,jdbcType=VARCHAR}, #{insTsType,jdbcType=VARCHAR}, 
+      #{insTrueName,jdbcType=VARCHAR}, #{insTel,jdbcType=VARCHAR}, #{insCardNum,jdbcType=VARCHAR}, 
+      #{insAddress,jdbcType=VARCHAR}, #{insCheNum,jdbcType=VARCHAR}, #{insHeTongNum,jdbcType=VARCHAR}, 
+      #{insStartTime,jdbcType=TIMESTAMP}, #{insHuoWu,jdbcType=VARCHAR}, #{insHuowuNum,jdbcType=VARCHAR}, 
+      #{insJine,jdbcType=DOUBLE}, #{insStartAdd,jdbcType=VARCHAR}, #{insEndAdd,jdbcType=VARCHAR}, 
+      #{insMidAdd,jdbcType=VARCHAR}, #{insFee,jdbcType=DOUBLE}, #{insCreateTime,jdbcType=TIMESTAMP}, 
+      #{insArea,jdbcType=INTEGER}, #{insStatus,jdbcType=INTEGER}, #{insJsy,jdbcType=VARCHAR}, 
+      #{insJsySfz,jdbcType=VARCHAR}, #{insJsySj,jdbcType=VARCHAR}, #{insXsNum,jdbcType=VARCHAR}, 
+      #{insYyNum,jdbcType=VARCHAR}, #{insFdjNum,jdbcType=VARCHAR}, #{insCjNum,jdbcType=VARCHAR}, 
+      #{insDes,jdbcType=VARCHAR}, #{insSysBaodan,jdbcType=VARCHAR}, #{insLastBaodan,jdbcType=VARCHAR}, 
+      #{insFileUrl,jdbcType=VARCHAR}, #{insGoodsType,jdbcType=VARCHAR}, #{insTransType,jdbcType=VARCHAR}, 
+      #{insLoadType,jdbcType=VARCHAR}, #{insBaoZhuang,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformInsurance" >
+    insert into lc_platform_insurance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="insOrderNum != null" >
+        ins_order_num,
+      </if>
+      <if test="insComTag != null" >
+        ins_com_tag,
+      </if>
+      <if test="insType != null" >
+        ins_type,
+      </if>
+      <if test="insTsType != null" >
+        ins_ts_type,
+      </if>
+      <if test="insTrueName != null" >
+        ins_true_name,
+      </if>
+      <if test="insTel != null" >
+        ins_tel,
+      </if>
+      <if test="insCardNum != null" >
+        ins_card_num,
+      </if>
+      <if test="insAddress != null" >
+        ins_address,
+      </if>
+      <if test="insCheNum != null" >
+        ins_che_num,
+      </if>
+      <if test="insHeTongNum != null" >
+        ins_he_tong_num,
+      </if>
+      <if test="insStartTime != null" >
+        ins_start_time,
+      </if>
+      <if test="insHuoWu != null" >
+        ins_huo_wu,
+      </if>
+      <if test="insHuowuNum != null" >
+        ins_huowu_num,
+      </if>
+      <if test="insJine != null" >
+        ins_jine,
+      </if>
+      <if test="insStartAdd != null" >
+        ins_start_add,
+      </if>
+      <if test="insEndAdd != null" >
+        ins_end_add,
+      </if>
+      <if test="insMidAdd != null" >
+        ins_mid_add,
+      </if>
+      <if test="insFee != null" >
+        ins_fee,
+      </if>
+      <if test="insCreateTime != null" >
+        ins_create_time,
+      </if>
+      <if test="insArea != null" >
+        ins_area,
+      </if>
+      <if test="insStatus != null" >
+        ins_status,
+      </if>
+      <if test="insJsy != null" >
+        ins_jsy,
+      </if>
+      <if test="insJsySfz != null" >
+        ins_jsy_sfz,
+      </if>
+      <if test="insJsySj != null" >
+        ins_jsy_sj,
+      </if>
+      <if test="insXsNum != null" >
+        ins_xs_num,
+      </if>
+      <if test="insYyNum != null" >
+        ins_yy_num,
+      </if>
+      <if test="insFdjNum != null" >
+        ins_fdj_num,
+      </if>
+      <if test="insCjNum != null" >
+        ins_cj_num,
+      </if>
+      <if test="insDes != null" >
+        ins_des,
+      </if>
+      <if test="insSysBaodan != null" >
+        ins_sys_baodan,
+      </if>
+      <if test="insLastBaodan != null" >
+        ins_last_baodan,
+      </if>
+      <if test="insFileUrl != null" >
+        ins_file_url,
+      </if>
+      <if test="insGoodsType != null" >
+        ins_goods_type,
+      </if>
+      <if test="insTransType != null" >
+        ins_trans_type,
+      </if>
+      <if test="insLoadType != null" >
+        ins_load_type,
+      </if>
+      <if test="insBaoZhuang != null" >
+        ins_bao_zhuang,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="insOrderNum != null" >
+        #{insOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insComTag != null" >
+        #{insComTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insType != null" >
+        #{insType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTsType != null" >
+        #{insTsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTrueName != null" >
+        #{insTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="insTel != null" >
+        #{insTel,jdbcType=VARCHAR},
+      </if>
+      <if test="insCardNum != null" >
+        #{insCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insAddress != null" >
+        #{insAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="insCheNum != null" >
+        #{insCheNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insHeTongNum != null" >
+        #{insHeTongNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insStartTime != null" >
+        #{insStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insHuoWu != null" >
+        #{insHuoWu,jdbcType=VARCHAR},
+      </if>
+      <if test="insHuowuNum != null" >
+        #{insHuowuNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insJine != null" >
+        #{insJine,jdbcType=DOUBLE},
+      </if>
+      <if test="insStartAdd != null" >
+        #{insStartAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insEndAdd != null" >
+        #{insEndAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insMidAdd != null" >
+        #{insMidAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insFee != null" >
+        #{insFee,jdbcType=DOUBLE},
+      </if>
+      <if test="insCreateTime != null" >
+        #{insCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insArea != null" >
+        #{insArea,jdbcType=INTEGER},
+      </if>
+      <if test="insStatus != null" >
+        #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="insJsy != null" >
+        #{insJsy,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySfz != null" >
+        #{insJsySfz,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySj != null" >
+        #{insJsySj,jdbcType=VARCHAR},
+      </if>
+      <if test="insXsNum != null" >
+        #{insXsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insYyNum != null" >
+        #{insYyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insFdjNum != null" >
+        #{insFdjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insCjNum != null" >
+        #{insCjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insDes != null" >
+        #{insDes,jdbcType=VARCHAR},
+      </if>
+      <if test="insSysBaodan != null" >
+        #{insSysBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insLastBaodan != null" >
+        #{insLastBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insFileUrl != null" >
+        #{insFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="insGoodsType != null" >
+        #{insGoodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTransType != null" >
+        #{insTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="insLoadType != null" >
+        #{insLoadType,jdbcType=VARCHAR},
+      </if>
+      <if test="insBaoZhuang != null" >
+        #{insBaoZhuang,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformInsurance" >
+    update lc_platform_insurance
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="insOrderNum != null" >
+        ins_order_num = #{insOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insComTag != null" >
+        ins_com_tag = #{insComTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insType != null" >
+        ins_type = #{insType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTsType != null" >
+        ins_ts_type = #{insTsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTrueName != null" >
+        ins_true_name = #{insTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="insTel != null" >
+        ins_tel = #{insTel,jdbcType=VARCHAR},
+      </if>
+      <if test="insCardNum != null" >
+        ins_card_num = #{insCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insAddress != null" >
+        ins_address = #{insAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="insCheNum != null" >
+        ins_che_num = #{insCheNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insHeTongNum != null" >
+        ins_he_tong_num = #{insHeTongNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insStartTime != null" >
+        ins_start_time = #{insStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insHuoWu != null" >
+        ins_huo_wu = #{insHuoWu,jdbcType=VARCHAR},
+      </if>
+      <if test="insHuowuNum != null" >
+        ins_huowu_num = #{insHuowuNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insJine != null" >
+        ins_jine = #{insJine,jdbcType=DOUBLE},
+      </if>
+      <if test="insStartAdd != null" >
+        ins_start_add = #{insStartAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insEndAdd != null" >
+        ins_end_add = #{insEndAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insMidAdd != null" >
+        ins_mid_add = #{insMidAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insFee != null" >
+        ins_fee = #{insFee,jdbcType=DOUBLE},
+      </if>
+      <if test="insCreateTime != null" >
+        ins_create_time = #{insCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insArea != null" >
+        ins_area = #{insArea,jdbcType=INTEGER},
+      </if>
+      <if test="insStatus != null" >
+        ins_status = #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="insJsy != null" >
+        ins_jsy = #{insJsy,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySfz != null" >
+        ins_jsy_sfz = #{insJsySfz,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySj != null" >
+        ins_jsy_sj = #{insJsySj,jdbcType=VARCHAR},
+      </if>
+      <if test="insXsNum != null" >
+        ins_xs_num = #{insXsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insYyNum != null" >
+        ins_yy_num = #{insYyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insFdjNum != null" >
+        ins_fdj_num = #{insFdjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insCjNum != null" >
+        ins_cj_num = #{insCjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insDes != null" >
+        ins_des = #{insDes,jdbcType=VARCHAR},
+      </if>
+      <if test="insSysBaodan != null" >
+        ins_sys_baodan = #{insSysBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insLastBaodan != null" >
+        ins_last_baodan = #{insLastBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insFileUrl != null" >
+        ins_file_url = #{insFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="insGoodsType != null" >
+        ins_goods_type = #{insGoodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTransType != null" >
+        ins_trans_type = #{insTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="insLoadType != null" >
+        ins_load_type = #{insLoadType,jdbcType=VARCHAR},
+      </if>
+      <if test="insBaoZhuang != null" >
+        ins_bao_zhuang = #{insBaoZhuang,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformInsurance" >
+    update lc_platform_insurance
+    set user_id = #{userId,jdbcType=BIGINT},
+      ins_order_num = #{insOrderNum,jdbcType=VARCHAR},
+      ins_com_tag = #{insComTag,jdbcType=VARCHAR},
+      ins_type = #{insType,jdbcType=VARCHAR},
+      ins_ts_type = #{insTsType,jdbcType=VARCHAR},
+      ins_true_name = #{insTrueName,jdbcType=VARCHAR},
+      ins_tel = #{insTel,jdbcType=VARCHAR},
+      ins_card_num = #{insCardNum,jdbcType=VARCHAR},
+      ins_address = #{insAddress,jdbcType=VARCHAR},
+      ins_che_num = #{insCheNum,jdbcType=VARCHAR},
+      ins_he_tong_num = #{insHeTongNum,jdbcType=VARCHAR},
+      ins_start_time = #{insStartTime,jdbcType=TIMESTAMP},
+      ins_huo_wu = #{insHuoWu,jdbcType=VARCHAR},
+      ins_huowu_num = #{insHuowuNum,jdbcType=VARCHAR},
+      ins_jine = #{insJine,jdbcType=DOUBLE},
+      ins_start_add = #{insStartAdd,jdbcType=VARCHAR},
+      ins_end_add = #{insEndAdd,jdbcType=VARCHAR},
+      ins_mid_add = #{insMidAdd,jdbcType=VARCHAR},
+      ins_fee = #{insFee,jdbcType=DOUBLE},
+      ins_create_time = #{insCreateTime,jdbcType=TIMESTAMP},
+      ins_area = #{insArea,jdbcType=INTEGER},
+      ins_status = #{insStatus,jdbcType=INTEGER},
+      ins_jsy = #{insJsy,jdbcType=VARCHAR},
+      ins_jsy_sfz = #{insJsySfz,jdbcType=VARCHAR},
+      ins_jsy_sj = #{insJsySj,jdbcType=VARCHAR},
+      ins_xs_num = #{insXsNum,jdbcType=VARCHAR},
+      ins_yy_num = #{insYyNum,jdbcType=VARCHAR},
+      ins_fdj_num = #{insFdjNum,jdbcType=VARCHAR},
+      ins_cj_num = #{insCjNum,jdbcType=VARCHAR},
+      ins_des = #{insDes,jdbcType=VARCHAR},
+      ins_sys_baodan = #{insSysBaodan,jdbcType=VARCHAR},
+      ins_last_baodan = #{insLastBaodan,jdbcType=VARCHAR},
+      ins_file_url = #{insFileUrl,jdbcType=VARCHAR},
+      ins_goods_type = #{insGoodsType,jdbcType=VARCHAR},
+      ins_trans_type = #{insTransType,jdbcType=VARCHAR},
+      ins_load_type = #{insLoadType,jdbcType=VARCHAR},
+      ins_bao_zhuang = #{insBaoZhuang,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 根据订单号修改保单信息 -->
+  <update id="updateByInsOrderNumSelective" parameterType="com.brightsoft.model.PlatformInsurance" >
+    update lc_platform_insurance
+    <set>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="insOrderNum != null" >
+        ins_order_num = #{insOrderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insComTag != null" >
+        ins_com_tag = #{insComTag,jdbcType=VARCHAR},
+      </if>
+      <if test="insType != null" >
+        ins_type = #{insType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTsType != null" >
+        ins_ts_type = #{insTsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTrueName != null" >
+        ins_true_name = #{insTrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="insTel != null" >
+        ins_tel = #{insTel,jdbcType=VARCHAR},
+      </if>
+      <if test="insCardNum != null" >
+        ins_card_num = #{insCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insAddress != null" >
+        ins_address = #{insAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="insCheNum != null" >
+        ins_che_num = #{insCheNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insHeTongNum != null" >
+        ins_he_tong_num = #{insHeTongNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insStartTime != null" >
+        ins_start_time = #{insStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insHuoWu != null" >
+        ins_huo_wu = #{insHuoWu,jdbcType=VARCHAR},
+      </if>
+      <if test="insHuowuNum != null" >
+        ins_huowu_num = #{insHuowuNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insJine != null" >
+        ins_jine = #{insJine,jdbcType=DOUBLE},
+      </if>
+      <if test="insStartAdd != null" >
+        ins_start_add = #{insStartAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insEndAdd != null" >
+        ins_end_add = #{insEndAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insMidAdd != null" >
+        ins_mid_add = #{insMidAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="insFee != null" >
+        ins_fee = #{insFee,jdbcType=DOUBLE},
+      </if>
+      <if test="insCreateTime != null" >
+        ins_create_time = #{insCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insArea != null" >
+        ins_area = #{insArea,jdbcType=INTEGER},
+      </if>
+      <if test="insStatus != null" >
+        ins_status = #{insStatus,jdbcType=INTEGER},
+      </if>
+      <if test="insJsy != null" >
+        ins_jsy = #{insJsy,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySfz != null" >
+        ins_jsy_sfz = #{insJsySfz,jdbcType=VARCHAR},
+      </if>
+      <if test="insJsySj != null" >
+        ins_jsy_sj = #{insJsySj,jdbcType=VARCHAR},
+      </if>
+      <if test="insXsNum != null" >
+        ins_xs_num = #{insXsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insYyNum != null" >
+        ins_yy_num = #{insYyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insFdjNum != null" >
+        ins_fdj_num = #{insFdjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insCjNum != null" >
+        ins_cj_num = #{insCjNum,jdbcType=VARCHAR},
+      </if>
+      <if test="insDes != null" >
+        ins_des = #{insDes,jdbcType=VARCHAR},
+      </if>
+      <if test="insSysBaodan != null" >
+        ins_sys_baodan = #{insSysBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insLastBaodan != null" >
+        ins_last_baodan = #{insLastBaodan,jdbcType=VARCHAR},
+      </if>
+      <if test="insFileUrl != null" >
+        ins_file_url = #{insFileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="insGoodsType != null" >
+        ins_goods_type = #{insGoodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="insTransType != null" >
+        ins_trans_type = #{insTransType,jdbcType=VARCHAR},
+      </if>
+      <if test="insLoadType != null" >
+        ins_load_type = #{insLoadType,jdbcType=VARCHAR},
+      </if>
+      <if test="insBaoZhuang != null" >
+        ins_bao_zhuang = #{insBaoZhuang,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ins_order_num = #{insOrderNum,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 
+  		*
+  	from
+  		lc_platform_insurance pi
+  	<where>
+  		pi.user_id = #{userId}
+  		<if test="searchParams.insComTag != null and searchParams.insComTag != ''">
+  			<foreach collection="searchParams.insComTag" item="insComTag" separator="or">
+  				and pi.ins_com_tag = #{insComTag}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.insType != null and searchParams.insType != ''">
+  			<foreach collection="searchParams.insType" item="insType" separator="or">
+  				and pi.ins_type = #{insType}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.insStatus != null and searchParams.insStatus != ''">
+  			<foreach collection="searchParams.insStatus" item="insStatus" separator="or">
+  				and pi.ins_status = #{insStatus}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and pi.ins_order_num = #{searchParams.condition}
+  		</if>
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.ins_create_time <![CDATA[>=]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.ins_create_time <![CDATA[<=]]> #{searchParams.endTime}
+  		</if>
+  	</where> 
+  		order by pi.ins_create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <select id="countRowsByCondition" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		lc_platform_insurance pi
+  <where>
+  		pi.user_id = #{userId}
+  		<if test="searchParams.insComTag != null and searchParams.insComTag != ''">
+  			<foreach collection="searchParams.insComTag" item="insComTag" separator="or">
+  				and pi.ins_com_tag = #{insComTag}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.insType != null and searchParams.insType != ''">
+  			<foreach collection="searchParams.insType" item="insType" separator="or">
+  				and pi.ins_type = #{insType}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.insStatus != null and searchParams.insStatus != ''">
+  			<foreach collection="searchParams.insStatus" item="insStatus" separator="or">
+  				and pi.ins_status = #{insStatus}
+  			</foreach>
+  		</if>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			and pi.ins_order_num = #{searchParams.condition}
+  		</if>
+  		<if test="searchParams.startTime != null and searchParams.startTime != ''">
+  			and pi.ins_create_time <![CDATA[>=]]> #{searchParams.startTime}
+  		</if>
+  		<if test="searchParams.endTime != null and searchParams.endTime != ''">
+  			and pi.ins_create_time <![CDATA[<=]]> #{searchParams.endTime}
+  		</if>
+  	</where> 
+  </select>
+ <!-- 全部表单有多少 --> 
+  <select id="countplatformInsuranceRows" resultType="int" >
+    SELECT
+		COUNT(1)
+    FROM
+		lc_platform_insurance
+  </select>
+   <!--查询所有保单信息  -->
+  <select id="OperSogoListfindall" resultMap="BaseResultMap">
+  	SELECT
+	<include refid="Base_Column_List"></include>
+	FROM
+	lc_platform_insurance
+	<if test="platformInsurance.insOrderNum != null  || platformInsurance.insTrueName != null">
+	 WHERE ins_order_num like #{"%"+platformCompanyinfo.insOrderNum+"%",jdbcType=VARCHAR} 
+	OR ins_true_name LIKE #{"%"+platformCompanyinfo.insTrueName+"%",jdbcType=VARCHAR}
+	</if>
+	LIMIT #{page.start},#{page.limit}
+  </select>
+  
+  <select id="OperSogoById" parameterType="long" resultMap="BaseResultMap">
+  	SELECT
+	<include refid="Base_Column_List"></include>
+	FROM
+	lc_platform_insurance
+	<if test="id != null">
+	where id = #{id}
+	</if>
+  </select>
+  
+  <!-- 货运交易系统：获取保单信息 -->
+  <select id="selectInsByParams" resultMap="BaseResultMap">
+  	select
+  		pi.*,pu.true_name
+  	from
+  		lc_platform_insurance pi
+  		left join lc_platform_user pu on pi.user_id = pu.id 
+  	<where>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			pi.ins_order_num = #{searchParams.condition}
+  		</if>
+  	</where> 
+  		order by ins_create_time desc limit #{page.start},#{page.limit}
+  </select>
+  
+  <!-- 货运交易系统：获取保单信息 -->
+  <select id="countRowsByParams" resultType="int">
+  	select
+  		count(1)
+  	from
+  		lc_platform_insurance
+  	<where>
+  		<if test="searchParams.condition != null and searchParams.condition != ''">
+  			pi.ins_order_num = #{searchParams.condition}
+  		</if>
+  	</where> 
+  </select>
+  
+  <select id="selectByInsOrderNum" parameterType="string">
+  	SELECT 
+  	*
+  	FROM
+  	lc_platform_insurance
+  	WHERE ins_order_num = #{insOrderNum}
+  </select>
+  <update id="updateInsuranceStatus">
+  	UPDATE lc_platform_insurance
+  	SET
+  	ins_status = #{insStatus}
+  	WHERE ins_order_num = #{insOrderNum}
+  </update>
+</mapper>

@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="cred_type" property="credType" jdbcType="VARCHAR" />
+    <result column="cred_number" property="credNumber" jdbcType="VARCHAR" />
+    <result column="cash_password" property="cashPassword" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
+    <result column="points" property="points" jdbcType="INTEGER" />
+    <result column="salesman_no" property="salesmanNo" jdbcType="VARCHAR" />
+    <result column="the_selesman_no" property="theSelesmanNo" jdbcType="VARCHAR" />
+    <result column="temporary_company_id" property="temporaryCompanyId" jdbcType="BIGINT" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="BIGINT" />
+    <result column="dot_address" property="dotAddress" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER"/>
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="outlets_name" property="outletsName" jdbcType="VARCHAR" />
+    <result column="bank_number" property="bankNumber" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_name, password, mobile, email, address, true_name, user_type, cred_type, 
+    cred_number, cash_password, status, company_id, balance, points,salesman_no,the_selesman_no,temporary_company_id
+    ,vehicle_type,dot_address,user_status,create_time
+  </sql>
+  <update id="updateUserPwd">
+    update lc_platform_user set
+	password = #{password,jdbcType=VARCHAR}
+    where login_name = #{loginName,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据用户名称 -->
+  <select id="selectUserloginName" parameterType="com.brightsoft.model.PlatformUser" resultMap="BaseResultMap">
+  		SELECT
+			<include refid="Base_Column_List" />
+		FROM
+			lc_platform_user
+		WHERE
+			login_name = #{loginName,jdbcType=VARCHAR}
+  </select>
+   <!-- 修改金额 -->
+   <update id="updateUserBalance">
+    update lc_platform_user
+    set 
+     	balance = #{balance,jdbcType=DOUBLE}
+    where id = #{userId,jdbcType=BIGINT}
+  </update>
+  <!-- 用户注册 -->
+  <insert id="insertUser"  parameterType="com.brightsoft.model.PlatformUser">
+    	INSERT INTO lc_platform_user (login_name,password,mobile,user_type,status,create_time)
+		VALUES
+			(
+			#{loginName,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			#{mobile,jdbcType=VARCHAR},
+			#{userType,jdbcType=INTEGER},
+			#{status,jdbcType=INTEGER},
+			#{createTime,jdbcType=TIMESTAMP}
+			)
+  </insert>
+  
+  <select id="selectUserType" resultType="int">
+	 select COUNT(*) from lc_platform_user where user_type = #{userType,jdbcType=INTEGER}
+  </select>
+  <!-- 查询用户是否存在 -->
+  <select id="selectLoginName" resultType="int">
+	 select count(*) from lc_platform_user where login_name=#{loginName,jdbcType=VARCHAR}
+  </select>
+  <!-- 获取用户ID最大值 -->
+  <select id="selectMaxId" resultType="java.lang.Long">
+	  select max(id) from lc_platform_user
+  </select>
+  <select id="getAllUser" resultMap="BaseResultMap" parameterType="com.brightsoft.model.PlatformUser">
+	  select lpu.id,lpu.`login_name`,lpu.`mobile`,lpu.`true_name`,lpu.`user_type`,yji.joinName from lc_platform_user lpu left join yc_join_info yji on yji.joinerId=lpu.id
+	  where 1=1
+	  <if test="userType != null" >
+        <!-- and lpu.user_type=#{userType} -->
+      </if>
+	  <if test="branchNo != null" >
+        and yji.branchNo=#{branchNo}
+      </if>
+      and yji.applyStatus=1
+  </select>
+  <!-- 用户登录 -->
+  <select id="selectUserPassword" resultType="int">
+	  		SELECT
+				count(*)
+			FROM
+				lc_platform_user
+			WHERE
+				login_name = #{loginName,jdbcType=VARCHAR}
+			AND 
+				password = #{password,jdbcType=VARCHAR}
+  </select>
+  <!-- 用户登录 -->
+  <select id="selectUser" parameterType="com.brightsoft.model.PlatformUser" resultMap="BaseResultMap">
+	  		SELECT
+				<include refid="Base_Column_List" />
+			FROM
+				lc_platform_user
+			WHERE
+				login_name = #{loginName,jdbcType=VARCHAR}
+			AND 
+				password = #{password,jdbcType=VARCHAR}
+  </select>
+  <!-- 查询用户是否存在 -->
+  <select id="selectId" parameterType="java.lang.String" resultType="int">
+	  		SELECT
+				count(login_name)
+			FROM
+				lc_platform_user
+			WHERE
+				login_name = #{loginName,jdbcType=VARCHAR}
+  </select>
+   <!-- 查询用户信息 -->
+  <select id="selectUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	  		SELECT
+				<include refid="Base_Column_List" />
+			FROM
+				lc_platform_user
+			WHERE
+				id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 修改用户基本信息 -->
+   <update id="updateUser" parameterType="com.brightsoft.model.PlatformUser" >
+    update lc_platform_user
+    set 
+     email=#{email,jdbcType=VARCHAR},
+     address=#{address,jdbcType=VARCHAR},
+     true_name=#{trueName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 修改公司ID -->
+   <update id="updatecompanyId">
+    update lc_platform_user
+    set 
+     	company_id = #{companyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 修改临时公司ID -->
+   <update id="updatetemporaryCompanyId">
+    update lc_platform_user
+    set 
+     temporary_company_id = #{temporaryCompanyId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 修改登陆密码 -->
+  <update id="updatePwd">
+       update lc_platform_user set password=#{newPassword,jdbcType=VARCHAR} 
+       where id = #{id,jdbcType=BIGINT}
+       and password=#{password,jdbcType=VARCHAR}
+  </update>
+  <!-- 绑定邮箱 -->
+  <update id="updateEmail">
+       update lc_platform_user set email=#{email,jdbcType=VARCHAR} where login_name = #{loginName,jdbcType=BIGINT}
+  </update>
+  <!-- 绑定手机 -->
+  <update id="updateMobile">
+       update lc_platform_user set mobile=#{mobile,jdbcType=VARCHAR} where id = #{id,jdbcType=BIGINT}
+  </update>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUser" >
+    insert into lc_platform_user (id, login_name, password, 
+      mobile, email, address, 
+      true_name, user_type, cred_type, 
+      cred_number, cash_password, status, 
+      company_id, balance, points, user_status 
+      )
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{credType,jdbcType=VARCHAR}, 
+      #{credNumber,jdbcType=VARCHAR}, #{cashPassword,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=BIGINT}, #{balance,jdbcType=DOUBLE}, #{points,jdbcType=INTEGER}, 
+      #{userStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="update2Forbid" parameterType="list">
+  	<foreach collection="list" item="id" separator=";">
+  		update
+  			lc_platform_user
+  		set
+  			status = 2
+  		where 
+  			id = #{id}
+  	</foreach>
+  </update>
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUser" >
+    insert into lc_platform_user (id, login_name, password, 
+      mobile, email, address, 
+      true_name, user_type, cred_type, 
+      cred_number, cash_password, status, 
+      company_id, balance, points
+      )
+    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{trueName,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{credType,jdbcType=VARCHAR}, 
+      #{credNumber,jdbcType=VARCHAR}, #{cashPassword,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=BIGINT}, #{balance,jdbcType=DOUBLE}, #{points,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUser" >
+    insert into lc_platform_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="trueName != null" >
+        true_name,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="credType != null" >
+        cred_type,
+      </if>
+      <if test="credNumber != null" >
+        cred_number,
+      </if>
+      <if test="cashPassword != null" >
+        cash_password,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="points != null" >
+        points,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="credType != null" >
+        #{credType,jdbcType=VARCHAR},
+      </if>
+      <if test="credNumber != null" >
+        #{credNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cashPassword != null" >
+        #{cashPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="points != null" >
+        #{points,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUser" >
+    update lc_platform_user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="credType != null" >
+        cred_type = #{credType,jdbcType=VARCHAR},
+      </if>
+      <if test="credNumber != null" >
+        cred_number = #{credNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cashPassword != null" >
+        cash_password = #{cashPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="points != null" >
+        points = #{points,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUser" >
+    update lc_platform_user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      true_name = #{trueName,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=INTEGER},
+      cred_type = #{credType,jdbcType=VARCHAR},
+      cred_number = #{credNumber,jdbcType=VARCHAR},
+      cash_password = #{cashPassword,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=BIGINT},
+      balance = #{balance,jdbcType=DOUBLE},
+      points = #{points,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+  
+   <select id="getVerifyUserList" resultType="java.util.Map" parameterType="java.util.Map" >
+  		SELECT lpu.id userId,lpu.login_name, lpu.true_name,lpu.mobile,lputc.company_name , lpua.apply_name,
+  		lpua.apply_type,max(lpua.apply_state) as apply_state,lpua.time
+		from lc_platform_user lpu, lc_platform_user_apply lpua,lc_platform_user_temporary_company lputc
+		where lpu.id = lpua.user_id and lpu.temporary_company_id =  lputc.id
+		 <if test="platformUser.loginName != null and platformUser.loginName != '' " >
+        	and lpu.login_name = #{platformUser.loginName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.apply_state != null and platformUser.apply_state != '' " >
+        	and apply_state = #{platformUser.apply_state,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.apply_type != null and platformUser.apply_type != '' " >
+        	and lpua.apply_type = #{platformUser.apply_type,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.staeTime != null and platformUser.staeTime != '' ">
+   			and	lpua.time >= #{platformUser.staeTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformUser.endTime != null and platformUser.endTime != '' ">
+	   		and lpua.time <![CDATA[<=]]> #{platformUser.endTime,jdbcType=VARCHAR}
+	   	</if>
+		group by userId,lpu.login_name, lpu.true_name,lpu.mobile,lputc.company_name , lpua.apply_name,
+		lpua.apply_type ,lpua.version 
+		ORDER BY lpua.time desc
+		limit #{page.start}, #{page.limit}
+  </select>
+  <select id="countVerifyUserList" resultType="int">
+		select count(1) from
+		(SELECT lpu.id userId,lpu.login_name, lpu.true_name,lpu.mobile,lputc.company_name , lpua.apply_name,
+  		lpua.apply_type,max(lpua.apply_state) as apply_state
+		from lc_platform_user lpu, lc_platform_user_apply lpua,lc_platform_user_temporary_company lputc
+		where lpu.id = lpua.user_id and lpu.temporary_company_id =  lputc.id
+		<if test="platformUser.loginName != null and platformUser.loginName != '' " >
+        	and lpu.login_name = #{platformUser.loginName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.apply_state != null and platformUser.apply_state != '' " >
+        	and apply_state = #{platformUser.apply_state,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.apply_type != null and platformUser.apply_type != '' " >
+        	and lpua.apply_type = #{platformUser.apply_type,jdbcType=VARCHAR}
+      	</if>
+      	<if test="platformUser.staeTime != null and platformUser.staeTime != '' ">
+   			and	lpua.time >= #{platformUser.staeTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="platformUser.endTime != null and platformUser.endTime != '' ">
+	   		and lpua.time <![CDATA[<=]]> #{platformUser.endTime,jdbcType=VARCHAR}
+	   	</if>
+		group by userId,lpu.login_name, lpu.true_name,lpu.mobile,lputc.company_name , lpua.apply_name,
+		lpua.apply_type ,lpua.version ) t
+  </select>
+   <select id="doGetVerifyUser" resultType="java.util.Map" parameterType="java.lang.Long" >
+  		SELECT lpu.id userId, lpu.user_type,lpu.true_name,lpu.mobile ,lputc.company_name,lputc.company_address,lputc.post_code
+		,lputc.qq,lputc.company_fax,lputc.legal_person,lputc.legal_mobile,lputc.contacts,lputc.contacts_mobile,lputc.id temCompanyId
+		,lputc.company_tax_no , lputc.finance_email,lputc.company_info,lputc.company_code,lputc.company_phone
+		,lputc.business_license,lputc.company_photo,lputc.card_photo,lputc.legal_photo,lputc.logo
+		from lc_platform_user lpu, lc_platform_user_temporary_company lputc
+		where lpu.id = #{userId,jdbcType=BIGINT} and lpu.temporary_company_id = lputc.id
+  </select>
+   <select id="selectUserCompany" resultType="java.util.Map" parameterType="java.lang.Long" >
+  		select lpu.id userId, lpu.user_type,lpu.true_name,lpu.mobile,
+		lputc.company_name,lputc.company_address,lputc.post_code
+		,lputc.qq,lputc.company_fax,lputc.legal_person,lputc.legal_mobile,lputc.contacts,lputc.contacts_mobile,lputc.id temCompanyId
+		,lputc.company_tax_no , lputc.finance_email,lputc.company_info,lputc.company_code,lputc.company_phone
+		,lputc.business_license,lputc.company_photo,lputc.card_photo,lputc.legal_photo,lputc.logo
+		FROM  lc_platform_user lpu 
+		LEFT JOIN  lc_platform_user_company lputc on lputc.id = lpu.company_id
+		where lpu.id = #{userId,jdbcType=BIGINT}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUser" >
+    update lc_platform_user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="credType != null" >
+        cred_type = #{credType,jdbcType=VARCHAR},
+      </if>
+      <if test="credNumber != null" >
+        cred_number = #{credNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cashPassword != null" >
+        cash_password = #{cashPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="points != null" >
+        points = #{points,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+   <select id="getPlatformUserByUserType" resultType="java.util.Map" >
+  		SELECT lpu.create_time,lpu.id userId,lpu.status, lpu.true_name,lpu.login_name,lpu.mobile,
+			lpuc.company_name,lpuc.company_code,lpuc.contacts1,lpuc.contacts1_mobile
+		from lc_platform_user lpu
+		LEFT JOIN lc_platform_user_company lpuc on lpu.company_id = lpuc.id
+		where lpu.user_type = #{sysVoUser.userType,jdbcType=BIGINT}
+		<if test="sysVoUser.loginName != null and sysVoUser.loginName !=''">
+        	and lpu.login_name = #{sysVoUser.loginName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.startTime != null and sysVoUser.startTime != '' ">
+   			and	lpu.create_time >= #{sysVoUser.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="sysVoUser.endTime != null and sysVoUser.endTime != '' ">
+	   		and lpu.create_time <![CDATA[<=]]> #{sysVoUser.endTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="sysVoUser.status != null and sysVoUser.status !=''">
+        	and lpu.status = #{sysVoUser.status,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.companyName != null and sysVoUser.companyName !=''">
+        	and lpuc.company_name = #{sysVoUser.companyName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.companyCode != null and sysVoUser.companyCode !=''">
+        	and lpuc.company_code = #{sysVoUser.companyCode,jdbcType=VARCHAR}
+      	</if>
+      	GROUP BY lpu.create_time desc
+		limit #{page.start},#{page.limit}
+  </select>
+   <select id="getCountPlatformUserByUserType" resultType="int" >
+  		SELECT count(*)
+		from lc_platform_user lpu
+		LEFT JOIN lc_platform_user_company lpuc on lpu.company_id = lpuc.id
+		where lpu.user_type = #{sysVoUser.userType,jdbcType=BIGINT}
+		<if test="sysVoUser.loginName != null and sysVoUser.loginName !=''">
+        	and lpu.login_name = #{sysVoUser.loginName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.startTime != null and sysVoUser.startTime != '' ">
+   			and	lpu.create_time >= #{sysVoUser.startTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="sysVoUser.endTime != null and sysVoUser.endTime != '' ">
+	   		and lpu.create_time <![CDATA[<=]]> #{sysVoUser.endTime,jdbcType=VARCHAR}
+	   	</if>
+	   	<if test="sysVoUser.status != null and sysVoUser.status !=''">
+        	and lpu.status = #{sysVoUser.status,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.companyName != null and sysVoUser.companyName !=''">
+        	and lpuc.company_name = #{sysVoUser.companyName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="sysVoUser.companyCode != null and sysVoUser.companyCode !=''">
+        	and lpuc.company_code = #{sysVoUser.companyCode,jdbcType=VARCHAR}
+      	</if>
+  </select>
+  
+  <update id="updateUser4Del" parameterType="string">
+  	update
+  		lc_platform_user 
+  	set 
+  		user_status = 0
+  	where 
+  		login_name = #{loginName}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+    SELECT user.*, com.company_name FROM lc_platform_user user 
+	LEFT JOIN lc_platform_user_company com ON user.company_id = com.id where user.status = 1
+   	<if test="userTypes != null">
+   		and user.user_type in 
+   		<foreach collection="userTypes" index="index" item="userType" open="(" separator="," close=")">
+        	#{userType}
+    	</foreach>
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (user.true_name like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int" >
+    SELECT count(1) FROM lc_platform_user user 
+	LEFT JOIN lc_platform_user_company com ON user.company_id = com.id where user.status = 1
+   	<if test="userTypes != null">
+   		and user.user_type in 
+   		<foreach collection="userTypes" index="index" item="userType" open="(" separator="," close=")">
+        	#{userType}
+    	</foreach>
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and (user.true_name like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+  
+  <!-- 查询存在子账号的用户信息 -->
+  <select id="selectBankAccountUser" resultMap="BaseResultMap" >
+  	SELECT user.*, com.company_name, com.company_code, outlets.name outlets_name, bank.bankaccountnumber bank_number FROM lc_platform_user user 
+	LEFT JOIN lc_platform_user_company com ON user.company_id = com.id 
+	INNER JOIN lc_platform_bank bank ON bank.user_id = user.id
+	LEFT JOIN (SELECT * FROM tms_user WHERE status = 1) t_user ON t_user.login_name = user.login_name
+	LEFT JOIN tms_outlets_info outlets ON t_user.outlets_id = outlets.id
+	where user.status = 1
+  	<if test="condition != null and condition != ''">
+   		and (com.company_code like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   		or outlets.name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+   	limit #{start}, #{limit}
+  </select>
+  <select id="selectBankAccountUserCount" resultType="int" >
+  	SELECT count(1) FROM lc_platform_user user 
+	LEFT JOIN lc_platform_user_company com ON user.company_id = com.id 
+	INNER JOIN lc_platform_bank bank ON bank.user_id = user.id
+	LEFT JOIN (SELECT * FROM tms_user WHERE status = 1) t_user ON t_user.login_name = user.login_name
+	LEFT JOIN tms_outlets_info outlets ON t_user.outlets_id = outlets.id
+	where user.status = 1
+  	<if test="condition != null and condition != ''">
+   		and (com.company_code like concat("%",#{condition,jdbcType=VARCHAR},"%") 
+   		or com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   		or outlets.name like concat("%",#{condition,jdbcType=VARCHAR},"%"))
+   	</if>
+  </select>
+  <update id="updateUserByLoginName" parameterType="com.brightsoft.model.PlatformUser">
+  	update lc_platform_user
+  	set 
+  		user_type = #{userType},
+  		company_id = #{companyId}
+  	where login_name = #{loginName}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical"
+    tools:context="com.wrt.xinsilu.ui.activity.AddReceiverActivity">
+
+    <include layout="@layout/title" />
+
+    <TextView
+        android:id="@+id/a_add_receiver_tv_hint"
+        style="@style/BasicParamNoMargin_v"
+        android:layout_weight="0.8"
+        android:gravity="center|left"
+        android:text="发货人信息"
+        android:textSize="@dimen/mid_text_size" />
+
+    <RelativeLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:text="发  货  人:"
+            android:textSize="@dimen/mid_text_size" />
+
+        <EditText
+            android:id="@+id/add_sender_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/name"
+            android:background="@null"
+            android:textSize="@dimen/mid_text_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/number"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:text="手  机  号:"
+            android:textSize="@dimen/mid_text_size" />
+
+        <EditText
+            android:id="@+id/add_sender_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toLeftOf="@+id/add_sender_number_btn"
+            android:layout_toRightOf="@+id/number"
+            android:background="@null"
+            android:maxLength="11"
+            android:inputType="number"
+            android:textSize="@dimen/mid_text_size" />
+
+        <ImageView
+            android:id="@+id/add_sender_number_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/xiadan_tianjiashoujihao" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/address"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:gravity="center|left"
+            android:text="地        址:"
+            android:textSize="@dimen/mid_text_size" />
+
+        <TextView
+            android:id="@+id/add_sender_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/address"
+            android:drawableRight="@mipmap/xiadan_arrow"
+            android:gravity="center|left"
+            android:textSize="@dimen/mid_text_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/address_detail"
+            style="@style/myStyle"
+            android:layout_centerVertical="true"
+            android:text="详细地址:"
+            android:textSize="@dimen/mid_text_size" />
+
+        <EditText
+            android:id="@+id/add_address_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/address_detail"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="详细街道等"
+            android:textColorHint="#aaaaaa"
+            android:singleLine="true"
+            android:textSize="@dimen/mid_text_size" />
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_weight="4">
+
+        <View
+            style="@style/BasicParamNoMargin_h"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/add_commit"
+            style="@style/BasicParamNoMargin_h"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_weight="1"
+            android:background="@drawable/background_shap_stroke_textview"
+            android:text="保存"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/common_text_size" />
+
+        <View
+            style="@style/BasicParamNoMargin_h"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/BasicParamNoMargin_v"
+        android:layout_weight="1" />
+
+</LinearLayout>

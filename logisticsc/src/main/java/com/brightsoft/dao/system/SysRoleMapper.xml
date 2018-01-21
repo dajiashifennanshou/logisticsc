@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brightsoft.dao.system.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.SysRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="roleName" jdbcType="VARCHAR" property="rolename" />
+    <result column="roleState" jdbcType="INTEGER" property="rolestate" />
+    <result column="pinyinName" jdbcType="VARCHAR" property="pinyinname" />
+    <result column="backup1" jdbcType="VARCHAR" property="backup1" />
+    <result column="backup2" jdbcType="VARCHAR" property="backup2" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="effect" jdbcType="BIGINT" property="effect" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, roleName, roleState, pinyinName, backup1, backup2, createTime, effect
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lc_sys_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lc_sys_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.SysRole">
+    insert into lc_sys_role (id, roleName, roleState, 
+      pinyinName, backup1, backup2, 
+      createTime, effect)
+    values (#{id,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, #{rolestate,jdbcType=INTEGER}, 
+      #{pinyinname,jdbcType=VARCHAR}, #{backup1,jdbcType=VARCHAR}, #{backup2,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{effect,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.SysRole">
+    insert into lc_sys_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="rolename != null">
+        roleName,
+      </if>
+      <if test="rolestate != null">
+        roleState,
+      </if>
+      <if test="pinyinname != null">
+        pinyinName,
+      </if>
+      <if test="backup1 != null">
+        backup1,
+      </if>
+      <if test="backup2 != null">
+        backup2,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="effect != null">
+        effect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="rolename != null">
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolestate != null">
+        #{rolestate,jdbcType=INTEGER},
+      </if>
+      <if test="pinyinname != null">
+        #{pinyinname,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null">
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effect != null">
+        #{effect,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.SysRole">
+    update lc_sys_role
+    <set>
+      <if test="rolename != null">
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolestate != null">
+        roleState = #{rolestate,jdbcType=INTEGER},
+      </if>
+      <if test="pinyinname != null">
+        pinyinName = #{pinyinname,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null">
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effect != null">
+        effect = #{effect,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.SysRole">
+    update lc_sys_role
+    set roleName = #{rolename,jdbcType=VARCHAR},
+      roleState = #{rolestate,jdbcType=INTEGER},
+      pinyinName = #{pinyinname,jdbcType=VARCHAR},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      effect = #{effect,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectSysRoleList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM lc_sys_role as r
+		
+		WHERE 1 = 1
+		<if test="state != null" >
+        	AND r.rolestate = #{state,jdbcType=INTEGER}
+      	</if>
+		ORDER BY r.createTime DESC
+	</select>
+	
+	<delete id="deleteRoleMenuByRole" parameterType="java.lang.Long">
+	    delete from lc_sys_role_menu
+	    where role_id = #{roleId,jdbcType=BIGINT}
+	  </delete>
+	
+	<insert id="insertRoleMenu"  >
+    	insert into lc_sys_role_menu(role_id,menu_id) values 
+			<foreach collection="menus" item="item" index="index" separator="," >  
+		    (#{roleId},#{item})
+			</foreach>
+  	</insert>
+	<insert id="insertUserRole"  >
+    	insert into lc_sys_user_role(user_id,role_id) values 
+			(#{userId},#{roleId})
+  	</insert>
+	<update id="updateUserRole"  >
+    	update lc_sys_user_role set role_id = #{roleId,jdbcType=BIGINT}
+			 where user_id = #{userId,jdbcType=BIGINT}
+  	</update>
+  	
+  	<select id="selectRoleIdByUser" resultType="java.util.Map">
+		SELECT
+		r.role_id
+		FROM lc_sys_user_role as r		
+		WHERE 1 = 1
+		<if test="userId != null" >
+        	AND r.user_id = #{userId,jdbcType=BIGINT}
+      	</if>
+	</select>
+	
+ </mapper>

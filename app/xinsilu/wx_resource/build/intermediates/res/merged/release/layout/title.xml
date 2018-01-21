@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimaryDark">
+
+    <carbon.widget.ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:padding="10dp"
+        app:carbon_tint="@color/white"
+        android:src="@mipmap/comment_back" />
+    <carbon.widget.TextView
+        android:id="@+id/title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:carbon_rippleColor="@color/ripple" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:text="标题"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <carbon.widget.TextView
+        android:id="@+id/title_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:carbon_rippleColor="@color/ripple" />
+
+
+</FrameLayout>

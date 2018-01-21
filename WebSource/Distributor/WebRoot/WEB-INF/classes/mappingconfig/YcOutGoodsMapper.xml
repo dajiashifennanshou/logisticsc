@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcOutGoodsDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.YcOutGoods"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,dealerId,wailBillNo,stowageNo,goodsName,goodsBrand,park,goodsType,vender,weight,volume,elseExplan,remark,goodsCount,groupCount,createTime,createUser,updateTime,updateUser
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.YcOutGoods" > 
+		select  <include refid="Base_Column_List" />  from yc_out_goods where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.YcOutGoods" > 
+		select  count(1)  from yc_out_goods where 1=1
+		<if test="stowageNo !=null"> 
+			and stowageNo=#{stowageNo}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_out_goods
+		where 1=1
+		<if test="dealerId !=null"> 
+			and dealerId=#{dealerId}
+		</if>
+		<if test="stowageNo !=null"> 
+			and stowageNo=#{stowageNo}
+		</if>
+		 order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.YcOutGoods"> 
+		delete from yc_out_goods where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.YcOutGoods" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_out_goods  
+		(dealerId,stowageNo,wailBillNo,goodsName,goodsBrand,park,goodsType,vender,weight,volume,elseExplan,remark,goodsCount,groupCount,createTime,createUser,updateTime,updateUser) 
+		values ( #{dealerId},#{stowageNo},#{wailBillNo},#{goodsName},#{goodsBrand},#{park},#{goodsType},#{vender},#{weight},#{volume},#{elseExplan},#{remark},#{goodsCount},#{groupCount},#{createTime},#{createUser},#{updateTime},#{updateUser} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.YcOutGoods">   
+	update yc_out_goods 
+	<set> 
+		<if test="dealerId !=null"> 
+			dealerId=#{dealerId},
+		</if>
+		<if test="stowageNo !=null"> 
+			stowageNo=#{stowageNo},
+		</if>
+		<if test="goodsName !=null"> 
+			goodsName=#{goodsName},
+		</if>
+		<if test="goodsBrand !=null"> 
+			goodsBrand=#{goodsBrand},
+		</if>
+		<if test="wailBillNo !=null"> 
+			wailBillNo=#{wailBillNo},
+		</if>
+		<if test="park !=null"> 
+			park=#{park},
+		</if>
+		<if test="goodsType !=null"> 
+			goodsType=#{goodsType},
+		</if>
+		<if test="vender !=null"> 
+			vender=#{vender},
+		</if>
+		<if test="weight !=null"> 
+			weight=#{weight},
+		</if>
+		<if test="volume !=null"> 
+			volume=#{volume},
+		</if>
+		<if test="elseExplan !=null"> 
+			elseExplan=#{elseExplan},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="goodsCount !=null"> 
+			goodsCount=#{goodsCount},
+		</if>
+		<if test="groupCount !=null"> 
+			groupCount=#{groupCount},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">中工储运-云仓</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_customer">MyCustomerActivity</string>
+
+    <string name="cube_ptr_hours_ago"> 小时之前</string>
+    <string name="cube_ptr_last_update">上次更新: </string>
+    <string name="cube_ptr_minutes_ago"> 分钟之前</string>
+    <string name="cube_ptr_pull_down">下拉</string>
+    <string name="cube_ptr_pull_down_to_refresh">下拉刷新</string>
+    <string name="cube_ptr_refresh_complete">刷新完成.</string>
+    <string name="cube_ptr_refreshing">加载中...</string>
+    <string name="cube_ptr_release_to_refresh">松开立即刷新</string>
+    <string name="cube_ptr_seconds_ago"> 秒之前</string>
+</resources>

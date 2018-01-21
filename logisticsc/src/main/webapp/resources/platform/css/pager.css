@@ -1,0 +1,6 @@
+/* CSS Document */
+
+.page{margin:2em;font-size:16px;margin-right: 0px;margin-top:0px;}
+.page a{text-decoration:none;display:inline-block;line-height:25px;padding:2px 6px;border:1px solid #ccc;margin:0 2px;}
+.page a:hover,.page a.on{background:#C0C0C0;border:1px solid #ccc;}
+.page a.unclick,.page a.unclick:hover{background:white;border:1px solid #eee;color:#999;cursor:default;}

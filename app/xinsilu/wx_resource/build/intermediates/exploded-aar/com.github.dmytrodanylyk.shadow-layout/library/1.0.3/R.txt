@@ -1,0 +1,15 @@
+int attr sl_cornerRadius 0x7f010000
+int attr sl_dx 0x7f010003
+int attr sl_dy 0x7f010004
+int attr sl_shadowColor 0x7f010002
+int attr sl_shadowRadius 0x7f010001
+int color default_fill_color 0x7f020000
+int color default_shadow_color 0x7f020001
+int dimen default_corner_radius 0x7f030000
+int dimen default_shadow_radius 0x7f030001
+int[] styleable ShadowLayout { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004 }
+int styleable ShadowLayout_sl_cornerRadius 0
+int styleable ShadowLayout_sl_dx 3
+int styleable ShadowLayout_sl_dy 4
+int styleable ShadowLayout_sl_shadowColor 2
+int styleable ShadowLayout_sl_shadowRadius 1

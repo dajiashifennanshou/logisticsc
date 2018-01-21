@@ -1,0 +1,49 @@
+/**************************引入外部框架样式**********************************/
+.search li{
+	display: inline-block;
+	float: left;
+	margin: 10px 15px;
+}
+.platformStyle{
+	width: 1038px;
+	float: left;
+	margin-bottom:10px;
+}
+.container-self{
+	width: 1200px;
+	margin: 10px auto 0px auto;
+	position:relative;
+}
+.frame_left{
+	float: left; 
+	margin-right: 10px;
+}
+/********************重货 泡货 浮动div 样式***************************/
+.boxs{
+	display:none;
+	width: 170px;
+	height: 71px; 
+	border:1px solid #333;
+	padding:12px;
+	background:white;
+	z-index:999999;
+    left: 175px;
+    position: absolute;
+    top: -10px;
+	}
+.boxs2{
+	display:none;
+	width: 170px;
+	height: 71px; 
+	border:1px solid #333;
+	padding:12px;
+	background:white;
+	z-index:999999;
+    left: 196px;
+    position: absolute;
+    top: -10px;
+	}
+#ins_search_form label input {
+	margin-left:20px;
+	margin-top: 10px;
+}

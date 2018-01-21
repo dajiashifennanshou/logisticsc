@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Distributor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_customer">MyCustomerActivity</string>
+    <string name="title_activity_regest">RegestActivity</string>
+</resources>

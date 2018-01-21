@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformOrderEvaluationDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.PlatformOrderEvaluation"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,order_number,evaluate_content,evaluate_time,evaluate_level,user_id,state,status
+	</sql> 
+	<select id="getCount" resultType="int"> 
+		SELECT COUNT(*) FROM lc_platform_order AS orders 
+		JOIN lc_platform_order_evaluation AS eva ON orders.order_number = eva.order_number
+		WHERE orders.tms_line_id = #{param1}
+	</select> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.PlatformOrderEvaluation" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_evaluation where 1=1
+		<if test="order_number!=null">
+			and order_number=#{order_number}
+		</if>
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.PlatformOrderEvaluation" > 
+		select  count(1)  from lc_platform_order_evaluation where 1=1
+		<if test="order_number!=null">
+			and order_number=#{order_number}
+		</if>
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.PlatformOrderEvaluation" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_evaluation  
+		(order_number,evaluate_content,evaluate_time,evaluate_level,user_id,state,status) 
+		values ( #{order_number},#{evaluate_content},#{evaluate_time},#{evaluate_level},#{user_id},#{state},#{status} )
+	</insert> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_evaluation poe where poe.`order_number` IN (SELECT po.`order_number` FROM lc_platform_order po WHERE po.`tms_line_id`=#{linId}<!--  AND po.`user_id`=#{userId} -->)
+		order by poe.id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getEvaluateInfo" resultMap="BaseResultMap">
+	SELECT <include refid="Base_Column_List" /> FROM lc_platform_order_evaluation poe WHERE poe.`order_number` IN (SELECT po.`order_number` FROM lc_platform_order po WHERE po.`tms_line_id`=#{param1}) 
+	<!-- SELECT <include refid="Base_Column_List" /> FROM lc_platform_order_evaluation poe WHERE poe.`order_number` IN (SELECT po.`order_number` FROM lc_platform_order po WHERE po.`tms_line_id`=#{param1} AND po.`user_id`=#{param2}) --> 
+	</select>
+</mapper> 
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcDealerDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcDealer"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,dealerName,branchNo,zoneNo,zoneArea,phone,telephone,address,status,startJoinTime,endJoinTime,joinCost,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcDealer" > 
+		select  <include refid="Base_Column_List" />  from yc_dealer where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcDealer" > 
+		select  count(1)  from yc_dealer 
+	</select> 
+	<select id="getAllDealer" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcDealer" > 
+		select  <include refid="Base_Column_List" />  from yc_dealer 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_dealer order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcDealer"> 
+		delete from yc_dealer where id=#{id} 
+	</delete>
+	<delete id="delSelect" parameterType="java.util.List"> 
+		DELETE a FROM  yc_dealer a WHERE a.id IN
+			<foreach collection="list" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		 AND (SELECT COUNT(1) FROM yc_join_info b WHERE b.`joinerId`=a.`id` AND b.joinType=0 AND b.`joinerId` IN
+			<foreach collection="list" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		 )=0
+	</delete> 	 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcDealer" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_dealer  
+		(dealerName,branchNo,zoneNo,zoneArea,phone,telephone,address,status,startJoinTime,endJoinTime,joinCost,createTime,createUser,updateTime,updateUser,remark) 
+		values (#{dealerName},#{branchNo},#{zoneNo},#{zoneArea},#{phone},#{telephone},#{address},#{status},#{startJoinTime},#{endJoinTime},#{joinCost},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcDealer">   
+	update yc_dealer 
+	<set> 
+		<if test="dealerName !=null"> 
+			dealerName=#{dealerName},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="zoneNo !=null"> 
+			zoneNo=#{zoneNo},
+		</if>
+		<if test="zoneArea !=null"> 
+			zoneArea=#{zoneArea},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="telephone !=null"> 
+			telephone=#{telephone},
+		</if>
+		<if test="address !=null"> 
+			address=#{address},
+		</if>
+		<if test="startJoinTime !=null"> 
+			startJoinTime=#{startJoinTime},
+		</if>
+		<if test="endJoinTime !=null"> 
+			endJoinTime=#{endJoinTime},
+		</if>
+		<if test="joinCost !=null"> 
+			joinCost=#{joinCost},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark},
+		</if>
+		<if test="status!=null">
+			status = #{status}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+	<!-- 查询没有注册加盟商的经销商用户 -->
+	<select id="getUnRegisterDealer" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" /> FROM yc_dealer AS a 
+		WHERE (SELECT COUNT(1) FROM yc_join_info AS b WHERE b.`joinerId`=a.`id` and b.joinType=0)=0;
+	</select>
+</mapper> 
+

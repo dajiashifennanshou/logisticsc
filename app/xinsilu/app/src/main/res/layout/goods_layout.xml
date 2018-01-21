@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="14dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="14dp"
+                android:text="货物信息"
+                android:textSize="@dimen/small_text_size" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/goods_btn_delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:padding="4dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/login_delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="货物名称:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入货物名称"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="货物品牌:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_brand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入货物品牌"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="货物型号:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入货物型号"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="件        数:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0987654321"
+                android:hint="请输入货物件数"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="套        数:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_set_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0987654321"
+                android:hint="请输入货物套数"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="重   量 (t):"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0987654321."
+                android:hint="请输入货物重量"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="体积(m³):"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <EditText
+                android:id="@+id/goods_volume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0987654321."
+                android:hint="请输入货物体积"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/hor_style_padding"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:hint="　　　　　"
+                android:text="包装信息:"
+                android:textColor="@color/font_color_focused"
+                android:textSize="@dimen/mid_text_size" />
+
+            <TextView
+                android:id="@+id/goods_pack_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请选择包装类型"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textColor="@color/font_color_focused"
+                android:textColorHint="@color/font_color_hint"
+                android:textSize="@dimen/mid_text_size" />
+
+            <ImageView
+                android:id="@+id/arrow"
+                style="@style/BasicParamNoMargin_h"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/xiadan_arrow" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/goods_layout_rl_goodspack_types"
+            style="@style/hor_style_padding"
+            android:background="@android:color/white"
+            android:visibility="gone">
+
+            <CheckedTextView
+                android:id="@+id/pager_box"
+                style="@style/myStyle"
+                android:background="@drawable/bg_selector_goodspack_type"
+                android:button="@null"
+                android:checked="true"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="纸箱"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text_size" />
+
+            <CheckedTextView
+                android:id="@+id/mood_box"
+                style="@style/myStyle"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_selector_goodspack_type"
+                android:button="@null"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="木箱"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+
+            <CheckedTextView
+                android:id="@+id/basic_goods"
+                style="@style/myStyle"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_selector_goodspack_type"
+                android:button="@null"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="裸货"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <CheckedTextView
+                android:id="@+id/pallets"
+                style="@style/myStyle"
+                android:layout_below="@+id/pager_box"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_selector_goodspack_type"
+                android:button="@null"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="托盘"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+            <CheckedTextView
+                android:id="@+id/foam"
+                style="@style/myStyle"
+                android:layout_below="@+id/mood_box"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_selector_goodspack_type"
+                android:button="@null"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="泡沫"
+                android:textColor="@color/font_color_hint"
+                android:textSize="@dimen/small_text_size" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/goods_layout_ll_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+</FrameLayout>

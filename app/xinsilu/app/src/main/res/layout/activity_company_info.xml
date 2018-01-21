@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryContent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/hor_style_padding"
+                android:padding="16dp"
+                android:text="以下各项均为必填项"
+                android:textSize="@dimen/mid_text_size"
+                android:visibility="gone" />
+
+            <com.wrt.xinsilu.ui.view.MyListView
+                android:id="@+id/company_info_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:divider="@color/color_primary_line"
+                android:dividerHeight="1px" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/white"
+                        android:paddingLeft="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="　　　　　　　"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp"
+                            android:text="营业执照"
+                            android:textColor="@color/font_color_normal2"
+                            android:textSize="@dimen/mid_text_size" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/update_licences"
+                                android:layout_width="88dp"
+                                android:layout_height="88dp"
+                                android:layout_margin="16dp"
+                                app:placeholderImage="@color/font_color_hint"
+                                app:roundedCornerRadius="5dp" />
+
+                            <ImageView
+                                android:id="@+id/delete1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-40dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/update_licences"
+                                android:src="@mipmap/login_delete"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:paddingLeft="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="　　　　　　　"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp"
+                            android:text="公司照片"
+                            android:textColor="@color/font_color_normal2"
+                            android:textSize="@dimen/mid_text_size" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/update_company_pic"
+                                android:layout_width="88dp"
+                                android:layout_height="88dp"
+                                android:layout_margin="16dp"
+                                app:placeholderImage="@color/font_color_hint"
+                                app:roundedCornerRadius="5dp" />
+
+                            <ImageView
+                                android:id="@+id/delete2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-40dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/update_company_pic"
+                                android:src="@mipmap/login_delete"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:paddingLeft="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="　　　　　　　"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp"
+                            android:text="法人身份证"
+                            android:textColor="@color/font_color_normal2"
+                            android:textSize="@dimen/mid_text_size" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/update_id_card"
+                                android:layout_width="88dp"
+                                android:layout_height="88dp"
+                                android:layout_margin="16dp"
+                                app:placeholderImage="@color/font_color_hint"
+                                app:roundedCornerRadius="5dp" />
+
+                            <ImageView
+                                android:id="@+id/delete3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-40dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/update_id_card"
+                                android:src="@mipmap/login_delete"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:paddingLeft="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="　　　　　　　"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp"
+                            android:text="名片照片"
+                            android:textColor="@color/font_color_normal2"
+                            android:textSize="@dimen/mid_text_size" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/update_id_pic"
+                                android:layout_width="88dp"
+                                android:layout_height="88dp"
+                                android:layout_margin="16dp"
+                                app:placeholderImage="@color/font_color_hint"
+                                app:roundedCornerRadius="5dp" />
+
+                            <ImageView
+                                android:id="@+id/delete4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-40dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/update_id_pic"
+                                android:src="@mipmap/login_delete"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:paddingLeft="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="　　　　　　　"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp"
+                            android:text="公司LOGO"
+                            android:textColor="@color/font_color_normal2"
+                            android:textSize="@dimen/mid_text_size" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:id="@+id/update_company_logo"
+                                android:layout_width="88dp"
+                                android:layout_height="88dp"
+                                android:layout_margin="16dp"
+                                app:placeholderImage="@color/font_color_hint"
+                                app:roundedCornerRadius="5dp" />
+
+                            <ImageView
+                                android:id="@+id/delete5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="-40dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/update_company_logo"
+                                android:src="@mipmap/login_delete"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

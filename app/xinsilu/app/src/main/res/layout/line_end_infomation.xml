@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tranport_num"
+        style="@style/myStyle"
+        android:text="已承运20票"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/small_text_size"
+        android:drawableLeft="@mipmap/common_chengnyun"/>
+    <TextView
+        android:id="@+id/comment_detail"
+        style="@style/myStyle"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/small_text_size"
+        android:textColor="#f27517"
+        android:text="已有0条评论"
+        />
+    <TextView
+        android:id="@+id/position"
+        style="@style/myStyle"
+        android:text="1km"
+        android:visibility="gone"
+        android:drawableLeft="@mipmap/home_positioning"
+        android:drawablePadding="4dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/small_text_size"
+        android:paddingLeft="5dp"
+        android:layout_marginRight="10dp"
+        />
+
+</RelativeLayout>

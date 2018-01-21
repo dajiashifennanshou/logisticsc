@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#64bcff</color>
+    <color name="colorAccent2">#199bff</color>
+    <color name="colorAccent3">#ff9900</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryContent">#f5f5f5</color>
+    <color name="colorPrimaryDark">#3e3f40</color>
+    <color name="font_color_focused">#212121</color>
+    <color name="font_color_hint">#a1a1a1</color>
+    <color name="font_color_hint_light">#f5f5f5</color>
+    <color name="font_color_normal">#797979</color>
+    <color name="font_color_normal_light">#f5f5f5</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="civ_border_width"/><attr format="color" name="civ_border_color"/><attr format="boolean" name="civ_border_overlay"/><attr format="color" name="civ_fill_color"/></declare-styleable>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="btn_radius">4dp</dimen>
+    <dimen name="common_text_size">16sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_top_or_button">10dp</dimen>
+    <dimen name="mid_text_size">14sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="user_padding">5dp</dimen>
+    <dimen name="user_padding_without_margin">20dp</dimen>
+    <string name="app_name">Distributor</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_customer">MyCustomerActivity</string>
+    <string name="title_activity_regest">RegestActivity</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="PopupAnimation">
+        <item name="android:windowEnterAnimation">@anim/menu_bottombar_in</item>
+        <item name="android:windowExitAnimation">@anim/menu_bottombar_out</item>
+    </style>
+    <style name="basic_padding">
+        <item name="android:paddingRight">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingTop">@dimen/user_padding</item>
+        <item name="android:paddingBottom">@dimen/user_padding</item>
+    </style>
+    <style name="customer_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <style name="lin_h_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="lin_style" parent="basic_padding">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="lin_v_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <style name="margin_style" parent="@style/myStyle">
+        <item name="android:layout_marginTop">@dimen/margin_top_or_button</item>
+        <item name="android:layout_marginBottom">@dimen/margin_top_or_button</item>
+        <item name="android:layout_marginLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:layout_marginRight">@dimen/user_padding_without_margin</item>
+    </style>
+    <style name="myStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="params_style" parent="myStyle">
+        <item name="android:paddingRight">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingLeft">@dimen/user_padding_without_margin</item>
+        <item name="android:paddingTop">@dimen/user_padding</item>
+        <item name="android:paddingBottom">@dimen/user_padding</item>
+    </style>
+</resources>

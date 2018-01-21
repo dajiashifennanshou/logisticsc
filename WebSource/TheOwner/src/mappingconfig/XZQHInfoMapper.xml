@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.XZQHInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.XZQHInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,name,pid
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.XZQHInfo" > 
+		select  <include refid="Base_Column_List" />  from lc_xzqh_info where id=#{id} 
+	</select> 
+	<select id="getXZQHIDBYID" resultType="java.lang.String" parameterType="java.lang.String" > 
+		select  name  from lc_xzqh_info where id=#{id} 
+	</select> 
+	<select id="getXZQH" resultMap="BaseResultMap"> 
+		select <include refid="Base_Column_List" /> from lc_xzqh_info where pid = #{param1}
+	</select>
+	<select id="getXZQHID" resultMap="BaseResultMap" parameterType="com.yc.Entity.XZQHInfo">
+		SELECT (SELECT id FROM lc_xzqh_info WHERE NAME=#{province}) AS province,(SELECT id FROM lc_xzqh_info WHERE NAME=#{city}) AS city,(SELECT id FROM lc_xzqh_info WHERE  NAME=#{county}) AS county
+	</select>
+</mapper> 
+

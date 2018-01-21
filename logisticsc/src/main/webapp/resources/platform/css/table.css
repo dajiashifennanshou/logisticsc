@@ -1,0 +1,98 @@
+body{
+	min-width:1200px;
+}
+/**************************table样式**********************************/
+.table th, .table td{ 
+	text-align: center; 
+}
+.table thead{
+	background-color:#6f9fd9;
+	color: white;
+}
+.clearfix{
+    margin: 0px auto;
+	background: rgb(246, 246, 246) none repeat scroll 0% 0%;
+	height: 60px;
+	border-top: 2px solid #0055bf;
+	border-bottom: 1px dotted #ccc;
+	width: 100%;
+}
+/******************详情颜色*********************/
+.td_colour {
+	color:#666;
+}
+.td_style{
+	width:100px;
+	align:center; 
+	font-size: 16px;
+}
+.biaoqian {
+	background: #0055bf;
+	color: white;
+	display: block;
+	float: left;
+	width: 82px;
+	height: 28px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 27px;
+	cursor: pointer;
+	border-bottom: 1px dotted #ccc;
+	font-size:14px;
+}
+.ju-left {
+	margin-left:10px;
+}
+#dingdan-zt > thead > tr > th{
+	background: white;
+	color: #333;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #0055bf;
+	height: 40px;
+	line-height: 32px;
+	font-size: 14px;
+	border-bottom: 1px solid #0055bf;
+}
+.dingdan-zt > thead > tr > th{
+	background: white;
+	color: #333;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #0055bf!important;
+	height: 40px!important;
+	line-height: 32px!important;
+	font-size: 14px;
+	border-bottom: 1px solid #0055bf!important;
+}
+
+#dingdan-zt > tbody > tr > td {
+	font-size:12px;
+	color:#696969;
+}
+.bill-zong {
+	margin-top:10px;
+}
+#bill-table1 > thead > tr > th{
+	background: white;
+	color: #333;
+	border-left: none;
+	border-right: none;
+	border-top: 2px solid #0055bf;
+	height: 40px;
+	font-size: 14px;
+	border-bottom: 1px solid #0055bf;
+}
+.login-sjh {
+    color: red;
+    font-size: 10px;
+    float: left;
+    line-height: 29px;
+    position: absolute;
+    top: -25px;
+    font-weight: 200;
+}
+#anniu-yellow {
+	background:#ff6600;
+	color:white;
+}

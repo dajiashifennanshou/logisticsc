@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ITmsWayBillOrderDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.TmsWayBillOrder"></resultMap>   
+	<sql id="Base_Column_List">
+		id,order_number,way_bill_number,start_outlets,start_outlets_name,target_outlets,target_outlets_name,target_province,target_city,target_county,consignor,consignor_company,consignor_mobile,consignor_address,consignee,consignee_company,consignee_mobile,consignee_address,send_type,receive_type,receipt_slip,receipt_slip_num,receipt_status,city_driver_name,city_driver_phone,city_vehicle_number,pay_method,total,STATUS,sign_status,way_bill_order_time,way_bill_order_user,remark,agency_fund,agency_fund_poundage,insurance_money,insurance,take_cargo_cost,load_unload_cost,transfer_cost,other_cost,freight,advance_cost,immediate_pay,arrive_pay,back_pay,is_wait_pay,exception_status 
+	</sql> 
+	<select id="getWayBillOrder" resultMap="BaseResultMap" parameterType="com.yc.Entity.TmsWayBillOrder">
+		select <include refid="Base_Column_List" /> from tms_way_bill_order where 1=1
+		<if test="sign_status!=null">
+			and sign_status = #{sign_status}
+		</if>
+		ORDER BY way_bill_order_time DESC
+	</select>
+</mapper> 
+

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"   
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd ">  
+
+	<!-- 配置aop，用于controller权限控制，故配置在此。
+	若需要对其他例如service，component的类实现aop，需要在applicationContext.xml中再进行配置 -->
+    <aop:aspectj-autoproxy/>
+	<!-- 解决spring mvc @ResponseBody 中文乱码 -->  
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+    	<property name="messageConverters">  
+        	<list>    
+            	<bean class="org.springframework.http.converter.StringHttpMessageConverter"
+            		p:supportedMediaTypes="text/plain;charset=UTF-8"/>  
+        	</list>  
+    	</property>  
+	</bean>  
+	<!-- 启用注解驱动 -->
+	<mvc:annotation-driven/>
+	<!-- 配置注解扫描路径 -->
+	<context:component-scan base-package="com.yc.Controller" />
+
+	<!-- 配置注解映射的支持 -->  
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	
+	<!-- 视图解释类 -->  
+   	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+   		p:prefix="/WEB-INF/page/"
+   		p:suffix=".html"
+   		p:viewClass="org.springframework.web.servlet.view.JstlView" />    
+
+</beans>

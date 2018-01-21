@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceiveMoneyOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.ReceiveMoneyOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="cost_type" property="costType" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="pos_money" property="posMoney" jdbcType="DOUBLE" />
+    <result column="cash_money" property="cashMoney" jdbcType="DOUBLE" />
+    <result column="pay_person" property="payPerson" jdbcType="VARCHAR" />
+    <result column="pay_person_mobile" property="payPersonMobile" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_person_mobile" property="operatePersonMobile" jdbcType="VARCHAR" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="outlets_id" property="outletsId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, cost_type, money, pos_money, cash_money, pay_person, pay_person_mobile, remark, 
+    operate_person, operate_person_mobile, operate_time, status, outlets_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receive_money_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.ReceiveMoneyOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into tms_receive_money_order (id, order_number, cost_type, 
+      money, pos_money, cash_money, 
+      pay_person, pay_person_mobile, remark, operate_person, 
+      operate_person_mobile, operate_time, status, outlets_id)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{costType,jdbcType=INTEGER}, 
+      #{money,jdbcType=DOUBLE}, #{posMoney,jdbcType=DOUBLE}, #{cashMoney,jdbcType=DOUBLE}, 
+      #{payPerson,jdbcType=VARCHAR}, #{payPersonMobile,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{operatePerson,jdbcType=BIGINT}, 
+      #{operatePersonMobile,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},
+      #{outletsId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.ReceiveMoneyOrder" >
+    insert into tms_receive_money_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="costType != null" >
+        cost_type,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="posMoney != null" >
+        pos_money,
+      </if>
+      <if test="cashMoney != null" >
+        cash_money,
+      </if>
+      <if test="payPerson != null" >
+        pay_person,
+      </if>
+      <if test="payPersonMobile != null" >
+        pay_person_mobile,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operatePersonMobile != null" >
+        operate_person_mobile,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="outletsId != null" >
+        outlets_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costType != null" >
+        #{costType,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="posMoney != null" >
+        #{posMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cashMoney != null" >
+        #{cashMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payPerson != null" >
+        #{payPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="payPersonMobile != null" >
+        #{payPersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonMobile != null" >
+        #{operatePersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        #{outletsId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.ReceiveMoneyOrder" >
+    update tms_receive_money_order
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costType != null" >
+        cost_type = #{costType,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="posMoney != null" >
+        pos_money = #{posMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cashMoney != null" >
+        cash_money = #{cashMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payPerson != null" >
+        pay_person = #{payPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="payPersonMobile != null" >
+        pay_person_mobile = #{payPersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonMobile != null" >
+        operate_person_mobile = #{operatePersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <update id="updateByOrderNumberSelective" parameterType="com.brightsoft.model.ReceiveMoneyOrder" >
+    update tms_receive_money_order
+    <set >
+      <if test="costType != null" >
+        cost_type = #{costType,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="posMoney != null" >
+        pos_money = #{posMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cashMoney != null" >
+        cash_money = #{cashMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="payPerson != null" >
+        pay_person = #{payPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="payPersonMobile != null" >
+        pay_person_mobile = #{payPersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operatePersonMobile != null" >
+        operate_person_mobile = #{operatePersonMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="outletsId != null" >
+        outlets_id = #{outletsId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where  order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.ReceiveMoneyOrder" >
+    update tms_receive_money_order
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      cost_type = #{costType,jdbcType=INTEGER},
+      money = #{money,jdbcType=DOUBLE},
+      pos_money = #{posMoney,jdbcType=DOUBLE},
+      cash_money = #{cashMoney,jdbcType=DOUBLE},
+      pay_person = #{payPerson,jdbcType=VARCHAR},
+      pay_person_mobile = #{payPersonMobile,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_person_mobile = #{operatePersonMobile,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" >
+  	SELECT rmo.* FROM tms_receive_money_order rmo where 1 = 1
+   	<if test="status != null and status != '' ">
+   		and rmo.status = #{status,jdbcType=BIGINT}
+   	</if>
+   	<if test="costType != null and costType != '' ">
+   		and rmo.cost_type = #{costType,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and rmo.operate_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and rmo.operate_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and rmo.outlets_id = #{outletsId,jdbcType=BIGINT}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and rmo.order_number like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   	</if>
+   	order by rmo.operate_time desc limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int" >
+    SELECT count(1) FROM tms_receive_money_order rmo where 1 = 1
+   	<if test="status != null and status != '' ">
+   		and rmo.status = #{status,jdbcType=BIGINT}
+   	</if>
+   	<if test="costType != null and costType != '' ">
+   		and rmo.cost_type = #{costType,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and rmo.operate_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and rmo.operate_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="outletsId != null and outletsId != '' ">
+   		and rmo.outlets_id = #{outletsId,jdbcType=BIGINT}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and rmo.order_number like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   	</if>
+  </select>
+  
+  <select id="selectByWayBillNumberAndCostType" resultMap="BaseResultMap" >
+    SELECT <include refid="Base_Column_List" /> FROM tms_receive_money_order 
+    WHERE cost_type = #{costType,jdbcType=INTEGER} AND id in 
+    (
+		SELECT receive_money_order_id FROM tms_receive_money_order_relation 
+		WHERE way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+	)
+  </select>
+  
+  <select id="selectByOrderNumber" resultMap="BaseResultMap" >
+    SELECT 
+    <include refid="Base_Column_List" /> 
+    FROM tms_receive_money_order 
+    WHERE order_number = #{orderNumber,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByOrderNumberAndOutletsId" resultMap="BaseResultMap" >
+    SELECT 
+    <include refid="Base_Column_List" /> 
+    FROM tms_receive_money_order 
+    WHERE order_number = #{orderNumber,jdbcType=VARCHAR}
+    and outlets_id = #{outletsId,jdbcType=BIGINT}
+  </select>
+  
+  <select id="getTotalNotTransfer" parameterType="string" resultType="int">
+  	select 
+		count(1)
+	from tms_receive_money_order t_p
+	LEFT JOIN lc_platform_bank_accounts a_s on t_p.order_number = a_s.order_number
+	LEFT JOIN tms_pos_order_record r_d on t_p.order_number = r_d.order_number
+	LEFT JOIN  tms_outlets_info i_u on t_p.outlets_id = i_u.id
+	LEFT JOIN lc_platform_user_company c_p on i_u.company_id = c_p.id
+	LEFT JOIN tms_user u_r on u_r.outlets_id = i_u.id
+	LEFT JOIN tms_user_role r_e on r_e.user_id = u_r.id
+	LEFT JOIN tms_role r_l on r_l.id = r_e.role_id
+	where 1=1
+	and t_p.pos_money >0
+	and r_l.owner_type = #{loginName}
+	and t_p.order_number NOT IN (select order_number from lc_platform_bank_accounts where state = 0)
+  </select>
+</mapper>

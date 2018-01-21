@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderBillMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderBill" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="DOUBLE" />
+    <result column="agency_fund_poundage" property="agencyFundPoundage" jdbcType="DOUBLE" />
+    <result column="load_unload_charge" property="loadUnloadCharge" jdbcType="DOUBLE" />
+    <result column="added_service_charge" property="addedServiceCharge" jdbcType="DOUBLE" />
+    <result column="insurance" property="insurance" jdbcType="DOUBLE" />
+    <result column="total_cost" property="totalCost" jdbcType="DOUBLE" />
+    <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE" />
+    <result column="other_cost" property="otherCost" jdbcType="DOUBLE" />
+    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="start_outlets" property="startOutlets" jdbcType="VARCHAR" />
+    <result column="end_outlets" property="endOutlets" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE" />
+    <result column="send_cargo_cost" property="sendCargoCost" jdbcType="DOUBLE" />
+    <result column="load_cargo_cost" property="loadCargoCost" jdbcType="DOUBLE" />
+    <result column="unload_cargo_cost" property="unloadCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_take_cargo_cost" property="estimateTakeCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_send_cargo_cost" property="estimateSendCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_load_cargo_cost" property="estimateLoadCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_unload_cargo_cost" property="estimateUnloadCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_freight" property="estimateFreight" jdbcType="DOUBLE" />
+    <result column="estimate_total_cost" property="estimateTotalCost" jdbcType="DOUBLE" />
+    <result column="is_confirm" property="isConfirm" jdbcType="INTEGER" />
+    <result column="is_payment" property="isPayment" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="BaseResult" type="com.brightsoft.model.PlatformOrderBill" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="DOUBLE" />
+    <result column="load_unload_charge" property="loadUnloadCharge" jdbcType="DOUBLE" />
+    <result column="agency_fund_poundage" property="agencyFundPoundage" jdbcType="DOUBLE" />
+    <result column="added_service_charge" property="addedServiceCharge" jdbcType="DOUBLE" />
+    <result column="insurance" property="insurance" jdbcType="DOUBLE" />
+    <result column="total_cost" property="totalCost" jdbcType="DOUBLE" />
+    <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE" />
+    <result column="other_cost" property="otherCost" jdbcType="DOUBLE" />
+    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="start_outlets" property="startOutlets" jdbcType="VARCHAR" />
+    <result column="end_outlets" property="endOutlets" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE" />
+    <result column="send_cargo_cost" property="sendCargoCost" jdbcType="DOUBLE" />
+    <result column="load_cargo_cost" property="loadCargoCost" jdbcType="DOUBLE" />
+    <result column="unload_cargo_cost" property="unloadCargoCost" jdbcType="DOUBLE" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="is_payment" property="isPayment" jdbcType="INTEGER" />
+     <result column="estimate_take_cargo_cost" property="estimateTakeCargoCost" jdbcType="DOUBLE" />
+  </resultMap>
+  
+  <resultMap id="MineBillInfoResult" type="com.brightsoft.model.PlatformMineBillInfo" >
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="consignor_name" property="consignorName" jdbcType="VARCHAR" />
+    <result column="consignor_province" property="consignorProvince" jdbcType="VARCHAR" />
+    <result column="consignor_city" property="consignorCity" jdbcType="VARCHAR" />
+    <result column="consignor_county" property="consignorCounty" jdbcType="VARCHAR" />
+    <result column="consignor_phone_number" property="consignorPhoneNumber" jdbcType="VARCHAR" />
+    <result column="consignee_name" property="consigneeName" jdbcType="VARCHAR" />
+    <result column="consignee_province" property="consigneeProvince" jdbcType="VARCHAR" />
+    <result column="consignee_city" property="consigneeCity" jdbcType="VARCHAR" />
+    <result column="consignee_county" property="consigneeCounty" jdbcType="VARCHAR" />
+    <result column="consignee_phone_number" property="consigneePhoneNumber" jdbcType="VARCHAR" />
+    <result column="final_price" property="finalPrice" jdbcType="DOUBLE" />
+    <result column="freight" property="freight" jdbcType="DOUBLE" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+    <result column="added_service_charge" property="addedServiceCharge" jdbcType="DOUBLE" />
+    <result column="insurance" property="insurance" jdbcType="DOUBLE" />
+    <result column="other_cost" property="otherCost" jdbcType="DOUBLE" />
+    <result column="total_cost" property="totalCost" jdbcType="DOUBLE" />
+    <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE" />
+    <result column="send_cargo_cost" property="sendCargoCost" jdbcType="DOUBLE" />
+    <result column="load_cargo_cost" property="loadCargoCost" jdbcType="DOUBLE" />
+    <result column="unload_cargo_cost" property="unloadCargoCost" jdbcType="DOUBLE" />
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE" />
+    <result column="send_cargo_cost" property="sendCargoCost" jdbcType="DOUBLE" />
+    <result column="load_cargo_cost" property="loadCargoCost" jdbcType="DOUBLE" />
+    <result column="unload_cargo_cost" property="unloadCargoCost" jdbcType="DOUBLE" />
+   	<result column="order_cost" property="orderCost" jdbcType="DOUBLE" />
+    <result column="estimate_take_cargo_cost" property="estimateTakeCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_send_cargo_cost" property="estimateSendCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_load_cargo_cost" property="estimateLoadCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_unload_cargo_cost" property="estimateUnloadCargoCost" jdbcType="DOUBLE" />
+    <result column="estimate_freight" property="estimateFreight" jdbcType="DOUBLE" />
+    <result column="estimate_total_cost" property="estimateTotalCost" jdbcType="DOUBLE" />
+    <result column="agency_fund_poundage" property="agencyFundPoundage" jdbcType="DOUBLE" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, agency_fund_poundage, freight, load_unload_charge, added_service_charge, 
+    insurance, total_cost, prepaid_cost, other_cost, pay_date, state, start_outlets, end_outlets, company_name, create_time, 
+    take_cargo_cost, send_cargo_cost, load_cargo_cost, unload_cargo_cost, 
+    estimate_take_cargo_cost, estimate_send_cargo_cost, estimate_load_cargo_cost, estimate_unload_cargo_cost, estimate_freight, estimate_total_cost, is_confirm,is_payment
+  </sql>
+   <update id="updateOrderBillState" parameterType="com.brightsoft.model.PlatformOrderBill">
+    update lc_platform_order_bill
+    set 
+      state = #{state,jdbcType=INTEGER}
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updatePrepaidOst" parameterType="com.brightsoft.model.PlatformOrderBill">
+    update lc_platform_order_bill
+    set prepaid_cost= #{prepaidCost,jdbcType=DOUBLE}
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+   <update id="updateIsPayment" parameterType="com.brightsoft.model.PlatformOrderBill">
+    update lc_platform_order_bill
+    set is_payment = 0
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+    <select id="selectBill" resultType="int">
+    	select bill.id 
+    	 from lc_platform_order_bill AS bill
+		join lc_platform_order AS orders LEFT JOIN tms_line_info line ON orders.tms_line_id = line.id 
+		LEFT JOIN tms_outlets_info outlets ON line.start_outlets = outlets.id
+		LEFT JOIN lc_platform_user_company com ON outlets.company_id = com.id
+		where bill.order_number = orders.order_number
+		and orders.user_id = #{orderBill.userId,jdbcType=BIGINT}
+		and bill.is_confirm = 1
+  		<if test="orderBill.orderNumber!=null  and orderBill.orderNumber!=''">
+  			and orders.order_number LIKE concat("%",#{orderBill.orderNumber,jdbcType=VARCHAR},"%")
+  		</if>
+  		<if test="orderBill.startTime!=null and orderBill.startTime!=''">
+  			and bill.pay_date >=#{orderBill.startTime,jdbcType=VARCHAR}
+  		</if>
+  		<if test="orderBill.endTime!=null and orderBill.endTime!=''">
+  			and #{orderBill.endTime,jdbcType=VARCHAR} >= bill.pay_date 
+  		</if>
+  		<if test="orderBill.state!=null and orderBill.state!=''">
+  			and #{orderBill.state,jdbcType=VARCHAR} = bill.state 
+  		</if>
+  		order by bill.create_time desc 
+    </select>
+  <!-- 获取账单信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResult">
+  	select bill.id,bill.estimate_take_cargo_cost,bill.is_payment, bill.estimate_unload_cargo_cost,bill.order_number, bill.freight, bill.agency_fund_poundage, 
+	bill.load_unload_charge, bill.added_service_charge, bill.insurance, bill.total_cost,
+	bill.prepaid_cost, bill.other_cost, bill.pay_date, bill.state, bill.create_time,
+	orders.way_bill_number, line.start_outlets_name start_outlets, line.end_outlets_name end_outlets, com.company_name from lc_platform_order_bill AS bill
+	join lc_platform_order AS orders LEFT JOIN tms_line_info line ON orders.tms_line_id = line.id 
+	LEFT JOIN tms_outlets_info outlets ON line.start_outlets = outlets.id
+	LEFT JOIN lc_platform_user_company com ON outlets.company_id = com.id
+	where bill.order_number = orders.order_number
+		and orders.user_id = #{orderBill.userId,jdbcType=BIGINT}
+		 and bill.is_confirm = 1
+  		<if test="orderBill.orderNumber!=null  and orderBill.orderNumber!=''">
+  			and orders.order_number LIKE concat("%",#{orderBill.orderNumber,jdbcType=VARCHAR},"%")
+  		</if>
+  		<if test="orderBill.startTime!=null and orderBill.startTime!=''">
+  			and bill.pay_date >=#{orderBill.startTime,jdbcType=VARCHAR}
+  		</if>
+  		<if test="orderBill.endTime!=null and orderBill.endTime!=''">
+  			and #{orderBill.endTime,jdbcType=VARCHAR} >= bill.pay_date 
+  		</if>
+  		<if test="orderBill.state!=null and orderBill.state!=''">
+  			and #{orderBill.state,jdbcType=VARCHAR} = bill.state 
+  		</if>
+  	order by bill.create_time desc 
+  	limit #{page.start},#{page.limit}
+  </select>
+  
+   <!-- 我的账单详情 -->
+  <select id="selectMineBillInfo" resultMap="MineBillInfoResult">
+  	select orders.take_cargo_cost as order_cost,orders.order_number,orders.way_bill_number,orders.consignor_name,
+	orders.consignor_province,orders.consignor_city,orders.consignor_county,orders.consignor_phone_number,
+	orders.consignee_name,orders.consignee_province,orders.consignee_city,orders.consignee_county,orders.consignee_phone_number,
+	bill.agency_fund_poundage,bill.estimate_take_cargo_cost,bill.estimate_send_cargo_cost,bill.estimate_load_cargo_cost,bill.estimate_unload_cargo_cost,bill.estimate_freight,bill.estimate_total_cost,
+	bill.state,bill.create_time,bill.freight,
+	bill.insurance,bill.other_cost,bill.total_cost,bill.prepaid_cost,
+	bill.take_cargo_cost,bill.send_cargo_cost,bill.load_cargo_cost,bill.unload_cargo_cost,
+	users.login_name
+ 	from lc_platform_order as orders 
+	JOIN lc_platform_order_bill as bill on bill.order_number = orders.order_number
+	JOIN lc_platform_user as users on users.id = orders.user_id
+	where orders.user_id =#{userId,jdbcType=BIGINT}
+	and bill.order_number = #{orderNumber,jdbcType=VARCHAR}
+  </select>
+  <!-- 我的账单数据导出 -->
+  <select id="selectMineBill" resultMap="MineBillInfoResult">
+  	select orders.order_number,orders.way_bill_number,orders.consignor_name,
+	orders.consignor_province,orders.consignor_city,orders.consignor_county,orders.consignor_phone_number,
+	orders.consignee_name,orders.consignee_province,orders.consignee_city,orders.consignee_county,orders.consignee_phone_number,
+	bill.state,bill.create_time,bill.freight,
+	bill.insurance,bill.other_cost,bill.total_cost,bill.prepaid_cost,
+	bill.take_cargo_cost,bill.send_cargo_cost,bill.load_cargo_cost,bill.unload_cargo_cost,
+	users.login_name
+ 	from lc_platform_order as orders 
+	JOIN lc_platform_order_bill as bill on bill.order_number = orders.order_number
+	JOIN lc_platform_user as users on users.id = orders.user_id
+	where orders.user_id =#{userId,jdbcType=BIGINT}
+	and bill.is_confirm = 1
+	and bill.id in
+	 <foreach collection="id" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </select>
+  <!--获取记录总数 -->
+  <select id="countRows" resultType="int">
+  	select count(1) from lc_platform_order_bill AS bill
+	join lc_platform_order AS orders 
+	where bill.order_number = orders.order_number
+	and orders.user_id = #{orderBill.userId,jdbcType=BIGINT}
+	 and bill.is_confirm = 1
+  		<if test="orderBill.orderNumber!=null and orderBill.orderNumber!=''">
+  			and orders.order_number LIKE concat("%",#{orderBill.orderNumber,jdbcType=VARCHAR},"%")
+  		</if>
+  		<if test="orderBill.startTime!=null and orderBill.startTime!=''">
+  			and bill.pay_date >=#{orderBill.startTime,jdbcType=VARCHAR}
+  		</if>
+  		<if test="orderBill.endTime!=null and orderBill.endTime!=''">
+  			and #{orderBill.endTime,jdbcType=VARCHAR} >= bill.pay_date 
+  		</if>
+  		<if test="orderBill.state!=null and orderBill.state!=''">
+  			and #{orderBill.state,jdbcType=VARCHAR} = bill.state 
+  		</if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_bill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_bill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderBill" >
+    insert into lc_platform_order_bill (id, order_number, agency_fund_poundage, freight, 
+      load_unload_charge, added_service_charge, insurance, total_cost, 
+      prepaid_cost, other_cost, pay_date, 
+      state, start_outlets, end_outlets, company_name, create_time, 
+      take_cargo_cost, send_cargo_cost, load_cargo_cost, unload_cargo_cost, 
+      estimate_take_cargo_cost, estimate_send_cargo_cost, estimate_load_cargo_cost,
+      estimate_unload_cargo_cost, estimate_freight, estimate_total_cost, is_confirm)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{agencyFundPoundage,jdbcType=DOUBLE}, #{freight,jdbcType=DOUBLE}, 
+      #{loadUnloadCharge,jdbcType=DOUBLE}, #{addedServiceCharge,jdbcType=DOUBLE}, #{insurance,jdbcType=DOUBLE}, #{totalCost,jdbcType=DOUBLE}, 
+      #{prepaidCost,jdbcType=DOUBLE}, #{otherCost,jdbcType=DOUBLE}, #{payDate,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{startOutlets}, #{endOutlets}, #{companyName}, #{createTime}, 
+      #{takeCargoCost}, #{sendCargoCost}, #{loadCargoCost}, #{unloadCargoCost},
+      #{estimateTakeCargoCost}, #{estimateSendCargoCost}, #{estimateLoadCargoCost}, #{estimateUnloadCargoCost}, #{estimateFreight}, #{estimateTotalCost}, #{isConfirm})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderBill" >
+    insert into lc_platform_order_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="agencyFundPoundage != null" >
+        agency_fund_poundage,
+      </if>
+      <if test="loadUnloadCharge != null" >
+        load_unload_charge,
+      </if>
+      <if test="addedServiceCharge != null" >
+        added_service_charge,
+      </if>
+      <if test="insurance != null" >
+        insurance,
+      </if>
+      <if test="totalCost != null" >
+        total_cost,
+      </if>
+      <if test="prepaidCost != null" >
+        prepaid_cost,
+      </if>
+      <if test="otherCost != null" >
+        other_cost,
+      </if>
+      <if test="payDate != null" >
+        pay_date,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets,
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost,
+      </if>
+      <if test="sendCargoCost != null" >
+        send_cargo_cost,
+      </if>
+      <if test="loadCargoCost != null" >
+        load_cargo_cost,
+      </if>
+      <if test="unloadCargoCost != null" >
+        unload_cargo_cost,
+      </if>
+      <if test="estimateTakeCargoCost != null" >
+        estimate_take_cargo_cost,
+      </if>
+      <if test="estimateSendCargoCost != null" >
+        estimate_send_cargo_cost,
+      </if>
+      <if test="estimateLoadCargoCost != null" >
+        estimate_load_cargo_cost,
+      </if>
+      <if test="estimateUnloadCargoCost != null" >
+        estimate_unload_cargo_cost,
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight,
+      </if>
+      <if test="estimateTotalCost != null" >
+        estimate_total_cost,
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="agencyFundPoundage != null" >
+        #{agencyFundPoundage,jdbcType=DOUBLE},
+      </if>
+      <if test="loadUnloadCharge != null" >
+        #{loadUnloadCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="addedServiceCharge != null" >
+        #{addedServiceCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="insurance != null" >
+        #{insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="totalCost != null" >
+        #{totalCost,jdbcType=DOUBLE},
+      </if>
+      <if test="prepaidCost != null" >
+        #{prepaidCost,jdbcType=DOUBLE},
+      </if>
+      <if test="otherCost != null" >
+        #{otherCost,jdbcType=DOUBLE},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        #{start_outlets,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutlets != null" >
+        #{end_outlets,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{company_name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeCargoCost != null" >
+        #{take_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="sendCargoCost != null" >
+        #{send_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="loadCargoCost != null" >
+        #{load_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="unloadCargoCost != null" >
+        #{unload_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTakeCargoCost != null" >
+        #{estimate_take_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateSendCargoCost != null" >
+        #{estimate_send_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateLoadCargoCost != null" >
+        #{estimate_load_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateUnloadCargoCost != null" >
+        #{estimate_unload_cargo_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        #{estimate_freight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotalCost != null" >
+        #{estimate_total_cost,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        #{is_confirm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderBill" >
+    update lc_platform_order_bill
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="agencyFundPoundage != null" >
+        agency_fund_poundage = #{agencyFundPoundage,jdbcType=DOUBLE},
+      </if>
+      <if test="loadUnloadCharge != null" >
+        load_unload_charge = #{loadUnloadCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="addedServiceCharge != null" >
+        added_service_charge = #{addedServiceCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="insurance != null" >
+        insurance = #{insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="totalCost != null" >
+        total_cost = #{totalCost,jdbcType=DOUBLE},
+      </if>
+      <if test="prepaidCost != null" >
+        prepaid_cost = #{prepaidCost,jdbcType=DOUBLE},
+      </if>
+      <if test="otherCost != null" >
+        other_cost = #{otherCost,jdbcType=DOUBLE},
+      </if>
+      <if test="payDate != null" >
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets = #{endOutlets,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="sendCargoCost != null" >
+        send_cargo_cost = #{sendCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="loadCargoCost != null" >
+        load_cargo_cost = #{loadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="unloadCargoCost != null" >
+        unload_cargo_cost = #{unloadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTakeCargoCost != null" >
+        estimate_take_cargo_cost = #{estimateTakeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateSendCargoCost != null" >
+        estimate_send_cargo_cost = #{estimateSendCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateLoadCargoCost != null" >
+        estimate_load_cargo_cost = #{estimateLoadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateUnloadCargoCost != null" >
+        estimate_unload_cargo_cost = #{estimateUnloadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotalCost != null" >
+        estimate_total_cost = #{estimateTotalCost,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm = #{isConfirm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByOrderNumberSelective" parameterType="com.brightsoft.model.PlatformOrderBill" >
+    update lc_platform_order_bill
+    <set >
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="agencyFundPoundage != null" >
+        agency_fund_poundage = #{agencyFundPoundage,jdbcType=DOUBLE},
+      </if>
+      <if test="loadUnloadCharge != null" >
+        load_unload_charge = #{loadUnloadCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="addedServiceCharge != null" >
+        added_service_charge = #{addedServiceCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="insurance != null" >
+        insurance = #{insurance,jdbcType=DOUBLE},
+      </if>
+      <if test="totalCost != null" >
+        total_cost = #{totalCost,jdbcType=DOUBLE},
+      </if>
+      <if test="prepaidCost != null" >
+        prepaid_cost = #{prepaidCost,jdbcType=DOUBLE},
+      </if>
+      <if test="otherCost != null" >
+        other_cost = #{otherCost,jdbcType=DOUBLE},
+      </if>
+      <if test="payDate != null" >
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="startOutlets != null" >
+        start_outlets = #{startOutlets,jdbcType=VARCHAR},
+      </if>
+      <if test="endOutlets != null" >
+        end_outlets = #{endOutlets,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="sendCargoCost != null" >
+        send_cargo_cost = #{sendCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="loadCargoCost != null" >
+        load_cargo_cost = #{loadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="unloadCargoCost != null" >
+        unload_cargo_cost = #{unloadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTakeCargoCost != null" >
+        estimate_take_cargo_cost = #{estimateTakeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateSendCargoCost != null" >
+        estimate_send_cargo_cost = #{estimateSendCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateLoadCargoCost != null" >
+        estimate_load_cargo_cost = #{estimateLoadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateUnloadCargoCost != null" >
+        estimate_unload_cargo_cost = #{estimateUnloadCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotalCost != null" >
+        estimate_total_cost = #{estimateTotalCost,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm = #{isConfirm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderBill" >
+    update lc_platform_order_bill
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=DOUBLE},
+      agency_fund_poundage = #{agencyFundPoundage,jdbcType=DOUBLE},
+      load_unload_charge = #{loadUnloadCharge,jdbcType=DOUBLE},
+      added_service_charge = #{addedServiceCharge,jdbcType=DOUBLE},
+      insurance = #{insurance,jdbcType=DOUBLE},
+      total_cost = #{totalCost,jdbcType=DOUBLE},
+      prepaid_cost = #{prepaidCost,jdbcType=DOUBLE},
+      other_cost = #{otherCost,jdbcType=DOUBLE},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      start_outlets = #{startOutlets,jdbcType=VARCHAR},
+      end_outlets = #{endOutlets,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      send_cargo_cost = #{sendCargoCost,jdbcType=DOUBLE},
+      load_cargo_cost = #{loadCargoCost,jdbcType=DOUBLE},
+      unload_cargo_cost = #{unloadCargoCost,jdbcType=DOUBLE},
+      estimaate_take_cargo_cost = #{estimateTakeCargoCost,jdbcType=DOUBLE},
+      estimaate_send_cargo_cost = #{estimateSendCargoCost,jdbcType=DOUBLE},
+      estimaate_load_cargo_cost = #{estimateLoadCargoCost,jdbcType=DOUBLE},
+      estimaate_unload_cargo_cost = #{estimateUnloadCargoCost,jdbcType=DOUBLE},
+      estimaate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      estimaate_total_cost = #{estimateTotalCost,jdbcType=DOUBLE},
+      is_confirm = #{isConfirm,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByOrderNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_bill
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,1778 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="consignor_name" property="consignorName" jdbcType="VARCHAR" />
+    <result column="consignor_province" property="consignorProvince" jdbcType="VARCHAR" />
+    <result column="consignor_city" property="consignorCity" jdbcType="VARCHAR" />
+    <result column="consignor_county" property="consignorCounty" jdbcType="VARCHAR" />
+    <result column="consignor_address" property="consignorAddress" jdbcType="VARCHAR" />
+    <result column="consignor_phone_number" property="consignorPhoneNumber" jdbcType="VARCHAR" />
+    <result column="consignor_telephone" property="consignorTelephone" jdbcType="VARCHAR" />
+    <result column="driver_name" property="driverName" jdbcType="VARCHAR" />
+    <result column="driver_phone" property="driverPhone" jdbcType="VARCHAR" />
+    <result column="vehicle_number" property="vehicleNumber" jdbcType="VARCHAR" />
+    <result column="vehicle_type" property="vehicleType" jdbcType="BIGINT" />
+    <result column="consignee_name" property="consigneeName" jdbcType="VARCHAR" />
+    <result column="consignee_province" property="consigneeProvince" jdbcType="VARCHAR" />
+    <result column="consignee_city" property="consigneeCity" jdbcType="VARCHAR" />
+    <result column="consignee_county" property="consigneeCounty" jdbcType="VARCHAR" />
+    <result column="consignee_address" property="consigneeAddress" jdbcType="VARCHAR" />
+    <result column="consignee_phone_number" property="consigneePhoneNumber" jdbcType="VARCHAR" />
+    <result column="consignee_telephone" property="consigneeTelephone" jdbcType="VARCHAR" />
+    <result column="send_cargo_type" property="sendCargoType" jdbcType="BIGINT" />
+    <result column="delivery_date" property="deliveryDate" jdbcType="TIMESTAMP" />
+    <result column="delivery_start_time" property="deliveryStartTime" jdbcType="VARCHAR" />
+    <result column="delivery_end_time" property="deliveryEndTime" jdbcType="VARCHAR" />
+    <result column="receive_cargo_type" property="receiveCargoType" jdbcType="BIGINT" />
+    <result column="is_insurance" property="isInsurance" jdbcType="INTEGER" />
+    <result column="insurance_money" property="insuranceMoney" jdbcType="DOUBLE" />
+    <result column="receipt_type" property="receiptType" jdbcType="INTEGER" />
+    <result column="receipt_title" property="receiptTitle" jdbcType="INTEGER" />
+    <result column="receipt_company_name" property="receiptCompanyName" jdbcType="VARCHAR" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="DOUBLE" />
+    <result column="total_volume" property="totalVolume" jdbcType="DOUBLE" />
+    <result column="total_worth" property="totalWorth" jdbcType="DOUBLE" />
+    <result column="advance_price" property="advancePrice" jdbcType="DOUBLE" />
+    <result column="final_price" property="finalPrice" jdbcType="DOUBLE" />
+    <result column="paid_price" property="paidPrice" jdbcType="DOUBLE" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="tms_line_id" property="tmsLineId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="start_outlets" property="startOutlets" jdbcType="BIGINT" />
+    <result column="start_outlets_name" property="startOutletsName" jdbcType="VARCHAR" />
+    <result column="target_outlets" property="targetOutlets" jdbcType="BIGINT" />
+    <result column="target_outlets_name" property="targetOutletsName" jdbcType="VARCHAR" />
+    <result column="consignor_province_val" property="consignorProvinceVal"/>
+    <result column="consignor_city_val" property="consignorCityVal"/>
+    <result column="consignor_county_val" property="consignorCountyVal"/>
+    <result column="vehicle_type_val" property="vehicleTypeVal"/>
+    <result column="is_draft" property="isDraft" jdbcType="INTEGER" />
+    <result column="is_wait_pay" property="isWaitPay" jdbcType="INTEGER" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER"/>
+    <result column="estimate_weight" property="estimateWeight" jdbcType="DOUBLE"/>
+    <result column="estimate_volume" property="estimateVolume" jdbcType="DOUBLE"/>
+    <result column="estimate_freight" property="estimateFreight" jdbcType="DOUBLE"/>
+    <result column="is_confirm" property="isConfirm" jdbcType="INTEGER"/>
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE"/>
+    <result column="estimate_total" property="estimateTotal" jdbcType="DOUBLE"/>
+    <result column="total_cost" property="totalCost" jdbcType="DOUBLE"/>
+    <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE"/>
+    <result column="is_payment" property="isPayment" jdbcType="INTEGER" />
+    <result column="requestid" property="requestid"/>
+    <result column="ledgerno" property="ledgerno"/>
+    <result column="order_type" property="orderType"/>
+    <result column="amount" property="amount"/>
+    <result column="outlets_name" property="outletsName"/>
+    
+    <association property="platformOrderBill" javaType="com.brightsoft.model.PlatformOrderBill">
+	    <result column="freight" property="freight" jdbcType="DOUBLE" />
+	    <result column="agency_fund_poundage" property="agencyFundPoundage" jdbcType="DOUBLE" />
+	    <result column="load_unload_charge" property="loadUnloadCharge" jdbcType="DOUBLE" />
+	    <result column="added_service_charge" property="addedServiceCharge" jdbcType="DOUBLE" />
+	    <result column="insurance" property="insurance" jdbcType="DOUBLE" />
+	    <result column="total_cost" property="totalCost" jdbcType="DOUBLE" />
+	    <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE" />
+	    <result column="other_cost" property="otherCost" jdbcType="DOUBLE" />
+	    <result column="pay_date" property="payDate" jdbcType="TIMESTAMP" />
+	    <result column="state" property="state" jdbcType="INTEGER" />
+	    <result column="start_outlets" property="startOutlets" jdbcType="INTEGER" />
+	    <result column="end_outlets" property="endOutlets" jdbcType="INTEGER" />
+	    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="take_cargo_cost_bill" property="takeCargoCost" jdbcType="DOUBLE" />
+	    <result column="send_cargo_cost" property="sendCargoCost" jdbcType="DOUBLE" />
+	    <result column="load_cargo_cost" property="loadCargoCost" jdbcType="DOUBLE" />
+	    <result column="unload_cargo_cost" property="unloadCargoCost" jdbcType="DOUBLE" />
+	    <result column="estimate_take_cargo_cost" property="estimateTakeCargoCost" jdbcType="DOUBLE" />
+	    <result column="estimate_send_cargo_cost" property="estimateSendCargoCost" jdbcType="DOUBLE" />
+	    <result column="estimate_load_cargo_cost" property="estimateLoadCargoCost" jdbcType="DOUBLE" />
+	    <result column="estimate_unload_cargo_cost" property="estimateUnloadCargoCost" jdbcType="DOUBLE" />
+	    <result column="estimate_freight" property="estimateFreight" jdbcType="DOUBLE" />
+	    <result column="estimate_total_cost" property="estimateTotalCost" jdbcType="DOUBLE" />
+	    <result column="is_confirm" property="isConfirm" jdbcType="INTEGER" />
+	    <result column="is_payment" property="isPayment" jdbcType="INTEGER" />
+    </association>
+    <association property="platformOrderAdditionalServer" javaType="com.brightsoft.model.PlatformOrderAdditionalServer">
+	    <result column="is_receipt" property="isReceipt" jdbcType="INTEGER" />
+	    <result column="is_im_ex_store" property="isImExStore" jdbcType="INTEGER" />
+	    <result column="is_load_cargo" property="isLoadCargo" jdbcType="INTEGER" />
+	    <result column="load_cargo_floor" property="loadCargoFloor" jdbcType="INTEGER" />
+	    <result column="load_cargo_is_elevator" property="loadCargoIsElevator" jdbcType="INTEGER" />
+	    <result column="is_unload_cargo" property="isUnloadCargo" jdbcType="INTEGER" />
+	    <result column="unload_cargo_floor" property="unloadCargoFloor" jdbcType="INTEGER" />
+	    <result column="unload_cargo_is_elevator" property="unloadCargoIsElevator" jdbcType="INTEGER" />
+	    <result column="is_collection_delivery" property="isCollectionDelivery" jdbcType="INTEGER" />
+	    <result column="collection_delivery_money" property="collectionDeliveryMoney" jdbcType="DOUBLE" />
+	    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    </association>
+    <association property="platformOrderAgencyFund" javaType="com.brightsoft.model.PlatformOrderAgencyFund">
+	    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+	    <result column="agency_fund" property="agencyFund" jdbcType="DOUBLE" />
+	    <result column="received_fund" property="receivedFund" jdbcType="DOUBLE" />
+	    <result column="uncollected_fund" property="uncollectedFund" jdbcType="DOUBLE" />
+	    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+	    <result column="state" property="state" jdbcType="INTEGER" />
+    </association>
+    <association property="platformUserCompany" javaType="com.brightsoft.model.PlatformUserCompany">
+    	<result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    	<result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    </association>
+    <association property="platformUser" javaType="com.brightsoft.model.PlatformUser">
+    	<result column="plat_login_name" property="loginName" jdbcType="VARCHAR" />
+    	<result column="plat_bankaccountnumber" property="bankaccountnumber"/>
+    	<!-- <association property="platformBank" javaType="com.brightsoft.model.PlatformBank">
+    		
+    	</association> -->
+    </association>
+    <association property="tmsUser" javaType="com.brightsoft.model.User">
+    	<result column="tms_login_name" property="loginName" jdbcType="VARCHAR" />
+    	<result column="tms_bankaccountnumber" property="bankaccountnumber"/>
+    	<!-- <association property="platformBank" javaType="com.brightsoft.model.PlatformBank">
+    		
+    	</association> -->
+    </association>
+    <association property="lineInfo" javaType="com.brightsoft.model.LineInfo">
+    	<id column="line_id" property="id"/>
+    	<result column="server_type" property="serverType" jdbcType="VARCHAR" />
+	    <result column="start_outlets_name" property="startOutletsName" jdbcType="VARCHAR" />
+	    <result column="end_outlets_name" property="endOutletsName" jdbcType="VARCHAR" />
+	    <result column="heavy_cargo_price_low" property="heavyCargoPriceLow" jdbcType="DOUBLE" />
+	    <result column="heavy_cargo_price_mid" property="heavyCargoPriceMid" jdbcType="DOUBLE" />
+	    <result column="heavy_cargo_price_high" property="heavyCargoPriceHigh" jdbcType="DOUBLE" />
+	    <result column="bulky_cargo_price_low" property="bulkyCargoPriceLow" jdbcType="DOUBLE" />
+	    <result column="bulky_cargo_price_mid" property="bulkyCargoPriceMid" jdbcType="DOUBLE" />
+	    <result column="bulky_cargo_price_high" property="bulkyCargoPriceHigh" jdbcType="DOUBLE" />
+	    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+	    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+	    <association property="startOutletsObj" javaType="com.brightsoft.model.OutletsInfo">
+	    	<result column= "start_province_value" property="provinceValue"/>
+	    	<result column= "start_city_value" property="cityValue"/>
+	    </association>
+	    <association property="endOutletsObj" javaType="com.brightsoft.model.OutletsInfo">
+	    	<result column= "end_province_value" property="provinceValue"/>
+	    	<result column= "end_city_value" property="cityValue"/>
+	    </association>
+    </association>
+    <collection property="platformOrderCargos" ofType="com.brightsoft.model.PlatformOrderCargo">
+	    <result column="id" property="id" jdbcType="BIGINT" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="brand" property="brand" jdbcType="VARCHAR" />
+	    <result column="model" property="model" jdbcType="VARCHAR" />
+	    <result column="package_type" property="packageType" jdbcType="INTEGER" />
+	    <result column="number" property="number" jdbcType="INTEGER" />
+	    <result column="set_number" property="setNumber" jdbcType="INTEGER" />
+	    <result column="single_weight" property="singleWeight" jdbcType="DOUBLE" />
+	    <result column="single_volume" property="singleVolume" jdbcType="DOUBLE" />
+	    <result column="count_cost_mode" property="countCostMode" jdbcType="BIGINT" />
+	    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+	    <result column="package_type_name" property="packageTypeName" jdbcType="VARCHAR" />
+    </collection>
+    <collection property="splitStateList" ofType="com.brightsoft.model.SplitState">
+    	<result column="split_state" property="state"/>
+    </collection>
+  </resultMap>
+  <resultMap id="sysVoOrderCount" type="com.brightsoft.model.sysVoOrderCount" >
+    <result column="year" property="year" jdbcType="VARCHAR" />
+    <result column="month" property="month" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="syscountOrder" resultMap="sysVoOrderCount">
+  	SELECT * FROM (
+	select year(order_time) year,month(order_time) month, count(1) count from lc_platform_order
+	group by year(order_time) ,month(order_time) ) t
+	where t.year = (SELECT DATE_FORMAT(CURRENT_DATE,'%Y') FROM DUAL);
+  </select>
+  <select id="selectTmsLineId" resultType="Long">
+  	select tms_line_id FROM lc_platform_order where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </select>
+   <select id="selectPlatformOrderfinalPrice" resultType="int">
+  	SELECT CASE WHEN SUM(final_price) IS NULL THEN 0 ELSE SUM(final_price) END FROM lc_platform_order
+  </select>
+   <select id="selectOrderCount" resultType="int">
+  	select COUNT(*)from lc_platform_order
+  </select>
+   <!-- 获取所有需要查询的总数 如 订单状态 是否投保 -->
+  <select id="selectOrderisDraft" resultType="int">
+  	select count(id) FROM lc_platform_order
+	where user_id = #{userId,jdbcType=BIGINT}
+	and is_draft = 0;
+  </select>
+  <select id="selectOrderState" resultType="int">
+  	select count(id) FROM lc_platform_order
+	where user_id = #{userId,jdbcType=BIGINT}
+	and state = #{state,jdbcType=BIGINT};
+  </select>
+  <select id="selectOrderFinalPrice" resultType="int">
+  	select count(id) FROM lc_platform_order
+	where user_id = #{userId,jdbcType=BIGINT}
+	and  final_price IS null;
+	
+  </select>
+  <select id="selectOrderIsInsurance" resultType="int">
+  	select count(id) FROM lc_platform_order
+	where user_id = #{userId,jdbcType=BIGINT}
+	and is_insurance = 0;
+  </select>
+  <select id="selectBankOrder" resultMap="BaseMineOrderMap">
+  	select o_r.*,b_i.is_payment as bill_payment from lc_platform_order o_r 
+	LEFT JOIN lc_platform_order_bill b_i on o_r.order_number = b_i.order_number
+	where o_r.order_number=#{orderNumber,jdbcType=VARCHAR}
+  </select>
+  <!-- 我要发货 -->
+  <resultMap id="BaseDeliverGoodsMap" type="com.brightsoft.model.PlatformDeliverGoods" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="qq" property="QQ" jdbcType="VARCHAR" />
+     <result column="contacts1_mobile" property="contacts1Mobile" jdbcType="VARCHAR" />
+    <result column="server_type" property="serverType" jdbcType="VARCHAR" />
+    <result column="transport_mode" property="transportMode" jdbcType="VARCHAR" />
+   	<result column="time_long" property="timeLong" jdbcType="INTEGER" />
+    <result column="lowest_price" property="lowestPrice" jdbcType="DOUBLE" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="heavy_cargo_price_low" property="heavyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_mid" property="heavyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="heavy_cargo_price_high" property="heavyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_low" property="bulkyCargoPriceLow" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_mid" property="bulkyCargoPriceMid" jdbcType="DOUBLE" />
+    <result column="bulky_cargo_price_high" property="bulkyCargoPriceHigh" jdbcType="DOUBLE" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER" />
+<!--  <result column="count_order" property="countOrder" jdbcType="INTEGER" />
+    <result column="count_order_evaluation" property="countOrderEvaluation" jdbcType="INTEGER" /> -->
+  </resultMap>
+  
+  <!-- 我的订单 -->
+  <resultMap id="BaseMineOrderMap" type="com.brightsoft.model.PlatformMineOrder" >
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+ 	<result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="total_weight" property="totalWeight" jdbcType="DOUBLE" />
+    <result column="total_volume" property="totalVolume" jdbcType="DOUBLE" />
+    <result column="advance_price" property="advancePrice" jdbcType="DOUBLE" />
+    <result column="final_price" property="finalPrice" jdbcType="DOUBLE" />
+    <result column="paid_price" property="paidPrice" jdbcType="DOUBLE" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="estimate_weight" property="estimateWeight" jdbcType="DOUBLE"/>
+    <result column="estimate_volume" property="estimateVolume" jdbcType="DOUBLE"/>
+    <result column="estimate_freight" property="estimateFreight" jdbcType="DOUBLE"/>
+    <result column="is_confirm" property="isConfirm" jdbcType="INTEGER"/>
+    <result column="total_cost" property="totalCost" jdbcType="DOUBLE" />
+    <result column="bill_state" property="billState" jdbcType="INTEGER" />
+    <result column="take_cargo_cost" property="takeCargoCost" jdbcType="DOUBLE"/>
+     <result column="prepaid_cost" property="prepaidCost" jdbcType="DOUBLE"/>
+    <result column="is_draft" property="isDraft" jdbcType="INTEGER"/> 
+    <result column="estimate_total" property="estimateTotal" jdbcType="DOUBLE"/>
+    <result column="is_payment" property="isPayment" jdbcType="INTEGER" />
+    <result column="bill_payment" property="billPayment" jdbcType="INTEGER" />
+    <result column="receive_cargo_type" property="receiveCargoType" jdbcType="BIGINT" />
+    <result column="send_cargo_type" property="sendCargoType" jdbcType="BIGINT" />
+     <result column="pay_type" property="payType" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseHomeCity" type="com.brightsoft.model.PlatformHomeOrderCity" >
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_number, way_bill_number, consignor_name, consignor_province, consignor_city, 
+    consignor_county, consignor_address, consignor_phone_number, consignor_telephone, 
+    driver_name, driver_phone, vehicle_number, vehicle_type,
+    consignee_name, consignee_province, consignee_city, consignee_county, consignee_address, 
+    consignee_phone_number, consignee_telephone, send_cargo_type, delivery_date, delivery_start_time, 
+    delivery_end_time, receive_cargo_type, is_insurance, insurance_money, receipt_type, 
+    receipt_title, receipt_company_name, pay_type, total_weight, total_volume, total_worth, advance_price, 
+    final_price,paid_price, state, order_time, user_id, tms_line_id, is_delete,is_draft,is_wait_pay,
+    estimate_weight, estimate_volume, estimate_freight, is_confirm, take_cargo_cost, estimate_total,is_payment
+  </sql>
+  <select id="selectOrder" resultType="String">
+  	SELECT o_t.order_number
+	FROM
+	(
+		SELECT o.is_draft,o.take_cargo_cost,o.order_number, o.way_bill_number, o.total_weight, o.total_volume, o.advance_price, o.final_price,o.paid_price, o.order_time, o.state, l.start_outlets, l.end_outlets 
+		,o.estimate_weight,o.estimate_volume,o.estimate_freight,o.is_confirm
+		FROM lc_platform_order o 
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		WHERE 1=1  
+		<if test="mineOrder.userId != null and mineOrder.userId !='' ">
+	   		and o.user_id = #{mineOrder.userId,jdbcType=BIGINT}	
+	   	</if>
+		<if test="mineOrder.condition != null and mineOrder.condition !='' ">
+	   		and (o.order_number like concat("%",#{mineOrder.condition},"%") or o.way_bill_number like concat("%",#{mineOrder.condition},"%"))
+	   	</if>
+	   	<if test="mineOrder.state!=null and mineOrder.state!=''">
+			and #{mineOrder.state,jdbcType=VARCHAR} = o.state
+		</if>
+	   	<if test="mineOrder.startTime!=null and mineOrder.startTime!=''">
+			and o.order_time >=#{mineOrder.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="mineOrder.endTime!=null and mineOrder.endTime!=''">
+			and #{mineOrder.endTime,jdbcType=VARCHAR} >= o.order_time
+		</if>
+		<if test="mineOrder.conditionType==1">
+			and o.is_draft = 0
+		</if>
+		<if test="mineOrder.conditionType==2">
+			and o.state = 3
+		</if>
+		<if test="mineOrder.conditionType==3">
+			and o.final_price IS null
+		</if>
+		<if test="mineOrder.conditionType==4">
+			and o.state =8
+		</if>
+		<if test="mineOrder.conditionType==5">
+			and o.state = 7
+		</if>
+		<if test="mineOrder.conditionType==6">
+			and o.is_insurance = 0
+		</if>
+		<if test="mineOrder.conditionType==7">
+			and o.state =11
+		</if>
+		<if test="mineOrder.conditionType==8">
+			and o.state =10
+		</if>
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name FROM tms_outlets_info i_o LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+	LEFT JOIN 
+	lc_platform_order_bill bill on bill.order_number = o_t.order_number
+  </select>
+  <select id="selectHomeOrderCity" resultMap="BaseHomeCity">
+	  SELECT start.province AS start_province, start.city AS start_city,start.county as start_county,
+		COUNT(o.id) count_order FROM
+		(SELECT * FROM tms_line_info WHERE 
+		start_outlets IN 
+		(SELECT id FROM tms_outlets_info WHERE 1 = 1
+		) AND end_outlets IN
+		(SELECT id FROM tms_outlets_info WHERE 1 = 1
+		) 
+		) line 
+		LEFT JOIN tms_outlets_info start ON start.id = line.start_outlets
+		LEFT JOIN tms_outlets_info end ON end.id = line.end_outlets 
+		LEFT JOIN lc_platform_order o ON
+		line.id = o.tms_line_id GROUP BY start.city
+		ORDER BY count_order DESC
+  </select>
+  <!-- 我的订单 -->
+  <select id="selectBySelectedConditionOrder" resultMap="BaseMineOrderMap">
+	SELECT o_t.*, 
+	o1.province start_province, o1.city start_city, o1.county start_county, o1.company_name, 
+	o2.province end_province, o2.city end_city, o2.county end_county,
+	(CASE WHEN bill.total_cost IS NULL THEN 0 ELSE bill.total_cost END)as total_cost,
+	(CASE WHEN bill.state IS NULL THEN 0 ELSE bill.state END) as billState,
+	(CASE WHEN bill.prepaid_cost IS NULL THEN 0 ELSE bill.prepaid_cost END) as prepaid_cost,
+	bill.is_payment as bill_payment
+	FROM
+	(
+		SELECT o.estimate_total,o.is_draft,o.take_cargo_cost,o.order_number, o.way_bill_number, o.total_weight, o.total_volume, o.advance_price, o.final_price,o.paid_price, o.order_time, o.state, l.start_outlets, l.end_outlets 
+		,o.estimate_weight,o.estimate_volume,o.estimate_freight,o.is_confirm,o.is_payment,o.receive_cargo_type,o.send_cargo_type,o.pay_type
+		FROM lc_platform_order o 
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		WHERE 1=1  
+		<if test="mineOrder.userId != null and mineOrder.userId !='' ">
+	   		and o.user_id = #{mineOrder.userId,jdbcType=BIGINT}	
+	   	</if>
+		<if test="mineOrder.condition != null and mineOrder.condition !='' ">
+	   		and (o.order_number like concat("%",#{mineOrder.condition},"%") or o.way_bill_number like concat("%",#{mineOrder.condition},"%"))
+	   	</if>
+	   	<if test="mineOrder.state!=null and mineOrder.state!=''">
+			and #{mineOrder.state,jdbcType=VARCHAR} = o.state
+		</if>
+	   	<if test="mineOrder.startTime!=null and mineOrder.startTime!=''">
+			and o.order_time >=#{mineOrder.startTime,jdbcType=VARCHAR}
+		</if>
+		<if test="mineOrder.endTime!=null and mineOrder.endTime!=''">
+			and #{mineOrder.endTime,jdbcType=VARCHAR} >= o.order_time
+		</if>
+		<if test="mineOrder.conditionType==1">
+			and o.is_draft = 0
+		</if>
+		<if test="mineOrder.conditionType==2">
+			and o.state = 3
+		</if>
+		<if test="mineOrder.conditionType==3">
+			and o.state =11
+		</if>
+		<if test="mineOrder.conditionType==4">
+			and o.state =10
+		</if>
+		<if test="mineOrder.conditionType==5">
+			and o.state = 9
+		</if>
+		<if test="mineOrder.conditionType==6">
+			and o.state = 8
+		</if>
+		<if test="mineOrder.conditionType==7">
+			and o.is_insurance = 0
+		</if>
+		ORDER BY o.order_time DESC
+		limit #{page.start},#{page.limit}
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name FROM tms_outlets_info i_o LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+	LEFT JOIN 
+	lc_platform_order_bill bill on bill.order_number = o_t.order_number
+	ORDER BY o_t.order_time DESC
+  </select>
+  <!-- 获取总数订单 -->
+  <select id="countRowsOrder" resultType="int">
+  	 select  count(1) from lc_platform_order as orders
+	 where  1=1  
+	<if test="mineOrder.userId != null and mineOrder.userId !='' ">
+   		and orders.user_id = #{mineOrder.userId,jdbcType=BIGINT}	
+   	</if>
+	<if test="mineOrder.condition != null and mineOrder.condition !='' ">
+   		and (orders.order_number like concat("%",#{mineOrder.condition},"%") or orders.way_bill_number like concat("%",#{mineOrder.condition},"%"))
+   	</if>
+   	<if test="mineOrder.state!=null and mineOrder.state!=''">
+		and #{mineOrder.state,jdbcType=VARCHAR} = orders.state
+	</if>
+   	<if test="mineOrder.startTime!=null and mineOrder.startTime!=''">
+		and orders.order_time >=#{mineOrder.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="mineOrder.endTime!=null and mineOrder.endTime!=''">
+		and #{mineOrder.endTime,jdbcType=VARCHAR} >= orders.order_time
+	</if>
+	<if test="mineOrder.conditionType==1">
+			and orders.is_draft = 0
+	</if>
+	<if test="mineOrder.conditionType==2">
+		and orders.state = 3
+	</if>
+	<if test="mineOrder.conditionType==3">
+		and  orders.state =11
+	</if>
+	<if test="mineOrder.conditionType==4">
+		and orders.state =10
+	</if>
+	<if test="mineOrder.conditionType==5">
+		and orders.state = 9
+	</if>
+	<if test="mineOrder.conditionType==6">
+		and orders.state = 8
+	</if>
+	<if test="mineOrder.conditionType==7">
+		and orders.is_insurance = 0
+	</if>
+  </select>
+  <!-- 我要发货 -->
+  <select id="selectBySelectedCondition" resultMap="BaseDeliverGoodsMap">
+	SELECT * FROM(
+	SELECT line.*, start.province AS start_province, start.city AS start_city,start.county as start_county,
+	end.province AS end_province, end.city AS end_city,end.county as end_county,com.company_name,com.id company_id,com.qq,COUNT(o.id) count_order,com.contacts1_mobile as contacts1_mobile FROM
+	(SELECT * FROM tms_line_info WHERE 
+	start_outlets IN 
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+		and province = #{deliverGoods.startProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+		and city = #{deliverGoods.startCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+		and county = #{deliverGoods.startCounty,jdbcType=VARCHAR}
+	</if>
+	) AND end_outlets IN
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+		and province = #{deliverGoods.endProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+		and city = #{deliverGoods.endCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+		and county = #{deliverGoods.endCounty,jdbcType=VARCHAR}
+	</if>
+	) 
+	<if test="deliverGoods.conditionType == 1">
+	 	and recommended = 1
+	</if>
+	<if test="deliverGoods.heavyCargoPriceLow != null and deliverGoods.heavyCargoPriceLow !=''">
+	 	and  heavy_cargo_price_low > #{deliverGoods.heavyCargoPriceLow,jdbcType=DOUBLE}
+	</if>
+	<if test="deliverGoods.bulkyCargoPriceLow != null and deliverGoods.bulkyCargoPriceLow !=''">
+	 	and bulky_cargo_price_low > #{deliverGoods.bulkyCargoPriceLow,jdbcType=DOUBLE}
+	</if>
+	and release_state = 1
+	) line 
+	LEFT JOIN tms_outlets_info start ON start.id = line.start_outlets
+	LEFT JOIN tms_outlets_info end ON end.id = line.end_outlets 
+	LEFT JOIN lc_platform_user_company com ON com.id = end.company_id
+	LEFT JOIN lc_platform_order o ON
+	line.id = o.tms_line_id GROUP BY line.id
+	UNION
+	SELECT	
+		sli.id,sli.server_type,sli.start_outlets,sli.start_outlets_name,sli.end_outlets,
+		sli.end_outlets_name,sli.transport_mode,sli.time_long,sli.heavy_cargo_price_low,
+		sli.bulky_cargo_price_low,sli.heavy_cargo_price_mid,
+		sli.bulky_cargo_price_mid,sli.heavy_cargo_price_high,sli.bulky_cargo_price_high,
+		sli.lowest_price,sli.status,sli.release_state,
+		sli.create_time,sli.create_person_id,sli.is_take_cargo,sli.is_give_cargo,sli.outlets_id,
+		sli.evaluate_level,sli.remain_money,sli.recommended,sli.start_province,sli.start_city,sli.start_county,
+		sli.end_province,sli.end_city,sli.end_county,
+		sli.company_name,sli.company_id,sli.qq,0 as count_order, sli.qq contacts1_mobile
+	from 
+		lc_system_line_info sli where 1 = 1
+		<if test="deliverGoods.conditionType == 1">
+		 	and sli.recommended = 1
+		</if>
+		<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+			and sli.start_province = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startProvince,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+			and sli.start_city = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startCity,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+			and sli.start_county = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startCounty,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+			and sli.end_province = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endProvince,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+			and sli.end_city = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endCity,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+			and sli.end_county = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endCounty,jdbcType=VARCHAR})
+		</if>
+	) t
+	<if test="deliverGoods.companyName != null and deliverGoods.companyName !=''">
+		where t.company_name LIKE concat("%",#{deliverGoods.companyName,jdbcType=VARCHAR},"%") 
+	</if>
+	<if test="deliverGoods.conditionType == 2">
+	 	ORDER BY t.evaluate_level DESC
+	</if>
+	<if test="deliverGoods.conditionType == 3">
+	 	ORDER BY t.time_long
+	</if>
+	<if test="deliverGoods.conditionType == 4">
+	 	ORDER BY count_order DESC
+	</if>
+	<if test="deliverGoods.conditionType == 5">
+	 	ORDER BY t.heavy_cargo_price_low
+	</if>
+	<if test="deliverGoods.conditionType == 6">
+	 	ORDER BY t.bulky_cargo_price_low
+	</if>
+	<if test="deliverGoods.conditionType == 7">
+		ORDER BY t.lowest_price 
+	</if>
+	limit #{page.start}, #{page.limit}
+  </select>
+  <!-- 获取总数 -->
+  <select id="countRows" resultType="int">
+  	SELECT count(1) FROM(
+	SELECT line.*, start.province AS start_province, start.city AS start_city,start.county as start_county,
+	end.province AS end_province, end.city AS end_city,end.county as end_county,com.company_name,com.id company_id, com.qq,COUNT(o.id) count_order FROM
+	(SELECT * FROM tms_line_info WHERE 
+	start_outlets IN 
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+		and province = #{deliverGoods.startProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+		and city = #{deliverGoods.startCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+		and county = #{deliverGoods.startCounty,jdbcType=VARCHAR}
+	</if>
+	) AND end_outlets IN
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+		and province = #{deliverGoods.endProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+		and city = #{deliverGoods.endCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+		and county = #{deliverGoods.endCounty,jdbcType=VARCHAR}
+	</if>
+	) 
+	<if test="deliverGoods.conditionType == 1">
+	 	and recommended = 1
+	</if>
+	<if test="deliverGoods.heavyCargoPriceLow != null and deliverGoods.heavyCargoPriceLow !=''">
+	 	and  heavy_cargo_price_low > #{deliverGoods.heavyCargoPriceLow,jdbcType=DOUBLE}
+	</if>
+	<if test="deliverGoods.bulkyCargoPriceLow != null and deliverGoods.bulkyCargoPriceLow !=''">
+	 	and bulky_cargo_price_low > #{deliverGoods.bulkyCargoPriceLow,jdbcType=DOUBLE}
+	</if>
+	and release_state = 1
+	) line 
+	LEFT JOIN tms_outlets_info start ON start.id = line.start_outlets
+	LEFT JOIN tms_outlets_info end ON end.id = line.end_outlets 
+	LEFT JOIN lc_platform_user_company com ON com.id = end.company_id
+	LEFT JOIN lc_platform_order o ON
+	line.id = o.tms_line_id GROUP BY line.id
+	UNION
+	SELECT	
+		sli.id,sli.server_type,sli.start_outlets,sli.start_outlets_name,sli.end_outlets,
+		sli.end_outlets_name,sli.transport_mode,sli.time_long,sli.heavy_cargo_price_low,
+		sli.bulky_cargo_price_low,sli.heavy_cargo_price_mid,
+		sli.bulky_cargo_price_mid,sli.heavy_cargo_price_high,sli.bulky_cargo_price_high,
+		sli.lowest_price,sli.status,sli.release_state,
+		sli.create_time,sli.create_person_id,sli.is_take_cargo,sli.is_give_cargo,sli.outlets_id,
+		sli.evaluate_level,sli.remain_money,sli.recommended,sli.start_province,sli.start_city,sli.start_county,
+		sli.end_province,sli.end_city,sli.end_county,
+		sli.company_name,sli.company_id,sli.qq,0 as count_order
+	from 
+		lc_system_line_info sli where 1 = 1
+		<if test="deliverGoods.conditionType == 1">
+		 	and sli.recommended = 1
+		</if>
+		<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+			and sli.start_province = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startProvince,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+			and sli.start_city = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startCity,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+			and sli.start_county = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.startCounty,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+			and sli.end_province = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endProvince,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+			and sli.end_city = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endCity,jdbcType=VARCHAR})
+		</if>
+		<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+			and sli.end_county = (SELECT name FROM lc_xzqh_info WHERE id = #{deliverGoods.endCounty,jdbcType=VARCHAR})
+		</if>
+	) t
+	<if test="deliverGoods.companyName != null and deliverGoods.companyName !=''">
+		where t.company_name LIKE concat("%",#{deliverGoods.companyName,jdbcType=VARCHAR},"%") 
+	</if>
+  </select>
+  <!-- 物流商店铺信息 -->
+  <select id="selectCompanCondition" resultMap="BaseDeliverGoodsMap">
+	SELECT line.*, start.province AS start_province, start.city AS start_city,start.county as start_county,
+	end.province AS end_province, end.city AS end_city,end.county as end_county, com.company_name,com.id company_id, com.qq FROM
+	(SELECT * FROM tms_line_info WHERE 
+	start_outlets IN 
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	and company_id = #{deliverGoods.companyId,jdbcType=BIGINT}
+	<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+		and province = #{deliverGoods.startProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+		and city = #{deliverGoods.startCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+		and county = #{deliverGoods.startCounty,jdbcType=VARCHAR}
+	</if>
+	) AND end_outlets IN
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	and company_id = #{deliverGoods.companyId,jdbcType=BIGINT}
+	<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+		and province = #{deliverGoods.endProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+		and city = #{deliverGoods.endCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+		and county = #{deliverGoods.endCounty,jdbcType=VARCHAR}
+	</if>
+	) 
+	) line 
+	LEFT JOIN tms_outlets_info start ON start.id = line.start_outlets
+	LEFT JOIN tms_outlets_info end ON end.id = line.end_outlets 
+	LEFT JOIN lc_platform_user_company com ON com.id = end.company_id
+	limit #{page.start}, #{page.limit}
+  </select> 
+   <!-- 获取总数 -->
+  <select id="companCountRows" resultType="int">
+	SELECT count(1) FROM
+	(SELECT * FROM tms_line_info WHERE 
+	start_outlets IN 
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	and company_id = #{deliverGoods.companyId,jdbcType=BIGINT}
+	<if test="deliverGoods.startProvince != null and deliverGoods.startProvince != ''">
+		and province = #{deliverGoods.startProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCity != null and deliverGoods.startCity != ''">
+		and city = #{deliverGoods.startCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.startCounty != null and deliverGoods.startCounty != ''">
+		and county = #{deliverGoods.startCounty,jdbcType=VARCHAR}
+	</if>
+	) AND end_outlets IN
+	(SELECT id FROM tms_outlets_info WHERE 1 = 1
+	and company_id = #{deliverGoods.companyId,jdbcType=BIGINT}
+	<if test="deliverGoods.endProvince != null and deliverGoods.endProvince != ''">
+		and province = #{deliverGoods.endProvince,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCity != null and deliverGoods.endCity != ''">
+		and city = #{deliverGoods.endCity,jdbcType=VARCHAR}
+	</if>
+	<if test="deliverGoods.endCounty != null and deliverGoods.endCounty != ''">
+		and county = #{deliverGoods.endCounty,jdbcType=VARCHAR}
+	</if>
+	) 
+	) line 
+	LEFT JOIN tms_outlets_info start ON start.id = line.start_outlets
+	LEFT JOIN tms_outlets_info end ON end.id = line.end_outlets 
+	LEFT JOIN lc_platform_user_company com ON com.id = end.company_id
+  </select>
+  <!-- 获取线路订单总数 -->
+  <select id="countOrderLine" resultType="int">
+	select count(*) from lc_platform_order WHERE tms_line_id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <!-- 获取订单详情 -->
+  <select id="selectById" parameterType="long" resultMap="BaseResultMap">
+  	select 
+  		po.*,poc.*,pob.*,poas.*,poaf.*,pob.take_cargo_cost take_cargo_cost_bill,
+  		xi.name as consignor_province_val,xii.name as consignor_city_val,xiii.name as consignor_county_val,
+  		li.start_outlets_name,li.end_outlets_name,pd.name as vehicle_type_val, pd2.name package_type_name
+  	from 
+  		lc_platform_order po
+  		left join lc_platform_dictionary pd on pd.id = po.vehicle_type
+  		left join tms_line_info li on po.tms_line_id = li.id 
+  		left join lc_xzqh_info xi on po.consignor_province = xi.id
+  		left join lc_xzqh_info xii on po.consignor_city = xii.id
+  		left join lc_xzqh_info xiii on po.consignor_county = xiii.id
+  		left join lc_platform_order_cargo poc on po.id = poc.order_id
+  		left join lc_platform_order_bill pob on po.order_number = pob.order_number
+  		left join lc_platform_order_additional_server poas on poas.order_id = po.id
+  		left join lc_platform_order_agency_fund poaf on poaf.order_number = po.order_number
+  		LEFT JOIN lc_platform_dictionary pd2 ON poc.package_type = pd2.id
+  	where 
+  		po.id = #{id}
+  </select>
+  <!-- 获取热门专线 -->
+  <select id="selectHotLogs" resultMap="BaseResultMap">
+  select 
+  		*
+	from(
+		select 
+			li.*,puc.company_name,count(po.order_number) as total,li.id as line_id,
+			xi.name as start_province_value,xi1.name as end_province_value,
+			xi2.name as start_city_value,xi3.name as end_city_value
+		FROM
+			lc_platform_order po 	
+			LEFT JOIN tms_line_info li on po.tms_line_id = li.id
+			left join tms_outlets_info oi on oi.id = li.start_outlets
+			left join tms_outlets_info oi1 on oi1.id = li.end_outlets
+			left JOIN lc_platform_user_company puc on puc.id =oi.company_id
+			left join lc_xzqh_info xi on oi.province = xi.id
+			left join lc_xzqh_info xi1 on oi1.province = xi1.id
+			left join lc_xzqh_info xi2 on oi.city = xi2.id
+			left join lc_xzqh_info xi3 on oi1.city = xi3.id
+		GROUP BY puc.company_name, po.tms_line_id
+		)t
+	ORDER BY t.total desc
+  </select>
+  <!-- 获取最近订单 -->
+  <select id="selectOrderRecently" resultMap="BaseResultMap">
+  	select
+  		po.*,pu.login_name,li.start_outlets_name,puc.company_name
+  	from
+  		lc_platform_order po
+  		inner join lc_platform_user pu on po.user_id = pu.id
+  		left join tms_line_info li on li.id = po.tms_line_id
+  		left join tms_outlets_info oi on oi.id = li.outlets_id 
+		LEFT JOIN lc_platform_user_company puc on puc.id = oi.company_id
+	order by po.id desc limit 15
+  </select>
+  
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into lc_platform_order (id, order_number, way_bill_number, 
+      consignor_name, consignor_province, consignor_city, 
+      consignor_county, consignor_address, consignor_phone_number, 
+      consignor_telephone, driver_name, driver_phone, vehicle_number,
+      vehicle_type, consignee_name, consignee_province, 
+      consignee_city, consignee_county, consignee_address, 
+      consignee_phone_number, consignee_telephone, 
+      send_cargo_type, delivery_date, delivery_start_time, 
+      delivery_end_time, receive_cargo_type, is_insurance, 
+      insurance_money, receipt_type, receipt_title, 
+      receipt_company_name, pay_type, total_weight, 
+      total_volume, total_worth, advance_price, final_price, 
+      state, order_time, user_id, 
+      tms_line_id, is_delete, is_wait_pay,
+      estimate_weight, estimate_volume, estimate_freight, is_confirm, take_cargo_cost, estimate_total)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{wayBillNumber,jdbcType=VARCHAR}, 
+      #{consignorName,jdbcType=VARCHAR}, #{consignorProvince,jdbcType=VARCHAR}, #{consignorCity,jdbcType=VARCHAR}, 
+      #{consignorCounty,jdbcType=VARCHAR}, #{consignorAddress,jdbcType=VARCHAR}, #{consignorPhoneNumber,jdbcType=VARCHAR}, 
+      #{consignorTelephone,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, 
+      #{driverPhone,jdbcType=VARCHAR}, #{vehicleNumber,jdbcType=VARCHAR},#{vehicleType,jdbcType=BIGINT},  
+      #{consigneeName,jdbcType=VARCHAR}, #{consigneeProvince,jdbcType=VARCHAR}, 
+      #{consigneeCity,jdbcType=VARCHAR}, #{consigneeCounty,jdbcType=VARCHAR}, #{consigneeAddress,jdbcType=VARCHAR}, 
+      #{consigneePhoneNumber,jdbcType=VARCHAR}, #{consigneeTelephone,jdbcType=VARCHAR}, 
+      #{sendCargoType,jdbcType=BIGINT}, #{deliveryDate,jdbcType=TIMESTAMP}, #{deliveryStartTime,jdbcType=VARCHAR}, 
+      #{deliveryEndTime,jdbcType=VARCHAR}, #{receiveCargoType,jdbcType=BIGINT}, #{isInsurance,jdbcType=INTEGER}, 
+      #{insuranceMoney,jdbcType=DOUBLE}, #{receiptType,jdbcType=INTEGER}, #{receiptTitle,jdbcType=INTEGER}, 
+      #{receiptCompanyName,jdbcType=VARCHAR}, #{payType,jdbcType=INTEGER}, #{totalWeight,jdbcType=DOUBLE}, 
+      #{totalVolume,jdbcType=DOUBLE}, #{totalWorth,jdbcType=DOUBLE}, #{advancePrice,jdbcType=DOUBLE}, #{finalPrice,jdbcType=DOUBLE}, 
+      #{state,jdbcType=INTEGER}, now(), #{userId,jdbcType=BIGINT}, 
+      #{tmsLineId,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, #{isWaitPay,jdbcType=INTEGER}, 
+      #{estimateWeight,jdbcType=DOUBLE}, #{estimateVolume,jdbcType=DOUBLE}, #{estimateFreight,jdbcType=DOUBLE}, #{isConfirm,jdbcType=INTEGER}, #{takeCargoCost,jdbcType=DOUBLE}, #{estimateTotal,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into lc_platform_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="consignorName != null" >
+        consignor_name,
+      </if>
+      <if test="consignorProvince != null" >
+        consignor_province,
+      </if>
+      <if test="consignorCity != null" >
+        consignor_city,
+      </if>
+      <if test="consignorCounty != null" >
+        consignor_county,
+      </if>
+      <if test="consignorAddress != null" >
+        consignor_address,
+      </if>
+      <if test="consignorPhoneNumber != null" >
+        consignor_phone_number,
+      </if>
+      <if test="consignorTelephone != null" >
+        consignor_telephone,
+      </if>
+      <if test="driverName != null" >
+        driver_name,
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone,
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number,
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type,
+      </if>
+      <if test="consigneeName != null" >
+        consignee_name,
+      </if>
+      <if test="consigneeProvince != null" >
+        consignee_province,
+      </if>
+      <if test="consigneeCity != null" >
+        consignee_city,
+      </if>
+      <if test="consigneeCounty != null" >
+        consignee_county,
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address,
+      </if>
+      <if test="consigneePhoneNumber != null" >
+        consignee_phone_number,
+      </if>
+      <if test="consigneeTelephone != null" >
+        consignee_telephone,
+      </if>
+      <if test="sendCargoType != null" >
+        send_cargo_type,
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date,
+      </if>
+      <if test="deliveryStartTime != null" >
+        delivery_start_time,
+      </if>
+      <if test="deliveryEndTime != null" >
+        delivery_end_time,
+      </if>
+      <if test="receiveCargoType != null" >
+        receive_cargo_type,
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance,
+      </if>
+      <if test="insuranceMoney != null" >
+        insurance_money,
+      </if>
+      <if test="receiptType != null" >
+        receipt_type,
+      </if>
+      <if test="receiptTitle != null" >
+        receipt_title,
+      </if>
+      <if test="receiptCompanyName != null" >
+        receipt_company_name,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="totalWeight != null" >
+        total_weight,
+      </if>
+      <if test="totalVolume != null" >
+        total_volume,
+      </if>
+      <if test="totalWorth != null" >
+        total_worth,
+      </if>
+      <if test="advancePrice != null" >
+        advance_price,
+      </if>
+      <if test="finalPrice != null" >
+        final_price,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="tmsLineId != null" >
+        tms_line_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="isDraft != null" >
+        is_draft,
+      </if>
+      <if test="isWaitPay != null" >
+        is_wait_pay,
+      </if>
+      <if test="estimateWeight != null" >
+        estimate_weight,
+      </if>
+      <if test="estimateVolume != null" >
+        estimate_volume,
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight,
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm,
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost,
+      </if>
+      <if test="estimateTotal != null" >
+        estimate_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorName != null" >
+        #{consignorName,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorProvince != null" >
+        #{consignorProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCity != null" >
+        #{consignorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCounty != null" >
+        #{consignorCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorAddress != null" >
+        #{consignorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorPhoneNumber != null" >
+        #{consignorPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorTelephone != null" >
+        #{consignorTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNumber != null" >
+        #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=BIGINT},
+      </if>
+      <if test="consigneeName != null" >
+        #{consigneeName,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeProvince != null" >
+        #{consigneeProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCity != null" >
+        #{consigneeCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCounty != null" >
+        #{consigneeCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneePhoneNumber != null" >
+        #{consigneePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelephone != null" >
+        #{consigneeTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCargoType != null" >
+        #{sendCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryDate != null" >
+        #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryStartTime != null" >
+        #{deliveryStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryEndTime != null" >
+        #{deliveryEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCargoType != null" >
+        #{receiveCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="isInsurance != null" >
+        #{isInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceMoney != null" >
+        #{insuranceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="receiptType != null" >
+        #{receiptType,jdbcType=INTEGER},
+      </if>
+      <if test="receiptTitle != null" >
+        #{receiptTitle,jdbcType=INTEGER},
+      </if>
+      <if test="receiptCompanyName != null" >
+        #{receiptCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalVolume != null" >
+        #{totalVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="totalWorth != null" >
+        #{totalWorth,jdbcType=DOUBLE},
+      </if>
+      <if test="advancePrice != null" >
+        #{advancePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="finalPrice != null" >
+        #{finalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="tmsLineId != null" >
+        #{tmsLineId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isDraft != null" >
+        #{isDraft,jdbcType=INTEGER},
+      </if>
+      <if test="isWaitPay != null" >
+        #{isWaitPay,jdbcType=INTEGER},
+      </if>
+      <if test="estimateWeight != null" >
+        #{estimateWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateVolume != null" >
+        #{estimateVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        #{estimateFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        #{isConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="takeCargoCost != null" >
+        #{takeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotal != null" >
+        #{estimateTotal,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrder" >
+    update lc_platform_order
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorName != null" >
+        consignor_name = #{consignorName,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorProvince != null" >
+        consignor_province = #{consignorProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCity != null" >
+        consignor_city = #{consignorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCounty != null" >
+        consignor_county = #{consignorCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorAddress != null" >
+        consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorPhoneNumber != null" >
+        consignor_phone_number = #{consignorPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorTelephone != null" >
+        consignor_telephone = #{consignorTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=BIGINT},
+      </if>
+      <if test="consigneeName != null" >
+        consignee_name = #{consigneeName,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeProvince != null" >
+        consignee_province = #{consigneeProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCity != null" >
+        consignee_city = #{consigneeCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCounty != null" >
+        consignee_county = #{consigneeCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneePhoneNumber != null" >
+        consignee_phone_number = #{consigneePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelephone != null" >
+        consignee_telephone = #{consigneeTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCargoType != null" >
+        send_cargo_type = #{sendCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date = #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryStartTime != null" >
+        delivery_start_time = #{deliveryStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryEndTime != null" >
+        delivery_end_time = #{deliveryEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCargoType != null" >
+        receive_cargo_type = #{receiveCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance = #{isInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceMoney != null" >
+        insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="receiptType != null" >
+        receipt_type = #{receiptType,jdbcType=INTEGER},
+      </if>
+      <if test="receiptTitle != null" >
+        receipt_title = #{receiptTitle,jdbcType=INTEGER},
+      </if>
+      <if test="receiptCompanyName != null" >
+        receipt_company_name = #{receiptCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalVolume != null" >
+        total_volume = #{totalVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="totalWorth != null" >
+        total_vworth = #{totalWorth,jdbcType=DOUBLE},
+      </if>
+      <if test="advancePrice != null" >
+        advance_price = #{advancePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="finalPrice != null" >
+        final_price = #{finalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="tmsLineId != null" >
+        tms_line_id = #{tmsLineId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isWaitPay != null" >
+        is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+      </if>
+      <if test="estimateWeight != null" >
+        estimate_weight = #{estimateWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateVolume != null" >
+        estimate_volume = #{estimateVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm = #{isConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotal != null" >
+        estimate_total = #{estimateTotal,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByOrderNumberSelective" parameterType="com.brightsoft.model.PlatformOrder" >
+    update lc_platform_order
+    <set >
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorName != null" >
+        consignor_name = #{consignorName,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorProvince != null" >
+        consignor_province = #{consignorProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCity != null" >
+        consignor_city = #{consignorCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorCounty != null" >
+        consignor_county = #{consignorCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorAddress != null" >
+        consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorPhoneNumber != null" >
+        consignor_phone_number = #{consignorPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consignorTelephone != null" >
+        consignor_telephone = #{consignorTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="driverName != null" >
+        driver_name = #{driverName,jdbcType=VARCHAR},
+      </if>
+      <if test="driverPhone != null" >
+        driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNumber != null" >
+        vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        vehicle_type = #{vehicleType,jdbcType=BIGINT},
+      </if>
+      <if test="consigneeName != null" >
+        consignee_name = #{consigneeName,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeProvince != null" >
+        consignee_province = #{consigneeProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCity != null" >
+        consignee_city = #{consigneeCity,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeCounty != null" >
+        consignee_county = #{consigneeCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeAddress != null" >
+        consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneePhoneNumber != null" >
+        consignee_phone_number = #{consigneePhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeTelephone != null" >
+        consignee_telephone = #{consigneeTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendCargoType != null" >
+        send_cargo_type = #{sendCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date = #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryStartTime != null" >
+        delivery_start_time = #{deliveryStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryEndTime != null" >
+        delivery_end_time = #{deliveryEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCargoType != null" >
+        receive_cargo_type = #{receiveCargoType,jdbcType=BIGINT},
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance = #{isInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceMoney != null" >
+        insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="receiptType != null" >
+        receipt_type = #{receiptType,jdbcType=INTEGER},
+      </if>
+      <if test="receiptTitle != null" >
+        receipt_title = #{receiptTitle,jdbcType=INTEGER},
+      </if>
+      <if test="receiptCompanyName != null" >
+        receipt_company_name = #{receiptCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="totalVolume != null" >
+        total_volume = #{totalVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="totalWorth != null" >
+        total_vworth = #{totalWorth,jdbcType=DOUBLE},
+      </if>
+      <if test="advancePrice != null" >
+        advance_price = #{advancePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="finalPrice != null" >
+        final_price = #{finalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="tmsLineId != null" >
+        tms_line_id = #{tmsLineId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isDraft != null" >
+        is_draft = #{isDraft,jdbcType=DOUBLE},
+      </if>
+      <if test="isWaitPay != null" >
+        is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+      </if>
+      <if test="estimateWeight != null" >
+        estimate_weight = #{estimateWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateVolume != null" >
+        estimate_volume = #{estimateVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateFreight != null" >
+        estimate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      </if>
+      <if test="isConfirm != null" >
+        is_confirm = #{isConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="takeCargoCost != null" >
+        take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      </if>
+      <if test="estimateTotal != null" >
+        estimate_total = #{estimateTotal,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrder" >
+    update lc_platform_order
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      consignor_name = #{consignorName,jdbcType=VARCHAR},
+      consignor_province = #{consignorProvince,jdbcType=VARCHAR},
+      consignor_city = #{consignorCity,jdbcType=VARCHAR},
+      consignor_county = #{consignorCounty,jdbcType=VARCHAR},
+      consignor_address = #{consignorAddress,jdbcType=VARCHAR},
+      consignor_phone_number = #{consignorPhoneNumber,jdbcType=VARCHAR},
+      consignor_telephone = #{consignorTelephone,jdbcType=VARCHAR},
+      driver_name = #{driverName,jdbcType=VARCHAR},
+      driver_phone = #{driverPhone,jdbcType=VARCHAR},
+      vehicle_number = #{vehicleNumber,jdbcType=VARCHAR},
+      vehicle_type = #{vehicleType,jdbcType=BIGINT},
+      consignee_name = #{consigneeName,jdbcType=VARCHAR},
+      consignee_province = #{consigneeProvince,jdbcType=VARCHAR},
+      consignee_city = #{consigneeCity,jdbcType=VARCHAR},
+      consignee_county = #{consigneeCounty,jdbcType=VARCHAR},
+      consignee_address = #{consigneeAddress,jdbcType=VARCHAR},
+      consignee_phone_number = #{consigneePhoneNumber,jdbcType=VARCHAR},
+      consignee_telephone = #{consigneeTelephone,jdbcType=VARCHAR},
+      send_cargo_type = #{sendCargoType,jdbcType=BIGINT},
+      delivery_date = #{deliveryDate,jdbcType=TIMESTAMP},
+      delivery_start_time = #{deliveryStartTime,jdbcType=VARCHAR},
+      delivery_end_time = #{deliveryEndTime,jdbcType=VARCHAR},
+      receive_cargo_type = #{receiveCargoType,jdbcType=BIGINT},
+      is_insurance = #{isInsurance,jdbcType=INTEGER},
+      insurance_money = #{insuranceMoney,jdbcType=DOUBLE},
+      receipt_type = #{receiptType,jdbcType=INTEGER},
+      receipt_title = #{receiptTitle,jdbcType=INTEGER},
+      receipt_company_name = #{receiptCompanyName,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=DOUBLE},
+      total_volume = #{totalVolume,jdbcType=DOUBLE},
+      total_worth = #{totalWorth,jdbcType=DOUBLE},
+      advance_price = #{advancePrice,jdbcType=DOUBLE},
+      final_price = #{finalPrice,jdbcType=DOUBLE},
+      state = #{state,jdbcType=INTEGER},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=BIGINT},
+      tms_line_id = #{tmsLineId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      is_wait_pay = #{isWaitPay,jdbcType=INTEGER},
+      estimate_weight = #{estimateWeight,jdbcType=DOUBLE},
+      estimate_volume = #{estimateVolume,jdbcType=DOUBLE},
+      estimate_freight = #{estimateFreight,jdbcType=DOUBLE},
+      is_confirm = #{isConfirm,jdbcType=INTEGER},
+      take_cargo_cost = #{takeCargoCost,jdbcType=DOUBLE},
+      estimate_total = #{estimateTotal,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!--  
+  <select id="selectByParams" resultMap="BaseResultMap">
+    select 
+    o.*,s_o.name start_outlets_name, e_o.name target_outlets_name, bill.total_cost, bill.prepaid_cost
+    from lc_platform_order o join tms_line_info l on o.tms_line_id = l.id 
+	LEFT JOIN tms_outlets_info s_o ON l.start_outlets = s_o.id
+	LEFT JOIN tms_outlets_info e_o ON l.end_outlets = e_o.id
+    LEFT JOIN lc_platform_order_bill bill ON o.order_number = bill.order_number
+    where l.start_outlets = #{startOutlets}
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+   	and is_draft = 1 order by o.order_time desc limit #{start}, #{limit}
+  </select>
+  -->
+  <select id="selectByParams" resultMap="BaseResultMap">
+    select 
+    o.*,s_o.name start_outlets_name, e_o.name target_outlets_name, bill.total_cost, bill.prepaid_cost
+    from lc_platform_order o join tms_line_info l on o.tms_line_id = l.id 
+	LEFT JOIN tms_outlets_info s_o ON l.start_outlets = s_o.id
+	LEFT JOIN tms_outlets_info e_o ON l.end_outlets = e_o.id
+    LEFT JOIN lc_platform_order_bill bill ON o.order_number = bill.order_number
+    where l.start_outlets in (#{outletsIds})
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+   	and is_draft = 1 order by o.order_time desc limit #{start}, #{limit}
+  </select>
+    <select id="selectByParamsCount" resultType="int">
+    select count(1)
+    from lc_platform_order o join tms_line_info l on o.tms_line_id = l.id where l.start_outlets in (#{outletsIds})
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+  </select>
+  <!--  
+  <select id="selectByParamsCount" resultType="int">
+    select count(1)
+    from lc_platform_order o join tms_line_info l on o.tms_line_id = l.id where l.start_outlets = #{startOutlets}
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+  </select>
+  -->
+  <select id="selectByOrderNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select o.*,l.start_outlets,l.start_outlets_name,l.end_outlets target_outlets,l.end_outlets_name target_outlets_name
+    FROM lc_platform_order o LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+    where o.order_number = #{orderNumber,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByWayBillNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order
+    where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updateOrderStatusByOrderNumber" parameterType="java.util.Map" >
+    update lc_platform_order
+    set state = #{status,jdbcType=INTEGER}
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateOrderStatusByWayBillNumber" parameterType="java.util.Map" >
+    update lc_platform_order
+    set state = #{status,jdbcType=INTEGER}
+    where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateWayBillOrderByOrderNumber" parameterType="java.util.Map" >
+    update lc_platform_order
+    set way_bill_number = #{wayBillNumber,jdbcType=INTEGER}
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  
+   <select id="getOrderUserRanking" resultType="java.util.Map">
+  	select lpu.login_name,count(lpo.user_id) num,lpo.user_id,lpuc.company_name,sum(lbl.total_cost)  price 
+		from lc_platform_user lpu
+		LEFT JOIN lc_platform_user_company lpuc on lpu.company_id = lpuc.id
+		LEFT JOIN lc_platform_order lpo on lpo.user_id = lpu.id
+		LEFT JOIN lc_platform_order_bill lbl on lbl.order_number = lpo.order_number
+		where 1=1
+		and lpo.state = 8
+		<if test="loginName != null and loginName != '' ">
+   		and lpu.login_name like concat("%",#{loginName},"%")
+   		</if>
+		group by lpo.user_id order by  price desc
+		limit #{page.start}, #{page.limit}
+  </select>
+  
+  <select id="countOrder" resultType="int">
+  	select
+  		count(1)
+  	from 
+  		lc_platform_order
+  </select>
+  <select id="getCountOrderUserRanking" resultType="int" parameterType="com.brightsoft.utils.Page" >
+  	select COUNT(*) FROM (
+		select lpu.login_name,count(lpo.user_id) num,lpo.user_id,lpuc.company_name,sum(lbl.total_cost)  price 
+		from lc_platform_user lpu
+		LEFT JOIN lc_platform_user_company lpuc on lpu.company_id = lpuc.id
+		LEFT JOIN lc_platform_order lpo on lpo.user_id = lpu.id
+		LEFT JOIN lc_platform_order_bill lbl on lbl.order_number = lpo.order_number
+		where 1=1
+		and lpo.state = 8
+		<if test="loginName != null and loginName != '' ">
+   		and lpu.login_name like concat("%",#{loginName},"%")
+   		</if>
+		group by lpo.user_id)as t
+  </select>
+  
+   <select id="getOrderCompanyRanking" resultType="java.util.Map" parameterType="com.brightsoft.utils.Page" >
+  		SELECT lpu.login_name,lpuc.company_name,count(*) num,lpuc.company_code,lpuc.contacts1_mobile,sum(tlo.total) total
+		from tms_lading_order tlo
+		LEFT JOIN tms_outlets_info tol on tlo.start_outlets = tol.id
+		LEFT JOIN lc_platform_user_company lpuc on tol.company_id = lpuc.id
+		LEFT JOIN lc_platform_user lpu on lpu.company_id = lpuc.id
+		where 1=1
+		and tlo.status = 2
+		<if test="loginName != null and loginName != '' ">
+   		and lpu.login_name like concat("%",#{loginName},"%")
+   		</if>
+   		<if test="companyName != null and companyName != '' ">
+   		and lpuc.company_name like concat("%",#{companyName},"%")
+   		</if>
+   		<if test="companyCode != null and companyCode != '' ">
+   		and lpuc.company_code like concat("%",#{companyCode},"%")
+   		</if>
+		group by lpuc.company_name order by num desc
+		limit #{page.start}, #{page.limit}
+  </select>
+  
+   <select id="getCountOrderCompanyRanking" resultType="int">
+  		SELECT count(*) from
+		( SELECT lpuc.company_name,lpuc.company_phone,sum(tlo.total) total
+		from tms_lading_order tlo
+		LEFT JOIN tms_outlets_info tol on tlo.start_outlets = tol.id
+		LEFT JOIN lc_platform_user_company lpuc on tol.company_id = lpuc.id
+		LEFT JOIN lc_platform_user lpu on lpu.company_id = lpuc.id
+		where 1=1
+		and tlo.status = 2
+		<if test="loginName != null and loginName != '' ">
+   		and lpu.login_name like concat("%",#{loginName},"%")
+   		</if>
+   		<if test="companyName != null and companyName != '' ">
+   		and lpuc.company_name like concat("%",#{companyName},"%")
+   		</if>
+   		<if test="companyCode != null and companyCode != '' ">
+   		and lpuc.company_code like concat("%",#{companyCode},"%")
+   		</if>
+		group by lpuc.company_name )as a
+  </select>
+  <select id="selectByParamsOfPlatform" resultMap="BaseResultMap">
+	SELECT o.*, start.name start_outlets_name, target.name target_outlets_name FROM lc_platform_order o 
+	LEFT JOIN tms_line_info l ON o.tms_line_id = l.id 
+	LEFT JOIN tms_outlets_info outlets ON l.outlets_id = outlets.id
+	LEFT JOIN tms_outlets_info start ON l.start_outlets = start.id
+	LEFT JOIN tms_outlets_info target ON l.end_outlets = target.id where 1 = 1
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="outletsName != null and outletsName != '' ">
+   		and outlets.name like concat("%",#{outletsName},"%")
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+   	order by o.order_time desc limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCountOfPlatform" resultType="int">
+    SELECT count(1) FROM lc_platform_order o 
+	LEFT JOIN tms_line_info l ON o.tms_line_id = l.id 
+	LEFT JOIN tms_outlets_info outlets ON l.outlets_id = outlets.id where 1 = 1
+    <if test="status != null and status != '' ">
+   		and o.state = #{status}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and o.order_time >= #{startTime}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and o.order_time <![CDATA[<=]]> #{endTime}
+   	</if>
+   	<if test="outletsName != null and outletsName != '' ">
+   		and outlets.name like concat("%",#{outletsName},"%")
+   	</if>
+   	<if test="condition != null and condition ">
+   		and (o.order_number like concat("%",#{condition},"%") or o.way_bill_number like concat("%",#{condition},"%"))
+   	</if>
+  </select>
+<update id="updateOrderPayment" parameterType="com.brightsoft.model.PlatformOrder" >
+    update lc_platform_order
+    set is_payment = 0
+    where order_number = #{orderNumber,jdbcType=VARCHAR}
+  </update>
+  <select id="selectSubAccountByOrderState" resultMap="BaseResultMap">
+  	select 
+	po.order_number,pob.estimate_take_cargo_cost,tu.login_name tms_login_name,
+	pu2.login_name plat_login_name,pb1.bankaccountnumber plat_bankaccountnumber,
+	pb2.bankaccountnumber tms_bankaccountnumber,po.state,pbp.requestid,pba.ledgerno,
+	puc.company_code,puc.company_name,pu1.id,pbp.state order_type,pbp.amount, 
+	oi.name outlets_name,pbs.state split_state
+	from 
+	lc_platform_bank_payment pbp
+	LEFT JOIN lc_platform_order po on pbp.order_number = po.order_number
+	left join lc_platform_order_bill pob on pob.order_number = po.order_number
+	left join tms_line_info li on po.tms_line_id = li.id
+	left join tms_outlets_info oi on li.outlets_id = oi.id
+	left join tms_user tu on tu.outlets_id = oi.id
+	left join tms_user_role ur on ur.user_id = tu.id
+	left join tms_role tr on tr.id = ur.role_id
+	left join lc_platform_user_company puc on puc.id = tu.company_id
+	left join lc_platform_user pu1 on pu1.login_name = tu.login_name
+	left join lc_platform_user pu2 on po.user_id = pu2.id
+	left join lc_platform_bank pb1 on pb1.user_id = pu1.id
+	left join lc_platform_bank pb2 on pb2.user_id = po.user_id
+	left join lc_platform_bank_account pba on pba.user_id = pu1.id
+	left join lc_platform_bank_split pbs on pbs.order_number = pbp.order_number
+	WHERE tr.owner_type = 2 and po.state = #{state} and pbp.state = 0 and pbp.order_type = 1
+	order by pbp.time asc
+  </select>
+  <select id="countSubRowsByOrderState" resultType="int">
+  	select 
+	count(1)
+	from 
+	lc_platform_bank_payment pbp
+	LEFT JOIN lc_platform_order po on pbp.order_number = po.order_number
+	WHERE po.state = #{state} AND pbp.state = 0
+  </select>
+  <select id="countRowsByLine" resultType="int">
+  	select 
+  	count(1)
+  	from lc_platform_order
+  	where tms_line_id = #{lineId}
+  </select>
+</mapper>

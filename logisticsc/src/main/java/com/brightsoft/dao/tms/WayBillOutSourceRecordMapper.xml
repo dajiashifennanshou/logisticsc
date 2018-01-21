@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.WayBillOutSourceRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.WayBillOutSourceRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="out_depart_number" property="outDepartNumber" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="out_way_bill_number" property="outWayBillNumber" jdbcType="VARCHAR" />
+    <result column="out_source_cost" property="outSourceCost" jdbcType="DOUBLE" />
+    <result column="current_pay" property="currentPay" jdbcType="DOUBLE" />
+    <result column="out_back_pay" property="outBackPay" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, out_depart_number, way_bill_number, out_way_bill_number, out_source_cost, current_pay, out_back_pay
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_way_bill_out_source_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_way_bill_out_source_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.WayBillOutSourceRecord" >
+    insert into tms_way_bill_out_source_record (id, out_depart_number, way_bill_number, out_way_bill_number, 
+      out_source_cost, current_pay, out_back_pay
+      )
+    values (#{id,jdbcType=BIGINT}, #{outDepartNumber,jdbcType=VARCHAR}, #{wayBillNumber,jdbcType=VARCHAR}, #{outWayBillNumber,jdbcType=VARCHAR}, 
+      #{outSourceCost,jdbcType=DOUBLE}, #{currentPay,jdbcType=DOUBLE}, #{outBackPay,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.WayBillOutSourceRecord" >
+    insert into tms_way_bill_out_source_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outDepartNumber != null" >
+        out_depart_number,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="outWayBillNumber != null" >
+        out_way_bill_number,
+      </if>
+      <if test="outSourceCost != null" >
+        out_source_cost,
+      </if>
+      <if test="currentPay != null" >
+        current_pay,
+      </if>
+      <if test="outBackPay != null" >
+        out_back_pay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outDepartNumber != null" >
+        #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outWayBillNumber != null" >
+        #{outWayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceCost != null" >
+        #{outSourceCost,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="outBackPay != null" >
+        #{outBackPay,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.WayBillOutSourceRecord" >
+    update tms_way_bill_out_source_record
+    <set >
+      <if test="outDepartNumber != null" >
+        out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outWayBillNumber != null" >
+        out_way_bill_number = #{outWayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outSourceCost != null" >
+        out_source_cost = #{outSourceCost,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPay != null" >
+        current_pay = #{currentPay,jdbcType=DOUBLE},
+      </if>
+      <if test="outBackPay != null" >
+        out_back_pay = #{outBackPay,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.WayBillOutSourceRecord" >
+    update tms_way_bill_out_source_record
+    set out_depart_number = #{outDepartNumber,jdbcType=VARCHAR},
+      way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      out_way_bill_number = #{outWayBillNumber,jdbcType=VARCHAR},
+      out_source_cost = #{outSourceCost,jdbcType=DOUBLE},
+      current_pay = #{currentPay,jdbcType=DOUBLE},
+      out_back_pay = #{outBackPay,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into tms_way_bill_out_source_record (id, out_depart_number, way_bill_number, out_way_bill_number, 
+      out_source_cost, current_pay, out_back_pay )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.id,jdbcType=BIGINT}, #{item.outDepartNumber,jdbcType=VARCHAR}, #{item.wayBillNumber,jdbcType=VARCHAR}, #{item.outWayBillNumber,jdbcType=VARCHAR}, 
+      #{item.outSourceCost,jdbcType=DOUBLE}, #{item.currentPay,jdbcType=DOUBLE}, #{item.outBackPay,jdbcType=DOUBLE})
+    </foreach>
+  </insert>
+  
+  <delete id="deleteByOutDepartNumber" parameterType="java.lang.String" >
+    delete from tms_way_bill_out_source_record
+    where out_depart_number = #{outDepartNumber,jdbcType=VARCHAR}
+  </delete>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xsl.lerist.llibrarys"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="24" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:supportsRtl="true" >
+        <activity
+            android:name="com.xsl.lerist.llibrarys.utils.LResultActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+        <activity
+            android:name="com.xsl.lerist.llibrarys.utils.LContactsChooser"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:theme="@style/TransparentAlertDialog" />
+    </application>
+
+</manifest>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <carbon.widget.LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/font_color_hint_light"
+            android:orientation="horizontal"
+            app:carbon_cornerRadius="@dimen/radius_corner">
+
+            <EditText
+                android:id="@+id/search_content"
+                style="@style/params_style"
+                android:background="@color/font_color_hint_light"
+                android:drawableLeft="@mipmap/sousuo"
+                android:drawablePadding="8dp"
+                android:hint="请输入专线运单号"
+                android:imeOptions="actionSearch"
+                android:paddingBottom="4dp"
+                android:digits="-0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:paddingLeft="10dp"
+                android:inputType="textEmailAddress"
+                android:paddingTop="4dp"
+                android:singleLine="true"
+                android:textSize="14sp" />
+        </carbon.widget.LinearLayout>
+
+        <carbon.widget.TextView
+            android:id="@+id/cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="取消"
+            android:textSize="14sp"
+            app:carbon_cornerRadius="@dimen/radius_corner" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line" />
+</LinearLayout>

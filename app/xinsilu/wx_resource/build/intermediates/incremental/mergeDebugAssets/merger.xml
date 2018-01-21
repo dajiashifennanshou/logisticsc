@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\InternetProject\app\xinsilu\wx_resource\src\main\assets"/><source path="D:\InternetProject\app\xinsilu\wx_resource\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\InternetProject\app\xinsilu\wx_resource\src\debug\assets"/></dataSet></merger>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运单号: "
+                android:textColor="@color/font_color_focused"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/i_list_cost_tv_no"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_height="wrap_content"
+                android:textColor="@color/font_color_focused"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/i_list_cost_tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginLeft="4dp"
+                android:textColor="@color/font_color_normal"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shap_line_color_hint"
+            android:layerType="software"
+            android:orientation="horizontal" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/i_list_cost_tv_money_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="应付费用: -.--元"
+                android:textColor="@color/font_color_normal"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <carbon.widget.TextView
+                android:id="@+id/i_list_cost_btn_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@color/colorAccent2"
+                android:clickable="true"
+                android:paddingBottom="4dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="4dp"
+                android:text="支付"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:carbon_cornerRadius="@dimen/radius_corner"
+                app:carbon_rippleColor="@color/ripple" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_line" />
+
+</LinearLayout>

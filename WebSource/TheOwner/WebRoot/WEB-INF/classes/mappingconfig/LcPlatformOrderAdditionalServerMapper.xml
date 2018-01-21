@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ILcPlatformOrderAdditionalServerDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformOrderAdditionalServer"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,is_receipt,is_im_ex_store,is_load_cargo,load_cargo_floor,load_cargo_is_elevator,is_unload_cargo,unload_cargo_floor,unload_cargo_is_elevator,is_collection_delivery,collection_delivery_money,order_id
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_additional_server where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer" > 
+		select  count(1)  from lc_platform_order_additional_server 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_additional_server order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer"> 
+		delete from lc_platform_order_additional_server where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_additional_server  
+		(is_receipt,is_im_ex_store,is_load_cargo,load_cargo_floor,load_cargo_is_elevator,is_unload_cargo,unload_cargo_floor,unload_cargo_is_elevator,is_collection_delivery,collection_delivery_money,order_id) 
+		values ( #{is_receipt},#{is_im_ex_store},#{is_load_cargo},#{load_cargo_floor},#{load_cargo_is_elevator},#{is_unload_cargo},#{unload_cargo_floor},#{unload_cargo_is_elevator},#{is_collection_delivery},#{collection_delivery_money},#{order_id} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAdditionalServer">   
+	update lc_platform_order_additional_server 
+	<set> 
+		<if test="is_receipt !=null"> 
+			is_receipt=#{is_receipt},
+		</if>
+		<if test="is_im_ex_store !=null"> 
+			is_im_ex_store=#{is_im_ex_store},
+		</if>
+		<if test="is_load_cargo !=null"> 
+			is_load_cargo=#{is_load_cargo},
+		</if>
+		<if test="load_cargo_floor !=null"> 
+			load_cargo_floor=#{load_cargo_floor},
+		</if>
+		<if test="load_cargo_is_elevator !=null"> 
+			load_cargo_is_elevator=#{load_cargo_is_elevator},
+		</if>
+		<if test="is_unload_cargo !=null"> 
+			is_unload_cargo=#{is_unload_cargo},
+		</if>
+		<if test="unload_cargo_floor !=null"> 
+			unload_cargo_floor=#{unload_cargo_floor},
+		</if>
+		<if test="unload_cargo_is_elevator !=null"> 
+			unload_cargo_is_elevator=#{unload_cargo_is_elevator},
+		</if>
+		<if test="is_collection_delivery !=null"> 
+			is_collection_delivery=#{is_collection_delivery},
+		</if>
+		<if test="collection_delivery_money !=null"> 
+			collection_delivery_money=#{collection_delivery_money},
+		</if>
+		<if test="order_id !=null"> 
+			order_id=#{order_id}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

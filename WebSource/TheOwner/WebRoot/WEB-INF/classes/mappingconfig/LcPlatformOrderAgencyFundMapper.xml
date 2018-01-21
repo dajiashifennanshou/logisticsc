@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.ILcPlatformOrderAgencyFundDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformOrderAgencyFund"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,order_number,agency_fund,received_fund,uncollected_fund,operate_time,state
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformOrderAgencyFund" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_order_agency_fund where id=#{id} 
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.yc.Entity.LcPlatformOrderAgencyFund" > 
+		select  count(1)  from lc_platform_order_agency_fund 
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from lc_platform_order_agency_fund order by id desc 
+		limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAgencyFund"> 
+		delete from lc_platform_order_agency_fund where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAgencyFund" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_order_agency_fund  
+		(order_number,agency_fund,received_fund,uncollected_fund,operate_time,state) 
+		values ( #{order_number},#{agency_fund},#{received_fund},#{uncollected_fund},#{operate_time},#{state} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.LcPlatformOrderAgencyFund">   
+	update lc_platform_order_agency_fund 
+	<set> 
+		<if test="order_number !=null"> 
+			order_number=#{order_number},
+		</if>
+		<if test="agency_fund !=null"> 
+			agency_fund=#{agency_fund},
+		</if>
+		<if test="received_fund !=null"> 
+			received_fund=#{received_fund},
+		</if>
+		<if test="uncollected_fund !=null"> 
+			uncollected_fund=#{uncollected_fund},
+		</if>
+		<if test="operate_time !=null"> 
+			operate_time=#{operate_time},
+		</if>
+		<if test="state !=null"> 
+			state=#{state}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

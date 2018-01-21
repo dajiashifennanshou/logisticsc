@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.platformBankPaymentMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.platformBankPayment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customernumber" property="customernumber" jdbcType="VARCHAR" />
+    <result column="requestid" property="requestid" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="assure" property="assure" jdbcType="VARCHAR" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
+    <result column="productcat" property="productcat" jdbcType="VARCHAR" />
+    <result column="productdesc" property="productdesc" jdbcType="VARCHAR" />
+    <result column="divideinfo" property="divideinfo" jdbcType="VARCHAR" />
+    <result column="callbackurl" property="callbackurl" jdbcType="VARCHAR" />
+    <result column="webcallbackurl" property="webcallbackurl" jdbcType="VARCHAR" />
+    <result column="bankid" property="bankid" jdbcType="VARCHAR" />
+    <result column="period" property="period" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="payproducttype" property="payproducttype" jdbcType="VARCHAR" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customernumber, requestid, amount, assure, productname, productcat, productdesc, 
+    divideinfo, callbackurl, webcallbackurl, bankid, period, memo, payproducttype, order_number, 
+    order_type, time, state, user_id
+  </sql>
+  <select id="selectBankPaymentByUserId" resultType="int">
+    select 
+   count(*)
+    from lc_platform_bank_payment
+    where user_id =  #{userId,jdbcType=BIGINT}
+    and state = 0
+    and order_type =3
+  </select>
+  <select id="selectBySelectedConditionPayment" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_payment
+    WHERE 1=1
+	and state =0
+	and user_id = #{bankPayment.userId,jdbcType=BIGINT}
+	<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+		and order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+	</if>
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+		and time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= time
+	</if>
+	ORDER BY time DESC
+	limit #{page.start},#{page.limit}
+  </select>
+  
+  <select id="countPayment" resultType="int">
+    select 
+  		count(1)
+    from lc_platform_bank_payment
+    WHERE 1=1
+	and state =0
+	and user_id = #{bankPayment.userId,jdbcType=BIGINT}
+	<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+		and order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+	</if>
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+			and time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= time
+	</if>
+  </select>
+   <select id="selectBankPayment" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_payment
+    where requestid =  #{requestid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_payment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_bank_payment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.platformBankPayment" >
+    insert into lc_platform_bank_payment (id, customernumber, requestid, 
+      amount, assure, productname, 
+      productcat, productdesc, divideinfo, 
+      callbackurl, webcallbackurl, bankid, 
+      period, memo, payproducttype, 
+      order_number, order_type, time, 
+      state, user_id)
+    values (#{id,jdbcType=BIGINT}, #{customernumber,jdbcType=VARCHAR}, #{requestid,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR}, #{assure,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, 
+      #{productcat,jdbcType=VARCHAR}, #{productdesc,jdbcType=VARCHAR}, #{divideinfo,jdbcType=VARCHAR}, 
+      #{callbackurl,jdbcType=VARCHAR}, #{webcallbackurl,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, 
+      #{period,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{payproducttype,jdbcType=VARCHAR}, 
+      #{orderNumber,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.platformBankPayment" >
+    insert into lc_platform_bank_payment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="customernumber != null" >
+        customernumber,
+      </if>
+      <if test="requestid != null" >
+        requestid,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="assure != null" >
+        assure,
+      </if>
+      <if test="productname != null" >
+        productname,
+      </if>
+      <if test="productcat != null" >
+        productcat,
+      </if>
+      <if test="productdesc != null" >
+        productdesc,
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo,
+      </if>
+      <if test="callbackurl != null" >
+        callbackurl,
+      </if>
+      <if test="webcallbackurl != null" >
+        webcallbackurl,
+      </if>
+      <if test="bankid != null" >
+        bankid,
+      </if>
+      <if test="period != null" >
+        period,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="payproducttype != null" >
+        payproducttype,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="customernumber != null" >
+        #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="assure != null" >
+        #{assure,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productcat != null" >
+        #{productcat,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackurl != null" >
+        #{callbackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="webcallbackurl != null" >
+        #{webcallbackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payproducttype != null" >
+        #{payproducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.platformBankPayment" >
+    update lc_platform_bank_payment
+    <set >
+      <if test="customernumber != null" >
+        customernumber = #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestid != null" >
+        requestid = #{requestid,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="assure != null" >
+        assure = #{assure,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        productname = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productcat != null" >
+        productcat = #{productcat,jdbcType=VARCHAR},
+      </if>
+      <if test="productdesc != null" >
+        productdesc = #{productdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="divideinfo != null" >
+        divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="callbackurl != null" >
+        callbackurl = #{callbackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="webcallbackurl != null" >
+        webcallbackurl = #{webcallbackurl,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        bankid = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null" >
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payproducttype != null" >
+        payproducttype = #{payproducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.platformBankPayment" >
+    update lc_platform_bank_payment
+    set customernumber = #{customernumber,jdbcType=VARCHAR},
+      requestid = #{requestid,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      assure = #{assure,jdbcType=VARCHAR},
+      productname = #{productname,jdbcType=VARCHAR},
+      productcat = #{productcat,jdbcType=VARCHAR},
+      productdesc = #{productdesc,jdbcType=VARCHAR},
+      divideinfo = #{divideinfo,jdbcType=VARCHAR},
+      callbackurl = #{callbackurl,jdbcType=VARCHAR},
+      webcallbackurl = #{webcallbackurl,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      period = #{period,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      payproducttype = #{payproducttype,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectBankPaymentByOrderNumber" resultMap="BaseResultMap">
+  	SELECT
+  	* 
+  	FROM
+  	lc_platform_bank_payment
+  	WHERE order_number = #{orderNumber}
+  	and state =0
+  	and  order_type = #{orderType,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectPaymentList" resultMap="BaseResultMap" >
+    select 
+    	 p_t.*,u_r.login_name
+    from lc_platform_bank_payment p_t
+	LEFT JOIN lc_platform_user u_r on p_t.user_id = u_r.id
+    WHERE 1=1
+	and state =0
+	and requestid not in(select orderrequestid from lc_platform_bank_split where state = 0 
+		<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+			and p_t.order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+		</if>
+	)
+	and requestid not in(select orderrequestid from lc_platform_bank_refund where state = 0
+		<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+			and p_t.order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+		</if>
+	)
+	<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+		and p_t.order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+	</if>
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and p_t.order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+		and p_t.time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= p_t.time
+	</if>
+	ORDER BY p_t.time DESC
+	limit #{page.start},#{page.limit}
+  </select>
+  
+  <select id="countPaymentList" resultType="int">
+    select 
+  		count(1)
+  	 from lc_platform_bank_payment
+    WHERE 1=1
+	and state =0
+	and requestid not in(select orderrequestid from lc_platform_bank_split where state = 0 
+		<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+			and order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+		</if>
+	)
+	and requestid not in(select orderrequestid from lc_platform_bank_refund where state = 0
+		<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+			and order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+		</if>
+	)
+	<if test="bankPayment.orderTypes != null and bankPayment.orderTypes !='' ">
+		and order_type = #{bankPayment.orderTypes,jdbcType=VARCHAR}	
+	</if>
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+		and time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= time
+	</if>
+  </select>
+  
+  
+  <select id="selectBySelectedConditionPaymentForm" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_bank_payment
+    WHERE 1=1
+	and state =0
+	and user_id = #{bankPayment.userId,jdbcType=BIGINT}
+	and order_type in (1,2)
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+		and time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= time
+	</if>
+	ORDER BY time DESC
+	limit #{page.start},#{page.limit}
+  </select>
+  
+  <select id="countPaymentForm" resultType="int">
+    select 
+  		count(1)
+    from lc_platform_bank_payment
+    WHERE 1=1
+	and state =0
+	and user_id = #{bankPayment.userId,jdbcType=BIGINT}
+	and order_type in (1,2)
+	<if test="bankPayment.condition != null and bankPayment.condition !='' ">
+	   	and order_number like concat("%",#{bankPayment.condition,jdbcType=VARCHAR},"%")
+	 </if>
+	<if test="bankPayment.startTime!=null and bankPayment.startTime!=''">
+			and time >=#{bankPayment.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="bankPayment.endTime!=null and bankPayment.endTime!=''">
+		and #{bankPayment.endTime,jdbcType=VARCHAR} >= time
+	</if>
+  </select>
+  
+  <select id="getTotalNotSplit" parameterType="string" resultType="int">
+  	select 
+	count(1)
+	FROM lc_platform_bank_payment pbk 
+	left join lc_platform_bank_split pbs on pbk.requestid = pbs.orderrequestid
+	left join lc_platform_order po on pbk.order_number = po.order_number
+	left join tms_line_info li on li.id = po.tms_line_id
+	left join tms_outlets_info oi on oi.id = li.outlets_id
+	LEFT JOIN tms_user u on u.outlets_id = oi.id
+	LEFT JOIN tms_user_role ur on ur.user_id = u.id
+	LEFT JOIN tms_role r on r.id = ur.role_id
+	where r.owner_type = 2 
+		and pbk.state = 0 
+		and u.login_name = #{loginName}
+		and pbk.requestid not in (select orderrequestid from lc_platform_bank_split where state = 0)
+		and pbk.requestid NOT IN (select orderrequestid from lc_platform_bank_refund where state = 0);
+  </select>
+  
+  <select id="selectPaymentAmount" resultType="int">
+    	select amount from lc_platform_bank_payment 
+    		where user_id =#{bankPayment.userId,jdbcType=BIGINT}
+    	 	and order_type = #{bankPayment.orderType,jdbcType=INTEGER}
+  </select>
+</mapper>

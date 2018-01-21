@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.OrderSerialNumberMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.OrderSerialNumber" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="number_type" property="numberType" jdbcType="INTEGER" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    <result column="outlets_number" property="outletsNumber" jdbcType="VARCHAR" />
+    <result column="date_str" property="dateStr" jdbcType="VARCHAR" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, number_type, company_code, outlets_number, date_str, serial_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_order_serial_number
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_order_serial_number
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.OrderSerialNumber" >
+    insert into tms_order_serial_number (id, number_type, company_code, 
+      outlets_number, date_str, serial_number
+      )
+    values (#{id,jdbcType=BIGINT}, #{numberType,jdbcType=INTEGER}, #{companyCode,jdbcType=VARCHAR}, 
+      #{outletsNumber,jdbcType=VARCHAR}, #{dateStr,jdbcType=VARCHAR}, #{serialNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.OrderSerialNumber" >
+    insert into tms_order_serial_number
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="numberType != null" >
+        number_type,
+      </if>
+      <if test="companyCode != null" >
+        company_code,
+      </if>
+      <if test="outletsNumber != null" >
+        outlets_number,
+      </if>
+      <if test="dateStr != null" >
+        date_str,
+      </if>
+      <if test="serialNumber != null" >
+        serial_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="numberType != null" >
+        #{numberType,jdbcType=INTEGER},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsNumber != null" >
+        #{outletsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateStr != null" >
+        #{dateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.OrderSerialNumber" >
+    update tms_order_serial_number
+    <set >
+      <if test="numberType != null" >
+        number_type = #{numberType,jdbcType=INTEGER},
+      </if>
+      <if test="companyCode != null" >
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="outletsNumber != null" >
+        outlets_number = #{outletsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateStr != null" >
+        date_str = #{dateStr,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null" >
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.OrderSerialNumber" >
+    update tms_order_serial_number
+    set number_type = #{numberType,jdbcType=INTEGER},
+      company_code = #{companyCode,jdbcType=VARCHAR},
+      outlets_number = #{outletsNumber,jdbcType=VARCHAR},
+      date_str = #{dateStr,jdbcType=VARCHAR},
+      serial_number = #{serialNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_order_serial_number
+    where 1 = 1
+    <if test="numberType != null" >
+      and number_type = #{numberType,jdbcType=INTEGER}
+    </if>
+    <if test="companyCode != null" >
+      and company_code = #{companyCode,jdbcType=VARCHAR}
+    </if>
+    <if test="outletsNumber != null" >
+      and outlets_number = #{outletsNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="dateStr != null" >
+      and date_str = #{dateStr,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>

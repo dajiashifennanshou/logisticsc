@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.PlatformUserDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.LcPlatformUser"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,login_name,password,mobile,email,address,true_name,user_type,cred_type,cred_number,cash_password,status,balance,points,salesman_no,the_selesman_no,company_id,temporary_company_id,vehicle_type,dot_address,user_status
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.LcPlatformUser" > 
+		select  <include refid="Base_Column_List" />  from lc_platform_user where 1=1
+		<if test="login_name!=null">
+			and login_name = #{login_name}
+		</if>
+		<if test="password!=null">
+			and password = #{password}
+		</if>
+		<if test="id!=null">
+			and id = #{id}
+		</if>
+	</select>
+	<insert id="addUserInfo" parameterType="com.yc.Entity.LcPlatformUser" useGeneratedKeys="true" keyProperty="id"> 
+		insert into lc_platform_user  
+		(login_name,password,mobile,email,address,true_name,user_type,cred_type,cred_number,cash_password,status,balance,points,salesman_no,the_selesman_no,company_id,temporary_company_id,vehicle_type,dot_address,user_status,create_time) 
+		values ( #{login_name},#{password},#{mobile},#{email},#{address},#{true_name},#{user_type},#{cred_type},#{cred_number},#{cash_password},#{status},#{balance},#{points},#{salesman_no},#{the_selesman_no},#{company_id},#{temporary_company_id},#{vehicle_type},#{dot_address},#{user_status},#{create_time})
+	</insert>
+	<update id="updatePassword" parameterType="com.yc.Entity.LcPlatformUser">   
+		update lc_platform_user set password=#{password} where
+		<if test="login_name!=null">
+			login_name=#{login_name}
+		</if>
+		<if test="mobile!=null">
+			mobile=#{mobile} 
+		</if>
+	</update> 
+</mapper> 
+

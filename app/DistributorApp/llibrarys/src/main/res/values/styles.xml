@@ -1,0 +1,157 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="AppTheme.Transparent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.Translucent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.FullScreen.Transparent" parent="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.FullScreen.Translucent" parent="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+
+    <style name="AppTheme.Dialog.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+
+    <style name="AppTheme.Dialog.FullScreen.Translucent">
+        <item name="android:windowBackground">@color/translucent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/PopupAnim</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="PopupAnim" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/popup_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/popup_out</item>
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+
+    <style name="Animator_Flip_Up">
+        <item name="android:interpolator">@android:interpolator/accelerate_quad</item>
+        <item name="android:propertyName">rotationX</item>
+        <item name="android:valueType">floatType</item>
+        <item name="android:valueFrom">0</item>
+        <item name="android:valueTo">-180</item>
+        <item name="android:duration">500</item>
+    </style>
+
+    <style name="Animator_Flip_Down">
+        <item name="android:interpolator">@android:interpolator/accelerate_quad</item>
+        <item name="android:propertyName">rotateX</item>
+        <item name="android:valueType">floatType</item>
+        <item name="android:valueFrom">0</item>
+        <item name="android:valueTo">180</item>
+        <item name="android:duration">500</item>
+    </style>
+
+    <style name="AppDialogTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+
+    </style>
+
+    <style name="TranslucentDialog" parent="AppDialogTheme">
+
+        <item name="windowMinWidthMinor">100%</item>
+
+        <item name="listPreferredItemPaddingLeft">0dip</item>
+
+        <item name="listPreferredItemPaddingRight">0dip</item>
+
+        <item name="android:windowFrame">@null</item><!--边框-->
+
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@color/transparent</item>
+
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="TransparentDialog" parent="TranslucentDialog">
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <style name="TranslucentAlertDialog" parent="TranslucentDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="TransparentAlertDialog" parent="TranslucentDialog">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="AnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in_back</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out_back</item>
+    </style>
+
+</resources>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.brightsoft.dao.tms.DepositRatioMapper">
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.DepositRatio">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="line_id" jdbcType="BIGINT" property="lineId" />
+    <result column="deposit_ratio" jdbcType="DOUBLE" property="depositRatio" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="note" jdbcType="VARCHAR" property="note"/>
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime"/>
+    <result column="check_person_id" jdbcType="BIGINT" property="checkPersonId"/>
+    <result column="create_person_id" jdbcType="BIGINT" property="createPersonId" />
+    <result column="company_name" property="companyName"/>
+    <result column="name" property="name"/>
+    <result column="login_name" property="loginName"/>
+    <result column="true_name" property="trueName"/>
+    <result column="start_outlets_name" property="startOutletsName"/>
+    <result column="end_outlets_name" property="endOutletsName"/>
+    <result column="line_name" property="lineName"/>
+    <association property="outletsInfo" javaType="com.brightsoft.model.OutletsInfo">
+    	<result column="name" property="name"/>
+    </association>
+    <association property="lineInfo" javaType="com.brightsoft.model.LineInfo">
+    	<association property="startOutletsObj" javaType="com.brightsoft.model.OutletsInfo">
+	    	<result column="start_province_val" property="provinceValue"/>
+	    	<result column="start_city_val" property="cityValue"/>
+	    	<result column="start_county_val" property="countyValue"/>
+	    </association>
+	    <association property="endOutletsObj" javaType="com.brightsoft.model.OutletsInfo">
+	    	<result column="end_province_val" property="provinceValue"/>
+	    	<result column="end_city_val" property="cityValue"/>
+	    	<result column="end_county_val" property="countyValue"/>
+	    </association>
+    </association>
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, line_id, deposit_ratio, start_time, end_time, create_time, status, create_person_id,note,check_time,check_person_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tms_deposit_ratio
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tms_deposit_ratio
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.DepositRatio">
+    insert into tms_deposit_ratio (id, line_id, deposit_ratio, 
+      start_time, end_time, create_time, 
+      status, create_person_id,note,check_time,check_person_id)
+    values (#{id,jdbcType=BIGINT}, #{lineId,jdbcType=BIGINT}, #{depositRatio,jdbcType=DOUBLE}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{createPersonId,jdbcType=BIGINT}, #{note,jdbcType=VARCHAR},
+      #{checkTime,jdbcType=TIMESTAMP}, #{checkPersonId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.DepositRatio">
+    insert into tms_deposit_ratio
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lineId != null">
+        line_id,
+      </if>
+      <if test="depositRatio != null">
+        deposit_ratio,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createPersonId != null">
+        create_person_id,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="checkTime != null">
+        check_time,
+      </if>
+      <if test="checkPersonId != null">
+        check_person_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="lineId != null">
+        #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="depositRatio != null">
+        #{depositRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null">
+        #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkPersonId != null">
+        #{checkPersonId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.DepositRatio">
+    update tms_deposit_ratio
+    <set>
+      <if test="lineId != null">
+        line_id = #{lineId,jdbcType=BIGINT},
+      </if>
+      <if test="depositRatio != null">
+        deposit_ratio = #{depositRatio,jdbcType=DOUBLE},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createPersonId != null">
+        create_person_id = #{createPersonId,jdbcType=BIGINT},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkPersonId != null">
+        check_person_id = #{checkPersonId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.DepositRatio">
+    update tms_deposit_ratio
+    set line_id = #{lineId,jdbcType=BIGINT},
+      deposit_ratio = #{depositRatio,jdbcType=DOUBLE},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      create_person_id = #{createPersonId,jdbcType=BIGINT},
+      note = #{note,jdbcType=VARCHAR},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      check_person_id = #{checkPersonId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 网点获取活动费率 -->
+  <select id="selectByOutletsIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		dr.*,oi.name,pd1.name as start_province_val,pd2.name as start_city_val,pd3.name as start_county_val,
+  		pd4.name as end_province_val,pd5.name as end_city_val,pd6.name as end_county_val
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+  		left join tms_outlets_info oi on oi.id = li.outlets_id
+  		left join tms_outlets_info oi1 on oi1.id = li.start_outlets
+  		left join tms_outlets_info oi2 on oi2.id = li.end_outlets
+  		left join lc_xzqh_info pd1 on pd1.id = oi1.province 
+  		left join lc_xzqh_info pd2 on pd2.id = oi1.city
+  		left join lc_xzqh_info pd3 on pd3.id = oi1.county
+  		left join lc_xzqh_info pd4 on pd4.id = oi2.province
+  		left join lc_xzqh_info pd5 on pd5.id = oi2.city
+  		left join lc_xzqh_info pd6 on pd6.id = oi2.county
+  	where
+  		li.outlets_id = #{outletsId} and dr.status != 0
+  		order by dr.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 网点获取活动费率总记录数 -->
+  <select id="countRowsByOutletsId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+	where
+		li.outlets_id = #{outletsId} and dr.status != 0
+  </select>
+  <!-- 专线获取活动费率 -->
+  <select id="selectByCompanyIdAndCondition" resultMap="BaseResultMap">
+  	select
+  		dr.*,oi.name,pd1.name as start_province_val,pd2.name as start_city_val,pd3.name as start_county_val,
+  		pd4.name as end_province_val,pd5.name as end_city_val,pd6.name as end_county_val
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+  		left join tms_outlets_info oi on oi.id = li.outlets_id
+  		left join tms_outlets_info oi1 on oi1.id = li.start_outlets
+  		left join tms_outlets_info oi2 on oi2.id = li.end_outlets
+  		left join lc_xzqh_info pd1 on pd1.id = oi1.province 
+  		left join lc_xzqh_info pd2 on pd2.id = oi1.city
+  		left join lc_xzqh_info pd3 on pd3.id = oi1.county
+  		left join lc_xzqh_info pd4 on pd4.id = oi2.province
+  		left join lc_xzqh_info pd5 on pd5.id = oi2.city
+  		left join lc_xzqh_info pd6 on pd6.id = oi2.county
+  	where
+  		oi.company_id = #{companyId} and dr.status != 0
+  		order by dr.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 专线获取活动费率总记录数 -->
+  <select id="countRowsByCompanyId" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+  		left join tms_outlets_info oi on oi.id = li.outlets_id
+	where
+		oi.company_id = #{companyId} and dr.status != 0
+  </select>
+  <!-- 获取查询结果总数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+  	where 
+  		dr.status != 0
+  		<choose>
+  			<when test="user.outletsId != null">
+  				and li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				and li.outlets_id = (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		
+  </select>
+  
+  <!-- 查询预存费比例信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 
+  		dr.id, dr.line_id, dr.deposit_ratio, dr.start_time, dr.end_time, dr.create_time, dr.status, dr.create_person_id,
+  		li.start_outlets_name,li.end_outlets_name
+  	from
+  		tms_deposit_ratio dr
+  		left join tms_line_info li on dr.line_id = li.id
+  	where
+  		dr.status != 0
+  		<choose>
+  			<when test="user.outletsId != null">
+  				and li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				and li.outlets_id = (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		order by dr.create_time desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 查询预存费信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+  	select
+  		dr.id, dr.line_id, dr.deposit_ratio, dr.start_time, dr.end_time, dr.create_time, dr.status, 
+  		dr.create_person_id,dr.note,check_time,dr.check_person_id,pu.login_name,pu.true_name,
+  		puc.company_name,oi.name,li.start_outlets_name,li.end_outlets_name
+  	from
+  		tms_deposit_ratio dr
+  		inner join tms_user pu on pu.id = dr.create_person_id
+  		inner join lc_platform_user_company puc on puc.id = pu.company_id
+  		inner join tms_line_info li on li.id = dr.line_id
+		inner join tms_outlets_info oi on oi.id = li.outlets_id
+  	<where>
+  		dr.status != 0
+  		and dr.status = 2
+		or dr.status = 3
+		or dr.status = 4
+  		<if test="depositRatio.condition != null and depositRatio.condition !=  ''">
+  			and puc.company_name = #{depositRatio.condition}
+  		</if>
+  	</where> 
+  		order by id desc limit #{page.start},#{page.limit}
+  </select>
+  <!-- 查询预存费信息记录数 -->
+  <select id="countSelectedRows" resultType="int">
+  	select
+  		count(1)
+  	from
+  		tms_deposit_ratio dr
+  		inner join tms_user pu on pu.id = dr.create_person_id
+  		inner join lc_platform_user_company puc on puc.id = pu.company_id
+  		inner join tms_line_info li on li.id = dr.line_id
+		inner join tms_outlets_info oi on oi.id = li.outlets_id
+  	<where>
+  		dr.status != 0
+  		and dr.status = 2
+		or dr.status = 3
+		or dr.status = 4
+  		<if test="depositRatio.condition != null and depositRatio.condition !=  ''">
+  			and puc.company_name = #{depositRatio.condition}
+  		</if>
+  	</where> 
+  </select>
+  <!-- 批量删除 -->
+  <update id="deleteBatch" parameterType="list">
+  	update
+  		tms_deposit_ratio
+  	set
+  		status = 0
+  	where 
+  		id in
+  		<foreach collection="list" separator="," item="id" open="(" close=")">
+  			#{id}
+  		</foreach>
+  </update>
+  <!-- 审核 -->
+  <update id="audit" parameterType="list">
+  	<foreach collection="list" item="depositRatio" separator=";">
+	  	update
+	  		tms_deposit_ratio
+	  	set	
+	  		status = #{depositRatio.status}
+	  	where 
+	  		id = #{depositRatio.id}
+  	</foreach>
+  </update>
+  
+  <select id="selectByParams" resultMap="BaseResultMap">
+  	SELECT ratio.*, CONCAT(line.start_outlets_name,'-',line.end_outlets_name) line_name, com.company_name FROM tms_deposit_ratio ratio 
+	LEFT JOIN tms_line_info line ON ratio.line_id = line.id 
+	LEFT JOIN tms_outlets_info outlets ON line.outlets_id = outlets.id
+	LEFT JOIN lc_platform_user_company com ON outlets.company_id = com.id where 1 = 1
+	<if test="status != null and status != '' ">
+   		and ratio.status = #{status,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and ratio.start_time <![CDATA[<=]]> #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and ratio.end_time >= #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   	</if>
+  	limit #{start}, #{limit}
+  </select>
+  <select id="selectByParamsCount" resultType="int">
+  	SELECT count(1) FROM tms_deposit_ratio ratio 
+	LEFT JOIN tms_line_info line ON ratio.line_id = line.id 
+	LEFT JOIN tms_outlets_info outlets ON line.outlets_id = outlets.id
+	LEFT JOIN lc_platform_user_company com ON outlets.company_id = com.id where 1 = 1
+	<if test="status != null and status != '' ">
+   		and ratio.status = #{status,jdbcType=INTEGER}
+   	</if>
+   	<if test="startTime != null and startTime != '' ">
+   		and ratio.start_time >= #{startTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="endTime != null and endTime != '' ">
+   		and ratio.end_time <![CDATA[<=]]> #{endTime,jdbcType=TIMESTAMP}
+   	</if>
+   	<if test="condition != null and condition != ''">
+   		and com.company_name like concat("%",#{condition,jdbcType=VARCHAR},"%")
+   	</if>
+  </select>
+  
+  <select id="selectCurrentDeposit" resultMap="BaseResultMap">
+  	SELECT * FROM tms_deposit_ratio WHERE start_time <![CDATA[<=]]> now() AND end_time >= NOW() AND status = 3
+  </select>
+</mapper>

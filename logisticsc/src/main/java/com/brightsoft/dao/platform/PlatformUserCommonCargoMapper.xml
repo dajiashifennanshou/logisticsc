@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformUserCommonCargoMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformUserCommonCargo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cargo_name" property="cargoName" jdbcType="VARCHAR" />
+    <result column="single_weight" property="singleWeight" jdbcType="DOUBLE" />
+    <result column="single_volume" property="singleVolume" jdbcType="DOUBLE" />
+    <result column="packing_info" property="packingInfo" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="cargo_brand" property="cargoBrand" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="packing_info_name" property="packingInfoName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cargo_name, single_weight, single_volume, packing_info, state, create_time, user_id,remarks,cargo_brand,model
+  </sql>
+  <select id="selectCommonCargoName" resultType="int" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+  	 	select count(*)
+  		 from lc_platform_user_common_cargo
+		where user_id =  #{userId,jdbcType=BIGINT}
+		and cargo_name = #{cargoName,jdbcType=VARCHAR}
+  </select>
+  <!-- 逻辑删除我的常发货物 -->
+  <update id="updateCommonCargo">
+    update lc_platform_user_common_cargo
+    set 
+      state = #{state,jdbcType=INTEGER}
+      where id in
+      <foreach collection="commonCargoId" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
+  </update>
+  <!-- 查询我的常发货物信息 -->
+  <select id="selectBySelectedCondition" resultMap="BaseResultMap">
+  	select lc_platform_user_common_cargo.*, dict.name packing_info_name
+  	 from lc_platform_user_common_cargo
+  	 LEFT JOIN lc_platform_dictionary dict ON lc_platform_user_common_cargo.packing_info = dict.id
+	where user_id = #{commonCargo.userId,jdbcType=BIGINT}
+	and state = 1
+	<if test="commonCargo.cargoName!=null and commonCargo.cargoName!=''">
+  		and cargo_name LIKE concat("%",#{commonCargo.cargoName,jdbcType=VARCHAR},"%")
+  	</if>
+	order by create_time desc  
+	limit #{page.start},#{page.limit}
+  </select>
+  <!-- 获取总数 -->
+  <select id="countRows" resultType="int">
+   select count(*) from lc_platform_user_common_cargo
+	where user_id = #{commonCargo.userId,jdbcType=BIGINT}
+	and state = 1
+	<if test="commonCargo.cargoName!=null and commonCargo.cargoName!=''">
+  		and cargo_name LIKE concat("%",#{commonCargo.cargoName,jdbcType=VARCHAR},"%")
+  	</if>
+  </select>
+  <!-- 新增我的常发货物 -->
+  <insert id="insertCommonCargo" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+    insert into lc_platform_user_common_cargo (cargo_name, single_weight, 
+      single_volume, packing_info, state,create_time, user_id,remarks,cargo_brand,model)
+    values (#{cargoName,jdbcType=VARCHAR}, #{singleWeight,jdbcType=DOUBLE}, 
+      #{singleVolume,jdbcType=DOUBLE}, #{packingInfo,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=DATE}, #{userId,jdbcType=BIGINT},#{remarks,jdbcType=VARCHAR},#{cargoBrand,jdbcType=VARCHAR},#{model,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectByName" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+  	from lc_platform_user_common_cargo
+	where cargo_name = #{name,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByUserIdAndName" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+  	from lc_platform_user_common_cargo
+	where cargo_name = #{name,jdbcType=VARCHAR}
+	and user_id = #{name,jdbcType=BIGINT}
+  </select>
+  
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_user_common_cargo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_user_common_cargo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+    insert into lc_platform_user_common_cargo (id, cargo_name, single_weight, 
+      single_volume, packing_info, state, 
+      create_time, user_id)
+    values (#{id,jdbcType=BIGINT}, #{cargoName,jdbcType=VARCHAR}, #{singleWeight,jdbcType=DOUBLE}, 
+      #{singleVolume,jdbcType=DOUBLE}, #{packingInfo,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=DATE}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+    insert into lc_platform_user_common_cargo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cargoName != null" >
+        cargo_name,
+      </if>
+      <if test="singleWeight != null" >
+        single_weight,
+      </if>
+      <if test="singleVolume != null" >
+        single_volume,
+      </if>
+      <if test="packingInfo != null" >
+        packing_info,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="cargoName != null" >
+        #{cargoName,jdbcType=VARCHAR},
+      </if>
+      <if test="singleWeight != null" >
+        #{singleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="singleVolume != null" >
+        #{singleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="packingInfo != null" >
+        #{packingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+    update lc_platform_user_common_cargo
+    <set >
+      <if test="cargoName != null" >
+        cargo_name = #{cargoName,jdbcType=VARCHAR},
+      </if>
+      <if test="singleWeight != null" >
+        single_weight = #{singleWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="singleVolume != null" >
+        single_volume = #{singleVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="packingInfo != null" >
+        packing_info = #{packingInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformUserCommonCargo" >
+    update lc_platform_user_common_cargo
+    set cargo_name = #{cargoName,jdbcType=VARCHAR},
+      single_weight = #{singleWeight,jdbcType=DOUBLE},
+      single_volume = #{singleVolume,jdbcType=DOUBLE},
+      packing_info = #{packingInfo,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=DATE},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+</mapper>

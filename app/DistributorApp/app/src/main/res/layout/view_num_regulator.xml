@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/v_num_reglator_btn_cut"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@mipmap/my_warehouse_sub"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/v_num_reglator_tv_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:digits="1234567890"
+        android:text="0"
+        android:textColor="@color/font_color_normal"
+        android:textColorHint="@color/font_color_normal"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/v_num_reglator_btn_add"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@mipmap/my_warehouse_add" />
+</LinearLayout>

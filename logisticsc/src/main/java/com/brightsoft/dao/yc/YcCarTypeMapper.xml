@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.brightsoft.dao.yc.IYcCarTypeDao"> 
+	<resultMap id="BaseResultMap" type="com.brightsoft.entity.YcCarType"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,typeName,branchNo,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcCarType" > 
+		select  <include refid="Base_Column_List" />  from yc_car_type where 1=1 
+		<if test="id !=null"> 
+			and id=#{id}
+		</if>
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+	</select> 
+	<select id="getSumCount" resultType="int" parameterType="com.brightsoft.entity.YcCarType" > 
+		select  count(1)  from yc_car_type where 1=1
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+	</select> 
+	<select id="getListPagerInfo" resultMap="BaseResultMap" parameterType="map"> 
+		select <include refid="Base_Column_List" /> from yc_car_type where 1=1
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+		 order by id desc limit #{limitMax} offset #{limitMin} 
+	</select> 
+	<select id="getYcCarTypeListBy" resultMap="BaseResultMap" parameterType="com.brightsoft.entity.YcCarType"> 
+		select <include refid="Base_Column_List" /> from yc_car_type where 1=1
+		<if test="branchNo !=null"> 
+			and branchNo=#{branchNo}
+		</if>
+	</select> 
+	<delete id="delSingleInfo" parameterType="com.brightsoft.entity.YcCarType"> 
+		delete from yc_car_type where id=#{id} 
+	</delete> 
+	<insert id="addSingleInfo" parameterType="com.brightsoft.entity.YcCarType" useGeneratedKeys="true" keyProperty="id"> 
+		insert into yc_car_type  
+		(typeName,branchNo,createTime,createUser,updateTime,updateUser,remark) 
+		values ( #{typeName},#{branchNo},#{createTime},#{createUser},#{updateTime},#{updateUser},#{remark} )
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.brightsoft.entity.YcCarType">   
+	update yc_car_type 
+	<set> 
+		<if test="typeName !=null"> 
+			typeName=#{typeName},
+		</if>
+		<if test="branchNo !=null"> 
+			branchNo=#{branchNo},
+		</if>
+		<if test="createTime !=null"> 
+			createTime=#{createTime},
+		</if>
+		<if test="createUser !=null"> 
+			createUser=#{createUser},
+		</if>
+		<if test="updateTime !=null"> 
+			updateTime=#{updateTime},
+		</if>
+		<if test="updateUser !=null"> 
+			updateUser=#{updateUser},
+		</if>
+		<if test="remark !=null"> 
+			remark=#{remark}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

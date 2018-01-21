@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.InsteadCollectMoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.InsteadCollectMoney" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="collect_money_person" property="collectMoneyPerson" jdbcType="VARCHAR" />
+    <result column="collect_money_company" property="collectMoneyCompany" jdbcType="VARCHAR" />
+    <result column="pay_money_person" property="payMoneyPerson" jdbcType="VARCHAR" />
+    <result column="pay_money_company" property="payMoneyCompany" jdbcType="VARCHAR" />
+    <result column="instead_collect_money" property="insteadCollectMoney" jdbcType="DOUBLE" />
+    <result column="actual_collect_money" property="actualCollectMoney" jdbcType="DOUBLE" />
+    <result column="transferred_money" property="transferredMoney" jdbcType="DOUBLE" />
+    <result column="operate_person" property="operatePerson" jdbcType="BIGINT" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, way_bill_number, collect_money_person, collect_money_company, pay_money_person, 
+    pay_money_company, instead_collect_money, actual_collect_money, transferred_money, 
+    operate_person, operate_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_instead_collect_money
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_instead_collect_money
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.InsteadCollectMoney" >
+    insert into tms_instead_collect_money (id, way_bill_number, collect_money_person, 
+      collect_money_company, pay_money_person, pay_money_company, 
+      instead_collect_money, actual_collect_money, 
+      transferred_money, operate_person, operate_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{wayBillNumber,jdbcType=VARCHAR}, #{collectMoneyPerson,jdbcType=VARCHAR}, 
+      #{collectMoneyCompany,jdbcType=VARCHAR}, #{payMoneyPerson,jdbcType=VARCHAR}, #{payMoneyCompany,jdbcType=VARCHAR}, 
+      #{insteadCollectMoney,jdbcType=DOUBLE}, #{actualCollectMoney,jdbcType=DOUBLE}, 
+      #{transferredMoney,jdbcType=DOUBLE}, #{operatePerson,jdbcType=BIGINT}, #{operateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.InsteadCollectMoney" >
+    insert into tms_instead_collect_money
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+      <if test="collectMoneyPerson != null" >
+        collect_money_person,
+      </if>
+      <if test="collectMoneyCompany != null" >
+        collect_money_company,
+      </if>
+      <if test="payMoneyPerson != null" >
+        pay_money_person,
+      </if>
+      <if test="payMoneyCompany != null" >
+        pay_money_company,
+      </if>
+      <if test="insteadCollectMoney != null" >
+        instead_collect_money,
+      </if>
+      <if test="actualCollectMoney != null" >
+        actual_collect_money,
+      </if>
+      <if test="transferredMoney != null" >
+        transferred_money,
+      </if>
+      <if test="operatePerson != null" >
+        operate_person,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="collectMoneyPerson != null" >
+        #{collectMoneyPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="collectMoneyCompany != null" >
+        #{collectMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoneyPerson != null" >
+        #{payMoneyPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoneyCompany != null" >
+        #{payMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insteadCollectMoney != null" >
+        #{insteadCollectMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="actualCollectMoney != null" >
+        #{actualCollectMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="transferredMoney != null" >
+        #{transferredMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="operatePerson != null" >
+        #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.InsteadCollectMoney" >
+    update tms_instead_collect_money
+    <set >
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="collectMoneyPerson != null" >
+        collect_money_person = #{collectMoneyPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="collectMoneyCompany != null" >
+        collect_money_company = #{collectMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoneyPerson != null" >
+        pay_money_person = #{payMoneyPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoneyCompany != null" >
+        pay_money_company = #{payMoneyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insteadCollectMoney != null" >
+        instead_collect_money = #{insteadCollectMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="actualCollectMoney != null" >
+        actual_collect_money = #{actualCollectMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="transferredMoney != null" >
+        transferred_money = #{transferredMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="operatePerson != null" >
+        operate_person = #{operatePerson,jdbcType=BIGINT},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.InsteadCollectMoney" >
+    update tms_instead_collect_money
+    set way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      collect_money_person = #{collectMoneyPerson,jdbcType=VARCHAR},
+      collect_money_company = #{collectMoneyCompany,jdbcType=VARCHAR},
+      pay_money_person = #{payMoneyPerson,jdbcType=VARCHAR},
+      pay_money_company = #{payMoneyCompany,jdbcType=VARCHAR},
+      instead_collect_money = #{insteadCollectMoney,jdbcType=DOUBLE},
+      actual_collect_money = #{actualCollectMoney,jdbcType=DOUBLE},
+      transferred_money = #{transferredMoney,jdbcType=DOUBLE},
+      operate_person = #{operatePerson,jdbcType=BIGINT},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByWayBillNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_instead_collect_money
+    where way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

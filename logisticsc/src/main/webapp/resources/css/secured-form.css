@@ -1,0 +1,91 @@
+.un-word{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+/*表单*/
+.daik{
+	border: 1px solid #ddd;
+	margin-top: 20px;
+	padding: 20px 20px;
+	margin-bottom: 20px;
+}
+.dkuan{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF4E00;
+	border-bottom: 1px dashed #ddd;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 40px;
+}
+.dkuan-list{
+	margin-top: 20px;
+}
+.dkuan-word{
+	width: 400px;
+	text-align: right;
+	height: 46px;
+	line-height: 46px;
+}
+.dkuan-input{
+	margin-left: 10px;
+	height: 46px;
+	line-height: 46px;
+}
+#preview{width:140px;height:100px;border:1px solid #000;overflow:hidden;}
+#imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+.dkuan-input1{
+	margin-left: 10px;
+}
+
+.dkuan-text{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	text-indent: 12px;
+}
+.error{
+	height: 46px;
+	line-height: 46px;
+	margin-left: 20px;
+	color: #FF0000;
+}
+.se-select,.se-select1{
+	width: 140px;
+	height: 46px;
+	line-height: 46px;
+	padding-bottom: 8px\9;
+}
+.se-select1{
+	margin-left: 5px;
+}
+.se-btn{
+	width: 140px;
+	height: 46px;
+	line-height: 28px;
+	font-size: 18px;
+	text-align: center;
+	color: #fff;
+	background: #FA8C4F;
+	letter-spacing: 2px;
+}
+.se-btn:hover{
+	color: #fff;
+	background: #FF4E00;
+}
+.se-select2{
+	width: 290px;
+	height: 46px;
+	line-height: 46px;
+	text-indent: 4px;
+}
+
+
+
+
+
+
+
+

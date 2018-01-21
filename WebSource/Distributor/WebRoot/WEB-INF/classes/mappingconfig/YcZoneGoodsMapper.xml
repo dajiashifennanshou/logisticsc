@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.IYcZoneGoodsDao"> 
+	<resultMap id="YcZoneGoods" type="com.yc.Entity.YcZoneGoods"></resultMap>   
+	<resultMap id="YcGoods" type="com.yc.Entity.YcGoods"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,zoneNo,branchNo,dealerId,wayBillNo,wayBillStatus,goodsNum,inZoneStatus,goodsId,createTime,createUser,updateTime,updateUser,remark
+	</sql> 
+	<select id="getInStorageList" resultMap="YcZoneGoods" parameterType="map"> 
+		SELECT DISTINCT(a.`wayBillNo`),b.`phone`,a.createTime FROM yc_zone_goods AS a,yc_employee AS b WHERE a.`branchNo`=b.`branchNo` AND b.`position`=4
+		<if test="dealerId!=null">
+			AND a.`dealerId`=#{dealerId}
+		</if>
+		order by a.createTime desc limit #{limitMax} offset #{limitMin} 
+	</select>
+</mapper> 
+

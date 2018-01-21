@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.ReceiveMoneyOrderRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.ReceiveMoneyOrderRelation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="receive_money_order_id" property="receiveMoneyOrderId" jdbcType="BIGINT" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, receive_money_order_id, way_bill_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_order_relation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_receive_money_order_relation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.ReceiveMoneyOrderRelation" >
+    insert into tms_receive_money_order_relation (id, receive_money_order_id, way_bill_number
+      )
+    values (#{id,jdbcType=BIGINT}, #{receiveMoneyOrderId,jdbcType=BIGINT}, #{wayBillNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into tms_receive_money_order_relation (id, receive_money_order_id, way_bill_number)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+        (#{item.id,jdbcType=BIGINT}, #{item.receiveMoneyOrderId,jdbcType=BIGINT}, #{item.wayBillNumber,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.ReceiveMoneyOrderRelation" >
+    insert into tms_receive_money_order_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="receiveMoneyOrderId != null" >
+        receive_money_order_id,
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="receiveMoneyOrderId != null" >
+        #{receiveMoneyOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.ReceiveMoneyOrderRelation" >
+    update tms_receive_money_order_relation
+    <set >
+      <if test="receiveMoneyOrderId != null" >
+        receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="wayBillNumber != null" >
+        way_bill_number = #{wayBillNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.ReceiveMoneyOrderRelation" >
+    update tms_receive_money_order_relation
+    set receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT},
+      way_bill_number = #{wayBillNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByReceiveMoneyOrderId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_receive_money_order_relation
+    where receive_money_order_id = #{receiveMoneyOrderId,jdbcType=BIGINT}
+  </select>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="com.yc.Dao.JpushUserInfoDao"> 
+	<resultMap id="BaseResultMap" type="com.yc.Entity.JpushUserInfo"></resultMap>   
+	<sql id="Base_Column_List"> 
+		id,userId,phone,regisId,type
+	</sql> 
+	<select id="getSingleInfo" resultMap="BaseResultMap" parameterType="com.yc.Entity.JpushUserInfo" > 
+		select  <include refid="Base_Column_List" />  from jpush_user_info where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="userId!=null">
+			and userId=#{userId}
+		</if>
+		<!-- <if test="regisId!=null">
+			and regisId=#{regisId}
+		</if> -->
+		<if test="type!=null">
+			and type=#{type}
+		</if>
+	</select> 
+	<insert id="addSingleInfo" parameterType="com.yc.Entity.JpushUserInfo" useGeneratedKeys="true" keyProperty="id"> 
+		insert into jpush_user_info  
+		(userId,phone,regisId,type) 
+		values ( #{userId},#{phone},#{regisId},#{type})
+	</insert> 
+	<update id="modSingleInfo" parameterType="com.yc.Entity.JpushUserInfo">   
+	update jpush_user_info 
+	<set> 
+		<if test="userId !=null"> 
+			userId=#{userId},
+		</if>
+		<if test="phone !=null"> 
+			phone=#{phone},
+		</if>
+		<if test="regisId !=null"> 
+			regisId=#{regisId},
+		</if>
+		<if test="type!=null"> 
+			type=#{type}
+		</if>
+	</set> 
+	where id=#{id} 
+	</update> 
+</mapper> 
+

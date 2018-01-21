@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.MessageSubscriptionConfMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.MessageSubscriptionConf" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="message_id" property="messageId" jdbcType="BIGINT" />
+    <result column="notice_type" property="noticeType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, message_id, notice_type
+  </sql>
+  <delete id="deleteMessageSubscriptionConf" parameterType="java.util.List">
+    delete from tms_message_subscription_conf
+    where id in
+     <foreach collection="subscriptionConfs" index="index" item="item" open="(" separator="," close=")">
+    	 #{item.id}
+     </foreach>
+  </delete>
+  <insert id="insertMessageSubscriptionConf" parameterType="java.util.List" >
+    insert into tms_message_subscription_conf (user_id, message_id, 
+      notice_type)
+    values 
+    <foreach collection="subscriptionConfs" item="item" index="index" separator="," >
+    	(#{item.userId,jdbcType=BIGINT}, #{item.messageId,jdbcType=BIGINT}, 
+      	#{item.noticeType,jdbcType=INTEGER})
+      </foreach> 
+  </insert>
+  <select id="selectMessageSubscriptionConf" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_message_subscription_conf
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_message_subscription_conf
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_message_subscription_conf
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.MessageSubscriptionConf" >
+    insert into tms_message_subscription_conf (id, user_id, message_id, 
+      notice_type)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{messageId,jdbcType=BIGINT}, 
+      #{noticeType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.MessageSubscriptionConf" >
+    insert into tms_message_subscription_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="messageId != null" >
+        message_id,
+      </if>
+      <if test="noticeType != null" >
+        notice_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="messageId != null" >
+        #{messageId,jdbcType=BIGINT},
+      </if>
+      <if test="noticeType != null" >
+        #{noticeType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.MessageSubscriptionConf" >
+    update tms_message_subscription_conf
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="messageId != null" >
+        message_id = #{messageId,jdbcType=BIGINT},
+      </if>
+      <if test="noticeType != null" >
+        notice_type = #{noticeType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.MessageSubscriptionConf" >
+    update tms_message_subscription_conf
+    set user_id = #{userId,jdbcType=BIGINT},
+      message_id = #{messageId,jdbcType=BIGINT},
+      notice_type = #{noticeType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

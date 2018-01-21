@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\md_nav_back.xml",
+        "source": "D:\\latestproject\\XingSilkRoadAPP\\TheOwner\\AndroidSource\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\drawable-anydpi-v21\\md_nav_back.xml"
+    },
+    {
+        "merged": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\md_nav_back.xml",
+        "source": "D:\\InternetProject\\app\\xinsilu\\wx_resource\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.8\\res\\drawable-anydpi-v21\\md_nav_back.xml"
+    }
+]

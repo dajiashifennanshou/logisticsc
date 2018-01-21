@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.tms.AbnormalHandleMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.AbnormalHandle" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="abnormal_id" property="abnormalId" jdbcType="BIGINT" />
+    <result column="handle_date" property="handleDate" jdbcType="TIMESTAMP" />
+    <result column="compensation_money" property="compensationMoney" jdbcType="DOUBLE" />
+    <result column="customer_opinion" property="customerOpinion" jdbcType="VARCHAR" />
+    <result column="reply_opinion" property="replyOpinion" jdbcType="VARCHAR" />
+    <result column="handle_result" property="handleResult" jdbcType="VARCHAR" />
+    <result column="prevention_measures" property="preventionMeasures" jdbcType="VARCHAR" />
+    <result column="handle_person" property="handlePerson" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, abnormal_id, handle_date, compensation_money, customer_opinion, reply_opinion, 
+    handle_result, handle_person,prevention_measures
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_abnormal_handle
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tms_abnormal_handle
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.AbnormalHandle" >
+    insert into tms_abnormal_handle (id, abnormal_id, handle_date, 
+      compensation_money, customer_opinion, reply_opinion, 
+      handle_result, handle_person,prevention_measures)
+    values (#{id,jdbcType=BIGINT}, #{abnormalId,jdbcType=BIGINT}, #{handleDate,jdbcType=TIMESTAMP}, 
+      #{compensationMoney,jdbcType=DOUBLE}, #{customerOpinion,jdbcType=VARCHAR}, #{replyOpinion,jdbcType=VARCHAR}, 
+      #{handleResult,jdbcType=VARCHAR}, #{handlePerson,jdbcType=VARCHAR},#{preventionMeasures,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.AbnormalHandle" >
+    insert into tms_abnormal_handle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="abnormalId != null" >
+        abnormal_id,
+      </if>
+      <if test="handleDate != null" >
+        handle_date,
+      </if>
+      <if test="compensationMoney != null" >
+        compensation_money,
+      </if>
+      <if test="customerOpinion != null" >
+        customer_opinion,
+      </if>
+      <if test="replyOpinion != null" >
+        reply_opinion,
+      </if>
+      <if test="handleResult != null" >
+        handle_result,
+      </if>
+      <if test="handlePerson != null" >
+        handle_person,
+      </if>
+      <if test="preventionMeasures != null" >
+        prevention_measures,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="abnormalId != null" >
+        #{abnormalId,jdbcType=BIGINT},
+      </if>
+      <if test="handleDate != null" >
+        #{handleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="compensationMoney != null" >
+        #{compensationMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="customerOpinion != null" >
+        #{customerOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="replyOpinion != null" >
+        #{replyOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null" >
+        #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="preventionMeasures != null" >
+        #{preventionMeasures,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.AbnormalHandle" >
+    update tms_abnormal_handle
+    <set >
+      <if test="abnormalId != null" >
+        abnormal_id = #{abnormalId,jdbcType=BIGINT},
+      </if>
+      <if test="handleDate != null" >
+        handle_date = #{handleDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="compensationMoney != null" >
+        compensation_money = #{compensationMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="customerOpinion != null" >
+        customer_opinion = #{customerOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="replyOpinion != null" >
+        reply_opinion = #{replyOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        handle_result = #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null" >
+        handle_person = #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="preventionMeasures != null" >
+        prevention_measures = #{preventionMeasures,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.AbnormalHandle" >
+    update tms_abnormal_handle
+    set abnormal_id = #{abnormalId,jdbcType=BIGINT},
+      handle_date = #{handleDate,jdbcType=TIMESTAMP},
+      compensation_money = #{compensationMoney,jdbcType=DOUBLE},
+      customer_opinion = #{customerOpinion,jdbcType=VARCHAR},
+      reply_opinion = #{replyOpinion,jdbcType=VARCHAR},
+      handle_result = #{handleResult,jdbcType=VARCHAR},
+      handle_person = #{handlePerson,jdbcType=VARCHAR},
+      prevention_measures = #{preventionMeasures,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectByAbnormalId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tms_abnormal_handle
+    where abnormal_id = #{abnormalId,jdbcType=BIGINT}
+  </select>
+</mapper>

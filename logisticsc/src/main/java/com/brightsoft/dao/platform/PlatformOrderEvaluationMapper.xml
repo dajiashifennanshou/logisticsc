@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brightsoft.dao.platform.PlatformOrderEvaluationMapper" >
+  <resultMap id="BaseResultMap" type="com.brightsoft.model.PlatformOrderEvaluation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_time" property="evaluateTime" jdbcType="TIMESTAMP" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="line" property="line"/>
+    <result column="order_time" property="orderTime"/>
+    <result column="true_name" property="trueName"/>
+    <result column="login_name" property="loginName"/>
+    <result column="reply_content" property="replyContent"/>
+    <result column="reply_time" property="replyTime"/>
+  </resultMap>
+  
+  <resultMap id="BaseOrderMineEvaluationtMap" type="com.brightsoft.model.PlatformOrderMineEvaluation" >
+  	<result column="eva_id" property="evaId" jdbcType="BIGINT" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_time" property="evaluateTime" jdbcType="TIMESTAMP" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="way_bill_number" property="wayBillNumber" jdbcType="VARCHAR" />
+    <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="company_code" property="companyCode" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  
+  <resultMap id="userEvaluationMap" type="com.brightsoft.model.PlatformUserEvaluation" >
+  	<result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+    <result column="evaluate_time" property="evaluateTime" jdbcType="TIMESTAMP" />
+    <result column="evaluate_level" property="evaluateLevel" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+  	 <result column="start_province" property="startProvince" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="start_county" property="startCounty" jdbcType="VARCHAR" />
+    <result column="end_province" property="endProvince" jdbcType="VARCHAR" />
+    <result column="end_city" property="endCity" jdbcType="VARCHAR" />
+    <result column="end_county" property="endCounty" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, order_number, evaluate_content, evaluate_time, evaluate_level, user_id, state,status
+  </sql>
+   <!-- 货运交易系统查询评价详情  -->
+  <select id="selectEvaluation" resultType="int">
+  	select COUNT(*) from lc_platform_order_evaluation where order_number =#{orderNumber,jdbcType=VARCHAR}
+  </select>
+   <select id="selectUserEvaluationCount" resultMap="userEvaluationMap">
+  	SELECT o_t.*,
+	o1.province start_province, o1.city start_city, o1.county start_county, 
+	o2.province end_province, o2.city end_city, o2.county end_county 
+	FROM
+	(
+		SELECT  eva.id,eva.evaluate_content,eva.evaluate_level,eva.evaluate_time,l.start_outlets, l.end_outlets,users.login_name
+		FROM lc_platform_order_evaluation eva
+		LEFT JOIN lc_platform_user users ON users.id=eva.user_id
+		LEFT JOIN lc_platform_order o ON eva.order_number =o.order_number
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		LEFT JOIN tms_outlets_info i_o on l.start_outlets = i_o.id
+		where i_o.company_id = #{evaluation.companyId,jdbcType=BIGINT}
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name 
+		FROM tms_outlets_info i_o 
+		LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id
+		where i_c.id = #{evaluation.companyId,jdbcType=BIGINT}
+	) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+  </select>
+  <select id="selectUserEvaluation" resultMap="userEvaluationMap">
+  	SELECT o_t.*,
+	o1.province start_province, o1.city start_city, o1.county start_county, 
+	o2.province end_province, o2.city end_city, o2.county end_county 
+	FROM
+	(
+		SELECT  eva.id,eva.evaluate_content,eva.evaluate_level,eva.evaluate_time,l.start_outlets, l.end_outlets,users.login_name
+		FROM lc_platform_order_evaluation eva
+		LEFT JOIN lc_platform_user users ON users.id=eva.user_id
+		LEFT JOIN lc_platform_order o ON eva.order_number =o.order_number
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		LEFT JOIN tms_outlets_info i_o on l.start_outlets = i_o.id
+		where i_o.company_id = #{evaluation.companyId,jdbcType=BIGINT}
+		limit #{page.start},#{page.limit}
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name 
+		FROM tms_outlets_info i_o 
+		LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id
+		where i_c.id = #{evaluation.companyId,jdbcType=BIGINT}
+	) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+  </select>
+  <select id="userEvaluation" resultType="int">
+  	SELECT 
+	count(*)
+	FROM
+	(
+		SELECT  eva.id,eva.evaluate_content,eva.evaluate_level,eva.evaluate_time,l.start_outlets, l.end_outlets,users.login_name
+		FROM lc_platform_order_evaluation eva
+		LEFT JOIN lc_platform_user users ON users.id=eva.user_id
+		LEFT JOIN lc_platform_order o ON eva.order_number =o.order_number
+		LEFT JOIN tms_line_info l ON o.tms_line_id = l.id
+		LEFT JOIN tms_outlets_info i_o on l.start_outlets = i_o.id
+		where i_o.company_id = #{evaluation.companyId,jdbcType=BIGINT}
+	) o_t
+	LEFT JOIN 
+	(SELECT i_o.id, i_o.province, i_o.city, i_o.county, i_c.company_name 
+		FROM tms_outlets_info i_o 
+		LEFT JOIN lc_platform_user_company i_c ON i_o.company_id = i_c.id
+		where i_c.id = #{evaluation.companyId,jdbcType=BIGINT}
+	) o1 ON o_t.start_outlets = o1.id
+	LEFT JOIN 
+	tms_outlets_info o2 ON o_t.end_outlets = o2.id
+  </select>
+  <!-- 增加评价信息 -->
+  <insert id="insertEvaluation" parameterType="com.brightsoft.model.PlatformOrderEvaluation" >
+    insert into lc_platform_order_evaluation (order_number, evaluate_content, 
+      evaluate_time, evaluate_level, user_id, 
+      state)
+    values (#{orderNumber,jdbcType=VARCHAR}, #{evaluateContent,jdbcType=VARCHAR}, 
+      #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateLevel,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+   <!-- 货运交易系统查询评价详情  -->
+  <select id="selectMineEvaluation" resultMap="BaseOrderMineEvaluationtMap">
+  	select orders.order_number,orders.way_bill_number,
+	com.company_name,eva.status,
+	eva.evaluate_content,eva.evaluate_time,eva.state,eva.id as eva_id,eva.evaluate_level
+	from lc_platform_order_evaluation as eva 
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.start_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE eva.id = #{evaId,jdbcType=BIGINT}
+  </select>
+  <!-- 货运交易系统查询我的评价  -->
+  <select id="selectByConditionPlatfrom" resultMap="BaseOrderMineEvaluationtMap">
+  	select start.order_number,start.way_bill_number,
+	start.start_province,start.start_city,start.start_county,
+	end.end_province,end.end_city,end.end_county,
+	start.company_name,
+	start.evaluate_content,start.evaluate_time,start.state,start.eva_id,start.evaluate_level,start.status
+	from 
+	(select line.id,orders.order_number,orders.way_bill_number,
+	outlets.province as start_province,outlets.city as start_city,outlets.county as start_county,
+	com.company_name,
+	eva.evaluate_content,eva.evaluate_time,eva.state,eva.id as eva_id,eva.evaluate_level,eva.status
+	from lc_platform_order_evaluation as eva 
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.start_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+   	and eva.user_id = #{evaluation.userId,jdbcType=BIGINT}
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+	order by eva.evaluate_time desc
+	limit #{page.start},#{page.limit}
+	) start
+	JOIN
+	(
+	select line.id,orders.order_number,orders.way_bill_number
+	,outlets.province as end_province,outlets.city as end_city,outlets.county as end_county,
+	com.company_name,
+	eva.evaluate_content,eva.evaluate_time,eva.state,eva.id as eva_id
+	from lc_platform_order_evaluation as eva 
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+   	and eva.user_id = #{evaluation.userId,jdbcType=BIGINT}
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+	order by eva.evaluate_time desc
+	limit #{page.start},#{page.limit}
+	) end on start.id = end.id
+	GROUP BY start.order_number
+  </select>
+  <!-- 货运交易系统查询评价总数 -->
+  <select id="countRowsPlatfrom" resultType="int">
+  	select count(*) from lc_platform_order_evaluation as eva
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	WHERE 1 = 1
+   	and eva.user_id = #{evaluation.userId,jdbcType=BIGINT}
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+  </select>
+  <!-- 线路评价总数 -->
+  <select id="countLineEvaluation" resultType="int">
+  	select count(*) from lc_platform_order as orders 
+	JOIN lc_platform_order_evaluation as eva on orders.order_number = eva.order_number
+	where orders.tms_line_id = #{id,jdbcType=BIGINT}
+  </select>
+   <update id="updateByPrimaryKeySelective" parameterType="com.brightsoft.model.PlatformOrderEvaluation" >
+    update lc_platform_order_evaluation
+    <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTime != null" >
+        evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level = #{evaluateLevel,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+ <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from lc_platform_order_evaluation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from lc_platform_order_evaluation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.brightsoft.model.PlatformOrderEvaluation" >
+    insert into lc_platform_order_evaluation (id, order_number, evaluate_content, 
+      evaluate_time, evaluate_level, user_id, 
+      state)
+    values (#{id,jdbcType=BIGINT}, #{orderNumber,jdbcType=VARCHAR}, #{evaluateContent,jdbcType=VARCHAR}, 
+      #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateLevel,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.brightsoft.model.PlatformOrderEvaluation" >
+    insert into lc_platform_order_evaluation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content,
+      </if>
+      <if test="evaluateTime != null" >
+        evaluate_time,
+      </if>
+      <if test="evaluateLevel != null" >
+        evaluate_level,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateContent != null" >
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTime != null" >
+        #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateLevel != null" >
+        #{evaluateLevel,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.brightsoft.model.PlatformOrderEvaluation" >
+    update lc_platform_order_evaluation
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      evaluate_level = #{evaluateLevel,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update> -->
+  
+  <sql id="base_query">
+  	<if test="platformOrderEvaluation.startTime != null and	platformOrderEvaluation.endTime != null">
+  		and poe.evaluate_time between #{platformOrderEvaluation.startTime} and #{platformOrderEvaluation.endTime}
+  	</if>
+  	<if test="platformOrderEvaluation.startTime == null and platformOrderEvaluation.endTime != null">
+  		and poe.evaluate_time &lt; #{platformOrderEvaluation.endTime}
+  	</if>
+  	<if test="platformOrderEvaluation.startTime != null and platformOrderEvaluation.endTime == null">
+  		and poe.evaluate_time &gt; #{platformOrderEvaluation.startTime}
+  	</if>
+  	<if test="platformOrderEvaluation.condition != null and platformOrderEvaluation.condition!=''">
+  		and poe.order_number = #{platformOrderEvaluation.orderNumber}
+  	</if>
+  </sql>
+  <!-- 获取结果集总数 -->
+  <select id="countRows" resultType="int">
+  	select 
+  		count(1)
+  	from
+  		lc_platform_order_evaluation poe
+  		left join lc_platform_user pu on poe.user_id = pu.id
+  		left join lc_platform_order po on poe.order_number = po.order_number
+  		left join tms_line_info li on po.tms_line_id = li.id
+  		left join lc_platform_order_evaluation_reply poec on poe.id = poec.evaluate_id
+  	<where>
+  		<choose>
+  			<when test="user.outletsId != null">
+  				li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				li.outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"></include>
+  	</where> 
+  </select>
+  
+  <!-- 查询评论信息 -->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+  	select 
+  		poe.id, poe.order_number, poe.evaluate_content, poe.evaluate_time, poe.evaluate_level, poe.user_id, poe.state,
+  		concat(li.start_outlets_name,'(到)',li.end_outlets_name) as line,po.order_time,pu.true_name,pu.login_name,
+  		poec.reply_content,poec.reply_time
+  	from 
+  		lc_platform_order_evaluation poe
+  		left join lc_platform_user pu on poe.user_id = pu.id
+  		left join lc_platform_order po on poe.order_number = po.order_number
+  		left join tms_line_info li on po.tms_line_id = li.id
+  		left join lc_platform_order_evaluation_reply poec on poe.id = poec.evaluate_id
+  	<where> 
+  		<choose>
+  			<when test="user.outletsId != null">
+  				li.outlets_id = #{user.outletsId}
+  			</when>
+  			<otherwise>
+  				li.outlets_id in (select id from tms_outlets_info where company_id = #{user.companyId})
+  			</otherwise>
+  		</choose>
+  		<include refid="base_query"></include>
+  	</where>
+  </select>
+  
+  <!-- 查询线路总评价和评价数量 -->
+  <select id="selectTotalAndAvgByLineId" parameterType="long" resultType="int">
+  	SELECT
+		AVG(poe.evaluate_level)
+	from
+		lc_platform_order_evaluation poe
+		LEFT JOIN lc_platform_order po on po.order_number = poe.order_number
+		left join tms_line_info li on li.id = po.tms_line_id
+	where 
+		li.id = #{lineId}
+  </select>
+  
+  
+  <!-- 货运交易系统评价管理 -->
+  <select id="selectByConditionPlatfromList" resultMap="BaseOrderMineEvaluationtMap">
+  	select start.order_number,start.way_bill_number,
+	start.start_province,start.start_city,start.start_county,
+	end.end_province,end.end_city,end.end_county,
+	start.company_name,start.company_code,
+	start.evaluate_content,start.evaluate_time,start.eva_id,start.status
+	from 
+	(select line.id,orders.order_number,orders.way_bill_number,
+	outlets.province as start_province,outlets.city as start_city,outlets.county as start_county,
+	com.company_name,com.company_code,
+	eva.evaluate_content,eva.evaluate_time,eva.state,eva.id as eva_id,eva.evaluate_level,eva.status
+	from lc_platform_order_evaluation as eva 
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.start_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+	order by eva.evaluate_time desc
+	limit #{page.start},#{page.limit}
+	) start
+	JOIN
+	(
+	select line.id,orders.order_number,orders.way_bill_number
+	,outlets.province as end_province,outlets.city as end_city,outlets.county as end_county,
+	com.company_name,com.company_code,
+	eva.evaluate_content,eva.evaluate_time,eva.state,eva.id as eva_id
+	from lc_platform_order_evaluation as eva 
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	JOIN tms_line_info as line on line.id = orders.tms_line_id
+	JOIN tms_outlets_info as outlets on outlets.id = line.end_outlets
+	JOIN lc_platform_user_company as com on com.id = outlets.company_id
+	WHERE 1 = 1
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+	order by eva.evaluate_time desc
+	limit #{page.start},#{page.limit}
+	) end on start.id = end.id
+	GROUP BY start.order_number
+  </select>
+  <select id="countRowsPlatfromList" resultType="int">
+  	select count(*) from lc_platform_order_evaluation as eva
+	JOIN lc_platform_order as orders on orders.order_number = eva.order_number
+	WHERE 1 = 1
+	<if test="evaluation.condition != null and evaluation.condition !='' ">
+   		and (orders.order_number like concat("%",#{evaluation.condition},"%") or orders.way_bill_number like concat("%",#{evaluation.condition},"%"))
+   	</if>
+   	<if test="evaluation.startTime!=null and evaluation.startTime!=''">
+		and eva.evaluate_time >=#{evaluation.startTime,jdbcType=VARCHAR}
+	</if>
+	<if test="evaluation.endTime!=null and evaluation.endTime!=''">
+		and #{evaluation.endTime,jdbcType=VARCHAR} >= eva.evaluate_time
+	</if>
+  </select>
+</mapper>
